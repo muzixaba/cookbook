@@ -1,0 +1,12 @@
+views.py
+
+from django.shortcuts import render
+from django.http import JsonResponse
+
+def ViewName(request):
+    some_info = [
+        'key1': value1,
+        'key2': value2 
+    ]
+
+    return JsonResponse({'response': some_info})
