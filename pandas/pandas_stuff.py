@@ -42,6 +42,15 @@ df['Rating Per Year of Age'] = df['Overall'] / df['Age']
 # Drop a column
 df.drop('Rating Per Year of Age', axis=1)
 
+# Get unique values from a series/column
+df['col_name'].unique()
+
+# Get sum/mean/min/max of df columns
+df.mean()
+
+#Count number of unique values in a series/column
+df['col_name'].value_counts()
+
 #==========================================
 # Combining DataFrames
 #=========================================
@@ -72,7 +81,10 @@ df.groupby(['Age', 'Nationality']).mean()
 # Group by using custom aggregate function Survival rate by gender
 df.groupby('Gender')[['Survived_Crash']].aggregate(lambda x: x.sum() / len(x)) 
 
-
+#=======================
+# Add rows/observations
+#=======================
+df = df.append({'col_name' : value} , ignore_index=True)
 
 #==================================
 # Apply Custom Functions 

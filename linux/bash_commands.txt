@@ -1,0 +1,87 @@
+youtube-dl --extract-audio --audio-format mp3
+curl http://checkip.amazonaws.com
+lspci
+top -o cpu
+top
+
+# Remove all files with specific file extension
+rm *.txt
+
+# Shutdown
+sudo shutdown -P +60
+sudo shutdown -P 23:00
+sudo shutdown -P now
+# Cancel shutdown
+sudo shutdown -c
+
+# GPU
+lspci -k | grep -EA3 'VGA|Display|3D'
+xrandr --listproviders
+xrandr --setprovideroffloadsink 0x3f 0x64
+DRI_PRIME=1 spyder, steam, jupyter notebook
+glxinfo | grep "OpenGL renderer"
+
+# CMUS
+:clear
+:add ~/Music
+
+# Check if a website is running
+ping url -c 3
+
+# Navigation
+clrt + k -> cuts from cursor till end of line
+ctrl + u -> cuts from cursor to beginning of line
+Shift + Insert -> pastes what's on the clipboard
+ctrl + w -> delete one word at a time
+
+
+
+
+# Basic Commands
+# files
+touch file_name.txt -> creates new file
+touch *.txt -> changes all date modified to now
+
+ls -> list storage
+ls -a -> show all
+ls -l -> show long details
+ls -R -F -> displays all directories and files under the current directory
+pwd - print working directory
+cd -> goes to home folder
+pushd -> jump directories and go to specific one
+popd  -> jump back to last directory
+file file_name -> returns file extension
+locate file_name -> locate files on system
+sudo -> do something as superuser
+sudeo updatedb -> updates the locate database
+which -> used to fine toerh commands install on your system
+up arrow -> show history of commands. Last In First Out (LIFO)
+history -> shows history of commands you typed
+nano file_name -> opens file_name inside the nano editor
+man command_name -> returns the manual for a specific command_name
+apropos keyword -> shows command related to keyword
+cat file_name -> reads file and returns contents inside the terminal
+cat fil1 file2 file3 > ./merged_file.txt -> cat can also be used to concatinate files
+cat >filename -> creates a new file
+more file_name -> page up or down a file
+less file_name -> navigate inside a file
+id -> returns info about your system
+watch -> runs a command periodically
+kill app_name -> force quit
+printenv -> shows environment settings
+cal -> show calendar
+screenfetch -> returns system info
+mv/cp dir/file1.txt dir/file2.txt backup -> move or copy files to dir call backup
+rm file_name -> delete file
+head file.txt -> outputs first 10 lines of document
+tail file.txt -> displays last part of file
+cut -f 2-5, 8-d, file.csv -> view select columns in file, use ',' as delimeter
+!n -> runs previous command from history
+grep -> selects lines according to what they contain, eith exact or pattern
+wc -c/-w/-l file_name -> word, character, line count
+sort -> sorts results in ascending order
+uniq -> returns unique values that are adjacent or consecutive to each other
+set -> displays environment variables
+echo $ENVIRON_VAR -> returns the value of ENVIRON_VAR
+
+
