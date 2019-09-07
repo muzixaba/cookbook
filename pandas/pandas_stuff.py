@@ -51,6 +51,10 @@ df.mean()
 #Count number of unique values in a series/column
 df['col_name'].value_counts()
 
+# Groupby some column & merge row enties entries into a list
+col_list = df.groupby(["Col_Name"])['col_with_entries_to_list'].apply(list)
+
+
 #==========================================
 # Combining DataFrames
 #=========================================
