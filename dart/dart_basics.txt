@@ -162,13 +162,25 @@ class Person {
     double _height; // _private_attribute. Can only be accessed from inside the class
 
     // Constructor name == ClassName. this==self in python
-    Person({this.name, this.age, this.height});
+    // @required means parameter has to be there when class is instantiated.
+    // @required not allowed for parameters with default values
+    Person({@required this.name, this.age, this.height});
 
     // class methods
+
     String describe(){
         return "Hello, I'm $name, I'm $age yrs old and $height meters tall";
     }
+
     Sring say_name() => "My name is $name"
+
+    // getters don't need the () as they don't take any parameters
+    get getName => name;
+
+    // setter method
+    void set setAge(int age) {
+    age = currentYear - yearOfBirth;
+  }
 
     @override
     String toString() => "name: $name"; //overides parent class method
