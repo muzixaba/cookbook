@@ -25,6 +25,15 @@ void main(){
     func_name(var_type arg1, var_type arg2)
 }
 
+// Single line comment
+
+/*
+Multi-line
+comment
+*/
+
+/// Docstring
+
 //===========================
 // Variables
 //===========================
@@ -49,6 +58,22 @@ $varName, if inside strings. Also ${varName.method}
 // Data types
 String, int, double, bool
 dynamic, final
+
+// Create empty variables
+List<int> listOfInts = [];
+String emptyString = '';
+Map<String, dynamic> newMap = {};
+Set<String> setOfStrings = {};
+
+//======================
+// Casting
+//======================
+var one = int.parse('1'); // int from String
+var myInt = int.tryParse('2222'); // returns null if parsing fails
+var myDouble = double.parse('2.0'); double from String
+var myDouble = double.tryParse('22.0'); // returns null if parsing fails
+
+String oneAsString = 1.toString(); // String from int
 
 //===========================
 // String
@@ -211,7 +236,7 @@ class ImageModel {
     }
 }
 
-//------------Inheritance---------------------
+//------------Inheritance-------------------------
 
 // All objects inherit from Object
 class Employee extends Person{

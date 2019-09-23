@@ -1,0 +1,25 @@
+=====================
+Docker on Linux
+=====================
+
+# install
+sudo snap install Docker
+
+# check version
+docker --version
+
+# list docker images
+docker image ls
+
+# list docker containers
+docker container ls (--all, -aq)
+
+# view docker setup
+docker info
+
+# run an image
+sudo docker run image_name
+
+# build a docker image
+sudo docker build --tag=TagName . (remember the dot at the end)
+

@@ -97,3 +97,9 @@ df = df.append({'col_name' : value} , ignore_index=True)
 # Change days to years
 df['num_of_days'].apply(lambda x: x/365)
 
+#====================
+# TimeSeries
+#===================
+
+# from timestamp to string
+dt.fromtimestamp(timestamp).strftime('%Y-%m-%d-%H%M%S')
