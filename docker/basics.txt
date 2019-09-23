@@ -7,12 +7,26 @@ sudo snap install Docker
 
 # check version
 docker --version
+docker version
+
+# create docker group (avoid typing sudo for all commands)
+sudo groupadd docker (creates docker group)
+sudo usermod -aG docker $USER
 
 # list docker images
 docker image ls
 
 # list docker containers
 docker container ls (--all, -aq)
+
+# see all running containers
+docker ps -a
+
+# run a container
+docker run it --name=ContainerName
+
+# remove all stopped containers
+docker rm $(docker ps -a -q)
 
 # view docker setup
 docker info
@@ -22,4 +36,10 @@ sudo docker run image_name
 
 # build a docker image
 sudo docker build --tag=TagName . (remember the dot at the end)
+
+# copy file from local INTO docker container
+docker cp /home/muzi/Music/test.mp3 ContainerID:/root/music/test.mp3
+
+# copy frim FROM docker container into local
+docker cp ContainerID:/root/my_dir/file.txt file.txt
 
