@@ -1,3 +1,49 @@
+==================
+What is Docker?
+=================
+Conainerisation
+
+
+=============
+Requirements
+=============
+If Windows:
+	Have Windows 10
+	Enable Hyper-V
+	Enable virtualisation
+
+
+===========================
+Download & Install Docker
+===========================
+download.docker.com
+Approximately 550mb
+
+What's in the box:
+	Docker Engine
+	Docker Compose
+	Docker Machine
+	Kitematic
+
+
+===================
+Using Docker
+==================
+Create or pull Docker image from registries.
+Popular registries are DockerHub and Quay.io
+
+
+=================
+Docker Swarms
+=================
+A group of Docker engines working together.
+They're managed by Docker Manager
+
+=================
+Docker Compose
+=================
+Runs multiple apps made up of multiple containers
+
 =====================
 Docker on Linux
 =====================

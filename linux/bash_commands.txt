@@ -100,3 +100,20 @@ scp -r user@123.123.123.123:/home/my_files/dir_name /home/local_files/dir_name
 man scp
 
 jupyler lab --no-browser --ip=0.0.0.0
+
+
+#============================
+# Conda Virtual Environments
+#============================
+
+# Create new virtual environmnet and install multiple packages
+conda create --name=venv_name python numpy pandas etc
+
+# Activate Virtual Environment
+conda activate venv_name
+
+# Deactivate Virtual Environment
+conda deactivate
+
+# List all virtual Environments
+conda env list
