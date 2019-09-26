@@ -7,8 +7,9 @@ async def fetch(session, url):
 
 async def main():
     async with ClientSession() as session:
-        html = await fetch(session, 'http://examle.com')
+        html = await fetch(session, 'http://example.com')
         print(html)
 
-loop = asyncio.get_event_loop()
-loop.run_until_complete(main())
+if __name__ == '__main__':
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(main())
