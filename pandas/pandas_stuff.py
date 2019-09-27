@@ -18,6 +18,9 @@ df[2:8]
 # Slicing df using both a row and column names
 df.loc['row_name', 'col_name'] 
 
+# Change value at specific cell
+df.set_value(index, 'col_name', value)
+
 # Change column data type
 df['col_name'] = df['col_name'].astype('int64')
 
