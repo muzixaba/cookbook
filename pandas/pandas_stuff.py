@@ -91,7 +91,13 @@ df.groupby('Gender')[['Survived_Crash']].aggregate(lambda x: x.sum() / len(x))
 #=======================
 # Add rows/observations
 #=======================
+
+# Add single row
 df = df.append({'col_name' : value} , ignore_index=True)
+
+# Populate df using for loop
+for i in iterable:
+    df = df.append({'col_name' : value} , ignore_index=True)
 
 #==================================
 # Apply Custom Functions 
