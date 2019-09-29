@@ -104,6 +104,9 @@ scp -r /path/to/dir_name user@123.123.123.123:/home/my_files/dir_name
 scp user@123.123.123:/home/username/file_name.txt 
 scp -r user@123.123.123.123:/home/my_files/dir_name /home/local_files/dir_name
 
+# copy files from current Remote directory to local
+scp -r username@hostname:/path/from/file .
+
 man scp
 
 

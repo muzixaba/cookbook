@@ -99,6 +99,13 @@ df = df.append({'col_name' : value} , ignore_index=True)
 for i in iterable:
     df = df.append({'col_name' : value} , ignore_index=True)
 
+# Add values for specific column after certain index
+df['col_name'][df.index > 60] = 'scalar value after index=60'
+
+# Add random choice in a new column
+df['NewCol'] = df['AnyCol'].apply(lambda x: random.choice(('yes', 'no')))
+
+
 #==================================
 # Apply Custom Functions 
 #==============================
