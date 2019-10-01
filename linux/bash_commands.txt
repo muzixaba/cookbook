@@ -70,6 +70,7 @@ echo $ENVIRON_VAR -> returns the value of ENVIRON_VAR
 # Files
 #================================
 mv/cp dir/file1.txt dir/file2.txt backup -> move or copy files to dir call backup
+mv old-name new-name -> Rename directory
 rm file_name -> delete file
 head file.txt -> outputs first 10 lines of document
 tail file.txt -> displays last part of file
@@ -84,6 +85,8 @@ cat >filename -> creates a new file
 more file_name -> page up or down a file
 less file_name -> navigate inside a file
 cut -f 2-5, 8-d, file.csv -> view select columns in file, use ',' as delimeter
+ls -1 | wc -l -> Number of files in current directory
+rm -r /path/to/directory/* -> Delete all files & subdirectories inside a directory.
 
 #================================
 # Check Disk Space
@@ -91,6 +94,8 @@ cut -f 2-5, 8-d, file.csv -> view select columns in file, use ',' as delimeter
 sudo du -sh /*
 du -h -> returns file sizes
 df -h -> check free space
+ls -1 | wc -l -> Number of files in current directory
+
 
 #================================
 # Copy File between Local & Cloud
