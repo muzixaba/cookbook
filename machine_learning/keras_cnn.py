@@ -9,6 +9,8 @@ from keras.layers import Convolution2D # 2D=images, 3D=video
 from keras.layers import MaxPooling2D
 from keras.layers import Flatten
 from keras.layers import Dense # fully connected layers
+from keras.layers import Dropout # helps to reduce overfitting
+
 
 # ALWAYS Normalise/Standardise X. 
 X_normalised = X / X.max()
@@ -34,6 +36,9 @@ clf.add(MaxPooling2D(pool_size = (2, 2)))
 clf.add(Convolution2D(32, 3, 3, activation = 'relu'))
 clf.add(MaxPooling2D(pool_size = (2, 2)))
 
+# Add dropout to reduce overfitting
+clf.add(Dropout(0.5))
+
 # Step 3 
 # Flatten before sending to a normal NN
 # Flattens feature maps to a single vector 2b using in input layer of ANN
@@ -54,7 +59,7 @@ clf.add(Dense(output_dim = 1, activation = 'sigmoid'))
 clf.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
 
 # Training the model
-clf.fit(X_train, y_train)
+clf.fit(X_train, y_train, epochs=5, validation_data=(X_test, y_test))
 
 # Predicting test labels
 y_pred = clf.predict(X_test)
