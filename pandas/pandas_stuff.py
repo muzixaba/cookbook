@@ -57,6 +57,14 @@ df['col_name'].value_counts()
 # Groupby some column & merge row enties entries into a list
 col_list = df.groupby(["Col_Name"])['col_with_entries_to_list'].apply(list)
 
+# Rename Columns
+df.rename(columns={"old1": "new1", "old2": "new2"})
+
+# Rename index
+df.rename(index={0: "x", 1: "y", 2: "z"})
+
+# dropping ALL duplicte values  in certain column
+df.drop_duplicates(subset ="ref_colName", keep='first', inplace=True) 
 
 #==========================================
 # Combining DataFrames
