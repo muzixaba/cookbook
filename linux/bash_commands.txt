@@ -87,11 +87,12 @@ less file_name -> navigate inside a file
 cut -f 2-5, 8-d, file.csv -> view select columns in file, use ',' as delimeter
 ls -1 | wc -l -> Number of files in current directory
 rm -r /path/to/directory/* -> Delete all files & subdirectories inside a directory.
+ls -U | head -4 -> look at the first 4 files
 
 #================================
 # Check Disk Space
 #================================
-sudo du -sh /*
+sudo du -sh /path/to/dir/* -> returns space used by subdirectories & files
 du -h -> returns file sizes
 df -h -> check free space
 ls -1 | wc -l -> Number of files in current directory
@@ -120,7 +121,7 @@ man scp
 #============================
 
 # Create new virtual environmnet and install multiple packages
-conda create --name=venv_name python numpy pandas etc
+conda create --name=venv_name python numpy pandas==0.25.1 etc
 
 # Activate Virtual Environment
 conda activate venv_name

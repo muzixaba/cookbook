@@ -1,0 +1,37 @@
+
+#===================
+# Build a new apk
+#===================
+flutter clean
+flutter build apk
+project_name\build\app\outputs\apk\app.apk
+
+
+
+
+#=============================
+# Git Using Android Studio 3.5
+#=============================
+
+# enable git
+VCS
+Enable VCS
+Git
+
+# push to GitHub
+VCS
+Import into version control
+Share into GitHub
+Login
+Confirm repo name, private/puplic?, origin, message
+Share
+Initial commit message
+
+# Add changes
+ctrl + alt + a
+
+# Commit changes
+ctrl + k
+
+# Push changes
+ctrl + shift + k
