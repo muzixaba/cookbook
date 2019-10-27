@@ -65,6 +65,7 @@ sort -> sorts results in ascending order
 uniq -> returns unique values that are adjacent or consecutive to each other
 set -> displays environment variables
 echo $ENVIRON_VAR -> returns the value of ENVIRON_VAR
+\ -> Backslash to start typing command in new line
 
 #================================
 # Files
@@ -88,6 +89,7 @@ cut -f 2-5, 8-d, file.csv -> view select columns in file, use ',' as delimeter
 ls -1 | wc -l -> Number of files in current directory
 rm -r /path/to/directory/* -> Delete all files & subdirectories inside a directory.
 ls -U | head -4 -> look at the first 4 files
+sudo chmod -R <permissions> path/to/dir -> Change permissions for all files inside a specific directory (HANDLE WITH CARE)
 
 #================================
 # Check Disk Space

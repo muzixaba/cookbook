@@ -33,6 +33,7 @@ comment
 */
 
 /// Docstring
+void someFunction(){}
 
 //===========================
 // Variables
@@ -174,6 +175,122 @@ void funcName () {...}
 
 
 //===========================
+// Collections
+//===========================
+
+//--------Lists-------------
+var myList = [1,2,3];
+List<int> numList = [1,2,3]; //creating a list of ints
+myList.add(88); // add==append in python
+myList.addAll([4,5,6]); //addAll is similar to extend in python
+var emptyList = List(); // [] can take any data types
+var emptyNumList = List<int>(); // can only take in integers
+myList.indexOf('element'); // returns index value
+myList.insert(2, 'value'); // 'value' will be inserted at index 2
+
+// concatinate lists using the spread syntax
+List<int> a = [1,2,3];
+List<String> b = ['a','b','c'];
+List c = [...a,9,...b];
+print(c); // [1,2,3,9,'a','b','c'];
+
+//--------Maps/Dicts--------------
+var person = {'name':'Muz', 'age':36, 'height':1.78};
+print(person['name']);
+var new_map = Map<String, dynamic>();
+
+
+//===========================
+// Control Flow
+//===========================
+
+//--------If/Else--------------
+
+if (conidition) {
+    //do this
+} esle if (another_condition) {
+    //do the this thing
+} else {
+    // when all else fails
+}
+
+// if/else using a ternary operator.
+// condition ? exprT : exprF
+final type = (value % 2 == 0) ? 'even' : 'odd';
+ 
+//--------While Loops--------------
+
+int sum(List<int> values) {
+    int i = 0;
+    int result = 0;
+    while (i < values.length) {
+        result += values[i];
+        i++;
+    }
+    return result;
+}
+
+//--------For Loops--------------
+
+int sum(List<int> values) {
+    int result = 0;
+    // for in loop
+    for (int value in values) {
+        result += values;
+    }
+    return result;
+}
+
+// C-style for loop
+for(int i=0; i<7; i++) {
+    //Do something to i, 7 - 0 times
+}
+
+// also possible write one line Closures for for-loops.
+// Closure is a function without a name.
+
+//--------Switch Statements--------
+
+enum NetworkError {
+    badUrl,
+    timeout,
+    resourceNotAvailable,
+}
+
+void printError(NetworkError error) {
+    switch (error) {
+        case NetworkError.badUrl:
+            print('bad url');
+            break;
+        case NetworkError.timeout:
+            print('timeout');
+            break;
+        case NetworkError.resourceNotAvailable:
+            print('resource Not Available');
+            break;
+    }
+}
+
+//===========================
+// Imports
+//===========================
+
+//------Import Core Library------
+import 'dart:math';
+
+//-----Import library from external package-------
+import 'package:test/test.dart';
+
+//--------Import files-----------
+import 'path/to/file_name.dart';
+
+//------Import specific module from package----
+import 'package:http/http.dart' show get;
+
+
+
+
+//===========================
 // Classes
 //===========================
 
@@ -287,111 +404,3 @@ print(employee.toString()); // class string method
 final square = square(side:5.0);
 print(square.area());
 printArea(square); //using abstract class interface
-
-
-//===========================
-// Collections
-//===========================
-
-//--------Lists-------------
-var myList = [1,2,3];
-List<int> numList = [1,2,3]; //creating a list of ints
-myList.add(88); // add==append in python
-myList.addAll([4,5,6]); //addAll is similar to extend in python
-var emptyList = List(); // [] can take any data types
-var emptyNumList = List<int>(); // can only take in integers
-myList.indexOf('element'); // returns index value
-myList.insert(2, 'value'); // 'value' will be inserted at index 2
-
-//--------Maps/Dicts--------------
-var person = {'name':'Muz', 'age':36, 'height':1.78};
-print(person['name']);
-var new_map = Map<String, dynamic>();
-
-
-//===========================
-// Control Flow
-//===========================
-
-//--------If/Else--------------
-
-if (conidition) {
-    //do this
-} esle if (another_condition) {
-    //do the this thing
-} else {
-    // when all else fails
-}
-
-// if/else using a ternary operator.
-// condition ? exprT : exprF
-final type = (value % 2 == 0) ? 'even' : 'odd';
- 
-//--------While Loops--------------
-
-int sum(List<int> values) {
-    int i = 0;
-    int result = 0;
-    while (i < values.length) {
-        result += values[i];
-        i++;
-    }
-    return result;
-}
-
-//--------For Loops--------------
-
-int sum(List<int> values) {
-    int result = 0;
-    // for in loop
-    for (int value in values) {
-        result += values;
-    }
-    return result;
-}
-
-// C-style for loop
-for(int i=0; i<7; i++) {
-    //Do something to i, 7 - 0 times
-}
-
-// also possible write one line Closures for for-loops.
-// Closure is a function without a name.
-
-//--------Switch Statements--------
-
-enum NetworkError {
-    badUrl,
-    timeout,
-    resourceNotAvailable,
-}
-
-void printError(NetworkError error) {
-    switch (error) {
-        case NetworkError.badUrl:
-            print('bad url');
-            break;
-        case NetworkError.timeout:
-            print('timeout');
-            break;
-        case NetworkError.resourceNotAvailable:
-            print('resource Not Available');
-            break;
-    }
-}
-
-//===========================
-// Imports
-//===========================
-
-//------Import Core Library------
-import 'dart:math';
-
-//-----Import library from external package-------
-import 'package:test/test.dart';
-
-//--------Import files-----------
-import 'path/to/file_name.dart';
-
-//------Import specific module from package----
-import 'package:http/http.dart' show get;
