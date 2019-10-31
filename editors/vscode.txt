@@ -1,0 +1,27 @@
+RC = Right click
+
+=========================
+Keyboad Shortcuts
+=========================
+
+Toggle Terminal Panel = alt+shift+p
+Run python file = alt+shift+r
+
+
+
+
+==================
+Refactoring Code
+===================
+
+# Rename an object
+select, RC, name_symbol
+
+# Create variable from expression
+select expression, RC, extract_variable. (read n close pop up)
+
+# Turn block of code into a function
+select code, RC, extract_method, name your function
+
+
+
