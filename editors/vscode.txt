@@ -6,9 +6,10 @@ Keyboad Shortcuts
 
 Toggle Terminal Panel = alt+shift+p
 Run python file = alt+shift+r
-
-
-
+toggle indentation = ctrl+[/]
+create new line = ctrl + enter
+select next match = ctrl + d
+add cursor = alt + click
 
 ==================
 Refactoring Code
