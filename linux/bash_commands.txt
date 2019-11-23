@@ -67,6 +67,7 @@ set -> displays environment variables
 echo $ENVIRON_VAR -> returns the value of ENVIRON_VAR
 \ -> Backslash to start typing command in new line
 
+
 #================================
 # Files
 #================================
@@ -91,6 +92,7 @@ rm -r /path/to/directory/* -> Delete all files & subdirectories inside a directo
 ls -U | head -4 -> look at the first 4 files
 sudo chmod -R <permissions> path/to/dir -> Change permissions for all files inside a specific directory (HANDLE WITH CARE)
 
+
 #================================
 # Check Disk Space
 #================================
@@ -111,6 +113,9 @@ scp -r /path/to/dir_name user@123.123.123.123:/home/my_files/dir_name
 # copy file from remote host to local
 scp user@123.123.123:/home/username/file_name.txt 
 scp -r user@123.123.123.123:/home/my_files/dir_name /home/local_files/dir_name
+
+# copy specific file types between two remote instances
+scp user@123.123.133:/home/username/folder/"*.csv" /path/to/current/instance/folder
 
 # copy files from current Remote directory to local
 scp -r username@hostname:/path/from/file .
@@ -140,8 +145,16 @@ conda env list
 #====================
 sudo openvpn --config file_name
 
+
 #===================
 # Jupyter Server
 #====================
 jupyter notebook --ip 00.0.0.00
 jupyler lab --no-browser --ip=0.0.0.0
+
+
+#==================================
+# Open IDLE using Conda Environment
+#==================================
+conda activate/activate myenv (if not activated already)
+python -m idlelib -> activates IDLE shell

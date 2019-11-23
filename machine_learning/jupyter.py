@@ -7,7 +7,12 @@ img = WImage(filename=path, resolution=300)
 img
 
 # time code execution - single line
-%%time`
-super_advanced_single_line_code
+%timeit some_fancy_one_liner
+
+# time code execution - entire cell
+%%timeit`
+some_super
+multi_line
+code
 
 #

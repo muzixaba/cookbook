@@ -1,0 +1,18 @@
+{
+ "workspace_type": "File System Workspace",
+ "selected_config": "Debug",
+ "name": "c_programming",
+ "configs": [{
+   "name": "Debug",
+   "flags": 1,
+   "compile_flags": [],
+   "file_extensions": "*.cpp;*.c;*.txt;*.json;*.hpp;*.cc;*.cxx;*.xml;*.h;*.wxcp",
+   "executable": "",
+   "arguments": "",
+   "environment": "",
+   "compiler": "",
+   "remoteFolder": "",
+   "remoteAccount": "",
+   "targets": [["clean", ""], ["build", ""]]
+  }]
+}

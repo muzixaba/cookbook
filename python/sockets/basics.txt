@@ -1,0 +1,31 @@
+Socket Basics
+
+Interior endpoints for sending/receiving data
+A single network has 2 sockets (client & server)
+Different protocols use different ports e.g HTTP(Port 80), FTP(Port 20)
+In python, you can send serialised objects e.g strings, lists, dicts, 
+
+-----------
+server
+-----------
+A program, computer, device that manages network resources.
+Can be local or remote
+
+----------
+client
+----------
+Computer or software that receives info/services from the server.
+Examples are web browsers, onlin games
+
+
+----------------
+Socket Methods
+----------------
+socket.socket() -> Creates a socket.
+                -> Needed for both client & server
+socket.accept() -> Accepts a connection.
+                -> Returns (connection, address)
+socket.bind()   -> Binds to the address that's used a parameter
+socket.close() -> Marks a socket as closed
+socket.connect() -> Connects to a remote address
+socket.listen() -> Gets the server to accept connections

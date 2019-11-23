@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="c_basics" Database="" Version="10000">
+  <Project Name="c_basics" Path="c_basics.project" Active="Yes"/>
+  <Project Name="CodeLiteProjects" Path="../../../Documents/c_programming_course/CSourceCode/CodeLite/CodeLiteProjects.project"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Environment/>
+      <Project Name="c_basics" ConfigName="Debug"/>
+      <Project Name="CodeLiteProjects" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
+      <Project Name="c_basics" ConfigName="Release"/>
+      <Project Name="CodeLiteProjects" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>

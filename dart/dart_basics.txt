@@ -3,7 +3,7 @@
 //==========
 
 Created by Google.
-Object oriented.
+Object oriented. Everything is an object in Dart :)
 C styled - Similar to C, Java, JS, Swift
 Statistically typed 
     - Data types known at runtime.
@@ -58,7 +58,10 @@ $varName, if inside strings. Also ${varName.method}
 ------------------------------------------------------------
 // Data types
 String, int, double, bool
-dynamic, final
+const   -> Once set, cannot be changed. 
+        -> Assigned a compile time e.g. const String passWord = "super1234";
+final   -> Similar to const but assigned at runtime
+dynamic -> Can change types
 
 // Create empty variables
 List<int> listOfInts = [];
@@ -66,9 +69,9 @@ String emptyString = '';
 Map<String, dynamic> newMap = {};
 Set<String> setOfStrings = {};
 
-//======================
+//=========
 // Casting
-//======================
+//=========
 var one = int.parse('1'); // int from String
 var myInt = int.tryParse('2222'); // returns null if parsing fails
 var myDouble = double.parse('2.0'); double from String
@@ -76,9 +79,9 @@ var myDouble = double.tryParse('22.0'); // returns null if parsing fails
 
 String oneAsString = 1.toString(); // String from int
 
-//===========================
+//========
 // String
-//===========================
+//========
 character sequences
 "double" or 'single' quotes
 print("My name is ${name.length} letters long");
@@ -173,6 +176,12 @@ void funcName () {...}
 // Anonymous Functions
 () P{...}
 
+
+// Using Generics
+// a & b can be any data type
+void add<Type>(Type a, Type b){
+    print(a + b)
+}
 
 //===========================
 // Collections
@@ -298,6 +307,9 @@ import 'package:http/http.dart' show get;
 
 class Person {
 
+    // Static variables. Shared by all instances
+    static int population = 0;
+
     // Class attributes
     final String name; // final == immutable
     int age;
@@ -306,7 +318,9 @@ class Person {
     // Constructor name == ClassName. this==self in python
     // @required means parameter has to be there when class is instantiated.
     // @required not allowed for parameters with default values
-    Person({@required this.name, this.age, this.height});
+    Person({@required this.name, this.age, this.height}){
+        population++; //increase population everytime a person is created
+    };
 
     // class methods
 
@@ -368,6 +382,8 @@ class Employee extends Person{
 abstract class Shape {
     double area();
 }
+
+//Implementing an interface means your new class has to at minimum have all the attributes & methods of the class it implements
 class Square implements Shape {
     Square({this.side});
     final double side;
