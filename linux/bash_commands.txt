@@ -158,3 +158,12 @@ jupyler lab --no-browser --ip=0.0.0.0
 #==================================
 conda activate/activate myenv (if not activated already)
 python -m idlelib -> activates IDLE shell
+
+#==========================================
+# Force bash to start command in new lines
+#===========================================
+1: from home directory, open bashrc using nano:
+        $ nano ~/.bashrc
+2: Look for where the PS1 variable is mentioned
+3: Replace the '\$' at the end of the expression with '\n\$'
+4: Save file and restart terminal
