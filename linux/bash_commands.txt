@@ -34,11 +34,40 @@ ctrl + u -> cuts from cursor to beginning of line
 Shift + Insert -> pastes what's on the clipboard
 ctrl + w -> delete one word at a time
 
+#=====================
+# System Information
+#=====================
+uname -a -> displays basic info
+sudo lshw -> shows complete breakdown of hardware
+lshw -short -> a summarised version of 'sudo lshw'
+htop -> shows resource usage
 
+#============
+# Directories
+#============
+mkdir folder_name -> creates folder called folder_name is working directory
+mkdir -p folder_1/folder_2 -> creates a folder_2 inside folder_1
+
+#==============
+# Navigation
+#==============
+cd -> goes to home directory
+cd .. -> moves up one directory
+cd ../.. -> moves up two directories
+
+#===============
+# Searching
+#===============
+find . -name file.ext -> searches from current dir and its sub directories
+find / -name file.ext -> searches entire computer
+
+#==================
 # Basic Commands
+#==================
 ls -> list storage
 ls -a -> show all
 ls -l -> show long details
+ls -lah -> show all in list view
 ls -R -F -> displays all directories and files under the current directory
 pwd - print working directory
 cd -> goes to home folder
@@ -47,7 +76,7 @@ popd  -> jump back to last directory
 file file_name -> returns file extension
 locate file_name -> locate files on system
 sudo -> do something as superuser
-sudeo updatedb -> updates the locate database
+sudo updatedb -> updates the locate database
 which -> used to fine toerh commands install on your system
 up arrow -> show history of commands. Last In First Out (LIFO)
 history -> shows history of commands you typed
@@ -72,7 +101,8 @@ echo $ENVIRON_VAR -> returns the value of ENVIRON_VAR
 # Files
 #================================
 mv/cp dir/file1.txt dir/file2.txt backup -> move or copy files to dir call backup
-mv old-name new-name -> Rename directory
+mv old-name new-name -> Rename directory (deletes old dir)
+cp old_name new_name -> Copies directory (keeps old dir)
 rm file_name -> delete file
 head file.txt -> outputs first 10 lines of document
 tail file.txt -> displays last part of file
@@ -91,6 +121,7 @@ ls -1 | wc -l -> Number of files in current directory
 rm -r /path/to/directory/* -> Delete all files & subdirectories inside a directory.
 ls -U | head -4 -> look at the first 4 files
 sudo chmod -R <permissions> path/to/dir -> Change permissions for all files inside a specific directory (HANDLE WITH CARE)
+echo "String to appended on line" >> file.ext
 
 
 #===================
@@ -122,6 +153,11 @@ scp -r username@hostname:/path/from/file .
 
 man scp
 
+#===========
+# Processes
+#===========
+pkill program -> kill all processes of certain program
+htop -> view system resource usage (cores, memory, etc)
 
 #============================
 # Conda Virtual Environments
