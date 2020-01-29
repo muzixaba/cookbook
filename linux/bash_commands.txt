@@ -1,34 +1,48 @@
+#==================
+# Launch terminal
+#==================
+crlt + alt + t
+
+
+#=================
+# YouTube-dl
+#=================
 youtube-dl --extract-audio --audio-format mp3
 curl http://checkip.amazonaws.com
 lspci
 top -o cpu
 top
 
-# Remove all files with specific file extension
-rm *.txt
 
-# Shutdown
+#============
+# Shutdown PC
+#============
 sudo shutdown -P +60
 sudo shutdown -P 23:00
 sudo shutdown -P now
-# Cancel shutdown
-sudo shutdown -c
+sudo shutdown -c -> Cancel shutdown
 
+#=====
 # GPU
+#=====
 lspci -k | grep -EA3 'VGA|Display|3D'
 xrandr --listproviders
 xrandr --setprovideroffloadsink 0x3f 0x64
 DRI_PRIME=1 spyder, steam, jupyter notebook
 glxinfo | grep "OpenGL renderer"
 
+#=====
 # CMUS
+#=====
 :clear
 :add ~/Music
 
 # Check if a website is running
-ping url -c 3
+ping url -c 3 ??????????
 
+#============
 # Navigation
+#============
 clrt + k -> cuts from cursor till end of line
 ctrl + u -> cuts from cursor to beginning of line
 Shift + Insert -> pastes what's on the clipboard
@@ -67,7 +81,7 @@ find / -name file.ext -> searches entire computer
 ls -> list storage
 ls -a -> show all
 ls -l -> show long details
-ls -lah -> show all in list view
+ls -lah -> show all in list view, human readable
 ls -R -F -> displays all directories and files under the current directory
 pwd - print working directory
 cd -> goes to home folder
@@ -122,6 +136,7 @@ rm -r /path/to/directory/* -> Delete all files & subdirectories inside a directo
 ls -U | head -4 -> look at the first 4 files
 sudo chmod -R <permissions> path/to/dir -> Change permissions for all files inside a specific directory (HANDLE WITH CARE)
 echo "String to appended on line" >> file.ext
+rm *.txt -> Remove all files with specific file extension
 
 
 #===================
