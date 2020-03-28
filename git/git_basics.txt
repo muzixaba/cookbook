@@ -24,7 +24,8 @@ git rm --cached <file>
 git checkout -b BranchName
 
 # Create a Pull Request (PR)
-Alerts a repo's owner that you want to make some changes
+Alerts a repo's owner that you want to make some changes.
+Pull request is the same as Merge Request
 
 # Pull from GitHub
 git pull origin master
