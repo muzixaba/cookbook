@@ -26,6 +26,12 @@ git checkout -b BranchName
 # Create a Pull Request (PR)
 Alerts a repo's owner that you want to make some changes.
 Pull request is the same as Merge Request
+STEPS:
+1: Fork the owner's repo in you own account. Basically making a copy
+2: Clone the forked repo locally to make changes
+3: Make the changes
+4: Add, commit, & push the changes up to GitHub
+5: Send pull request to repo owner
 
 # Pull from GitHub
 git pull origin master
