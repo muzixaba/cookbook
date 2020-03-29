@@ -79,6 +79,12 @@ git rm --cached file_name
 # Revert back changes to last commit
 git checkout -- file_name
 
+# Rename a file using git
+git mv old_name.txt new_name.txt
+
+# Delete file using git 
+git rm file_name.ext
+
 # Create a new branch
 git checkout -b BranchName
 
