@@ -27,7 +27,7 @@ git config --global mergetool.prompt false
 
 Open git's config file
 git config --global -e
-
+git config --global --list
 
 #==========
 # Using Git
@@ -46,8 +46,15 @@ rm -rf .git
 # Get exisiting code from GitHub
 git clone https://github.com/...
 
+# Check which files are being tracked
+git ls-files
+
 # Check for modifications
 git status
+
+# Check git logs
+git log -> Returns the commit times, authors, & SHA values of your previous commits
+git show -> Returns the commits, plus the changes that were made. PRESS q to quit
 
 # Undersanding git's 3 local states
 1. Working directory -> Your working files
@@ -56,14 +63,21 @@ git status
 After commiting file, they are sent to the remote repo
 
 # Add files to track
-git add file_name -> adds specific file
+git add file_name -> adds specific file to staging area
 git add . -> adds all files to the staging area
 
-# Send files to staging area
+# Commit changes
 git commit -m "message about what what was done"
 
+# Add to staging area & commit in one line
+git commit -am "commit message"
+
 # How to unstage file
-git rm --cached <file>
+git reset HEAD file_name
+git rm --cached file_name
+
+# Revert back changes to last commit
+git checkout -- file_name
 
 # Create a new branch
 git checkout -b BranchName
@@ -83,6 +97,13 @@ git pull origin master
 
 # See all recent changes
 git log
+
+# Simplified view of git log
+git log --oneline --graph --decorate --all
+
+# Create git alias
+# alias == hist, leave out preceding git when writing command
+git config --global alias.hist "log --oneline --graph --decorate --all"
 
 # Switch back to master branch
 git checkout master
