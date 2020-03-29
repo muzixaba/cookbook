@@ -6,21 +6,58 @@ A git repo contains the following:
     - History of everything since tracking with git
     - hidden .git folder
 
+
+#===========
+# Setting Up
+#===========
+
+Setting up you credentials
+git config --global user.name "Name"
+git config --global user.email "your@email.com"
+
+Setting up p4merge (perforce.com, install p4merge - visual merge tool only)
+# Set as difftool (comparing)
+git config --global diff.tool p4merge
+git config --global difftool.p4merge.path "C:/Program Files/Perforce/p4merge.exe"
+git config --global difftool.prompt false
+# Set as merge tool (graphical)
+git config --global merge.tool p4merge
+git config --global mergetool.p4merge.path "C:/Program Files/Perforce/p4merge.exe"
+git config --global mergetool.prompt false
+
+Open git's config file
+git config --global -e
+
+
+#==========
+# Using Git
+#==========
+
 # Create repo locally
-git init - Must done inside your src directory.
+git init -> Must done inside your src directory.
 Create new repo on GitHub. Let's call it NewRepo
 git remote add origin https://github.com/username/newrepo.git
 git push -u origin master (first push to GitHub)
 
+# Removing the .git folder.
+# If u created it in a wrong folder
+rm -rf .git
+
 # Get exisiting code from GitHub
 git clone https://github.com/...
 
-# Check if any modifications
+# Check for modifications
 git status
 
+# Undersanding git's 3 local states
+1. Working directory -> Your working files
+2. Staging area -> Used prepare for the next commit
+3. Repository (.git folder) -> All commited changes
+After commiting file, they are sent to the remote repo
+
 # Add files to track
-git add <file> - adds specific file
-git add . - adds all files
+git add file_name -> adds specific file
+git add . -> adds all files to the staging area
 
 # Send files to staging area
 git commit -m "message about what what was done"
