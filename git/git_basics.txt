@@ -1,3 +1,11 @@
+- Git is a version control system
+- Developed by Linus Trovalds to help with the development of Linux
+
+A git repo contains the following:
+    - Files managed by git
+    - History of everything since tracking with git
+    - hidden .git folder
+
 # Create repo locally
 git init - Must done inside your src directory.
 Create new repo on GitHub. Let's call it NewRepo
