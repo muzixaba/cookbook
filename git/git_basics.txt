@@ -142,9 +142,10 @@ Manual Merge
   resolved before trying to merge.
 - Once conflicts are resolved, those changes are saved as a Manual Merge Commit.
 
+NOTE: You have to switch back to master branch first, then merge
+
 Special Markers
 ---------------
-
 HEAD
 - Points to the last commit of the current branch
 
@@ -156,6 +157,9 @@ git checkout -b branch_name
 
 # Switch to a different branch
 git checkout branch_name
+
+# Delete branch
+git branch -d branch_name
 
 # Create a Pull Request (PR)
 Alerts a repo's owner that you want to make some changes.
@@ -172,6 +176,3 @@ git pull origin master
 
 # Switch back to master branch
 git checkout master
-
-
-###########################################
