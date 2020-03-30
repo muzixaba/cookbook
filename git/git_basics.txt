@@ -1,3 +1,7 @@
+#===========
+# Background
+#===========
+
 - Git is a version control system
 - Developed by Linus Trovalds to help with the development of Linux
 
@@ -28,6 +32,10 @@ git config --global mergetool.prompt false
 Open git's config file
 git config --global -e
 git config --global --list
+
+How to avaid tracking certain files
+Use .gitignore file
+
 
 #==========
 # Using Git
@@ -76,17 +84,78 @@ git commit -am "commit message"
 git reset HEAD file_name
 git rm --cached file_name
 
+# See all recent changes
+git log
+
+# Simplified view of git log
+git log --oneline --graph --decorate --all
+
+# Create git alias
+# alias == hist, leave out preceding git when writing command
+git config --global alias.hist "log --oneline --graph --decorate --all"
+
 # Revert back changes to last commit
 git checkout -- file_name
 
 # Rename a file using git
 git mv old_name.txt new_name.txt
 
+# If rename & delete happened outside of git
+git add -A
+
 # Delete file using git 
 git rm file_name.ext
 
-# Create a new branch
-git checkout -b BranchName
+# If deletion happed outside of git
+git add -u
+
+# See differences btw 2 commits
+git diff [commit ID] [commit ID]/HEAD
+
+
+#=============
+# Branching
+#=============
+
+What is a branch?
+It's a timeline of commits
+Branch names are labels
+Deletion removes label only
+
+Types of Merges
+---------------
+
+Fast Forward Merge
+- Happens when no additional work has been detected on the master branch.
+- Git simply adds all commits from the feature branch on to the master
+  as if we never branched off.
+
+Automatic Merge
+- Happens when git detects non-conflicting changes in the master branch.
+- Git preserves both timelines
+- A Merge Commit is created where the two branches meet
+
+Manual Merge
+- Happens when git is unable to resolve any conflicts
+- An automatic merge is not possible
+- Git enters the Conflict Merge State which means all conlficts must be
+  resolved before trying to merge.
+- Once conflicts are resolved, those changes are saved as a Manual Merge Commit.
+
+Special Markers
+---------------
+
+HEAD
+- Points to the last commit of the current branch
+
+# Check which branch you're in
+git branch
+
+# Create a new branch & switch to it
+git checkout -b branch_name
+
+# Switch to a different branch
+git checkout branch_name
 
 # Create a Pull Request (PR)
 Alerts a repo's owner that you want to make some changes.
@@ -100,16 +169,6 @@ STEPS:
 
 # Pull from GitHub
 git pull origin master
-
-# See all recent changes
-git log
-
-# Simplified view of git log
-git log --oneline --graph --decorate --all
-
-# Create git alias
-# alias == hist, leave out preceding git when writing command
-git config --global alias.hist "log --oneline --graph --decorate --all"
 
 # Switch back to master branch
 git checkout master
