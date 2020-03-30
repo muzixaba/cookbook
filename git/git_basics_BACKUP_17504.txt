@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+Another conflict
+=======
+This will cause conflicts
+>>>>>>> bad_branch
+
 #===========
 # Background
 #===========
