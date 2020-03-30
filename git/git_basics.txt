@@ -112,6 +112,21 @@ git add -u
 # See differences btw 2 commits
 git diff [commit ID] [commit ID]/HEAD
 
+#=============
+# Tags
+#=============
+Lightweight Tags
+git tag tag_name -> Places a tag on current commit with no additional info
+
+Annotated Tags
+git tag -a tag_name -m "commit message"
+
+List Tags
+git tag --list
+
+# Delete a tag
+git tag -d tag_name
+
 
 #=============
 # Branching
