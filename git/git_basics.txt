@@ -191,3 +191,8 @@ git pull origin master
 
 # Switch back to master branch
 git checkout master
+
+# Saving temporal changes using Stashing
+git stash -> Creates saves the current changes & goes back to last commit
+git stash list -> Lists out all stashes
+git stash pop -> Applies changes on top stash & deletes it
