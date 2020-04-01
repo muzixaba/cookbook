@@ -36,6 +36,17 @@ git config --global --list
 How to avaid tracking certain files
 Use .gitignore file
 
+#===============
+# Authentication
+#===============
+Can use either HTTPS or SSH with GitHub
+
+# Creating an SSH Key
+mkdir .ssh && cd .ssh
+ssh-keygen -t rsa -C "your@email.com"
+If prompted for a passphrase, enter one
+NOTE: 
+2 files get generated. id_rsa (secret key), id_rsa.pub (public key)
 
 #==========
 # Using Git
@@ -49,6 +60,9 @@ git push -u origin master -> First push to GitHub. -u enables tracking btw repos
 
 # Check which remote repo is linked to your local one
 git remote -v
+
+# Changing the remote url
+git remote set-url origin https://new_url
 
 # Removing the .git folder.
 # If u created it in a wrong folder
