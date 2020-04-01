@@ -33,7 +33,7 @@ Open git's config file
 git config --global -e
 git config --global --list
 
-How to avaid tracking certain files
+How to avoid tracking certain files
 Use .gitignore file
 
 #===============
@@ -44,9 +44,16 @@ Can use either HTTPS or SSH with GitHub
 # Creating an SSH Key
 mkdir .ssh && cd .ssh
 ssh-keygen -t rsa -C "your@email.com"
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 If prompted for a passphrase, enter one
 NOTE: 
 2 files get generated. id_rsa (secret key), id_rsa.pub (public key)
+Copy the entire public key, up to your email & add it in your GitHub settings
+
+# Log on to GitHub using SSH on the command line
+ssh -T git@github.com
+Will be prompted to enter passphrase
+NOTE: You can now use the SSH link to clone repos
 
 #==========
 # Using Git

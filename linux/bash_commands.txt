@@ -117,6 +117,7 @@ echo $ENVIRON_VAR -> returns the value of ENVIRON_VAR
 mv/cp dir/file1.txt dir/file2.txt backup -> move or copy files to dir call backup
 mv old-name new-name -> Rename directory (deletes old dir)
 cp old_name new_name -> Copies directory (keeps old dir)
+cp -R ~/path/from/home/* . -> Copies all files inside a folder into current folder
 rm file_name -> delete file
 head file.txt -> outputs first 10 lines of document
 tail file.txt -> displays last part of file
