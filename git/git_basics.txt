@@ -6,35 +6,38 @@
 - Developed by Linus Trovalds to help with the development of Linux
 
 A git repo contains the following:
-    - Files managed by git
-    - History of everything since tracking with git
-    - hidden .git folder
+- Files managed by git
+- History of everything since tracking with git
+- hidden .git folder
 
 
 #===========
 # Setting Up
 #===========
 
-Setting up you credentials
+# Setting up you credentials
 git config --global user.name "Name"
 git config --global user.email "your@email.com"
 
-Setting up p4merge (perforce.com, install p4merge - visual merge tool only)
-# Set as difftool (comparing)
+# Setting up p4merge (perforce.com, install p4merge - visual merge tool only)
+- Set as difftool (comparing)
 git config --global diff.tool p4merge
 git config --global difftool.p4merge.path "C:/Program Files/Perforce/p4merge.exe"
 git config --global difftool.prompt false
-# Set as merge tool (graphical)
+- Set as merge tool (graphical)
 git config --global merge.tool p4merge
 git config --global mergetool.p4merge.path "C:/Program Files/Perforce/p4merge.exe"
 git config --global mergetool.prompt false
 
-Open git's config file
+# Open git's config file
 git config --global -e
 git config --global --list
 
-How to avoid tracking certain files
+# How to avoid tracking certain files
 Use .gitignore file
+
+# Check git version
+git version
 
 #===============
 # Authentication
@@ -227,3 +230,10 @@ git reset [commit ID] flag -> Flags incl "soft", "hard", "mixed"
  soft -> Changes the commit ID that head point to
  hard -> Most destructive. Can delete your changes
  mixed-> The default type of reset
+
+ #===================
+ # Fetching & Pulling
+ #===================
+ git fetch -> Fetches your remote repo
+ git pull -> Fetches your remote repo & merges with local
+ NOTE: It's recommended to do a pull before pushing up your changes 
