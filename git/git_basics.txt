@@ -89,6 +89,7 @@ git status
 
 # Check git logs
 git log -> Returns the commit times, authors, & SHA values of your previous commits
+git log --oneline --graph -> Displays a simple log with a branch graph
 git reflog -> Shows all the actions taken inside a repo
 git show -> Returns the commits, plus the changes that were made. PRESS q to quit
 
@@ -145,6 +146,8 @@ git diff [commit ID] [commit ID]/HEAD
 #=============
 Lightweight Tags
 git tag tag_name -> Places a tag on current commit with no additional info
+git push --tags -> Pushes all tags to remote
+git push origin :tag_name -> Deletes a specific tag on remote
 
 Annotated Tags
 git tag -a tag_name -m "commit message"
@@ -198,11 +201,18 @@ git branch
 # Create a new branch & switch to it
 git checkout -b branch_name
 
+# Switch to existing branch
+git checkout branch_name
+NOTE: Git 1st searches for the branch locally, then remotely
+
 # Switch to a different branch
 git checkout branch_name
 
 # Delete branch
 git branch -d branch_name
+
+# Show all branches
+git branch -a
 
 # Create a Pull Request (PR)
 Alerts a repo's owner that you want to make some changes.
@@ -234,6 +244,9 @@ git reset [commit ID] flag -> Flags incl "soft", "hard", "mixed"
  #===================
  # Fetching & Pulling
  #===================
- git fetch -> Fetches your remote repo
+ git fetch -> Fetches your remote repo. Updates your references
+ git merge branch_name -> Merges branch_name into active branch
  git pull -> Fetches your remote repo & merges with local
+ git pull --all -> Git pulls all branches
+ git pull --rebase -> Rewinds local changes, pulls remote, than commits local
  NOTE: It's recommended to do a pull before pushing up your changes 
