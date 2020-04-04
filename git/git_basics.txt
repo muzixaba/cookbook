@@ -250,3 +250,10 @@ git reset [commit ID] flag -> Flags incl "soft", "hard", "mixed"
  git pull --all -> Git pulls all branches
  git pull --rebase -> Rewinds local changes, pulls remote, than commits local
  NOTE: It's recommended to do a pull before pushing up your changes 
+
+ #===========================================
+ # Updating a Fork using local Repo as Bridge
+ #===========================================
+ git remote add upstream upstream_url
+ git pull upstream master -> Pulls 4rm upstream to local
+ gish push origin master -> Pushes from local to fork
