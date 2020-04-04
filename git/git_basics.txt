@@ -257,3 +257,12 @@ git reset [commit ID] flag -> Flags incl "soft", "hard", "mixed"
  git remote add upstream upstream_url
  git pull upstream master -> Pulls 4rm upstream to local
  gish push origin master -> Pushes from local to fork
+
+ #===========================
+ # Close Issue using Commit
+ #===========================
+ git commit -m "Solved the issue, close #3" -> 3 is the issue number on GitHub
+ NOTE: 
+ - A 'Contributor' submits pull requests to update the code.
+ - A 'Collaborator' has read & write access & updates the code directly
+      
