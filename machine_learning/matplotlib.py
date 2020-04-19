@@ -38,7 +38,7 @@ random_data = np.random.normal(size=1000)
 plt.hist(random_data, bins=30)
 plt.xlabel('bins')
 plt.ylabel('frequency')
-plt.title('Graph Title \n Subtitle')
+plt.title('Histogram Title \n Subtitle')
 plt.show()
 
 
