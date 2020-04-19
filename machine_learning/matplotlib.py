@@ -91,6 +91,12 @@ plt.imshow(img2)
 plt.style.use('ggplot')
 
 
+#===================
+# Change figure size
+#===================
+plt.figure(figsize=(15, 10))
+
+
 #====================
 # Setting Parameters
 #====================
