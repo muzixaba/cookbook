@@ -105,3 +105,8 @@ mpl.rcParams['lines.linewidth'] = 4 # top of script
 mpl.rcParams['lines.linestyle'] = "--"
 mpl.rc('lines', linewidth=4, color='r') # will affect single graph
 
+
+#====================
+# Exporting a figure
+#====================
+plt.savefig('fig_name.png', transparent=False, dpi=300)
