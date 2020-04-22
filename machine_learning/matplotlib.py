@@ -109,4 +109,5 @@ mpl.rc('lines', linewidth=4, color='r') # will affect single graph
 #====================
 # Exporting a figure
 #====================
+# insert before plt.show()
 plt.savefig('fig_name.png', transparent=False, dpi=300)
