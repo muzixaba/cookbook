@@ -94,7 +94,7 @@ plt.style.use('ggplot')
 #===================
 # Change figure size
 #===================
-plt.figure(figsize=(15, 10))
+plt.figure(figsize=(15, 10)) # inline
 
 
 #====================

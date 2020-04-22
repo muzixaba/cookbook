@@ -25,7 +25,7 @@ sns.jointplot(x='col_1', y='col_2', data=df, kind='scatter')
 # Creates joint plots for the numerical data in your df
 # Add 'hue' arg to add color to categorical data
 # Add 'pallet' argument to add pallete to graphs
-sns.paiplot(df)
+sns.pairplot(df)
 
 
 
