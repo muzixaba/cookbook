@@ -28,6 +28,13 @@ iris = sns.load_dataset('iris')
 sns.jointplot(x='sepal_length', y='petal_length', data=iris, kind='scatter')
 plt.show()
 
+# Regplot
+#--------
+# Scatter plot with regression line
+tips = sns.load_dataset('tips')
+sns.regplot(x='total_bill', y='tip', data=tips)
+plt.title('Correlation between total bill & tips')
+plt.show()
 
 # Pair Plot
 #----------
@@ -119,6 +126,12 @@ heat_map = sns.heatmap(flights)
 plt.title('Chart Title')
 plt.show()
 
+# Check for correlations
+iris = sns.load_dataset('iris')
+plt.figure(figsize=(10,6))
+sns.heatmap(iris.corr())
+plt.title('Correlation between num variables')
+plt.show()
 
 #========
 # Grids
@@ -144,3 +157,7 @@ plt.show()
 #-----------
 # g = sns.FacetGrid(data=df, col='col_1', row='col_2')
 # g.map(sns.distplot, 'col_3')
+
+# Themes
+#----------
+sns.set_style('theme_name') # darkgrid, whitegrid, dark, white, ticks

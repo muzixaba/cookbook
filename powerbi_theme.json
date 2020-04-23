@@ -1,0 +1,7 @@
+{
+    "name": "SA Flag",
+    "dataColors": ["#3138DE", "#4D7A00", "#12B6FF", "#952300", "#000000", "#4D7A00"],
+    "background":"#FFFFFF",
+    "foreground": "#3A6108",
+    "tableAccent": "#568410"
+}
