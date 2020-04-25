@@ -26,8 +26,28 @@ def test_minus():
     diff = calc.minus(5,1)
     assert diff == 4
 
-def test_division():
+
+# Use parametrize to test multiple values
+@pytest.mark.parametrize(
+    'a, b, expected', [
+        (8, 2, 4),
+        (10, 5, 2),
+        (100, 2, 50)
+    ]
+)
+def test_division(a,b, expected):
     """Test division"""
     calc = Calculator()
+    assert calc.divide(a, b) == expected
+
+def test_zero_division():
+    """Test for ZeroDivisionError"""
+    calc = Calculator()
     with pytest.raises(ZeroDivisionError):
+        # checks if below code raises the expected error
         calc.divide(2, 0)
+
+# Can group tests using classes
+# class TestAdd:
+
+# Use Fixtures for setup & code reuse
