@@ -14,7 +14,6 @@ del df['col_name']
 # Slicing rows from 2 up to but not including 8
 df[2:8] 
 
-
 # Slicing df using both a row and column names
 df.loc['row_name', 'col_name'] 
 
@@ -66,6 +65,8 @@ df.rename(index={0: "x", 1: "y", 2: "z"})
 # dropping ALL duplicte values  in certain column
 df.drop_duplicates(subset ="ref_colName", keep='first', inplace=True) 
 
+
+
 #==========================================
 # Combining DataFrames
 #=========================================
@@ -82,12 +83,14 @@ df3 = pd.merge(df1, df2, right_index=True, left_index=True)
 #==========================
 df.sort_values(by='Age', ascending=False)
 
+
+
 #===================
 # Groupby
 #===================
 
 # Group by single column
-df.groupby([by='Nationality').mean()[['cols','to','calculate','means']]
+df.groupby([by='col_name']).mean()[['cols','to','calculate','means']]
 
 
 # Group by multiple columns
@@ -95,6 +98,8 @@ df.groupby(['Age', 'Nationality']).mean()
 
 # Group by using custom aggregate function Survival rate by gender
 df.groupby('Gender')[['Survived_Crash']].aggregate(lambda x: x.sum() / len(x)) 
+
+
 
 #=======================
 # Add rows/observations
@@ -114,16 +119,23 @@ df['col_name'][df.index > 60] = 'scalar value after index=60'
 df['NewCol'] = df['AnyCol'].apply(lambda x: random.choice(('yes', 'no')))
 
 
-#==================================
+
+#========================
 # Apply Custom Functions 
-#==============================
+#========================
 
 # Change days to years
 df['num_of_days'].apply(lambda x: x/365)
 
-#====================
+
+
+
+#============
 # TimeSeries
-#===================
+#============
 
 # from timestamp to string
 dt.fromtimestamp(timestamp).strftime('%Y-%m-%d-%H%M%S')
+
+# Change column type to datetime
+df['date'] = pd.to_datetime(df['date'])
