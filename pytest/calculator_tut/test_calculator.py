@@ -1,6 +1,6 @@
 import pytest
 from calculator import Calculator, CalculatorError
-
+from numpy.testing import assert_almost_equal
 
 def test_add():
     """Test add function"""
@@ -51,3 +51,17 @@ def test_zero_division():
 # class TestAdd:
 
 # Use Fixtures for setup & code reuse
+
+# Steps in test function:
+    # Setup
+    # Exercise
+    # Verify
+    # Cleanup
+def test_floating_point_numbers():
+    # setup
+    desired = 0.293
+    # Exercise 
+    actual = 1 - 0.707
+    # Verify
+    # assert if numbers are equal upto 2 decimal points
+    assert_almost_equal(actual, desired, 2)
