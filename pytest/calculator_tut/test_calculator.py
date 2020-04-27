@@ -19,7 +19,7 @@ def test_add_strings():
     calc = Calculator()
     return calc.add("one", "two")
 
-@pytest.mark.skip(reason="we don't do subtractions here")
+# @pytest.mark.skip(reason="we don't do subtractions here")
 def test_minus():
     """Test subtraction"""
     calc = Calculator()
@@ -65,3 +65,26 @@ def test_floating_point_numbers():
     # Verify
     # assert if numbers are equal upto 2 decimal points
     assert_almost_equal(actual, desired, 2)
+
+
+    #==============
+    # Mocking
+    #==============
+    # It's the process of fooling a test into thinking something
+    # was ran in production.
+    # Requires that a mocking function be created
+    # @patch decorator is used to replace production function with mock version
+    # from unittest.mock import patch
+    #  @patch('package.module.func_name', new=mock_func_name)
+
+    #==============
+    # Fixtures
+    #==============
+    # Creates a source of data that's used multiple times
+
+    #==============
+    # Coverage Report
+    #================
+    # pip install pytest-cov
+    # pytest --cov (returns summary coverage report)
+    # pytest --cov-report term-missing --cov (return coverage with missing lines)
