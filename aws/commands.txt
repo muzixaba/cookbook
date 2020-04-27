@@ -1,0 +1,14 @@
+# Make key-pair private
+chmod 400 key-pair-name.pem
+
+# SSH into EC2
+ssh ec2-user@00.000.000.00 -i key-pair-name.pem
+
+# View User-Data
+curl http://169.254.169.254/latest/user-data
+
+# View meta-data
+curl http://169.254.169.254/lates/meta-data
+
+# Changing the user on an EC2 instance
+sudo so - ec2-user
