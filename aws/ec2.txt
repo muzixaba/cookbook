@@ -1,0 +1,103 @@
+#====================================
+# Amazon Elastic Cloud Compute - EC2
+#====================================
+
+# AWS's virtual server
+
+
+# Launching an instance
+-----------------------
+Management Console -> Servicecs -> EC2
+Panel -> Instances -> Launch Instance
+
+Step 1: Choose Amazon Machine Image (AMI)
+    Choose between Community AMIs, AWS Marketplace AMIs, & My AMIs
+
+Step 2: Choose Instance Type
+    Determines the specs for your EC2 instance
+    Instance Type families incl: General Purpose, Memory Optimise,
+    Compute Optimise...
+    CPU, RAM, Storage Type, Network Performance, IPv6 Support
+
+Step 3: Configure Instance
+    Choose number of Instances
+    Request Spot Instances (Unchecked by default)
+    Choose VPC
+    Choose Subnet
+    Auto-assign Public IP (leave default)
+    Add Instance to Placement Group (unchecked by default)
+    IAM Role. Added role with SSM access to use Sessions Manager
+    Shutdown behavior (Stop by default)
+    Termination Protection (unchecked by defualt)
+    Monitoring (CloudWatch monitoring unchecked by default)
+    Tenancy (Shared by default)
+    User Data (empty by default)
+
+Step 4: Add Storage
+    Root volume supplied by default
+    Can add more volumes
+    Pick volume size (8GB defualt)
+    Volume Type (General Purpose SSD - gp2 by default)
+    Delete on termination (ticked)  
+    Encryption (None by default)
+
+Step 5: Add Tags
+    Create tags is you have multiple Instances
+
+Step 6: Configure Security Group
+    Change default new Security Group name into one you like or choose existing
+    Set inbound rules. Default first rule is for SSH
+    Add rule for HTTP if you want you instance to be accessable from the internet
+    Give serurity group description(s)
+
+Step 7: Review
+    Review & Launch instance
+    Pick key-pair to use for SSHing into the instance
+
+
+
+# Creating a Snapshot
+----------------------
+Panel -> volumes
+Right Click volume -> Create snapshot
+Enter snapshot description -> Click 'Create Snapshot'
+
+
+# Encrypting a Volume
+---------------------
+Create a snapshot
+Actions -> Copy Snapshot
+Choose 'Destination Region'
+Check 'Encrypt this snapshot'
+Master Key -> (default) 
+
+
+# Creating an Image from a snapshot
+------------------------------------
+Panel -> Snapshots
+Actions -> Create Image
+Give image name & other instance details
+'Create'
+
+
+# Create a Launch Configuration
+--------------------------------
+Panel -> Launch Configuration
+Do EC2 launch process
+
+
+# Auto Scaling Group
+--------------------
+Panel -> Auto Scaling Group
+Select launch configuration to use
+Insert 'Group Name', 'Group Size', 'VPC', 'Subnet(s)',
+
+# Add a Load Balancer
+---------------------
+Panel -> Load Balancer
+Choose Type (ALB, NLB, CLB)
+If 'Application Load Balancer (ALB)'
+Basic Config -> 'Name', 'Scheme', IP address type, Set listeners, Choose AZs @ leaset 3 Public
+Configure Security Group
+Configure Routing: Target Group -> TG Name, type, protocol, port, health checks
+Register targets
