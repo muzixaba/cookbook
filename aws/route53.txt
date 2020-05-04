@@ -1,0 +1,21 @@
+#===========================
+# Purchasing a Custom Domain
+#===========================
+Services -> Route53
+'Register Domain'
+Choose Domain Name
+Register Contact Info
+Choose to turn on Privacy Info protection (FREE)
+Choose to Auto Renew or not
+Agree to terms & conditions
+
+
+# Hook Domain to Load Balancer
+------------------------------
+Route53 Panel -> Hosted Zones
+Left Side Panel -> Create Record Set
+For 'www':
+    Name -> 'www'
+    Type -> A-IPv4 address
+    Alias-> Choose 'Yes'
+    Alias Target -> app-load-balancer-name

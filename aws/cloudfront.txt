@@ -1,0 +1,25 @@
+#=========================
+# Launching a Distribution
+#=========================
+
+NOTE: Need something to distribute first (web page or content)
+Services -> CloudFront
+'Create Distribution'
+Choose btw 'Web' & 'RTMP' (web preffered)
+Origin Settings:
+    Choose Origin (S3 or somewhere else)
+    Restrict Bucket Access?
+Cache Behavior Settings:
+    Viewer Protocol Policy (HTTP/HTTPS)
+    Allowed HTTP methods (GET/POST/PUT/HEAD)
+    Restrict viewer Access (Users will need signed urls or signed cookies)
+Distribution Settings:
+    Price Class
+    Alternate domain names (if using CloudFront certificate)
+
+'Create Distribution'
+Get the distribution domain name under 'General' settings for your distribution
+Invalidations:
+    Refresh the cache for a specific item or group
+Error Pages:
+    Create a custom 404 page using CloudFront

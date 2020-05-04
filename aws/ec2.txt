@@ -88,9 +88,12 @@ Do EC2 launch process
 
 # Auto Scaling Group
 --------------------
+NOTE: Need to create/have a Launch Configuration first
 Panel -> Auto Scaling Group
-Select launch configuration to use
-Insert 'Group Name', 'Group Size', 'VPC', 'Subnet(s)',
+Select Launch Configuration or Launch Template to use
+Insert 'Group Name', 'Group Size', 'VPC', 'Subnet(s)'
+Edit Details: Change target groups, Health Check Type (EC2/ELB)
+
 
 # Add a Load Balancer
 ---------------------
@@ -100,4 +103,27 @@ If 'Application Load Balancer (ALB)'
 Basic Config -> 'Name', 'Scheme', IP address type, Set listeners, Choose AZs @ leaset 3 Public
 Configure Security Group
 Configure Routing: Target Group -> TG Name, type, protocol, port, health checks
-Register targets
+Register targets (Pick instances directly or choose an ASG)
+
+
+# Attach Domain to Load Balancer
+--------------------------------
+Panel -> Load Balancers
+Add listener
+Protocol: HTTPS:443
+Forward to -> your-target-group
+Default SSL Certificate -> Choose your certificate 
+Save
+Note: Ensure that your Security allows HTTPS traffic
+
+
+# Mount EFS Volume to EC2
+-------------------------
+Services -> EFS
+Create file system
+Choose security group(s) for mount points
+Enable Lifecycle Management (optional)
+Enable Encryption (optional)
+Next (Reivew) -> Create File System
+NOTE:   Your EC2 security group has to allow for NFS connections
+        View 'Amazon EC2 mount instructions (from local VPC)

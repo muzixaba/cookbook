@@ -1,0 +1,14 @@
+#==============================
+# Get a free SSL Certificate
+#==============================
+Services -> AWS Certificate Manager
+'Provision Certificates'
+Choose public Certificate
+Enter your domain names:
+    nakeddomain.com
+    *nakeddomain.com (wildcard)
+Choose DNS validation
+Create Record on Route53
+Review
+Request
+Validate ownership of domain name

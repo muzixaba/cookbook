@@ -4,3 +4,8 @@ Start a basic web server
 su ec2-user
 sudo yum intall httpd -y
 sudo service httpd start
+
+Script for using EFS
+--------------------
+su ec2-user
+sudo yum install -y amazon-efs-utils
