@@ -62,6 +62,12 @@ df.rename(columns={"old1": "new1", "old2": "new2"})
 # Rename index
 df.rename(index={0: "x", 1: "y", 2: "z"})
 
+# set column as index, inplace
+df.set_index('Date', inplace=True)
+
+# Slice datetime index
+df['2020-01':'2020-02']
+
 # dropping ALL duplicte values  in certain column
 df.drop_duplicates(subset ="ref_colName", keep='first', inplace=True) 
 
@@ -138,4 +144,15 @@ df['num_of_days'].apply(lambda x: x/365)
 dt.fromtimestamp(timestamp).strftime('%Y-%m-%d-%H%M%S')
 
 # Change column type to datetime
-df['date'] = pd.to_datetime(df['date'])
+df['date'] = pd.to_datetime(df['date']) # if pandas can read the date string
+df["date"] = pd.to_datetime(["date"], format='%Y-%m-%d %I-%p') # to tell pandas exactly what the string looks like
+
+# Parse datetime at import
+d_parser = lambda x: pd.datetime.strptime(x, "%Y-%m-%d %I-%p")
+df = pd.read_csv("ETH_1h.csv", parse_dates=["Date"], date_parser=d_parser)
+
+# fiter df by datetime
+date_filter = (df["Date"] >= "2019") & (df["Date"] < "2020") # time as strings
+date_filter2 = (df["Date"] >= pd.to_datetime('2019-01-01')) & (pd.to_datetime('2020-01-01')) # time as datetime
+
+df.loc[date_filter]
