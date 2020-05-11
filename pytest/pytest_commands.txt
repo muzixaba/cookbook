@@ -1,0 +1,39 @@
+# Run tests
+-----------
+pytest
+
+
+# Run tests using IPython
+---------------------------
+!pytest
+
+
+# Run tests until the 1st failing tests
+-----------------------------------------
+pytest -x
+
+
+# Run tests inside a specif test class
+--------------------------------------
+pytest test_module.py::TestClassFunctionName
+
+
+# Run tests using keyword expressions
+--------------------------------------
+pytest -k "keyword"
+
+
+# Run tests & show reason for skipped tests
+-------------------------------------------------------
+pytest -rs
+
+
+# Run tests & show reason for xfailed tests
+-------------------------------------------------------
+pytest -rx
+
+
+# Run tests & show reason for skipping & xfailing tests
+-------------------------------------------------------
+pytest -rsx
+
