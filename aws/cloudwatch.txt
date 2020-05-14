@@ -1,0 +1,18 @@
+#=========================
+# Creat a CloudWatch Alarm
+#=========================
+Services -> CloudWatch
+Panel -> Alarms
+'Create alarm'
+Choose service & threshold
+Create/Select SNS topic
+Add alarm name/description
+NOTE: You'll get a subscription confirmation email 
+
+
+#=====================
+# CloudWatch Events
+#=====================
+Panel -> Events
+Step 1 - Create Rule: Event Source & Target(s)
+Step 2 - Configure Rule Details: Name, Description

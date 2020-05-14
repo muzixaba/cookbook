@@ -77,6 +77,9 @@ def test_floating_point_numbers():
 # @patch decorator is used to replace production function with mock version
 # from unittest.mock import patch
 #  @patch('package.module.func_name', new=mock_func_name)
+# Mock functions where they are use & not where they are defined
+# Can also use the mock function as a context manager
+# Can also use mock inline by using setUp() and tearDown()
 
 #==============
 # Fixtures
@@ -84,6 +87,8 @@ def test_floating_point_numbers():
 # Creates a source of data that's used multiple times e.g. Setup function/data
 # fixture functions have @pytest.fixture decorator & are outside the tests
 # tmpdir is a built-in fixture for the creation & teardown of temp directories
+
+
 #==============
 # Coverage Report
 #================

@@ -58,6 +58,7 @@ ssh -T git@github.com
 Will be prompted to enter passphrase
 NOTE: You can now use the SSH link to clone repos
 
+
 #==========
 # Using Git
 #==========
@@ -66,10 +67,10 @@ NOTE: You can now use the SSH link to clone repos
 git init -> Must done inside your src directory.
 Create new repo on GitHub. Let's call it NewRepo
 git remote add origin https://github.com/username/newrepo.git
-git push -u origin master -> First push to GitHub. -u enables tracking btw repos
+git push -u origin master -> First push to GitHub. -u (sets Upstream) enables tracking btw repos
 
 # Check which remote repo is linked to your local one
-git remote -v
+git remote -v (v==verbose, shows remote repo references)
 
 # Changing the remote url
 git remote set-url origin https://new_url
@@ -168,6 +169,26 @@ It's a timeline of commits
 Branch names are labels
 Deletion removes label only
 
+# Check which branch you're in
+git branch
+
+# Create a new branch & switch to it
+git checkout -b branch_name
+
+# Switch to existing branch
+git checkout branch_name
+NOTE: Git 1st searches for the branch locally, then remotely
+
+# Switch to a different branch
+git checkout branch_name
+
+# Delete branch
+git branch -d branch_name
+
+# Show all branches
+git branch -a
+git branch --list
+
 Types of Merges
 ---------------
 
@@ -190,29 +211,13 @@ Manual Merge
 
 NOTE: You have to switch back to master branch first, then merge
 
+
 Special Markers
 ---------------
 HEAD
 - Points to the last commit of the current branch
 
-# Check which branch you're in
-git branch
 
-# Create a new branch & switch to it
-git checkout -b branch_name
-
-# Switch to existing branch
-git checkout branch_name
-NOTE: Git 1st searches for the branch locally, then remotely
-
-# Switch to a different branch
-git checkout branch_name
-
-# Delete branch
-git branch -d branch_name
-
-# Show all branches
-git branch -a
 
 # Create a Pull Request (PR)
 Alerts a repo's owner that you want to make some changes.
@@ -241,15 +246,17 @@ git reset [commit ID] flag -> Flags incl "soft", "hard", "mixed"
  hard -> Most destructive. Can delete your changes
  mixed-> The default type of reset
 
+
  #===================
  # Fetching & Pulling
  #===================
- git fetch -> Fetches your remote repo. Updates your references
+ git fetch -> Fetches your remote repo. Updates your references. Non desctructive way to check for differences btw local & remote repos
  git merge branch_name -> Merges branch_name into active branch
  git pull -> Fetches your remote repo & merges with local
  git pull --all -> Git pulls all branches
  git pull --rebase -> Rewinds local changes, pulls remote, than commits local
  NOTE: It's recommended to do a pull before pushing up your changes 
+
 
  #===========================================
  # Updating a Fork using local Repo as Bridge
@@ -257,6 +264,7 @@ git reset [commit ID] flag -> Flags incl "soft", "hard", "mixed"
  git remote add upstream upstream_url
  git pull upstream master -> Pulls 4rm upstream to local
  gish push origin master -> Pushes from local to fork
+
 
  #===========================
  # Close Issue using Commit
