@@ -109,7 +109,7 @@ uniq -> returns unique values that are adjacent or consecutive to each other
 set -> displays environment variables
 echo $ENVIRON_VAR -> returns the value of ENVIRON_VAR
 \ -> Backslash to start typing command in new line
-
+explorer . -> Open current directory in file explorer (Windows)
 
 #================================
 # Files

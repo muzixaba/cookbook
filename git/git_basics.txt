@@ -39,6 +39,7 @@ Use .gitignore file
 # Check git version
 git version
 
+
 #===============
 # Authentication
 #===============
@@ -124,6 +125,12 @@ git log --oneline --graph --decorate --all
 # alias == hist, leave out preceding git when writing command
 git config --global alias.hist "log --oneline --graph --decorate --all"
 
+
+
+#=====================
+# Git File Commands
+#=====================
+
 # Revert back changes to last commit
 git checkout -- file_name
 
@@ -141,6 +148,7 @@ git add -u
 
 # See differences btw 2 commits
 git diff [commit ID] [commit ID]/HEAD
+
 
 #=============
 # Tags
@@ -189,6 +197,9 @@ git branch -d branch_name
 git branch -a
 git branch --list
 
+Merge branch_name into active branch
+git merge branch_name
+
 Types of Merges
 ---------------
 
@@ -218,8 +229,7 @@ HEAD
 - Points to the last commit of the current branch
 
 
-
-# Create a Pull Request (PR)
+# Create a Pull Request (Merge Request)
 Alerts a repo's owner that you want to make some changes.
 Pull request is the same as Merge Request
 STEPS:
@@ -250,7 +260,7 @@ git reset [commit ID] flag -> Flags incl "soft", "hard", "mixed"
  #===================
  # Fetching & Pulling
  #===================
- git fetch -> Fetches your remote repo. Updates your references. Non desctructive way to check for differences btw local & remote repos
+ git fetch -> Fetches your remote repo. Updates your references. Non destructive way to check for differences btw local & remote repos
  git merge branch_name -> Merges branch_name into active branch
  git pull -> Fetches your remote repo & merges with local
  git pull --all -> Git pulls all branches
@@ -263,10 +273,14 @@ git reset [commit ID] flag -> Flags incl "soft", "hard", "mixed"
  #===========================================
  git remote add upstream upstream_url
  git pull upstream master -> Pulls 4rm upstream to local
- gish push origin master -> Pushes from local to fork
+ git push origin master -> Pushes from local to fork
+
+#=============================
+# Pull directly from upstream
+#=============================
+git branch --set-upstream-to=upstream/master master ???????????????????
 
 
- #===========================
  # Close Issue using Commit
  #===========================
  git commit -m "Solved the issue, close #3" -> 3 is the issue number on GitHub

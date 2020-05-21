@@ -1,0 +1,28 @@
+# Using venv
+python -m venv venv_name (creating a venv)
+source env/bin/activate (activate using linux/mac)
+env\Scripts\activate.bat (activate using Windows)
+deactivate (deactivate's venv)
+
+# Using virtualenv
+pip install virtualenv (if not installed)
+virtualenv env_name (create env)
+source env_name/bin/activate (linux/mac)
+deactivate (deactivate's venv)
+
+# Using Conda
+conda create -n env_name python=3.7 (create with specific python version)
+activate env_name
+conda list (shows u what's installed in env)
+
+# Using Pipenv
+pip install pipenv (installing)
+pipenv shell (create & activate venv. Also creates Pipfile)
+exit (quits env)
+pipenv lock -r (lists all packages in env)
+pipenv uninstall package_name (uninstall's a package from venv)
+pipenv install package_name --dev (install a dev package)
+pipenv install -r ./requirements.txt (install everything in requirements file)
+pipenv check (check packages for security issues)
+pipenv graph (shows dependencies & child dependencies)
+pipenv install --ignore-pipfile (installs packages using Pipfile.lock)

@@ -1,0 +1,24 @@
+#=====================
+# Creating a Trail
+#=====================
+
+Services -> CloudTrail
+Panel -> Dashboard -> 'Create Trail'
+Choose:
+    apply to all regions?
+    management events (all, read-only, write-only, none)
+    data events (S3, Lambda events)
+    Storage Location:
+        Create new S3 bucket?
+        Encrypt log giles
+        Enable log file validation (checks for log file tampering)
+        Send SNS notification for every log file delivery
+
+
+#=====================
+# CloudTrail to Athena
+#=====================
+In you log trail, look for the Athena link
+Choose storage Location
+'Create table'
+'Go to Athena'

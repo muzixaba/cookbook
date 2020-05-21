@@ -1,0 +1,18 @@
+#=======================
+# Upload an App 
+#========================
+
+Services -> Elastic Beanstalk
+'Get Started'
+Application name
+Choose Plaform (Programming Language Environment)
+App Code (Sample App or Upload Code)
+If upload code:
+    zip your app's source directory
+    upload zip (512mb limit)
+    add 'version label'
+    'Upload'
+If configure more:
+    Choose configuration presets (low cost, high availability, custom)
+    Modify presets (db, instances, capacity, etc )
+'Create Application'

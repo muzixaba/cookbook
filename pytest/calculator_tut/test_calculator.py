@@ -2,11 +2,23 @@ import pytest
 from calculator import Calculator, CalculatorError
 from numpy.testing import assert_almost_equal
 
+@pytest.fixture
+def numbers():
+    """Returns a fixture with a list of 3 numbers"""
+    a, b, c = 10, 15, 20
+    return [a,b,c]
+
 def test_add():
     """Test add function"""
     calc = Calculator()
     the_sum = calc.add(2,3)
     assert the_sum == 5
+
+def test_add_with_fixture(numbers):
+    """Testing the add function using a fixture"""
+    calc = Calculator()
+    the_sum = calc.add(numbers[0], 2)
+    assert the_sum == 12
 
 def test_add_type_mix():
     """Test if operands are different types"""
@@ -124,6 +136,6 @@ def test_func_name():
 #========================================
 # Skip test if certain condition is True
 #========================================
-@pytest.mark.skipif(condition, reason="My reason for skipping.")
+@pytest.mark.skipif('condition', reason="My reason for skipping.")
 def test_func_name():
     pass
