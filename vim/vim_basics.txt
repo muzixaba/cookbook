@@ -1,0 +1,44 @@
+#================
+# Vim Modes
+#================
+
+# Insert Mode
+-------------
+For editing your file
+Press 'i' when in navigation mode
+
+# Navigation Mode
+-----------------
+For navigating the file
+Press 'esc' while in insert mode
+
+# Exiting Vim
+-------------
+:wq - exit & save changes
+
+# Jump to end/begining
+----------------------
+gg - Go to beggining of doc
+G - Go to end of doc
+
+# Skip block(s) of code
+-----------------------
+{ - skip backward
+} - skip forward
+
+# Delete a line
+---------------
+dd
+
+# Undo - u
+# Redo - ctlr + r
+
+# Add new line
+--------------
+o - Adds a new line below & puts you inside INSERT mode
+O - Adds a new line above current position & puts you in INSERT mode
+
+# Copy & Paste
+--------------
+yy - copy line
+p - paster below
