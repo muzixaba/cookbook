@@ -21,6 +21,12 @@ Press 'esc' while in insert mode
 gg - Go to beggining of doc
 G - Go to end of doc
 
+# Navigate through words
+------------------------
+w - move to start of next word
+b - move to beginning of word
+e - move to end of word
+
 # Skip block(s) of code
 -----------------------
 { - skip backward
