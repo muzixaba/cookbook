@@ -1,0 +1,8 @@
+#=========================
+# Creating a Lambda Function
+#============================
+Services -> Lambda -> 'Create a function'
+Function name
+Runtime (python 3.xx)
+Choose or create an execution role
+'Create function'

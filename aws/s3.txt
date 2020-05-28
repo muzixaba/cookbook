@@ -1,0 +1,14 @@
+#=========================
+# Host a Static Website
+#=========================
+Services -> S3
+Create 2 buckets:
+    'Create bucket' -> nakeddomain.com
+    'Create bucket' -> www.domain.com
+Bucket -> Properties -> Static Website Hosting
+Redict the naked domain to www. (nakeddomain.com)
+Use bucket to host a website (www.domain.com):
+    choose index.html page
+    choose error.html page
+Bucket -> Permissions -> Untick 'Block all public access' -> 'Save'
+Update bucket policy to allow for web access

@@ -19,6 +19,7 @@ Distribution Settings:
 
 'Create Distribution'
 Get the distribution domain name under 'General' settings for your distribution
+Alternate Domain Names (CNAMEs) (www.domain.com)
 Invalidations:
     Refresh the cache for a specific item or group
 Error Pages:

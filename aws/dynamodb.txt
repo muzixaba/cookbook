@@ -1,0 +1,8 @@
+#=========================
+# Creating a DynamoDB table
+#============================
+Services -> DynamoDB
+Create table:
+    Table name
+    Primary key (email)
+    Sort key (created_at)

@@ -1,0 +1,28 @@
+#========================
+# Creating an API Gateway
+#========================
+
+Services -> API Gateway
+'Get Started' -> New API
+API name
+Description
+Endpoint
+
+APIs:
+    Actions -> Create resource
+    Resource name (posts)
+    Resource path (/posts)
+    Enable API Gateway CORS
+
+    Actions -> Create method (for resource)
+    GET/POST
+    Integration type (Lambda, HTTP, Mock, AWS Service, VPC Link)
+    Use Lambda Proxy integration?
+    Lambda region
+    Lambda function (insert name of Lambda function)
+    Use default timeout
+
+    Actions -> Deploy API
+    Deployment stage (dev, prod, test)
+    Stage Description
+    'Deploy'

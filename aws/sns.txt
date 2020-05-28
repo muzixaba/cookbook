@@ -1,0 +1,15 @@
+#==========================
+# Creating an SNS Topic
+#==========================
+Services -> SNS
+Panel -> Topics -> 'Create topic'
+Details:
+    Name (domainname-topic)
+    Display Name (DomainName)
+'Create Topic'
+Subscriptions -> Create Subscription:
+    Topic ARN
+    Protocol (email)
+    Endpoint (email@address.com)
+
+NOTE: Email subscription has to be confirmed
