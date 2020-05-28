@@ -99,7 +99,11 @@ def test_floating_point_numbers():
 # Creates a source of data that's used multiple times e.g. Setup function/data
 # fixture functions have @pytest.fixture decorator & are outside the tests
 # tmpdir is a built-in fixture for the creation & teardown of temp directories
-
+# fixuture scope args (function, class, module, session)
+#   function runs once per test
+#   class runs once per class of tests
+#   module runs once per module
+#   session runs once per session
 
 #==============
 # Coverage Report
