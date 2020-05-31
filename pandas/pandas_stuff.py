@@ -89,7 +89,10 @@ df3 = pd.merge(df1, df2, right_index=True, left_index=True)
 #==========================
 df.sort_values(by='Age', ascending=False)
 
-
+#================
+# Transposing a df
+#=================
+df.T
 
 #===================
 # Groupby
