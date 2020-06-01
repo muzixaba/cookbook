@@ -10,6 +10,7 @@ import numpy as np
 import pandas as pd
 
 from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 from sklearn import metrics
 
@@ -32,6 +33,13 @@ mt_cars.info() # summary of features
 X = mt_cars.drop(['mpg'], axis=1)
 y = mt_cars['mpg'] # also do EDA on the response
 
+# Variable Selection (types)
+# Ratios
+# Intervals - Numerice, diff btw values is meaningful but no ratio level info given (time & date)
+# Categorical - No numeric meaning, indicate group membership (gender, marrige status)
+# Ordinal - Categorical, indicate ranking (age brackets)
+# Use One-Hot or GetDummies encoding to turn into numerical data
+
 # Featurs Engineering
 # Check for linearity, might have to log features/reponse
 #   check 1: Draw scatter/regplots to check for linearity
@@ -44,9 +52,14 @@ y = mt_cars['mpg'] # also do EDA on the response
     # check 1: Visualise distribution of resduals
     # check 2: Quantile quantile plot
     # check 3: Shapiro-Wilkes test - If sw>=0.05, Data from normal dist
+
+# Scale/Normalise the data
+scaler = MinMaxScaler()
+X_scaled = scaler.fit_transform(X)
+
 # Train test split
 X_train, X_test, y_train, y_test = train_test_split(
-                                        X, y,
+                                        X_scaled, y,
                                         test_size=0.2,
                                         random_state=1
                                         )

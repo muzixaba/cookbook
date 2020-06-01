@@ -14,7 +14,10 @@ Press 'esc' while in insert mode
 
 # Exiting Vim
 -------------
-:wq - exit & save changes
+:w - saves file
+:wq - save changes & quit
+:q! - quit without saving changes
+:q - just quit
 
 # Jump to end/begining
 ----------------------
@@ -48,3 +51,8 @@ O - Adds a new line above current position & puts you in INSERT mode
 --------------
 yy - copy line
 p - paster below
+
+# Do last command
+-----------------
+.
+
