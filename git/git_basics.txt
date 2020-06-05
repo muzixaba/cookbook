@@ -177,7 +177,7 @@ It's a timeline of commits
 Branch names are labels
 Deletion removes label only
 
-# Check which branch you're in
+# Check which branches exist, highlights the one you're in
 git branch
 
 # Create a new branch & switch to it
@@ -265,6 +265,7 @@ git reset [commit ID] flag -> Flags incl "soft", "hard", "mixed"
  git pull -> Fetches your remote repo & merges with local
  git pull --all -> Git pulls all branches
  git pull --rebase -> Rewinds local changes, pulls remote, than commits local
+ git pull origin master --allow-unrelated-histories
  NOTE: It's recommended to do a pull before pushing up your changes 
 
 
@@ -288,3 +289,7 @@ git branch --set-upstream-to=upstream/master master ???????????????????
  - A 'Contributor' submits pull requests to update the code.
  - A 'Collaborator' has read & write access & updates the code directly
       
+#=========================
+# Removing a remote
+#=======================
+git remote rm remote_name
