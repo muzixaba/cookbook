@@ -256,6 +256,16 @@ git reset [commit ID] flag -> Flags incl "soft", "hard", "mixed"
  hard -> Most destructive. Can delete your changes
  mixed-> The default type of reset
 
+ #=====================
+ # Making changes safely
+ #======================
+ Pull updates down to your local repo
+ Create new branch that will house your changes (git checkout -b new_branch_name)
+ Make your changes on the new branch
+ Add, commit changes to new branch
+ git push --set-upstream origin new_branch_name (will push to repo & create pull request for new branch)
+ alternatively (git push -u origin new_branch_name)
+
 
  #===================
  # Fetching & Pulling
