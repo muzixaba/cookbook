@@ -303,3 +303,10 @@ git branch --set-upstream-to=upstream/master master ???????????????????
 # Removing a remote
 #=======================
 git remote rm remote_name
+
+
+#=========================
+# Changing A repo's name
+#=========================
+Go to repo settings, find & change repo name
+git remote set-url origin new_url
