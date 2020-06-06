@@ -177,7 +177,7 @@ It's a timeline of commits
 Branch names are labels
 Deletion removes label only
 
-# Check which branch you're in
+# Check which branches exist, highlights the one you're in
 git branch
 
 # Create a new branch & switch to it
@@ -256,6 +256,16 @@ git reset [commit ID] flag -> Flags incl "soft", "hard", "mixed"
  hard -> Most destructive. Can delete your changes
  mixed-> The default type of reset
 
+ #=====================
+ # Making changes safely
+ #======================
+ Pull updates down to your local repo
+ Create new branch that will house your changes (git checkout -b new_branch_name)
+ Make your changes on the new branch
+ Add, commit changes to new branch
+ git push --set-upstream origin new_branch_name (will push to repo & create pull request for new branch)
+ alternatively (git push -u origin new_branch_name)
+
 
  #===================
  # Fetching & Pulling
@@ -265,6 +275,7 @@ git reset [commit ID] flag -> Flags incl "soft", "hard", "mixed"
  git pull -> Fetches your remote repo & merges with local
  git pull --all -> Git pulls all branches
  git pull --rebase -> Rewinds local changes, pulls remote, than commits local
+ git pull origin master --allow-unrelated-histories
  NOTE: It's recommended to do a pull before pushing up your changes 
 
 
@@ -288,3 +299,14 @@ git branch --set-upstream-to=upstream/master master ???????????????????
  - A 'Contributor' submits pull requests to update the code.
  - A 'Collaborator' has read & write access & updates the code directly
       
+#=========================
+# Removing a remote
+#=======================
+git remote rm remote_name
+
+
+#=========================
+# Changing A repo's name
+#=========================
+Go to repo settings, find & change repo name
+git remote set-url origin new_url
