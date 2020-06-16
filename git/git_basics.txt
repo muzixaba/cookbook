@@ -107,6 +107,7 @@ git add . -> adds all files to the staging area
 
 # Commit changes
 git commit -m "message about what what was done"
+git commit -m "Commit title" -m "commit desciption message"
 
 # Add to staging area & commit in one line
 git commit -am "commit message"
