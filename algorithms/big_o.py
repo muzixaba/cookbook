@@ -7,7 +7,7 @@
 # Time complexity looks at how quickly runtime will grow
 # Space complexity looks at how much memory will be used
 
-# O(n) - Linear growth
+# O(n) - Linear growth (2nd best performance)
 def adder(n):
     """Inputs n & returns th sum of numbers from 0 to n"""
     final_sum = 0
@@ -16,7 +16,7 @@ def adder(n):
     return final_sum
 
 
-# O(1) - Constant
+# O(1) - Constant (Best performance)
 def adder2(n):
     """Inputs n & returns the sum of numbers from 0 to n"""
     return (n*(n+1))/2 # n is assigned only once
@@ -25,6 +25,13 @@ def first_element(n):
     '''Returns the first element of a list'''
     return n[0]
 
+# O(n**2) - Quadratic
+def quad(lst):
+    """Prints pairs of every item in list"""
+    for item_1 in lst:
+        for item_2 in lst:#nested assignment of n. Causes n*n assignment
+            print(item_1, item_2)
+    
 
 # O(n**3) - Cubic
 def nightmare(n):
@@ -34,7 +41,6 @@ def nightmare(n):
 
 # log(n) - Lagarithmic
 # nlog(n) - Log Linear
-# n**2 - Quadratic
 # 2**n - Exponantial
 
 from math import log
