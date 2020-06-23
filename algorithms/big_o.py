@@ -15,6 +15,9 @@ def adder(n):
         final_sum += x
     return final_sum
 
+def memory(n):
+    for x in range(n): # time complexity O(n)
+        print("Memory") # space complexity O(1)
 
 # O(1) - Constant (Best performance)
 def adder2(n):
