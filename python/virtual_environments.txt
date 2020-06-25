@@ -9,11 +9,14 @@ pip install virtualenv (if not installed)
 virtualenv env_name (create env)
 source env_name/bin/activate (linux/mac)
 deactivate (deactivate's venv)
+pip -V (check if you're inside the virtual environment)
+rm -r path/to/env_name (remove virtual env)
 
 # Using Conda
 conda create -n env_name python=3.7 (create with specific python version)
-activate env_name
+conda activate env_name
 conda list (shows u what's installed in env)
+conda deactivate
 
 # Using Pipenv
 pip install pipenv (installing)
