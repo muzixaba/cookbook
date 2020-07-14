@@ -197,6 +197,7 @@ def mine_sweeper(bombs, num_rows, num_cols):
     # create a 2D array to keep track of playing field size
     field = [[0 for i in range(num_cols)] for j in range(num_rows)]
     
+    # mark fields with bombs with a -1
     for bomb_location in bombs:
         bomb_row, bomb_col = bomb_location
         field[bomb_row][bomb_col] = -1
@@ -257,4 +258,26 @@ def unique(s):
 print(unique("a b cde"))
 print(unique("a bb cde"))
 
-# end time 3:28
+
+#===============
+# Non Repeating Element
+#=======================
+# In a given string, return the character that never repeats
+# If multiple uniques, return the first unique
+def non_repeating(s):
+    s = s.replace(" ", "").lower()
+    char_count = {}
+    # add char counts in to dict
+    for c in s:
+        if c in char_count:
+            char_count[c] += 1
+        else:
+            char_count[c] = 1
+    # check which char has a count of 1
+    for c in s:
+        if char_count[c] == 1:
+            return c
+    
+    return None
+
+print(non_repeating("beamer benz and bentley"))
