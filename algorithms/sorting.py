@@ -57,6 +57,29 @@ def quick_sort(items):
             else: 
                 if x > pivot:
                     greater.append(x)
-        return quick_sort(less)+equal+quick_sort(greater)   
+        return quick_sort(less) + equal + quick_sort(greater)   
     else:  
         return items
+
+
+def selection_sort(items):
+    """
+    Reads a list multiple times looking for the smallest item.
+    Appends the smallest item to a new list once found.
+    Operates at O(n^2)
+    """
+    def find_smallest(items):
+        smallest = items[0]
+        smallest_index = 0
+        for i in range(1, len(items)):
+            if items[i] < smallest:
+                smallest = items[i]
+                smallest_index = i
+        return smallest_index
+    new_list = []
+    for _ in range(len(items)):
+        smallest = find_smallest(items)
+        new_list.append(items.pop(smallest))
+    return new_list
+
+print(selection_sort([5,3,6,2,10]))
