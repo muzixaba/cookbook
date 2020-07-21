@@ -1,3 +1,5 @@
+import random
+
 def bubble_sort(items):
     '''Return array of items, sorted in ascending order'''
     for passnum in range(len(items)-1,0,-1):
@@ -66,11 +68,10 @@ def quick_sort_2(items):
     if len(items) < 2:
         return items
     else:
-        pivot = items[0]
+        pivot = items[0] #random.choice(items)
         less = [i for i in items[1:] if i<=pivot]
         greater = [i for i in items[1:] if i>=pivot]
         return quick_sort_2(less) + [pivot] + quick_sort_2(greater)
-
 
 def selection_sort(items):
     """
@@ -92,4 +93,3 @@ def selection_sort(items):
         new_list.append(items.pop(smallest))
     return new_list
 
-print(selection_sort([5,3,6,2,10]))
