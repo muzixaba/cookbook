@@ -255,8 +255,7 @@ def unique(s):
             chars.add(i)
     return True
 
-print(unique("a b cde"))
-print(unique("a bb cde"))
+
 
 
 #===============
@@ -280,4 +279,16 @@ def non_repeating(s):
     
     return None
 
-print(non_repeating("beamer benz and bentley"))
+
+def max_num(items):
+    """Returns the max value in a sequence"""
+    max_no = items[0]
+    index = 0
+    for i in items:
+        if i > max_no:
+            max_no = i
+        index += 1
+    return max_no
+
+
+print(max_num([2,4,6,3,3,1]))

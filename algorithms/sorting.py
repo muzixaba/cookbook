@@ -61,6 +61,16 @@ def quick_sort(items):
     else:  
         return items
 
+def quick_sort_2(items):
+    """Uses a pivot element to items"""
+    if len(items) < 2:
+        return items
+    else:
+        pivot = items[0]
+        less = [i for i in items[1:] if i<=pivot]
+        greater = [i for i in items[1:] if i>=pivot]
+        return quick_sort_2(less) + [pivot] + quick_sort_2(greater)
+
 
 def selection_sort(items):
     """
