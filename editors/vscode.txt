@@ -25,4 +25,5 @@ select expression, RC, extract_variable. (read n close pop up)
 select code, RC, extract_method, name your function
 
 
-
+# Open folder in current Terminal
+code -r .
