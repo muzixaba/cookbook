@@ -1,8 +1,8 @@
 # Using venv
-python -m venv venv_name (creating a venv)
-source env/bin/activate (activate using linux/mac)
+python -m venv env_name (creating a venv)
+source env_name/bin/activate (activate using linux/mac)
 env/Scripts/activate.bat (activate using Windows)
-deactivate (deactivate's venv)
+deactivate (deactivate's env)
 
 # Using virtualenv
 pip install virtualenv (if not installed)
@@ -13,7 +13,7 @@ pip -V (check if you're inside the virtual environment)
 rm -r path/to/env_name (remove virtual env)
 
 # Using Conda
-conda create -n env_name python=3.7 (create with specific python version)
+conda create -n env_name python=3.8 (create with specific python version)
 conda activate env_name
 conda list (shows u what's installed in env)
 conda deactivate
