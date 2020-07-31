@@ -90,6 +90,7 @@ popd  -> jump back to last directory
 file file_name -> returns file extension
 locate file_name -> locate files on system
 sudo -> do something as superuser
+sudo !! -> run previous commands as sudo
 sudo updatedb -> updates the locate database
 which -> used to fine toerh commands install on your system
 up arrow -> show history of commands. Last In First Out (LIFO)

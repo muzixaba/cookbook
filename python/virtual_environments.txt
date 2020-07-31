@@ -1,5 +1,5 @@
-# Using venv
-python -m venv venv_name (creating a venv)
+# Using venv (part of standard library)
+python -m venv env_name (creating a venv)
 source env/bin/activate (activate using linux/mac)
 env/Scripts/activate.bat (activate using Windows)
 deactivate (deactivate's venv)
