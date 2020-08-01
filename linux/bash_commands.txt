@@ -139,6 +139,8 @@ ls -U | head -4 -> look at the first 4 files
 sudo chmod -R <permissions> path/to/dir -> Change permissions for all files inside a specific directory (HANDLE WITH CARE)
 echo "String to appended on line" >> file.ext
 rm *.txt -> Remove all files with specific file extension
+rm -rf dir_name/ -> Permanently deletes a folder with its files
+rmdir dir_name -> Deletes an empty folder
 chmod +x file.ext -> changes file to executable
 
 #===================
