@@ -116,6 +116,7 @@ explorer . -> Open current directory in file explorer (Windows)
 # Files
 #================================
 mv/cp dir/file1.txt dir/file2.txt backup -> move or copy files to dir call backup
+mv/cp dir/dir2/file.txt . -> move/copy files to current directory
 mv old-name new-name -> Rename directory (deletes old dir)
 cp old_name new_name -> Copies directory (keeps old dir)
 cp -R ~/path/from/home/* . -> Copies all files inside a folder into current folder
@@ -142,6 +143,17 @@ rm *.txt -> Remove all files with specific file extension
 rm -rf dir_name/ -> Permanently deletes a folder with its files
 rmdir dir_name -> Deletes an empty folder
 chmod +x file.ext -> changes file to executable
+
+#================
+# Zip Folders
+#================
+# sudo apt-get install Zip
+# zip -r zip_dir_name.zip . (creates a zip folder containing all files in current dir. REMEMBER the period)
+# zip -g path/to.zip_dir_name.zip path/to/new_file.txt -> adds new file into zip folder. -g/--grow appends to existing zip directory
+
+# Unzip Folders
+sudo apt-get install Unzip
+unzip name.zip (unzipping a zip file)
 
 #===================
 # Check Disk Space
