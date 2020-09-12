@@ -1,3 +1,8 @@
+#===================
+# Create a new app
+#===================
+flutter create app_name
+
 
 #===================
 # Build a new apk
@@ -5,8 +10,6 @@
 flutter clean
 flutter build apk
 project_name\build\app\outputs\apk\app.apk
-
-
 
 
 #=============================

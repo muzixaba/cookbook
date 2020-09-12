@@ -14,9 +14,9 @@ Can compile to JavaScript using dart2js compliler
 zero indexed. Counts from zero
 file extension = .dart
 
-//===========================
+//========
 // Basics
-//===========================
+//========
 
 void main(){
     //Everything inside here will run
@@ -305,12 +305,16 @@ import 'package:http/http.dart' show get;
 
 //------Creating Classes-----------------
 
+class PascalNaming {
+
+}
+
 class Person {
 
     // Static variables. Shared by all instances
     static int population = 0;
 
-    // Class attributes
+    // Class attributes or properties
     final String name; // final == immutable
     int age;
     double _height; // _private_attribute. Can only be accessed from inside the class
