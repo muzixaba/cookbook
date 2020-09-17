@@ -32,3 +32,22 @@ select code, RC, extract_method, name your function
 
 # Open folder in current Terminal
 code -r .
+
+
+=============
+Flutter Commands
+=================
+// Creating a new app
+flutter create appName
+
+// Check for available devices or emulator(s)
+flutter emulators
+
+// Launch an emulator
+flutter emulators --launch <emulator_id>
+
+// Check for an open emulator
+flutter devices
+
+// Run app on emulator
+flutter run (should be run on root folder)
