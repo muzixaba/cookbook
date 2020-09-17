@@ -27,6 +27,7 @@ Python & JavaScript are Dynamically Typed Languages.
 Dynamically typed language vars are known at run time.
 
 'int num;' is the same as 'int num = null;'
+'var x2 = [...x];' making a deep copy of 'x' using the spread operator
 }
 */
 
@@ -85,13 +86,16 @@ double fromString = double.parse("0.5");
 // 'a ??= 5' Will only assign a to 5 if a is null
 // 'b ?? 6' Will return b if b is null, other wise it will return 6
 
+// Spread Operator
+//'var x2 = [...x];' making a deep copy of 'x'
+
 
 // Getting user input
 // stdout.writeln("What's your name: ?");
 // String userName = stdin.readLineSync();
 // print("The user's name is $userName");
 
-// Flow Control - If Statements
+// If Statements
 if (shoeSize > 11 && age < 35) {
   print("You've got some big feet");
 } else if (age > 21) {
@@ -100,10 +104,60 @@ if (shoeSize > 11 && age < 35) {
   print("Just wear shoes");
 }
 
+// Switch Statement
+int number = 3;
+switch (number) {
+  case 0:
+    print("The number is 0");
+    break;
+  case 3:
+    print("The numbe is 3");
+    break;
+  default:
+    print("Couldn't find the number");
+}
+
+// For Loop
+for (var i=1; i<=10; ++i) {
+  print(i);
+  //if (i%2==0) break/continue;
+}
+
+// For-in Loop
+var nums = [1,2,3,4,5];
+for (var n in nums) {
+  print(n);
+}
+
+// For-Each Loop
+numbers.forEach((n) => print(n));
+
+// While Loop
+while (shoeSize > 0) {
+  print(shoeSize);
+  shoeSize -= 1;
+}
+
+// Do-While Loop
+do {
+  print(shoeSize);
+  shoeSize -= 1;
+} while (shoeSize > 0)
+
+
 // type return by function gets written infront of the function name
+// {curly braces} for optional args
 String myFullName (String firstName, String lastName) {
   return firstName + " " +lastName;
 }
+
+dynamic sum(var positionalArg, var positionalArg2) => positionalArg + positionalArg2;
+dynamic sum2(var positionalArg, [var optionalPositionalArg]) {
+  positionalArg + (positionalArg ?? 0);
+  // if optionalPositionalArg null, make it 0
+}
+// named parameters r similar to python's kwargs. func(var1: #, var2: #) when calling
+dynamic sum3({var namedParam, var namedParam2}) => namedParam + namedParam2;
 
 // Assert. Similar to python's assert
 assert(10 > 5);
@@ -115,6 +169,89 @@ assert(10 > 5);
 /**
  * The doc string for the Person class
  */
+
 class Person {
+  String name;
+  int age;
+
+  // static attribute
+  static const String nationality = 'South African';
+
+  // constructor with optional positional argument
+  Person(this.name, [this.age = 18]);
+
+  // named constructor
+  // Person guest = Person.guest();
+  Person.guest() {
+    name = 'Guest';
+    age = 18;
+  }
+
+  void showOutput() {
+    print(name);
+    print(age);
+  }
+}
+// Person p1 = Person(); create class instance 
+
+
+// Looking at inheritance
+class Vehicle {
+  String model;
+  int year;
+
+  Vehicle(this.model, this.year);
+
+  void showVehicleInfo() {
+    print(model);
+    print(year);
+  }
+
+  void showModelOnly() => print(model);
+}
+
+// Inheritance done using 'exends'
+class Car extends Vehicle {
+  double price;
+
+  // get the instances year internally but model & year from parent
+  Car(String model, int year, this.price) : super(model, year);
+
+  void showCarInfo() {
+    super.showVehicleInfo();
+    print(this.price);
+  }
+
+  // Overiding parent method
+  @override
+  void showModelOnly() {
+      print(this.price);
+      print("Overriding the parent method");
+  }
 
 }
+
+// creating an instance from a class that inherits from another
+// Car car1 = Car('Jetta', 2013, '45000');
+// Car.showCarInfo();
+
+
+// Exceptions (try-catch)
+/*
+try {
+  code that might throw an exception/error
+} on SpecificError catch(e) {
+  print(e);
+}  catch (error) {
+  print(error);
+} finally {
+  run this code no matter what
+}
+*/
+
+// Throwing an Exception
+/*
+if (condition) {
+  throw SpecificException("Message to return");
+}
+*/
