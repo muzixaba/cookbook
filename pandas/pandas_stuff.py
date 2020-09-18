@@ -83,6 +83,8 @@ new_df = pd.merge(left=df1, right=df2, how='inner', left_on='df1_col', right_on=
 # merge 2 dfs using their indecies
 df3 = pd.merge(df1, df2, right_index=True, left_index=True)
 
+# join dfs at the end of each other
+df_all = pd.concat([df1, df2, df3], ignore_index=True)
 
 #===========================
 # Sorting by column
@@ -136,6 +138,8 @@ df['NewCol'] = df['AnyCol'].apply(lambda x: random.choice(('yes', 'no')))
 # Change days to years
 df['num_of_days'].apply(lambda x: x/365)
 
+# add thousand separators
+df['thousands_sep'] = df['values'].apply(lambda x: '{:,}'.format(x))
 
 
 

@@ -202,7 +202,7 @@ sudo openvpn --config file_name
 # Jupyter Server
 #================
 login/ssh into EC2 instance
-jupyler notebook --no-browser --port=8889 --ip=0.0.0.0
+jupyter notebook --no-browser --port=8889 --ip=0.0.0.0
 
 
 #==================================
@@ -220,3 +220,12 @@ python -m idlelib -> activates IDLE shell
 2: Look for where the PS1 variable is mentioned
 3: Replace the '\$' at the end of the expression with '\n\$'
 4: Save file and restart terminal
+
+
+#======================================
+# Change Instance Password
+#=================================
+Edit sshd configuration file /etc/ssh/sshd_config as root.
+Uncomment PasswordAuthentication and set to yes.
+Save the file and exit. Restart ssh service for this to take effect.
+run command: passwd UserName
