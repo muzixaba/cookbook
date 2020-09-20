@@ -176,6 +176,8 @@ void funcName () {...}
 // Anonymous Functions
 () P{...}
 
+// Tenary Operater
+condition ? ifTrue : ifFalse;
 
 // Using Generics
 // a & b can be any data type

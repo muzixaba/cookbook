@@ -24,7 +24,6 @@ var isTrue = true; // boolean
 var cars = ['VW', 'BMW', 'Toyota'];
 
 
-
 // FLOW CONTROL (If, For-loops, While, Switch, Tenary, Null-Aware)
 // If Statement
 if (10 > 2) {

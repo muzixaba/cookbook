@@ -189,8 +189,8 @@ git branch branch_name
 git checkout -b branch_name
 
 # Switch to existing branch
-git checkout branch_name
 NOTE: Git 1st searches for the branch locally, then remotely
+git checkout branch_name
 
 # Switch to a different branch
 git checkout branch_name
