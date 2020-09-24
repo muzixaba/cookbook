@@ -54,8 +54,9 @@ flutter run (should be run on root folder)
 
 
 // Keyboard Shortcuts
-ctrl + . -> Context menu (Wrap with... & Extract)
+ctrl + . -> Quick fix. Context menu (Wrap with... & Extract)
 F12 -> Go to definition
 shift + alt + F -> Format dart code
 F5 -> Run app
 ctrl + F5 -> Restart app
+ctrl + space -> Code completion

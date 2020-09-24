@@ -44,7 +44,7 @@ String name = 'Muzi';
 int age = 31;
 double height = 1.75;
 var any_var = value; // dart will figure out the type at runtime
-final constant_var = value; //final is used for constants
+final constant_var = value; //final is used for constants. Read only vars
 dynamic var_name = value; //allows a var type to change
 null = no value
 value++; // increaments values by 1
@@ -61,6 +61,7 @@ String, int, double, bool
 const   -> Once set, cannot be changed. 
         -> Assigned a compile time e.g. const String passWord = "super1234";
 final   -> Similar to const but assigned at runtime
+const > final > var
 dynamic -> Can change types
 
 // Create empty variables
@@ -337,7 +338,7 @@ class Person {
     Sring say_name() => "My name is $name"
 
     // getters don't need the () as they don't take any parameters
-    get getName => name;
+    get height => _height;
 
     // setter method
     void set setAge(int age) {
@@ -381,6 +382,13 @@ class Employee extends Person{
         : super(name:name, age:age, height:height);
     final String taxCode;
     final int salary;
+}
+
+//-------------Mixins---------------------
+
+// Mixins use the 'with' statement
+class ProfilePage with LoginRequired {
+    // LoginPage with a loginRequired mixin
 }
 
 //------------Abstract Classes---------------------
