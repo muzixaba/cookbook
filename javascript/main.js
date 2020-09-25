@@ -46,7 +46,53 @@ switch(a) {
         a == 10;
 }
 
-//TODO: Add for loops
+// Types of js FOR LOOPS
+
+// for
+// for (1, 2, 3) {
+    // code block
+//}
+// 1. executed once, b4 execution of code block
+// 2. condition for executing the code block
+// 3. executed every time after the code block executes
+for (var i = 0; i < 10; i++) {
+    print(i);
+}
+
+// for-in
+// Loops through the properties of an object
+var person = {fname: 'Muzi', lname: "Xaba", age: 32};
+var text = "";
+var x;
+for (x in person) {
+    text += person[x];
+    print(text);
+}
+
+// for-of
+// Loops through the values of an iterable
+var myList = [1,2,3,4,5];
+for (x of myList) {
+    print(x);
+}
+
+// WHILE LOOPS
+
+// Basic While Loop
+/* while (condition) {
+    // execute code block
+}
+*/
+// Remember to add something to stop the looping
+
+// Do While Loop
+// will execute the code block once b4 checing the if the condition is true
+var q = 5;
+do {
+    //code block
+    print(q);
+    q--;
+} while (q < 0 );
 
 // OPERATORS (Comparison, Arithmetic, Logical, Assignment, Bitwise, Identity, Membership)
 // Comparison (==, ===[equal value & equal type], !=, !==[not equal valur or not equal type], ?[tenary operator])
