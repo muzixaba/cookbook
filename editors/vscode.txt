@@ -4,6 +4,9 @@ RC = Right click
 Keyboad Shortcuts
 =========================
 
+Toggle side panel = ctrl + b
+Open File Explorer on side panel = crtl + shift + e
+Open command pallet = ctrl + shift + p
 Toggle Terminal Panel = alt+shift+p
 Run python file = alt+ctrl+r
 toggle indentation = ctrl+[/]
@@ -15,7 +18,11 @@ search all files in project dir = ctrl + shift + f
 add cursor above/below = ctrl + alt + UpArrow/DownArrow
 go to end of line = shift + 0
 go to start of line = shift + 9
-
+Navigate through open tabs = ctrl + tab
+Close open tab = ctrl + w
+Move to end/start of words = ctrl + end/home
+Select entire word = ctrl + d
+Scroll up/down without moving cursor = ctrl + UpArrow/DownArrow
 ==================
 Refactoring Code
 ===================
