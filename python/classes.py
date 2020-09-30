@@ -1,5 +1,6 @@
 """
 Four Pillars of OOP (APIE)
+--------------------------
 Abstraction - Each object is its own idea.
 Polymorphism - The ability to have different shapes,(1+1=2, "1"+"1"="11").
 Inheritance - Getting features from other objects.
@@ -9,11 +10,12 @@ Encapsulation - The ability to lock in certain info within itself.
 
 class Person:
     """
-    __init__ is the constructor. Gets run at instance creation
-    All Person instances need to be created with a name & gender
+    __init__ method is the constructor. Gets run at instance creation
+    'self' refers to the instance, similar to 'this' in js
+    All Person instances need to be created with a name, gender, & age
     population is a class variable/attribute
     """
-    population = "South African"
+    population = 0
 
     def __init__(self, name, gender, age):
         self.name = name
@@ -54,9 +56,9 @@ class Person:
         return age > 18
 
 
-#================
+#============
 # Inheritance
-#================
+#============
 class Mother:
     def __init__(self, eye_color, hair_type):
         self.eye_color = eye_color
@@ -70,9 +72,9 @@ class Child(Mother):
         self.name = name
 
 
-#===============
+#========
 # Privacy
-#==============
+#========
 class Student:
     def __init__(self, name, surname):
         """No true privacy in python, but can be hinted by using _"""
@@ -82,3 +84,22 @@ class Student:
     def get_surname(self):
         """Method created to access private variable"""
         return self.__surname
+
+
+#========
+# Mixins
+#========
+"""
+A mixin is a special kind of multiple inheritance.
+Mixins are instantiated inside another class but never by themselves
+Used when you want to provide optional features for a class or
+when you want to use one particular feature in a lot of different classes.
+e.g class KDEPlot(Plot, HueMixin, LegendMixin, ClipMixin)
+"""
+#TODO: add mixin example
+
+
+#=================
+# Abstract Classes
+#=================
+# TODO: add abc example
