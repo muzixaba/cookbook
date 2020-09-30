@@ -100,8 +100,10 @@ do {
 // Logical (&&, ||, ![not])
 // Assignment (=, +=, -=, **=)
 // Bitwise (&, |, ~[not], ^[xor])
+
 // Identity/Type (typeof, instanceof)
 typeof "Must return string"
+
 // Membership ()
 
 // FUNCTIONS

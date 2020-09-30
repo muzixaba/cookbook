@@ -40,9 +40,13 @@ dynamic mayChangeTypes;
 var anyType = "dart will infer the type";
 
 // Constants & Final
-const String userMood = """Run time constant.
+// Const can only be used for top-level, static, local variables
+final String userMood = """Run time constant.
                        Can assume new value everytime code is run""";
-final String password = "Compile time constant. Will never change";
+const String password = "Compile time constant. Implicitly 'final'.Will never change";
+
+var foo = const []; // the object is const but the variable isn't
+final bar = const []; // the variable is final & the object is const
 
 // Collections
 List<String> siblings = ['Velile', 'Nathi', 'Mini'];
@@ -174,7 +178,7 @@ class Person {
   String name;
   int age;
 
-  // static attribute
+  // static attribute. used for class level variable
   static const String nationality = 'South African';
 
   // constructor with optional positional argument
