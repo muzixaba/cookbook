@@ -84,8 +84,23 @@ double fromString = double.parse("0.5");
 
 // Tenary Operator
 // condition ? "If true" : 'If false';
+int s = 70;
+print(s == 40 ? 'yes' : 'no'); // will print 'no'
+
 // Null Aware Operators
 // '?.', '??', '??='
+// ?. -> If object is null, assign it to null. Don't throw error
+// Used for conditional property/method access to an object that might be null
+// object?.property
+
+// '??' -> If object is null, assign new value
+int y;
+print(y ?? 4); //will return 4 but doesn't assign 4 to 'y'
+
+// '??=' If object is null, assign new value. Return object as is if not null
+int x = 5;
+print(x ??= 3); // returns value of 'x' or assigns 'x' to 3 if 'x' is null
+
 // '?.' Returns null is object before it is null
 // 'a ??= 5' Will only assign a to 5 if a is null
 // 'b ?? 6' Will return b if b is null, other wise it will return 6
@@ -109,11 +124,17 @@ if (shoeSize > 11 && age < 35) {
 }
 
 // Switch Statement
+// Good to use when there are many possible conditions for a singl value
+// Compares values of the same type
+// Only works with runtime constants
+// Can use break, continue (with/without label), & return to come out of statement
 int number = 3;
 switch (number) {
   case 0:
     print("The number is 0");
     break;
+  case 2:
+    print("The number is 2");
   case 3:
     print("The numbe is 3");
     break;
@@ -121,28 +142,36 @@ switch (number) {
     print("Couldn't find the number");
 }
 
-// For Loop
+// Standard For Loop
+// Use when you care about index
 for (var i=1; i<=10; ++i) {
   print(i);
   //if (i%2==0) break/continue;
 }
 
 // For-in Loop
+// Used when you don't care about index
 var nums = [1,2,3,4,5];
 for (var n in nums) {
   print(n);
 }
 
 // For-Each Loop
+// Its a list method.
+// Only used to provide side effects
+// Can only mutate existing objects
+// Higher-order function
 numbers.forEach((n) => print(n));
 
 // While Loop
+// May never run code block
 while (shoeSize > 0) {
   print(shoeSize);
   shoeSize -= 1;
 }
 
 // Do-While Loop
+// Will always run code block at least once
 do {
   print(shoeSize);
   shoeSize -= 1;
