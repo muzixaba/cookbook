@@ -160,7 +160,7 @@ for (var n in nums) {
 // Its a list method.
 // Only used to provide side effects
 // Can only mutate existing objects
-// Higher-order function
+// Higher-order function as it takes in another function
 numbers.forEach((n) => print(n));
 
 // While Loop
@@ -213,7 +213,7 @@ class Person {
   // constructor with optional positional argument
   Person(this.name, [this.age = 18]);
 
-  // named constructor
+  // named constructor. ClassName.constructorName(){}
   // Person guest = Person.guest();
   Person.guest() {
     name = 'Guest';

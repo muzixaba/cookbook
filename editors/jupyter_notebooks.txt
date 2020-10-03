@@ -1,0 +1,14 @@
+
+---------------
+Magic Methods
+---------------
+
+# Run terminal command
+!ls
+
+# Time single line of code
+%timeit
+
+# Run & Time a specific cell multiple times
+# Will run cell 10 times & repeat that whole process 200 times
+%%timeit -n 10 -r 200 

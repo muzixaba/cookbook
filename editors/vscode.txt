@@ -23,6 +23,8 @@ Close open tab = ctrl + w
 Move to end/start of words = ctrl + end/home
 Select entire word = ctrl + d
 Scroll up/down without moving cursor = ctrl + UpArrow/DownArrow
+
+
 ==================
 Refactoring Code
 ===================
