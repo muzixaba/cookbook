@@ -1,5 +1,6 @@
 -- Create a database
-
+-- CREATE DATABASE database_name;
+-- USE database_name; --Needed for MySQL to switch into the db
 
 -- Create a table inside a database
 
@@ -10,6 +11,11 @@
 -- Insert Multiple Records
 
 
+-- Read metadata
+/* gets table structure on sqlite
+PRAGMA table_info(flights);
+*/
+
 -- Search for records using sing table
 /*
 SELECT column_name(s)
@@ -18,6 +24,16 @@ WHERE <condition> AND <condition>
 GROUP BY column_name
 ORDER BY column_name DESC
 LIMIT #;
+*/
+
+-- Count number of unique entries in a specific column
+/*
+select count(distinct col_name) from table_name;
+*/
+
+-- Get max value in certain column
+/*
+select max(col_name) from table_name;
 */
 
 -- Search for records using multiple tables
