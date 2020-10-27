@@ -2,8 +2,26 @@
 -- CREATE DATABASE database_name;
 -- USE database_name; --Needed for MySQL to switch into the db
 
--- Create a table inside a database
+-- Create a tables inside a database
+-- CREATE TABLE author (
+--     author_id INTEGER NOT NULL PRIMARY KEY,
+--     first_name VARCHAR,
+--     last_name VARCHAR
+-- );
 
+-- CREATE TABLE book (
+--     book_id INTEGER NOT NULL PRIMARY KEY,
+--     author_id INTEGER REFERENCES author,
+--     title VARCHAR
+-- );
+
+/*
+-- joining table (many-to-many)
+CREATE TABLE author_publisher (
+    author_id INTEGER REFERENCES author,
+    publisher_id INTEGER REFERENCES publisher
+);
+*/
 
 -- Insert Single Record
 
@@ -46,6 +64,11 @@ select max(col_name) from table_name;
 /*
 UPDATE table_name 
    SET column1 = value1;
+
+UPDATE author
+SET first_name = 'Richard', last_name = 'Bachman'
+WHERE first_name = 'Stephen' AND last_name = 'King';
+
 */
 
 -- Update multiple records
@@ -57,7 +80,13 @@ WHERE <condition>;
 
 
 -- Delete single record
+/*
+DELETE FROM author
+WHERE first_name = 'Paul'
+AND last_name = 'Mendez';
 
+
+*/
 
 -- Delete mutlipe records
 
