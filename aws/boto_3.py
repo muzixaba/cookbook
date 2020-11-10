@@ -15,7 +15,6 @@ resp = ec2_client.run_instances(
 for instance in resp['Instances']:
     print(instance['InstanceId'])
 
-
 #==========
 # Dynamodb
 #==========
