@@ -359,6 +359,17 @@ class Person {
     }
 }
 
+/// Class with named parameters
+class Dog {
+    final String name;
+    final String type;
+    final int age;
+
+    Dog({this.name, this.type, this.age});
+}
+// creating an instance using named parameters
+Dog snoopy = Dog(name: 'Snoopy', type: 'PitBull', age: 3);
+
 /// Generic class
 class Person<t> {
 }

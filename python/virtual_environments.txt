@@ -29,3 +29,6 @@ pipenv install -r ./requirements.txt (install everything in requirements file)
 pipenv check (check packages for security issues)
 pipenv graph (shows dependencies & child dependencies)
 pipenv install --ignore-pipfile (installs packages using Pipfile.lock)
+
+# Install package in current folder
+pip install package_name -t .

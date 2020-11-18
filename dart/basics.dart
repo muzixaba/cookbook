@@ -134,9 +134,8 @@ switch (number) {
     print("The number is 0");
     break;
   case 2:
-    print("The number is 2");
   case 3:
-    print("The numbe is 3");
+    print("The number is 2 or 3");
     break;
   default:
     print("Couldn't find the number");
@@ -193,7 +192,7 @@ dynamic sum2(var positionalArg, [var optionalPositionalArg]) {
 dynamic sum3({var namedParam, var namedParam2}) => namedParam + namedParam2;
 
 // Assert. Similar to python's assert
-assert(10 > 5);
+assert(10 > 5, "Display this message if exception");
 
 
 
@@ -268,6 +267,8 @@ class Car extends Vehicle {
 // Car car1 = Car('Jetta', 2013, '45000');
 // Car.showCarInfo();
 
+// enums are classes that have constant attributes
+enum Robot {Red, Green, Orange}
 
 // Exceptions (try-catch)
 /*
