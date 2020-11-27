@@ -3,8 +3,14 @@ RC = Right click
 =========================
 Keyboad Shortcuts
 =========================
-
+open command pallet = ctrl + shft + p
 Toggle side panel = ctrl + b
+open setting = ctrl + ,
+tab through open editors = ctrl + tab
+quick open = ctrl + p, type file name
+close file  = ctrl + w
+move to start/end of file = ctrl + home/end
+open current tab in new pane = ctrl + \
 Open File Explorer on side panel = crtl + shift + e
 Open command pallet = ctrl + shift + p
 Toggle Terminal Panel = alt+shift+p
@@ -18,11 +24,16 @@ search all files in project dir = ctrl + shift + f
 add cursor above/below = ctrl + alt + UpArrow/DownArrow
 go to end of line = shift + 0
 go to start of line = shift + 9
+duplicate line = alt + shift + down_arrow
 Navigate through open tabs = ctrl + tab
 Close open tab = ctrl + w
+rename variable = f2
 Move to end/start of words = ctrl + end/home
 Select entire word = ctrl + d
+select all instances of word = ctrl + shift + l
+select word = ctrl + d
 Scroll up/down without moving cursor = ctrl + UpArrow/DownArrow
+toggle zen mode = ctrl + k, z
 
 
 ==================
