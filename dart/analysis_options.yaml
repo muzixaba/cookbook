@@ -1,0 +1,160 @@
+analyzer:
+  strong-mode:
+    implicit-casts: false
+
+linter:
+  rules:
+    # Annotate overridden methods and fields.
+    - annotate_overrides
+
+    # AVOID empty else statements.
+    - avoid_empty_else
+
+    # A function literal is an expression that defines an unnamed function.
+    - avoid_function_literals_in_foreach_calls
+
+    # If you make a parameter optional but don’t give it a default value,
+    # the language implicitly uses null as the default, so there’s no need to write it.
+    - avoid_init_to_null
+
+    # As null is a special type, no class can be equivalent to it.
+    # Thus, it is redundant to check whether the other instance is null.
+    - avoid_null_checks_in_equality_operators
+
+    # Ensure you have no relative imports that include lib/
+    - avoid_relative_lib_imports
+
+    - avoid_returning_null
+
+    # AVOID using a parameter name that is the same as an existing type.
+    - avoid_types_as_parameter_names
+
+    # AVOID defining unused parameters in constructors.
+    - avoid_unused_constructor_parameters
+
+    - await_only_futures
+
+    # Classes and typedefs should capitalize the first letter of each word
+    # (including the first word), and use no separators.
+    - camel_case_types
+
+    # Cancel instances of StreamSubscription to prevents memory leaks.
+    - cancel_subscriptions
+
+    # Use cascading when successively invoking methods on the same reference.
+    - cascade_invocations
+
+    # [Reference] only in (scope) identifiers in doc comments.
+    - comment_references
+
+    # lowerCamelCase for constant variables, including enum values.
+    - constant_identifier_names
+
+    # AVOID control flow leaving finally blocks.
+    - control_flow_in_finally
+
+    # place “dart:” imports before other imports.
+    - directives_ordering
+
+    # AVOID empty catch blocks.
+    - empty_catches
+
+    # Use ; instead of {} for empty constructor bodies.
+    - empty_constructor_bodies
+
+    # Avoid the empty statement altogether
+    - empty_statements
+
+    # Override hashCode if overriding == and vice versa.
+    - hash_and_equals
+
+    #  Never import from another package's lib/src directory
+    - implementation_imports
+
+    # DON'T test for conditions that can be inferred at compile time or test the same condition twice.
+    - invariant_booleans
+
+    # name libraries using lowercase_with_underscores.
+    - library_names
+
+    #  use lowercase_with_underscores when specifying a library prefix.
+    - library_prefixes
+
+    # DON'T invoke remove on List with an instance of different type than the parameter type.
+    - list_remove_unrelated_type
+
+    # DON'T use adjacent strings in list.
+    # This can be sign of forgotten comma.
+    - no_adjacent_strings_in_list
+
+    # DON'T use more than one case with same value.
+    - no_duplicate_case_values
+
+    # Class members, top-level definitions, variables, parameters,
+    # named parameters and named constructors should capitalize
+    # the first letter of each word except the first word, and use no separators.
+    - non_constant_identifier_names
+
+    # DO NOT pass null as an argument where a closure is expected.
+    - null_closures
+
+    # Omit type annotations for local variables.
+    - omit_local_variable_types
+
+    # Only throw instances of classes that extend dart.core.Error or dart.core.Exception.
+    - only_throw_errors
+
+    # DON'T override class fields.
+    - overridden_fields
+
+    # Provide doc comments for all public APIs.
+    - package_api_docs
+
+    # Use lowercase_with_underscores for package names.
+    - package_names
+
+    # Prefix library names with the package name and a dot-separated path.
+    - package_prefixed_library_names
+
+    # Use /// for doc comments
+    - slash_for_doc_comments
+
+    # Test type arguments in operator ==(Object other).
+    - test_types_in_equals
+
+    # AVOID throwing exceptions in finally blocks.
+    - throw_in_finally
+
+    # DON'T type annotate initializing formals.
+    - type_init_formals
+
+    # Await functions that return a Future inside of an async function body.
+    - unawaited_futures
+
+    # AVOID repeating const keyword in a const context.
+    - unnecessary_const
+
+    # AVOID wrapping fields in getters and setters just to be "safe".
+    - unnecessary_getters_setters
+
+    # DON'T create a lambda when a tear-off will do.
+    - unnecessary_lambdas
+
+    # AVOID new keyword to create instances.
+    - unnecessary_new
+
+    # AVOID using unnecessary statements.
+    - unnecessary_statements
+
+    # DON'T use this when not needed to avoid shadowing.
+    - unnecessary_this
+
+    # DON'T Compare references of unrelated types for equality.
+    - unrelated_type_equality_checks
+
+    # Use rethrow to rethrow a caught exception.
+    - use_rethrow_when_possible
+
+    # Use valid regular expression syntax when creating regular expression instances.
+    - valid_regexps
+  
