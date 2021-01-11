@@ -1,0 +1,24 @@
+// JavaScript Object Notation
+// Used for serialising/desirialising data
+
+// Similar to Python dict
+// "Double Quotes" for keys
+{"name": "Muzi", "age": 33, "height": 1.75}
+
+// Can easily nest objects.
+// No comma after last object
+{"students":[
+    {"name":"John", "age":"23", "city":"Agra"},
+    {"name":"Steve", "age":"28", "city":"Delhi"},
+    {"name":"Chaitanya", "age":"28", "city":"Bangalore"}
+ ]}
+
+ // Data Types
+ {
+"number": 123,
+"string": "piece of text",
+"boolean": true,
+"array": [1,2,3,4],
+"object": {"name": "Muzi", "height": 1.75},
+"null": {}
+}
