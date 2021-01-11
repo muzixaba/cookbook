@@ -55,6 +55,7 @@ uname -a -> displays basic info
 sudo lshw -> shows complete breakdown of hardware
 lshw -short -> a summarised version of 'sudo lshw'
 htop -> shows resource usage
+lsb_release -a -> show info on current Linux distro
 
 #============
 # Directories

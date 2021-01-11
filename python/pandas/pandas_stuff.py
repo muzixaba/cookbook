@@ -71,6 +71,8 @@ df['2020-01':'2020-02']
 # dropping ALL duplicte values  in certain column
 df.drop_duplicates(subset ="ref_colName", keep='first', inplace=True) 
 
+# Export df as csv
+df.to_csv(r'Path\To\File_Name.csv', index = False)
 
 
 #==========================================

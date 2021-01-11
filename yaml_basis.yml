@@ -1,0 +1,38 @@
+# YAML Ain't Markup Language
+# A superset of JSON
+
+# Uses key-value pairs
+# String don't need quotation marks
+name: Muzi
+
+# 2 spaces for Indentation structure
+contact_details:
+  cell: 12341341343
+  email: name@email.com
+  fax: 1343344424
+  alternative_contact:
+      cell: 4545255245
+      name: Sample Name
+
+# Basic lists use [...]
+groceries: [milk, pie, juice]
+
+# Lists of objects using '-'
+cars_in_garage:
+  - make: VW
+    model: Golf
+    year: 1900
+    engine_size: 2.0
+  - make: Toyota
+    model: Corolla
+    year: 2000
+    engine_size: 1.6
+
+# Multiline Strings
+quote: |
+      To be or nor to be
+      that is the question
+
+second_quote: >
+    You can also use the 
+    > sign for multiline strings
