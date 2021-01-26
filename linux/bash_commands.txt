@@ -146,10 +146,17 @@ rmdir dir_name -> Deletes an empty folder
 chmod +x file.ext -> changes file to executable
 source ~/.profile -> Reload system environment
 
+#===============
+# Working with Aliases
+#===============
+alias -> List all aliases
+unalias alias_name -> removes alias
+alias alias_name="command to call"
+
 #================
 # Zip Folders
 #================
-# sudo apt-get install Zip
+# sudo apt-get install zip
 # zip -r zip_dir_name.zip . (creates a zip folder containing all files in current dir. REMEMBER the period)
 # zip -g path/to.zip_dir_name.zip path/to/new_file.txt -> adds new file into zip folder. -g/--grow appends to existing zip directory
 

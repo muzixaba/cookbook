@@ -44,6 +44,15 @@ df['Rating Per Year of Age'] = df['Overall'] / df['Age']
 # Drop a column
 df.drop('Rating Per Year of Age', axis=1)
 
+# drop a specific row by index
+df.drop(df.index[0])
+
+# drop rows by index name
+df.drop(['index_1', 'index_2'])
+
+# drop a row(s) if it contains a specific value
+df[df['col_name'] != 'value']
+
 # Get unique values from a series/column
 df['col_name'].unique()
 

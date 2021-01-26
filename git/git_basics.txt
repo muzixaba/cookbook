@@ -199,6 +199,9 @@ git checkout branch_name
 git branch -d branch_name
 git push origin --delete branch_name (deletes remote branch)
 
+# Push Branch to remote
+git push <remote_name> <branch_name>
+
 # Show all branches
 git branch -a
 git branch --list
