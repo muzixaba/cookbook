@@ -1,5 +1,6 @@
 # YAML Ain't Markup Language
 # A superset of JSON
+# Has two file extensions: .yaml & .yml  
 
 # Uses key-value pairs
 # String don't need quotation marks
@@ -30,9 +31,27 @@ cars_in_garage:
 
 # Multiline Strings
 quote: |
-      To be or nor to be
-      that is the question
+      All of the text
+      here will be kept 
+      in multiple lines.
+
+# Single line Strings
+quote2: >
+  Everything here
+  will be returned as
+  a single line
 
 second_quote: >
     You can also use the 
     > sign for multiline strings
+
+# Referencing a value
+username: *name
+
+# Reference a key-value pair
+contact:
+  <<: *contact_details
+
+# Type casting
+age: !!float 33 # Will be rendered as 33.0
+height: !!str 1.75 # Will be "1.75"

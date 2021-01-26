@@ -144,6 +144,7 @@ rm *.txt -> Remove all files with specific file extension
 rm -rf dir_name/ -> Permanently deletes a folder with its files
 rmdir dir_name -> Deletes an empty folder
 chmod +x file.ext -> changes file to executable
+source ~/.profile -> Reload system environment
 
 #================
 # Zip Folders

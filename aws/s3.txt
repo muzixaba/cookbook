@@ -1,6 +1,6 @@
-#=========================
+#=======================
 # Host a Static Website
-#=========================
+#=======================
 Services -> S3
 Create 2 buckets:
     'Create bucket' -> nakeddomain.com
@@ -12,3 +12,24 @@ Use bucket to host a website (www.domain.com):
     choose error.html page
 Bucket -> Permissions -> Untick 'Block all public access' -> 'Save'
 Update bucket policy to allow for web access
+
+
+#=======
+# S3 CLI
+#=======
+
+# List all buckets
+aws s3 ls
+
+# List contents of specific bucket
+aws s3 ls s3://bucket_name
+
+# Create a new bucket
+aws s3 mb --region eu-west-1 s3://bucket_name
+
+# Enable versioning
+aws s3api put-bucket-versioning --bucket bucket_name --versioning-configuration Status=Enabled
+
+# Copy a file from local to s3
+aws s3 cp my-file.txt s3://bucket_name
+

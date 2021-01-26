@@ -1,0 +1,11 @@
+
+
+#=========
+# IAM CLI
+#=========
+
+# Create a Role
+aws iam create-role --role-name my-role --assume-role-policy-document file://file-name.json
+
+# Attach a policy to a role
+aws iam put-role-policy --role-name my-role --policy-name my-policy --policy-document file://file-name.json
