@@ -35,3 +35,6 @@ aws s3 cp my-file.txt s3://bucket_name
 
 # Turn bucket into Static Website
 aws s3 website s3://example.org --index-document index.html --error-document error.html
+
+# Generate a presigned url
+aws s3 presign s3://mybucket/myobject --expires-in 3600 --region my-region
