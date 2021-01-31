@@ -33,3 +33,5 @@ aws s3api put-bucket-versioning --bucket bucket_name --versioning-configuration 
 # Copy a file from local to s3
 aws s3 cp my-file.txt s3://bucket_name
 
+# Turn bucket into Static Website
+aws s3 website s3://example.org --index-document index.html --error-document error.html

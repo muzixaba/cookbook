@@ -1,0 +1,2 @@
+# Create stack
+aws cloudformation create-stack --stack-name file.yml --template-body file://file.yml
