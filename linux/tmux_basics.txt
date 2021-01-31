@@ -1,0 +1,47 @@
+#===========
+# Installing tmux
+#===========
+sudo apt-get install tmux
+
+
+#===========
+# Starting tmux
+#===========
+tmux
+
+#==========
+# Getting Help
+#==========
+C-b ?
+
+#=============
+# Splitting terminal
+#=============
+Vertical split: C-b %
+Create Window: C-b c
+
+#========
+# Navigation
+#========
+Move btw panes: C-b right/left arrow
+Closing Pane: Type 'exit' or Ctrl-d
+Switch to next window: C-b n
+Switch to previous window: C-b p
+Switch to specific window: C-b <window_number>
+Rename current window: C-b ,
+Toggle Full Screen: C-b z
+Resize pane: C-b C-<arrow key>
+
+#=========
+# Windows
+#=========
+
+
+#======
+# Sessions
+#======
+Detach from current session: C-b d
+Detach from specific session: C-b D
+View running sessions: tmux ls
+Connect to session: tmux attach -t <session-number>
+Rename a session: tmux renam-session -t <session-number> <new-name>
