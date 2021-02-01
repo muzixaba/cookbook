@@ -84,6 +84,7 @@ ls -a -> show all
 ls -l -> show long details
 ls -lah -> show all in list view, human readable
 ls -R -F -> displays all directories and files under the current directory
+lsblk - list block devices
 pwd - print working directory
 cd -> goes to home folder
 pushd -> jump directories and go to specific one

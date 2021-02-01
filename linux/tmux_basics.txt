@@ -14,34 +14,33 @@ tmux
 #==========
 C-b ?
 
-#=============
-# Splitting terminal
-#=============
+#======
+# Panes
+#======
 Vertical split: C-b %
-Create Window: C-b c
-
-#========
-# Navigation
-#========
 Move btw panes: C-b right/left arrow
 Closing Pane: Type 'exit' or Ctrl-d
-Switch to next window: C-b n
-Switch to previous window: C-b p
-Switch to specific window: C-b <window_number>
-Rename current window: C-b ,
 Toggle Full Screen: C-b z
 Resize pane: C-b C-<arrow key>
+
 
 #=========
 # Windows
 #=========
+Create Window: C-b c
+Rename current window: C-b ,
+Switch to previous window: C-b p
+Switch to next window: C-b n
+Switch to specific window: C-b <window_number>
+List windows: C-b w
 
 
-#======
+#=========
 # Sessions
-#======
+#=========
+Create session: tmux new -s <session-name>
 Detach from current session: C-b d
 Detach from specific session: C-b D
 View running sessions: tmux ls
 Connect to session: tmux attach -t <session-number>
-Rename a session: tmux renam-session -t <session-number> <new-name>
+Rename a session: tmux rename-session -t <session-number> <new-name>

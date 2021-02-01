@@ -1,2 +1,7 @@
 # Create stack
-aws cloudformation create-stack --stack-name file.yml --template-body file://file.yml
+aws cloudformation create-stack \
+        --stack-name file.yml \
+        --template-body file://file.yml \
+        --parameters
+        ParameterKey=<1st-param>, ParameterValue=<1st-param-value> \
+        ParameterKey=<2nd-param>, ParameterValue=<2nd-param-value>
