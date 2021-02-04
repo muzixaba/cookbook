@@ -127,3 +127,20 @@ Enable Encryption (optional)
 Next (Reivew) -> Create File System
 NOTE:   Your EC2 security group has to allow for NFS connections
         View 'Amazon EC2 mount instructions (from local VPC)
+
+
+#=====
+# CLI
+#=====
+
+# Launch an instance
+aws ec2 run-instances \
+    --image-id ami-123456789 \
+    --instance-type t2.micro \
+    --key-name <key-pair-name> \
+
+# Terminate an instance
+aws ec2 terminate-instances --instance-ids <instance-id>
+
+# Creating a key pair
+aws ec2 create-key-pair --key-name <key-pair-name>
