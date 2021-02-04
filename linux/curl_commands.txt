@@ -1,10 +1,20 @@
-# User signup using api
+
+# Visit a basic website, uses GET by default (-v: verbose)
+curl -v google.com
+
+# User signup using api (-H: header, -d: data)
 curl -X "POST" example.com/api/signup -H 'Content-Type: application:json' -d '{"username": "TestName", "password": "Secrete234"}'
 curl -X "POST" http://127.0.0.1:8000/api/signup -H 'Content-Type: application:json' -d '{"username": "Teso2", "password": "Minenhle2"}'
 
-# Update an object using PUT
+# Send a POST request using a file
+curl url.com -d @file_name.json -H 'content-type: application/json"
+
+# Update an object using PUT (-X: http method)
 curl -X "PUT" example.com/api/todos/1/complete -H 'Authorization: Token c1480ce3aabf581fe7f159162712f6d03958b01b'
 
 # Authenticate using a token
 curl example.com/api/todos -H 'Authorization: Token token_string'
 curl http://127.0.0.1:8000/api/todos -H 'Authorization: Token c1480ce3aabf581fe7f159162712f6d03958b01b'
+
+# Authenticate using Username & Password
+curl url.com -u myusername:mypassword
