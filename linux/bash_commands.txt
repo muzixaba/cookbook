@@ -271,4 +271,4 @@ dig domainname.com -> Same as nslookup but with more info
 # Miscellaneous
 #===============
 source ~/.profile -> Reload system environment
-
+whoami -> check which user you're logged in as
