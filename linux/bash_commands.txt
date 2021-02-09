@@ -64,6 +64,7 @@ mkdir folder_name -> creates folder called folder_name is working directory
 mkdir -p folder_1/folder_2 -> creates a folder_2 inside folder_1
 
 #========
+ 
 # Navigation
 #========
 cd -> goes to home directory
@@ -82,6 +83,8 @@ find / -name file.ext -> searches entire computer
 ls -> list storage
 ls -a -> show all
 ls -l -> show long details
+ls -lt -> sort by last modified
+ls -ltr -> sort by last modified in reverse order
 ls -lah -> show all in list view, human readable
 ls -R -F -> displays all directories and files under the current directory
 lsblk - list block devices
@@ -114,42 +117,59 @@ echo $ENVIRON_VAR -> returns the value of ENVIRON_VAR
 \ -> Backslash to start typing command in new line
 explorer . -> Open current directory in file explorer (Windows)
 
-#====
+
+#============
+# Directories
+#============
+mkdir folder_name -> creates folder called folder_name is working directory
+mkdir -p folder_1/folder_2 -> creates a folder_2 inside folder_1
+mkdir /full/path -> creates dir using full path
+mkdir rel/path -> creates dir using relative path
+
+#========
 # Files
-#====
+#========
+
+# CREATE
+touch file_name.txt -> creates new file
+touch *.txt -> changes all date modified to now
+cat >filename -> creates a new file
+
+# READ
+cat file_name -> reads file and returns contents inside the terminal
+nano file_name -> opens file_name inside the nano
+vim file_name -> opens file_name inside the vim
+head file.txt -> outputs first 10 lines of document
+tail file.txt -> displays last part of file
+more file_name -> page up or down a file
+less file_name -> navigate inside a file
+cat fil1 file2 file3 > ./merged_file.txt -> cat can also be used to concatinate files
+wc -c/-w/-l file_name -> word, character, line count
+ls -U | head -4 -> look at the first 4 files
+cut -f 2-5, 8-d, file.csv -> view select columns in file, use ',' as delimeter
+ls -1 | wc -l -> Number of files in current directory
+
+# UPDATE
 mv/cp dir/file1.txt dir/file2.txt backup -> move or copy files to dir call backup
 mv/cp dir/dir2/file.txt . -> move/copy files to current directory
 mv old-name new-name -> Rename directory (deletes old dir)
 cp old_name new_name -> Copies directory (keeps old dir)
 cp -R ~/path/from/home/* . -> Copies all files inside a folder into current folder
-rm file_name -> delete file
-head file.txt -> outputs first 10 lines of document
-tail file.txt -> displays last part of file
-wc -c/-w/-l file_name -> word, character, line count
-nano file_name -> opens file_name inside the nano
-vim file_name -> opens file_name inside the vim
-touch file_name.txt -> creates new file
-touch *.txt -> changes all date modified to now
-cat file_name -> reads file and returns contents inside the terminal
-cat fil1 file2 file3 > ./merged_file.txt -> cat can also be used to concatinate files
-cat >filename -> creates a new file
-more file_name -> page up or down a file
-less file_name -> navigate inside a file
-cut -f 2-5, 8-d, file.csv -> view select columns in file, use ',' as delimeter
-ls -1 | wc -l -> Number of files in current directory
-rm -r /path/to/directory/* -> Delete all files & subdirectories inside a directory.
-ls -U | head -4 -> look at the first 4 files
 sudo chmod -R <permissions> path/to/dir -> Change permissions for all files inside a specific directory (HANDLE WITH CARE)
 echo "String to appended on line" >> file.ext
+chmod +x file.ext -> changes file to executable
+
+# DELETE
+rm file_name -> delete file
+rm -r /path/to/directory/* -> Delete all files & subdirectories inside a directory.
 rm *.txt -> Remove all files with specific file extension
 rm -rf dir_name/ -> Permanently deletes a folder with its files
 rmdir dir_name -> Deletes an empty folder
-chmod +x file.ext -> changes file to executable
-source ~/.profile -> Reload system environment
 
-#===============
+
+#======================
 # Working with Aliases
-#===============
+#======================
 alias -> List all aliases
 unalias alias_name -> removes alias
 alias alias_name="command to call"
@@ -200,22 +220,6 @@ man scp
 pkill program -> kill all processes of certain program
 htop -> view system resource usage (cores, memory, etc)
 
-#===================
-# Conda Virtual Environments
-#===================
-
-# Create new virtual environmnet and install multiple packages
-conda create --name=venv_name python numpy pandas==0.25.1 etc
-
-# Activate Virtual Environment
-conda activate venv_name
-
-# Deactivate Virtual Environment
-conda deactivate
-
-# List all virtual Environments
-conda env list
-
 
 #=======
 # OpenVPN
@@ -247,16 +251,24 @@ python -m idlelib -> activates IDLE shell
 4: Save file and restart terminal
 
 
-#==================
+
+#==========================
 # Change Instance Password
-#==================
+#==========================
 Edit sshd configuration file /etc/ssh/sshd_config as root.
 Uncomment PasswordAuthentication and set to yes.
 Save the file and exit. Restart ssh service for this to take effect.
 run command: passwd UserName
+
 
 #=========
 # Networking
 #=========
 nslookup domainname.com -> Returns IP address associated with domain name. A record
 dig domainname.com -> Same as nslookup but with more info
+
+#===============
+# Miscellaneous
+#===============
+source ~/.profile -> Reload system environment
+
