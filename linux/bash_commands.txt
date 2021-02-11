@@ -76,6 +76,12 @@ cd ../.. -> moves up two directories
 #=======
 find . -name file.ext -> searches from current dir and its sub directories
 find / -name file.ext -> searches entire computer
+grep text file.txt -> searches for 'text' inside file.txt
+grep -i text file.txt -> searches for 'text' inside file.txt. Ignore case
+grep text * -> searches for 'text' inside all files in current directory
+grep -r text * -> search for 'text' inside current directory & its subdirectories
+grep -l text * -> lists the names of actual files that contain 'text'
+
 
 #============
 # Basic Commands
@@ -123,8 +129,12 @@ explorer . -> Open current directory in file explorer (Windows)
 #============
 mkdir folder_name -> creates folder called folder_name is working directory
 mkdir -p folder_1/folder_2 -> creates a folder_2 inside folder_1
-mkdir /full/path -> creates dir using full path
-mkdir rel/path -> creates dir using relative path
+mkdir /dir_name-> creates creates dir_name inside root directory
+mkdir dir_name -> creates dir_name inside current directory
+mkdir -p dir1/dir2/dir3 -> creates all 2 directories inside dir1 & also ensures dir1 gets created if not exist
+pwd -> print working directory
+rm -r dir_name -> deletes everythin inside dir_name & dir_name
+cp -r dir1 dir2 -> copies dir1 into dir2
 
 #========
 # Files
@@ -132,6 +142,7 @@ mkdir rel/path -> creates dir using relative path
 
 # CREATE
 touch file_name.txt -> creates new file
+touch file1 file2 file3 -> creates 3 files
 touch *.txt -> changes all date modified to now
 cat >filename -> creates a new file
 
@@ -140,14 +151,18 @@ cat file_name -> reads file and returns contents inside the terminal
 nano file_name -> opens file_name inside the nano
 vim file_name -> opens file_name inside the vim
 head file.txt -> outputs first 10 lines of document
+head -n 5 file.txt -> returns the first 5 lines of file.txt
 tail file.txt -> displays last part of file
 more file_name -> page up or down a file
-less file_name -> navigate inside a file
+less file_name -> navigate inside a file (up/down arrows or pdup/pgdown)
+file file_name -> returns file type
 cat fil1 file2 file3 > ./merged_file.txt -> cat can also be used to concatinate files
 wc -c/-w/-l file_name -> word, character, line count
 ls -U | head -4 -> look at the first 4 files
 cut -f 2-5, 8-d, file.csv -> view select columns in file, use ',' as delimeter
 ls -1 | wc -l -> Number of files in current directory
+cmp file1 file2 -> compares files on a byte-by-byte basis
+colordiff file1 file2 -> Returns differences btw 2 files. color coded
 
 # UPDATE
 mv/cp dir/file1.txt dir/file2.txt backup -> move or copy files to dir call backup
