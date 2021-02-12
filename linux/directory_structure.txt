@@ -1,0 +1,4 @@
+/ -> root
+/tmp -> temp files, deleted on restart
+/home -> houses user directories
+/home/username -> specific users directory

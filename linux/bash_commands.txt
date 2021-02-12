@@ -287,3 +287,9 @@ dig domainname.com -> Same as nslookup but with more info
 #===============
 source ~/.profile -> Reload system environment
 whoami -> check which user you're logged in as
+which package -> finds the location of an executable
+whereis package -> returns location, source location, man page files for package
+sudo -> used to grant user admin permissions outside of their user folder
+sudo -i -> switches from user to root (how's it diff from 'sudo su'????)
+groups <username> -> returns groups a user is in
+crontab -e -> opens file used to manage cronjobs
