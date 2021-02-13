@@ -37,6 +37,13 @@ glxinfo | grep "OpenGL renderer"
 :clear
 :add ~/Music
 
+#=====
+# Ranger
+#========
+ranger -> opens ranger
+q -> quits Ranger
+@ -> enter bash command without leaving ranger
+
 # Check if a website is running
 ping url -c 3 ??????????
 
@@ -95,7 +102,10 @@ ls -lah -> show all in list view, human readable
 ls -R -F -> displays all directories and files under the current directory
 lsblk - list block devices
 pwd - print working directory
-cd -> goes to home folder
+cd -> goes to user's home folder
+cd ~ -> goes to user's home folder
+cd / -> goes to root folder
+cd - -> goes to previous directory user was in
 pushd -> jump directories and go to specific one
 popd  -> jump back to last directory
 file file_name -> returns file extension
