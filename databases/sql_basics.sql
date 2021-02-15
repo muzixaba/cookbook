@@ -23,14 +23,17 @@ CREATE TABLE author_publisher (
 );
 */
 
--- Insert Single Record
+-- Insert  a NEW Single Record
 -- INSERT is used to create rows/records
-
+/*
+INSERT INTO table_name (column1, column2)
+VALUES (value1, value2);
+*/
 
 -- Insert Multiple Records
 
 -- Insert Distinct Values from into one table from another
-INSERT INTO TargetTable (target_column) SELECT DISTINCT column_name FROM TableWithInfo;
+--INSERT INTO TargetTable (target_column) SELECT DISTINCT column_name FROM TableWithInfo;
 
 -- Read metadata
 /* gets table structure on sqlite
@@ -63,8 +66,7 @@ select max(col_name) from table_name;
 -- Search using wildcards ('%', '_')
 
 
--- Update single record
--- Use UPDATE to rows/records that already exist
+-- Update single record. USE FOR EXISTING RECORDS
 /*
 UPDATE table_name 
    SET column1 = value1;
