@@ -132,7 +132,9 @@ set -> displays environment variables
 echo $ENVIRON_VAR -> returns the value of ENVIRON_VAR
 \ -> Backslash to start typing command in new line
 explorer . -> Open current directory in file explorer (Windows)
-
+&& -> Chains commands. Only runs the second/next command if the first one worked.
+ctrl + a -> Moves cursor to start of command
+ctrl + b -> Moves cursor to end of command
 
 #============
 # Directories
