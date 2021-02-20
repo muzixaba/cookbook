@@ -116,6 +116,7 @@ sudo updatedb -> updates the locate database
 which -> used to fine toerh commands install on your system
 up arrow -> show history of commands. Last In First Out (LIFO)
 history -> shows history of commands you typed
+ctrl + r -> reverse research, alternative to using history
 man command_name -> returns the manual for a specific command_name
 apropos keyword -> shows command related to keyword
 id -> returns info about your system
@@ -305,3 +306,31 @@ sudo -> used to grant user admin permissions outside of their user folder
 sudo -i -> switches from user to root (how's it diff from 'sudo su'????)
 groups <username> -> returns groups a user is in
 crontab -e -> opens file used to manage cronjobs
+wget url -> downloads files from the web
+
+
+#=======================
+# Creating Bash Scripts
+#=======================
+1. Create .sh file containing commands
+2. File line of file should be shebang (#!/bin/bash)
+3. Save file
+4. Make file executable (chmod +x file.sh)
+5. Execute file (./file.sh)
+
+
+#=================
+# File permissions
+#=================
+4 = read (r)
+2 = write (w)
+1 = execute (x)
+
+user | group | other
+
+777 - full rights to everyone
+400 - only user has read rights
+764 - user has full rights, group can only read & write, others can only read
+
+drwxr-xr-x -> It's a directory. User has full rights, group can read & execute, others can only execute
+-rw-r--r-- -> It's a file. User can read & write, group & others can only read
