@@ -307,7 +307,7 @@ sudo -i -> switches from user to root (how's it diff from 'sudo su'????)
 groups <username> -> returns groups a user is in
 crontab -e -> opens file used to manage cronjobs
 wget url -> downloads files from the web
-
+tee -> reads from std output & writes to std output & file(s)
 
 #=======================
 # Creating Bash Scripts
@@ -344,14 +344,15 @@ a && b -> Execute command b only if command a was successful (AND)
 a || b -> Execute command b only if command a failed (OR)
 a | b -> Pipe connects the output of command a as the input of command b
 
-# use \ to write multiline commands
+# use \ to write multi line commands
 command 1 \
   | command 2 \
   | command 3
 
-# redict output
+# redirect output 
 a > b -> Output from a is written into b. overwrites anything found inside b
 a >> b -> Output from a is appended into b
+a > /tmp/sample 2> /tmp/sample_error -> output from redirect contains both  the output and any errors
 
 #===========
 # Exit Codes
