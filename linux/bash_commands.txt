@@ -334,3 +334,31 @@ user | group | other
 
 drwxr-xr-x -> It's a directory. User has full rights, group can read & execute, others can only execute
 -rw-r--r-- -> It's a file. User can read & write, group & others can only read
+
+
+#====================
+# Chaining Commands
+#====================
+
+a && b -> Execute command b only if command a was successful (AND)
+a || b -> Execute command b only if command a failed (OR)
+a | b -> Pipe connects the output of command a as the input of command b
+
+# use \ to write multiline commands
+command 1 \
+  | command 2 \
+  | command 3
+
+# redict output
+a > b -> Output from a is written into b. overwrites anything found inside b
+a >> b -> Output from a is appended into b
+
+#===========
+# Exit Codes
+#===========
+0 - Ran successfully
+1 - Catchall error code
+127 - Command not found
+128 - Invalid argument to exit
+130 - Script ended by crtl+C
+255* - Exit status out of range
