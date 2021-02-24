@@ -303,3 +303,6 @@ sudo -> used to grant user admin permissions outside of their user folder
 sudo -i -> switches from user to root (how's it diff from 'sudo su'????)
 groups <username> -> returns groups a user is in
 crontab -e -> opens file used to manage cronjobs
+neofetch -> show system specs
+ncdu -> shows how much space is being taken by files & folders
+cmatrix -> displays a matrix effect. cool for backgrounds.
