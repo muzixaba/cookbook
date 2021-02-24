@@ -116,6 +116,7 @@ sudo updatedb -> updates the locate database
 which -> used to fine toerh commands install on your system
 up arrow -> show history of commands. Last In First Out (LIFO)
 history -> shows history of commands you typed
+ctrl + r -> reverse research, alternative to using history
 man command_name -> returns the manual for a specific command_name
 apropos keyword -> shows command related to keyword
 id -> returns info about your system
@@ -132,7 +133,9 @@ set -> displays environment variables
 echo $ENVIRON_VAR -> returns the value of ENVIRON_VAR
 \ -> Backslash to start typing command in new line
 explorer . -> Open current directory in file explorer (Windows)
-
+&& -> Chains commands. Only runs the second/next command if the first one worked.
+ctrl + a -> Moves cursor to start of command
+ctrl + b -> Moves cursor to end of command
 
 #============
 # Directories
@@ -306,3 +309,61 @@ crontab -e -> opens file used to manage cronjobs
 neofetch -> show system specs
 ncdu -> shows how much space is being taken by files & folders
 cmatrix -> displays a matrix effect. cool for backgrounds.
+wget url -> downloads files from the web
+tee -> reads from std output & writes to std output & file(s)
+
+#=======================
+# Creating Bash Scripts
+#=======================
+1. Create .sh file containing commands
+2. File line of file should be shebang (#!/bin/bash)
+3. Save file
+4. Make file executable (chmod +x file.sh)
+5. Execute file (./file.sh)
+
+
+#=================
+# File permissions
+#=================
+4 = read (r)
+2 = write (w)
+1 = execute (x)
+
+user | group | other
+
+777 - full rights to everyone
+400 - only user has read rights
+764 - user has full rights, group can only read & write, others can only read
+
+drwxr-xr-x -> It's a directory. User has full rights, group can read & execute, others can only execute
+-rw-r--r-- -> It's a file. User can read & write, group & others can only read
+
+
+#====================
+# Chaining Commands
+#====================
+
+a && b -> Execute command b only if command a was successful (AND)
+a || b -> Execute command b only if command a failed (OR)
+a | b -> Pipe connects the output of command a as the input of command b
+
+# use \ to write multi line commands
+command 1 \
+  | command 2 \
+  | command 3
+
+# redirect output 
+a > b -> Output from a is written into b. overwrites anything found inside b
+a >> b -> Output from a is appended into b
+a > /tmp/sample 2> /tmp/sample_error -> output from redirect contains both  the output and any errors
+
+#===========
+# Exit Codes
+#===========
+0 - Ran successfully
+1 - Catchall error code
+127 - Command not found
+128 - Invalid argument to exit
+130 - Script ended by crtl+C
+255* - Exit status out of range
+

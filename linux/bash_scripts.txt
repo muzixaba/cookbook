@@ -1,0 +1,57 @@
+#=======================
+# Creating Bash Scripts
+#=======================
+1. Create .sh file containing commands
+2. File line of file should be shebang (#!/bin/bash)
+3. Save file
+4. Make file executable (chmod +x file.sh)
+5. Execute file (./file.sh)
+
+########################################################
+# Takes name & surname as positional args & returns them
+#!/bin/bash
+echo Name: $1
+echo Surname: $2
+
+#########################################################
+
+#######################################################
+# Executes an if-statement. fi - indicates end of if-statement
+# -e -> true, if exists
+# -d -> true, if exists & is directory
+# -f -> true, if exists & is file
+# -s -> true, if exists & size > 0
+# -x -> true, if exists & is executable
+
+#!/bin/bash
+if [ -e /etc/passwd ]; then
+  echo passwd exists
+else
+  touch /etc/passwd
+fi
+
+########################################################
+
+########################################################
+# String comparisons
+#!/bin/bash
+
+$1='Something'
+$2='Nothing'
+
+if [ -n $1 ]; then
+  echo "String has a length > 1"
+fi
+
+if [ -z $1 ]; then
+  echo "String has a length == 0"
+fi
+
+if [ $1 == $2 ]; then
+  echo 'Something equals to nothing'
+else
+  echo 'Something does not equals to nothing'
+fi
+
+
+########################################################
