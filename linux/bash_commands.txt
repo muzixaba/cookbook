@@ -312,6 +312,7 @@ cmatrix -> displays a matrix effect. cool for backgrounds.
 wget url -> downloads files from the web
 tee -> reads from std output & writes to std output & file(s)
 systemctl status cron.service -> checks if cron service is active
+xrandr -s -> shows you possible screen resolutions
 
 #=======================
 # Creating Bash Scripts
