@@ -311,6 +311,7 @@ ncdu -> shows how much space is being taken by files & folders
 cmatrix -> displays a matrix effect. cool for backgrounds.
 wget url -> downloads files from the web
 tee -> reads from std output & writes to std output & file(s)
+systemctl status cron.service -> checks if cron service is active
 
 #=======================
 # Creating Bash Scripts
@@ -367,3 +368,11 @@ a > /tmp/sample 2> /tmp/sample_error -> output from redirect contains both  the 
 130 - Script ended by crtl+C
 255* - Exit status out of range
 
+#==============
+# Power Commands
+#==============
+sudo poweroff -> shuts down system
+sudo shutdown -P now -> shuts down system right now
+sudo reboot -> reboots system
+sudo shutdown -r now -> reboots system right now
+sudo shutdown -r 10 -> reboots after 10 minutes

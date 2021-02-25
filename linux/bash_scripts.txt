@@ -8,6 +8,22 @@
 5. Execute file (./file.sh)
 
 ########################################################
+# BASICS
+########################################################
+
+# Arithmetic Operators
+Num1 -eq Num2 -> true, if Num1 == Num2
+N1 -ne N2 -> true, if N1 != N2
+n1 -ge n2 -> true, if n1 >= n2
+n1 -gt n2 -> true, if  n1 > n2
+
+# Arithmetic expressions should have ((double quotes)) -> ((1 + 2)) or ((3 < 5))
+
+# Expanding a list 
+echo {1..5} -> 1 2 3 4 5
+touch /tmp/file{1..3} -> creates 3 files
+
+########################################################
 # Takes name & surname as positional args & returns them
 #!/bin/bash
 echo Name: $1
@@ -55,3 +71,43 @@ fi
 
 
 ########################################################
+
+########################################################
+# Script install an Apached server & creates a simple webpage
+# To be used with AWS Linux 2 AMI
+#!/bin/bash
+yum update -y
+yum install -y httpd
+systemctl start httpd.service
+systemctl enable httpd.service
+echo "Hello World from $(hostname -f)" > /var/www/html/index.html
+
+########################################################
+
+########################################################
+# FOR-LOOP
+
+for name in Muzi Nathi Nkosi
+do
+  echo "Hello $name"
+done
+
+########################################################
+# WHILE-LOOP
+
+i=0
+while [$SECONDS -lt 3 ]; do
+  i=$((i+1))
+done
+echo $i
+
+########################################################
+# SINGLE VS DOUBLE QOUTATION MARKS
+
+# inside scripts
+'single' quotes for bash to read characters literally & returns everthing as is
+"double" qoutes are for string interpolation
+
+# creating files
+touch hello world -> creates 2 files
+touch "hello world" -> creates a single file
