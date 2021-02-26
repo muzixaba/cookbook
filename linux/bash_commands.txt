@@ -278,7 +278,14 @@ python -m idlelib -> activates IDLE shell
 3: Replace the '\$' at the end of the expression with '\n\$'
 4: Save file and restart terminal
 
+#=====
+# SSH
+#=====
+# Provides remote access to servers
 
+ssh <username>@<address> -> connects to remote server without key-pair
+ssh -i <pem/file/location.pem> <username>@<address> -> connects using pem file
+ssh-keygen -> creates keypair
 
 #==========================
 # Change Instance Password
@@ -377,3 +384,11 @@ sudo shutdown -P now -> shuts down system right now
 sudo reboot -> reboots system
 sudo shutdown -r now -> reboots system right now
 sudo shutdown -r 10 -> reboots after 10 minutes
+
+#===============
+# Disable Password Login on Server
+#==================================
+open /etc/ssh/sshd_config
+ChallengeResponseAuthentication no
+PasswordAuthentication no
+service sshd restart -> restarts ssh server
