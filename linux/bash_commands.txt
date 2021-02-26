@@ -100,7 +100,7 @@ ls -lt -> sort by last modified
 ls -ltr -> sort by last modified in reverse order
 ls -lah -> show all in list view, human readable
 ls -R -F -> displays all directories and files under the current directory
-lsblk - list block devices
+lsblk - list attached block devices
 pwd - print working directory
 cd -> goes to user's home folder
 cd ~ -> goes to user's home folder

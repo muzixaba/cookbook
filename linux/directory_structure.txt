@@ -2,3 +2,4 @@
 /tmp -> temp files, deleted on restart
 /home -> houses user directories
 /home/username -> specific users directory
+/etc/fstab -> system config file that contains all available disks, disk partitions and their options
