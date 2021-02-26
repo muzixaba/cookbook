@@ -73,7 +73,7 @@ fi
 ########################################################
 
 ########################################################
-# Script install an Apached server & creates a simple webpage
+# Script install an Apache server & creates a simple webpage
 # To be used with AWS Linux 2 AMI
 #!/bin/bash
 yum update -y
