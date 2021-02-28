@@ -1,12 +1,12 @@
-#===========
+#================
 # Launch terminal
-#===========
+#================
 crlt + alt + t
 
 
-#========
+#===========
 # YouTube-dl
-#========
+#===========
 youtube-dl --extract-audio --audio-format mp3
 curl http://checkip.amazonaws.com
 lspci
@@ -14,9 +14,9 @@ top -o cpu
 top
 
 
-#==========
+#============
 # Shutdown PC
-#==========
+#============
 sudo shutdown -P +60
 sudo shutdown -P 23:00
 sudo shutdown -P now
@@ -37,7 +37,7 @@ glxinfo | grep "OpenGL renderer"
 :clear
 :add ~/Music
 
-#=====
+#========
 # Ranger
 #========
 ranger -> opens ranger
@@ -47,33 +47,32 @@ q -> quits Ranger
 # Check if a website is running
 ping url -c 3 ??????????
 
-#========
+#============
 # Navigation
-#========
+#============
 clrt + k -> cuts from cursor till end of line
 ctrl + u -> cuts from cursor to beginning of line
 Shift + Insert -> pastes what's on the clipboard
 ctrl + w -> delete one word at a time
 
-#==============
+#===================
 # System Information
-#==============
+#===================
 uname -a -> displays basic info
 sudo lshw -> shows complete breakdown of hardware
 lshw -short -> a summarised version of 'sudo lshw'
 htop -> shows resource usage
 lsb_release -a -> show info on current Linux distro
 
-#========
+#============
 # Directories
-#========
+#============
 mkdir folder_name -> creates folder called folder_name is working directory
 mkdir -p folder_1/folder_2 -> creates a folder_2 inside folder_1
 
-#========
- 
+#===========
 # Navigation
-#========
+#===========
 cd -> goes to home directory
 cd .. -> moves up one directory
 cd ../.. -> moves up two directories
@@ -90,9 +89,9 @@ grep -r text * -> search for 'text' inside current directory & its subdirectorie
 grep -l text * -> lists the names of actual files that contain 'text'
 
 
-#============
+#================
 # Basic Commands
-#============
+#================
 ls -> list storage
 ls -a -> show all
 ls -l -> show long details
@@ -214,18 +213,18 @@ alias alias_name="command to call"
 sudo apt-get install Unzip
 unzip name.zip (unzipping a zip file)
 
-#============
+#==================
 # Check Disk Space
-#============
+#==================
 sudo du -sh /path/to/dir/* -> returns space used by subdirectories & files
 du -h -> returns file sizes
 df -h -> check free space
 ls -1 | wc -l -> Number of files in current directory
 
 
-#======================
+#=================================
 # Copy File between Local & Cloud
-#======================
+#=================================
 
 # copy local file/folder to cloud
 scp file_name.txt somethin@123.23.123.123
@@ -243,63 +242,40 @@ scp -r username@hostname:/path/from/file .
 
 man scp
 
-#========
+#==========
 # Processes
-#========
+#==========
 pkill program -> kill all processes of certain program
 htop -> view system resource usage (cores, memory, etc)
 
 
-#=======
+#========
 # OpenVPN
-#=======
+#========
 sudo openvpn --config file_name
 
 
-#==========
-# Jupyter Server
-#==========
-login/ssh into EC2 instance
-jupyter notebook --no-browser --port=8889 --ip=0.0.0.0
-
-
-#=========================
+#===================================
 # Open IDLE using Conda Environment
-#=========================
+#===================================
 conda activate/activate myenv (if not activated already)
 python -m idlelib -> activates IDLE shell
 
 
-#===========================
+#=========================================
 # Force bash to start command in new lines
-#===========================
+#=========================================
 1: from home directory, open bashrc using nano:
         $ nano ~/.bashrc
 2: Look for where the PS1 variable is mentioned
 3: Replace the '\$' at the end of the expression with '\n\$'
 4: Save file and restart terminal
 
-#=====
-# SSH
-#=====
-# Provides remote access to servers
-
-ssh <username>@<address> -> connects to remote server without key-pair
-ssh -i <pem/file/location.pem> <username>@<address> -> connects using pem file
-ssh-keygen -> creates keypair
-
-#==========================
-# Change Instance Password
-#==========================
-Edit sshd configuration file /etc/ssh/sshd_config as root.
-Uncomment PasswordAuthentication and set to yes.
-Save the file and exit. Restart ssh service for this to take effect.
-run command: passwd UserName
 
 
-#=========
+#===========
 # Networking
-#=========
+#===========
 nslookup domainname.com -> Returns IP address associated with domain name. A record
 dig domainname.com -> Same as nslookup but with more info
 
@@ -321,6 +297,7 @@ wget url -> downloads files from the web
 tee -> reads from std output & writes to std output & file(s)
 systemctl status cron.service -> checks if cron service is active
 xrandr -s -> shows you possible screen resolutions
+ufw status -> check firewall status
 
 #=======================
 # Creating Bash Scripts
@@ -377,19 +354,12 @@ a > /tmp/sample 2> /tmp/sample_error -> output from redirect contains both  the 
 130 - Script ended by crtl+C
 255* - Exit status out of range
 
-#==============
+#===============
 # Power Commands
-#==============
+#===============
 sudo poweroff -> shuts down system
 sudo shutdown -P now -> shuts down system right now
 sudo reboot -> reboots system
 sudo shutdown -r now -> reboots system right now
 sudo shutdown -r 10 -> reboots after 10 minutes
 
-#===============
-# Disable Password Login on Server
-#==================================
-open /etc/ssh/sshd_config
-ChallengeResponseAuthentication no
-PasswordAuthentication no
-service sshd restart -> restarts ssh server

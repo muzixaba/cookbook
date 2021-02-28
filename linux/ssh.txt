@@ -1,0 +1,52 @@
+#=====
+# SSH
+#=====
+# Provides remote access to servers
+
+ssh <username>@<address> -> connects to remote server without key-pair
+ssh -i <pem/file/location.pem> <username>@<address> -> connects using pem file
+ssh-keygen -> creates keypair
+
+#==========================
+# Change Instance Password
+#==========================
+Edit sshd configuration file /etc/ssh/sshd_config as root.
+Uncomment PasswordAuthentication and set to yes.
+Save the file and exit. Restart ssh service for this to take effect.
+run command: passwd UserName
+
+
+#==================================
+# Disable Password Login on Server
+#==================================
+open /etc/ssh/sshd_config
+ChallengeResponseAuthentication no
+PasswordAuthentication no
+service sshd restart -> restarts ssh server
+
+
+#===============
+# Jupyter Server
+#===============
+login/ssh into EC2 instance
+jupyter notebook --no-browser --port=8889 --ip=0.0.0.0
+
+
+#======
+# Other
+#======
+~. -> terminate ssh connection
+~? -> list available escape sequences
+
+
+#====================
+# Stop SSH Hanging
+#====================
+Navigate to /etx/ssh/sshd_config
+
+Host *
+ServerAliveInterval 100
+ClientAliveInterval 60
+TCPKeepAlive yes
+ClientAliveCountMax 10000
+
