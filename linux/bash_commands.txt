@@ -242,6 +242,13 @@ scp -r username@hostname:/path/from/file .
 
 man scp
 
+#=============
+# Synchronising Files
+#=============
+rsync -r --progress ~/path/to/dir user@server.com:/path/to/dir
+
+
+
 #==========
 # Processes
 #==========

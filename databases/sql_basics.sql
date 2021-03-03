@@ -23,6 +23,13 @@ CREATE TABLE author_publisher (
 );
 */
 
+/*
+-- UNIONS: Stacks tables on top of one another. Think df.concat()
+SELECT column_name(s) FROM table1
+UNION --use UNION ALL to accept all values, not just distinct ones
+SELECT column_name(s) FROM table2;
+*/
+
 -- Insert  a NEW Single Record
 -- INSERT is used to create rows/records
 /*

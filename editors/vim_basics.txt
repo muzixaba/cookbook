@@ -18,6 +18,7 @@ Press 'esc' while in insert mode
 :wq - save changes & quit
 :q! - quit without saving changes
 :q - just quit
+:w - saves file without exiting editor
 
 # Jump to end/begining
 ----------------------
@@ -29,6 +30,8 @@ G - Go to end of doc
 w - move to start of next word
 b - move to beginning of word
 e - move to end of word
+0 - jump to beginning of line
+$ - jump to end of line
 
 # Skip block(s) of code
 -----------------------
