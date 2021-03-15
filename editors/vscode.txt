@@ -34,7 +34,7 @@ select all instances of word = ctrl + shift + l
 select word = ctrl + d
 Scroll up/down without moving cursor = ctrl + UpArrow/DownArrow
 toggle zen mode = ctrl + k, z
-
+toggle full-screen = F11
 
 ==================
 Refactoring Code
