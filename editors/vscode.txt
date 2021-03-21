@@ -15,7 +15,9 @@ Open File Explorer on side panel = crtl + shift + e
 Open command pallet = ctrl + shift + p
 Toggle Terminal Panel = alt+shift+p
 Toggle Terminal = ctrl + j
-Open termanial & focus on it = ctrl + `
+Open terminal & focus on it = ctrl + `
+=======
+Toggle Terminal Panel = alt+shift+p ???????????????????????????????
 Run python file = alt+ctrl+r
 toggle indentation = ctrl+[/]
 create new line = ctrl + enter
@@ -36,7 +38,7 @@ select all instances of word = ctrl + shift + l
 select word = ctrl + d
 Scroll up/down without moving cursor = ctrl + UpArrow/DownArrow
 toggle zen mode = ctrl + k, z
-
+toggle full-screen = F11
 
 ==================
 Refactoring Code
