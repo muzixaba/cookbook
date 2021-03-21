@@ -1,0 +1,35 @@
+===========================
+Creating a Load Balancer
+===========================
+aws elbv2 create-load-balancer \
+--name <load-balancer-name> \
+--subnets subnets-12345 subnet-234545 \
+--security-groups sg-12344
+NOTE: Min of 2 subnets are required & must be from diff AZs
+
+
+# Create Target Group for ELB
+aws elbv2 create-target-group \
+--name <target-grp-name> \
+--protocol HTTP \
+--port 80 \
+--vpc-id vpc-12345
+NOTE: VPC must be where the instances will run
+
+# Register the targets with ELB
+aws elbv2 register-targets \
+target-group-arn <tgt-grp-arn> \
+--targets Id=i-1234565 Id=i-243565
+NOTE: Targets can be individual resources or ASG
+
+
+# Create Listener to connect ELB with Target Group
+aws elbv2 create-listener \
+--load-balancer-arn <elb-arn> \
+--protocol HTTP \
+--port 80 \
+--default-actions Type=forward,TargetGroupArn=<tgt-grp-arn>
+
+# Verify health of registered targets
+aws elbv2 describe-target-health \
+--target-group-arn <tgt-grp-arn>

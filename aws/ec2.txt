@@ -144,3 +144,6 @@ aws ec2 terminate-instances --instance-ids <instance-id>
 
 # Creating a key pair
 aws ec2 create-key-pair --key-name <key-pair-name>
+
+# Change instance type
+aws ec2 modify-instance-attribute --instance-type <new-type>
