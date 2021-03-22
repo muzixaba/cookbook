@@ -6,3 +6,15 @@ Function name
 Runtime (python 3.xx)
 Choose or create an execution role
 'Create function'
+
+
+#===
+# CLI
+#===
+aws lambda create-function \
+--function-name <lambda-function-name> \
+--runtime python3.7 \
+--zip-file fileb://<zip-file-with-function> \
+--handler <scriptname.lambda_handler> \
+--region <region> \
+--role <lambda-role-arn>
