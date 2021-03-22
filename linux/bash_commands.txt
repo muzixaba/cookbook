@@ -213,6 +213,9 @@ alias alias_name="command to call"
 sudo apt-get install Unzip
 unzip name.zip (unzipping a zip file)
 
+# Extract using Tar
+tar xvzf dir_name.tar.gz
+
 #==================
 # Check Disk Space
 #==================

@@ -32,9 +32,16 @@ aws s3api put-bucket-versioning --bucket bucket_name --versioning-configuration 
 
 # Copy a file from local to s3
 aws s3 cp my-file.txt s3://bucket_name
+aws s3api create-bucket --bucket my-bucket-name --region eu-west-1
 
 # Turn bucket into Static Website
 aws s3 website s3://example.org --index-document index.html --error-document error.html
 
+# Copy docs/dirs in current directory into s3 bucket used as website
+aws s3 cp . s3://<bucket-name>/ --recursive --acl public-read
+
 # Generate a presigned url
 aws s3 presign s3://mybucket/myobject --expires-in 3600 --region my-region
+
+# List files inside an S3 bucket
+aws s3 ls <bucket-name>

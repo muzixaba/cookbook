@@ -4,8 +4,20 @@
 # IAM CLI
 #=========
 
+# Create a User
+aws iam --user-name users_user_name
+
+# Create password for existing user
+aws iam create-login-profile --user-name users_user_name --password usersPassword123
+
 # Create a Role
 aws iam create-role --role-name my-role --assume-role-policy-document file://file-name.json
 
 # Attach a policy to a role
 aws iam put-role-policy --role-name my-role --policy-name my-policy --policy-document file://file-name.json
+
+# Find a policy that has the term 'S3' in it
+aws iam list-policies --query "Policies[?contains(PolicyName, 'S3')]"
+
+# Attach a Policy to a user
+aws iam attach-user-policy --policy-arn <iam-policy-arn> --user-name <username>
