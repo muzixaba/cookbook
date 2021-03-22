@@ -144,3 +144,12 @@ aws ec2 terminate-instances --instance-ids <instance-id>
 
 # Creating a key pair
 aws ec2 create-key-pair --key-name <key-pair-name>
+
+# Change instance type
+aws ec2 modify-instance-attribute --instance-type <new-type>
+
+# Get instance public dns name
+aws ec2 describe-instances --instance-id <instance-id> --query 'Reservations[0].Instances[0].NetworkInterfaces[0].Association.PublicDnsName'
+
+# Create an AMI
+aws ec2 create-image --name <AMI-name> --instance-id <current-instance-id>

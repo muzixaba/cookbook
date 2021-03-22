@@ -13,6 +13,10 @@ move to start/end of file = ctrl + home/end
 open current tab in new pane = ctrl + \
 Open File Explorer on side panel = crtl + shift + e
 Open command pallet = ctrl + shift + p
+Toggle Terminal Panel = alt+shift+p
+Toggle Terminal = ctrl + j
+Open terminal & focus on it = ctrl + `
+=======
 Toggle Terminal Panel = alt+shift+p ???????????????????????????????
 Run python file = alt+ctrl+r
 toggle indentation = ctrl+[/]
