@@ -1,0 +1,8 @@
+#======
+# VPC
+#======
+
+# Create a vpc peering connection
+aws ec2 create-vpc-peering-connection \
+--vpc-id vpc-12345 \
+--peer-vpc-id vpc-6789
