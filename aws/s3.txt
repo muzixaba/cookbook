@@ -20,6 +20,7 @@ Update bucket policy to allow for web access
 
 # List all buckets
 aws s3 ls
+aws s3api list-buckets
 
 # List contents of specific bucket
 aws s3 ls s3://bucket_name

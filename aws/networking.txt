@@ -6,3 +6,16 @@
 aws ec2 create-vpc-peering-connection \
 --vpc-id vpc-12345 \
 --peer-vpc-id vpc-6789
+
+#================
+# Creating VPC Flow Logs
+#================
+
+# Create bucket to store flow Logs
+aws s3api create-bucket --bucket <flowlog_name> --region <region> --create-bucket-configuration LocationConstraint=<region>
+
+# Enable vpc flow-Logs
+aws ec2 create-flow-logs --resource-type VPC --resource-ids <vpc-id> --traffic-type ALL --log-destination-type s3 --log-destination <s3-bucket-arn>/
+
+# Check if flow-logs got created
+aws ec2 describe-flow-logs

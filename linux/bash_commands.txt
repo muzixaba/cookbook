@@ -373,3 +373,9 @@ sudo reboot -> reboots system
 sudo shutdown -r now -> reboots system right now
 sudo shutdown -r 10 -> reboots after 10 minutes
 
+===========
+Find Open Ports
+===========
+# find open ports on localhost
+namp localhost
+

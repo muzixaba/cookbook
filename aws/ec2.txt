@@ -153,3 +153,6 @@ aws ec2 describe-instances --instance-id <instance-id> --query 'Reservations[0].
 
 # Create an AMI
 aws ec2 create-image --name <AMI-name> --instance-id <current-instance-id>
+
+# Find region hosting instance
+curl http://169.254.169.254/latest/dynamic/instance-identity/document | grep region
