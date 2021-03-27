@@ -80,8 +80,9 @@ cd ../.. -> moves up two directories
 #=======
 # Searching
 #=======
-find . -name file.ext -> searches from current dir and its sub directories
-find / -name file.ext -> searches entire computer
+find . -iname file.ext -> searches from current dir and its sub directories
+find / -iname file.ext -> searches entire computer
+find . -type -iname "*.txt" -> find files using file types
 grep text file.txt -> searches for 'text' inside file.txt
 grep -i text file.txt -> searches for 'text' inside file.txt. Ignore case
 grep text * -> searches for 'text' inside all files in current directory
