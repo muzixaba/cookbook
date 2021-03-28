@@ -46,3 +46,9 @@ aws s3 presign s3://mybucket/myobject --expires-in 3600 --region my-region
 
 # List files inside an S3 bucket
 aws s3 ls <bucket-name>
+
+# Sync files in s3 bucket & prefix to the current local directory
+aws s3 sync s3://mybucket/myprefix
+
+# Remove object from bucket
+aws s3 rm s3://mybucket/myprefix/file.txt

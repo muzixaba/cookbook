@@ -156,3 +156,34 @@ aws ec2 create-image --name <AMI-name> --instance-id <current-instance-id>
 
 # Find region hosting instance
 curl http://169.254.169.254/latest/dynamic/instance-identity/document | grep region
+
+# Create EBS volume
+aws ec2 create-volume --size 8 --availability-zone us-east-1a --volume-type gp2
+
+# Get info about EBS volume
+aws ec2 describe-volumes --volume-ids <volume-id>
+
+# Attach EBS Volume to instance
+aws ec2 attach-volume --volume-id <volume-id> \
+--instance-id <instance-id> \
+--device <device-path e.g. /dev/sdf>
+
+# Create EBS Volume snapshot
+aws ec2 create-snapshot --volume-id <volume-id> \
+--description "This is the snapshot's description"
+
+# Create volume from snapshot
+aws ec2 create-volume --size # \
+--availability-zone us-east-1a \
+--volume-type gp2 \
+--snapshot-id <snap-id>
+
+# Create Role for Amazon DLM
+aws dlm create-default-role
+
+# Activate DLM policy
+aws dlm create-lifecycle-policy \
+--description "My EBS volume(s) backup policy"
+--state ENABLED \
+--execution-role-arn <role-arn-returned-4rm-create-default-role> \
+--policy-details file://<policyDetails.json>
