@@ -380,3 +380,7 @@ Find Open Ports
 # find open ports on localhost
 namp localhost
 
+===========
+cronjobs
+============
+echo "* * * * *  command-that-will-run-every-minute >> /tmp/cronlog" > cronjob

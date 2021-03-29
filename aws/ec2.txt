@@ -139,6 +139,18 @@ aws ec2 run-instances \
     --instance-type t2.micro \
     --key-name <key-pair-name> \
 
+# Start an instance
+aws ec2 start-instances --instance-ids <instance-id>
+
+# Check status for start/restart operation
+aws ec2 wait instance-running --instance-ids <instance-id>
+
+# Stop an instance
+aws ec2 stop-instances --instance-ids <INSTANCE-ID>
+
+# Verify that the instance has stopped
+aws ec2 wait instance-stopped --instance-id <INSTANCE-ID>
+
 # Terminate an instance
 aws ec2 terminate-instances --instance-ids <instance-id>
 
@@ -171,6 +183,14 @@ aws ec2 attach-volume --volume-id <volume-id> \
 # Create EBS Volume snapshot
 aws ec2 create-snapshot --volume-id <volume-id> \
 --description "This is the snapshot's description"
+
+# Check status of volume snapshot
+aws ec2 wait snapshot-completed --snapshot-id <SNAPSHOT-ID>
+
+# View snapshot IDs from specific volume
+aws ec2 describe-snapshots \
+--filters "Name=volume-id,Values=<volume-id>" \
+--query 'Snapshots[*].SnapshotId'
 
 # Create volume from snapshot
 aws ec2 create-volume --size # \

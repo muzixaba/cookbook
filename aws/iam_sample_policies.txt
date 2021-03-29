@@ -1,0 +1,46 @@
+====
+s3
+====
+# Create SNS Access Policy
+# Publish SNS topic using S3 bucket actions.
+{
+  "Version": "2008-10-17",
+  "Id": "S3PublishPolicy",
+  "Statement": [
+    {
+      "Sid": "AllowPublishFromS3",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "s3.amazonaws.com"
+      },
+      "Action": "SNS:Publish",
+      "Resource": "<ARN of s3NotificationTopic>",
+      "Condition": {
+        "ArnLike": {
+          "aws:SourceArn": "arn:aws:s3:*:*:<bucket-name>"
+        }
+      }
+    }
+  ]
+}
+
+# event notification config file that identifies the events that Amazon S3 will publish
+# and the topic destination where Amazon S3 will send the event notifications
+{
+  "TopicConfigurations": [
+    {
+      "TopicArn": "arn:aws:sns:us-east-1:649303834839:s3NotificationTopic",
+      "Events": ["s3:ObjectCreated:*","s3:ObjectRemoved:*"],
+      "Filter": {
+        "Key": {
+          "FilterRules": [
+            {
+              "Name": "prefix",
+              "Value": "images/"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

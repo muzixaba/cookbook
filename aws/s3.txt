@@ -23,17 +23,22 @@ aws s3 ls
 aws s3api list-buckets
 
 # List contents of specific bucket
-aws s3 ls s3://bucket_name
+aws s3 ls s3://bucket_name/
 
 # Create a new bucket
 aws s3 mb --region eu-west-1 s3://bucket_name
 
 # Enable versioning
-aws s3api put-bucket-versioning --bucket bucket_name --versioning-configuration Status=Enabled
+aws s3api put-bucket-versioning \
+--bucket <bucket_name> \
+--versioning-configuration Status=Enabled
 
 # Copy a file from local to s3
 aws s3 cp my-file.txt s3://bucket_name
 aws s3api create-bucket --bucket my-bucket-name --region eu-west-1
+
+# Copy file(s) from S3 to local
+aws s3 cp s3://<bucket-name>/ . --recursive
 
 # Turn bucket into Static Website
 aws s3 website s3://example.org --index-document index.html --error-document error.html
@@ -48,7 +53,23 @@ aws s3 presign s3://mybucket/myobject --expires-in 3600 --region my-region
 aws s3 ls <bucket-name>
 
 # Sync files in s3 bucket & prefix to the current local directory
-aws s3 sync s3://mybucket/myprefix
+aws s3 sync . s3://mybucket/myprefix
 
 # Remove object from bucket
 aws s3 rm s3://mybucket/myprefix/file.txt
+
+# Get objet versions
+aws s3api list-object-versions \
+--bucket <bucket-name> \
+--prefix folder/file_name.txt
+
+# Associate bucket notification to bucket
+aws s3api put-bucket-notification-configuration \
+--bucket <bucket-name> \
+--notification-configuration file://s3EventNotification.json
+
+# Add object to s3 
+aws s3api put-object \
+--bucket <bucket-name> \
+--key bucket-folder/object_name.jpg \
+--body ~/local/path/to/object_name.jpg
