@@ -160,11 +160,33 @@ aws ec2 create-key-pair --key-name <key-pair-name>
 # Change instance type
 aws ec2 modify-instance-attribute --instance-type <new-type>
 
+aws ec2 modify-instance-attribute \
+--instance-id <Instance ID> \
+--instance-type "{\"Value\": \"t2.micro\"}"
+
+# Create tag(s) for instance
+aws ec2 create-tage --resources <instance-id> \
+--tags "Key=<TagKey>, Value=<TagValue>"
+
 # Get instance public dns name
 aws ec2 describe-instances --instance-id <instance-id> --query 'Reservations[0].Instances[0].NetworkInterfaces[0].Association.PublicDnsName'
 
+# Check instance current state or other attribute
+aws ec2 describe-instances \
+--instance-ids i-09f04e4d08f548eb9 \
+--query "Reservations[*].Instances[*].[InstanceType,PublicDnsName,PublicIpAddress,State.Name]"
+
 # Create an AMI
-aws ec2 create-image --name <AMI-name> --instance-id <current-instance-id>
+aws ec2 create-image \
+--instance-id <current-instance-id> \
+--name <AMI-name>
+
+# Copy AMI to a different region
+aws ec2 copy-image \
+--source-image-id <ami-id> \
+--source-region <region-code> \
+--region <new-region-code> \
+--name "AMI name"
 
 # Find region hosting instance
 curl http://169.254.169.254/latest/dynamic/instance-identity/document | grep region
@@ -207,3 +229,8 @@ aws dlm create-lifecycle-policy \
 --state ENABLED \
 --execution-role-arn <role-arn-returned-4rm-create-default-role> \
 --policy-details file://<policyDetails.json>
+
+# Find instances with specific attributes and tag(s)
+aws ec2 describe-instances \
+--filter "Name=tag:Project,Values=ERPSystem" \
+--query 'Reservations[*].Instances[*].{ID:InstanceId,AZ:Placement.AvailabilityZone,Project:Tags[?Key==`Project`] | [0].Value}'
