@@ -1,0 +1,38 @@
+# Create stack
+aws cloudformation create-stack \
+        --stack-name file.yml \
+        --template-body file://file.yml \
+        --parameters
+        ParameterKey=<1st-param>, ParameterValue=<1st-param-value> \
+        ParameterKey=<2nd-param>, ParameterValue=<2nd-param-value>
+
+# Check stack status
+watch -n 5 -d \
+aws cloudformation describe-stacks \
+--stack-name myStack \
+--output table
+
+# Check why a stack failed
+aws cloudformation describe-stack-events \
+--stack-name myStack \
+--query "StackEvents[?ResourceStatus == 'CREATE_FAILED']"
+
+# Delete the stack object, even if the rollback was complete.
+aws cloudformation delete-stack --stack-name myStack
+
+# Detect drift
+aws cloudformation detect-stack-drift --stack-name myStack
+
+# Check status of drift
+aws cloudformation describe-stack-drift-detection-status \
+--stack-drift-detection-id <drift-id>
+
+# Describe resources that drifted
+aws cloudformation describe-stack-drift-detection-status \
+--stack-drift-detection-id <drift-id>
+
+# Check stack resource status
+aws cloudformation describe-stack-resources \
+--stack-name myStack \
+--query 'StackResources[*].[ResourceType,ResourceStatus,DriftInformation.StackResourceDriftStatus]' \
+--output table

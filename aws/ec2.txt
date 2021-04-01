@@ -234,3 +234,6 @@ aws dlm create-lifecycle-policy \
 aws ec2 describe-instances \
 --filter "Name=tag:Project,Values=ERPSystem" \
 --query 'Reservations[*].Instances[*].{ID:InstanceId,AZ:Placement.AvailabilityZone,Project:Tags[?Key==`Project`] | [0].Value}'
+
+# View cloud-init logs
+tail -50 /var/log/cloud-init-output.log

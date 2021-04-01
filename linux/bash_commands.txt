@@ -309,6 +309,7 @@ tee -> reads from std output & writes to std output & file(s)
 systemctl status cron.service -> checks if cron service is active
 xrandr -s -> shows you possible screen resolutions
 ufw status -> check firewall status
+sudo passwd user_name -> opens prompt to change user password
 
 #=======================
 # Creating Bash Scripts

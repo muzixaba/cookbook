@@ -22,3 +22,33 @@
 "object": {"name": "Muzi", "height": 1.75},
 "null": {}
 }
+
+//===============
+//  JMESPath
+//===============
+// Query language for json
+
+{"desserts": [
+        {"name": "Chocolate cake", "price": "20.00" },
+      {"name": "Ice cream", "price": "15.00" },
+      {"name": "Carrot cake", "price": "22.00" }
+    ] }
+
+//  list of all desserts
+desserts // or desserts[] or desserts[*]
+
+// first dessert in list
+// zero-based indexing
+desserts[0]
+
+//  all dessert names
+desserts[*].name
+
+//  desserts' name & price in list
+desserts[*].[name, price]
+
+// use filter to find value
+desserts[?name=='Carrot cake']
+
+// find price of carrot cake
+desserts[?name=='Carrot cake'].price
