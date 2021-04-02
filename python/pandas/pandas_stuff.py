@@ -159,7 +159,7 @@ df['thousands_sep'] = df['values'].apply(lambda x: '{:,}'.format(x))
 #============
 
 # from timestamp to string
-dt.fromtimestamp(timestamp).strftime('%Y-%m-%d-%H%M%S')
+dt.fromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S')
 
 # Change column type to datetime
 df['date'] = pd.to_datetime(df['date']) # if pandas can read the date string
