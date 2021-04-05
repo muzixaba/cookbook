@@ -56,3 +56,6 @@ await obj_name
 
 # Profile code
 # %prun func_name()
+
+# Return/recall a specific cell
+# %recall <cell-number>
