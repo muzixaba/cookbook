@@ -46,7 +46,7 @@ Out[<cell-number>]
 # %load_ext <extension_name>
 
 # Run shell commands
-!pwd
+!<command> # !pwd
 
 # Auto-await async code
 await obj_name
