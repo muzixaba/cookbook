@@ -2,6 +2,18 @@
 # VPC
 #======
 
+# Create a VPC
+aws ec2 create-vpc -cidr-block 10.0.0.0/16
+
+# Create a Security Group
+aws ec2 create-security-group \
+--vpc-id <vpc-id>
+--group-name <sg-name> \
+--description <sg group description> \
+
+# Describe Security Groups
+aws ec2 describe-security-groups --group-ids <sg-id(s)>
+
 # Create a vpc peering connection
 aws ec2 create-vpc-peering-connection \
 --vpc-id vpc-12345 \
@@ -19,3 +31,35 @@ aws ec2 create-flow-logs --resource-type VPC --resource-ids <vpc-id> --traffic-t
 
 # Check if flow-logs got created
 aws ec2 describe-flow-logs
+
+#==============
+# Create a Route Table
+#==============
+aws ec2 create-route-table --vpc-id <vpc-id>
+
+
+#================
+# Load Balancers
+#=============
+
+# Create a load Balancer
+aws elbv2 create-load-balancer \
+--name <load-balancer-name> \
+--type <load-balancer-type> \
+--subnets <subnet-id(s)> \
+--AllocationId=<elastic-ip-allocation-number>
+
+# Create Target Group for load balancer
+aws elbv2 create-target-group \
+--name <tgt-group-name> \
+--protocol <protocol-type> \
+--port <port-number> \
+--vpc-id <vpc-id>
+
+# Register targets into your target group
+aw elbv2 register-targets \
+--target-group-arn <tgt-group-arn> \
+--targets <target-ids>
+
+# Specify EIP for load balancer
+aws elbv2 create
