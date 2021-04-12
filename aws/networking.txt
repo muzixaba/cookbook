@@ -1,6 +1,6 @@
-#======
+#====
 # VPC
-#======
+#====
 
 # Create a VPC
 aws ec2 create-vpc -cidr-block 10.0.0.0/16
@@ -19,6 +19,7 @@ aws ec2 create-vpc-peering-connection \
 --vpc-id vpc-12345 \
 --peer-vpc-id vpc-6789
 
+
 #================
 # Creating VPC Flow Logs
 #================
@@ -32,22 +33,23 @@ aws ec2 create-flow-logs --resource-type VPC --resource-ids <vpc-id> --traffic-t
 # Check if flow-logs got created
 aws ec2 describe-flow-logs
 
+
 #==============
 # Create a Route Table
 #==============
 aws ec2 create-route-table --vpc-id <vpc-id>
 
 
-#================
+#==========
 # Load Balancers
-#=============
+#==========
 
 # Create a load Balancer
 aws elbv2 create-load-balancer \
 --name <load-balancer-name> \
 --type <load-balancer-type> \
 --subnets <subnet-id(s)> \
---AllocationId=<elastic-ip-allocation-number>
+--AllocationId=<elastic-ip-allocation-id>
 
 # Create Target Group for load balancer
 aws elbv2 create-target-group \

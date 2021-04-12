@@ -1,0 +1,8 @@
+# Split cell
+crtl + M, -
+
+# Change cell to markdown
+ctrl + mm
+
+# Change cell to code
+ctrl + m, y
