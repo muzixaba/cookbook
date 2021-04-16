@@ -48,6 +48,16 @@ esc + /
 # Go to Top of File
 esc + \
 
+# Copy and Paste Test within file
+^6 - Start marker
+alt + 6 - End marker
+^U - Paste text that was placed between markers
+
+# Copy and Paste using Cut [MORE CONVINIENT]
+^K - cut selected text
+^U - paste original text back to original position
+^U - paste original text in new position, hence creating a copy
+
 ==================
 Enable Syntaxt Highlighing
 ==================
@@ -67,4 +77,6 @@ set numbercolors white
 # Add text wrap
 set softwrap
 
-
+# Set tabs/spaces
+set tabsize 4
+set tabstospaces
