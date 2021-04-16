@@ -1,0 +1,70 @@
+# Save file
+^o
+
+# Exit file
+^x
+
+# Show Lines
+alt + c
+
+# Zoom in/out
+^- or ^=
+
+# Go to line
+^shift  + -
+esc + g
+
+# Scroll Down/Up
+PgDown/PgUp or Mouse Scroll Wheel
+
+# Paste from Clipboard
+shift + insert
+
+# Select text
+shift + arrow_key
+
+# Cut text
+^K
+
+# Paste text
+^U
+
+# Undo
+esc + u
+
+# Redo
+esc + e
+
+# Search
+^W
+It remembers your last search, so ^w to find next occurance
+
+# Toggle Line Numbers
+esc + n
+
+# Go to End of File
+esc + /
+
+# Go to Top of File
+esc + \
+
+==================
+Enable Syntaxt Highlighing
+==================
+curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
+
+# if in Windows
+create .nanorc in user home folder
+
+========================
+# NanoRC modifications (.nanorc)
+========================
+
+# Add line numbers
+set linenumbers
+set numbercolors white
+
+# Add text wrap
+set softwrap
+
+
