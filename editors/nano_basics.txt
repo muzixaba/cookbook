@@ -23,7 +23,7 @@ shift + insert
 # Select text
 shift + arrow_key
 
-# Cut text
+# Cut line or selected text
 ^K
 
 # Paste text
@@ -37,6 +37,7 @@ esc + e
 
 # Search
 ^W
+find next occurance of word: alt + W
 It remembers your last search, so ^w to find next occurance
 
 # Toggle Line Numbers
@@ -47,6 +48,9 @@ esc + /
 
 # Go to Top of File
 esc + \
+
+# Find and Replace
+^\
 
 # Copy and Paste Test within file
 ^6 - Start marker
@@ -80,3 +84,10 @@ set softwrap
 # Set tabs/spaces
 set tabsize 4
 set tabstospaces
+
+==================
+# Opening Files
+==================
+
+# Open file with line numbers
+nano -l file_name.ext
