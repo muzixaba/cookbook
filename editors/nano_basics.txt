@@ -17,6 +17,18 @@ esc + g
 # Scroll Down/Up
 PgDown/PgUp or Mouse Scroll Wheel
 
+# Jump to End of Line
+^E
+
+# Jump to Begining of Line
+^A
+
+# Go to Next line
+^N
+
+# Go to Previous Line
+^P
+
 # Paste from Clipboard
 shift + insert
 
@@ -62,6 +74,7 @@ alt + 6 - End marker
 ^U - paste original text back to original position
 ^U - paste original text in new position, hence creating a copy
 
+
 ==================
 Enable Syntaxt Highlighing
 ==================
@@ -70,9 +83,10 @@ curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 # if in Windows
 create .nanorc in user home folder
 
-========================
+
+======================
 # NanoRC modifications (.nanorc)
-========================
+======================
 
 # Add line numbers
 set linenumbers
@@ -85,9 +99,12 @@ set softwrap
 set tabsize 4
 set tabstospaces
 
-==================
+# Save File
+bind ^S writeout main
+
+===========
 # Opening Files
-==================
+===========
 
 # Open file with line numbers
 nano -l file_name.ext

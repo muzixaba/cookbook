@@ -6,3 +6,6 @@ ctrl + mm
 
 # Change cell to code
 ctrl + m, y
+
+# Delete cell
+ctlr + m, d
