@@ -76,6 +76,7 @@ mkdir -p folder_1/folder_2 -> creates a folder_2 inside folder_1
 cd -> goes to home directory
 cd .. -> moves up one directory
 cd ../.. -> moves up two directories
+cd / -> navigates to root directory
 
 #=======
 # Searching
@@ -137,6 +138,11 @@ explorer . -> Open current directory in file explorer (Windows)
 && -> Chains commands. Only runs the second/next command if the first one worked.
 ctrl + a -> Moves cursor to start of command
 ctrl + b -> Moves cursor to end of command
+sudo !! -> Run previous command using sudo
+ctrl + k -> Cut from cursor position to end of line
+ctrl + u -> Cut from cursor position to begging of the line
+ctrl + y -> Paste text
+ctrl + w -> Delete word(s) one at a time
 
 #============
 # Directories

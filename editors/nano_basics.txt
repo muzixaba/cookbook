@@ -14,6 +14,9 @@ alt + c
 ^shift  + -
 esc + g
 
+# Toggle Full Screen
+alt + enter
+
 # Scroll Down/Up
 PgDown/PgUp or Mouse Scroll Wheel
 
