@@ -1,0 +1,34 @@
+// GET existing user. Returns 200
+GET https://reqres.in/api/users/2
+
+###
+// GET user that doesn't exist. Returns 404
+GET https://reqres.in/api/users/23
+
+###
+// CREATE new user. Returns 201
+POST https://reqres.in/api/users
+Content-Type: application/json
+
+{
+    "name": "morpheus",
+    "job": "leader"
+}
+
+###
+// UPDATE user. Returns 200
+// PUT replaces an object
+// PATCH applies modifies certain params of an object
+PUT https://reqres.in/api/users/2
+Content-Type: application/json
+
+{
+    "name": "morpheus",
+    "job": "zion resident"
+}
+
+###
+// DELETE user.Returns 204
+DELETE  https://reqres.in/api/users/2
+
+###
