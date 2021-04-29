@@ -316,6 +316,7 @@ systemctl status cron.service -> checks if cron service is active
 xrandr -s -> shows you possible screen resolutions
 ufw status -> check firewall status
 sudo passwd user_name -> opens prompt to change user password
+su -l user_name -> Switch to a different user
 ctrl + t -> transpose/switch 2 characters in command
 
 #=======================
