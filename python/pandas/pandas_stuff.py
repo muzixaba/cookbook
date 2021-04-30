@@ -44,8 +44,17 @@ df['Rating Per Year of Age'] = df['Overall'] / df['Age']
 # Drop a column
 df.drop('Rating Per Year of Age', axis=1)
 
+# Delete multiple columns
+df.drop(["col_1", "col_2"], axis=1)
+
 # drop a specific row by index
 df.drop(df.index[0])
+
+# drop row with specif index name
+df.drop("Ireland", axis=0)
+
+# Drop the rows specific indicies
+df.drop([0,1,2], axis=0)
 
 # drop rows by index name
 df.drop(['index_1', 'index_2'])

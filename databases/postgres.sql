@@ -4,6 +4,9 @@ service postgresql
 -- Start postgresql service
 sudo service postgresql start
 
+-- Get help
+psql --help
+
 -- Login to postgresql using default user
 sudo su postgres
 
@@ -15,6 +18,9 @@ psql
 
 -- List users
 \du
+
+-- Connect to specific db using logged  in user
+\c <db_name>
 
 -- Change user password
 ALTER USER <user_name> WITH PASSWORD 'password';
