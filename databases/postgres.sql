@@ -46,4 +46,8 @@ psql -d <db_name> -U user <user_name> -W
 -- Quit psql
 \q
 
+-- Create db
+createdb <db_name>
 
+-- Drop db
+dropdb <db_name>
