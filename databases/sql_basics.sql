@@ -3,6 +3,7 @@
 -- USE database_name; --Needed for MySQL to switch into the db
 
 -- Create a tables inside a database
+-- No comma after last entry
 -- CREATE TABLE author (
 --     author_id INTEGER NOT NULL PRIMARY KEY,
 --     first_name VARCHAR,
@@ -51,11 +52,19 @@ PRAGMA table_info(flights);
 /*
 SELECT column_name(s)
 FROM table_name
-WHERE <condition> AND <condition>
+WHERE column_name IN ( 'option1', 'option2', 'option3')
 GROUP BY column_name
 ORDER BY column_name DESC
 LIMIT #;
 */
+
+-- Search for records using where and like (ilke = case insensetive)
+SELECT column_name(s)
+FROM table_name
+WHERE column_name LIKE pattern;
+
+-- Select records starting after the 5th record
+SELECT * FROM table_name OFFSET 5;
 
 -- Count number of unique entries in a specific column
 /*
