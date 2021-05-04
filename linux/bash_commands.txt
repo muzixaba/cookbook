@@ -78,9 +78,9 @@ cd .. -> moves up one directory
 cd ../.. -> moves up two directories
 cd / -> navigates to root directory
 
-#=======
+#===========
 # Searching
-#=======
+#===========
 find . -iname file.ext -> searches from current dir and its sub directories
 find / -iname file.ext -> searches entire computer
 find . -type -iname "*.txt" -> find files using file types
@@ -89,7 +89,7 @@ grep -i text file.txt -> searches for 'text' inside file.txt. Ignore case
 grep text * -> searches for 'text' inside all files in current directory
 grep -r text * -> search for 'text' inside current directory & its subdirectories
 grep -l text * -> lists the names of actual files that contain 'text'
-
+cat /etc/passwd | grep root -> Searches for 'root' inside passwd file
 
 #================
 # Basic Commands
@@ -165,6 +165,8 @@ touch file_name.txt -> creates new file
 touch file1 file2 file3 -> creates 3 files
 touch *.txt -> changes all date modified to now
 cat >filename -> creates a new file
+echo "Write/Overwrite to file" > file.ext
+
 
 # READ
 cat file_name -> reads file and returns contents inside the terminal
@@ -183,6 +185,9 @@ cut -f 2-5, 8-d, file.csv -> view select columns in file, use ',' as delimeter
 ls -1 | wc -l -> Number of files in current directory
 cmp file1 file2 -> compares files on a byte-by-byte basis
 colordiff file1 file2 -> Returns differences btw 2 files. color coded
+grep -i texttosearchfor file.ext -> Case insensitive grep search
+grep -l texttosearchfor file.ext -> List names of files with matches in them
+grep -c texttosearchfor file.ext -> Count the number of matches
 
 # UPDATE
 mv/cp dir/file1.txt dir/file2.txt backup -> move or copy files to dir call backup

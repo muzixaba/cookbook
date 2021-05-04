@@ -131,7 +131,15 @@ DROP TABLE table_name;
 SELECT column(s)
 FROM table1
 <join_type> JOIN table2
-ON <Join condition>
+ON table1.id_column = table2.id_column
+*/
+
+-- Join tables that have the same id columns
+/*
+SELECT column(s)
+FROM table1
+<join_type> JOIN table2
+USING (id_column);
 */
 
 -- Grouping Results (groupby)

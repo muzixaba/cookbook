@@ -56,6 +56,9 @@ psql -d <db_name> -U user <user_name> -W
 -- Toggle expanded display
 \x
 
+-- List available functions
+\df
+
 -- Execute commands from a file
 \i path/to/file.sql
 
@@ -145,3 +148,12 @@ insert into car (make, model, price) values ("Hyundai", "Atos", 100000);
 
 -- Update Foreign Key records
 UPDATE person SET car_id = 2 WHERE id = 1;
+
+-- Export query results to CSV (include headers)
+\copy (<sql_query_excl_;>) TO '/path/to/file.csv' DELIMITER ',' CSV HEADER;
+
+-- Restart a sequence
+ALTER SEQUENCE <sequence_name> RESTART WITH <start_number>;
+
+-- Add extension to postgres server
+CREATE EXTENSION IF NOT EXISTS 'ext_name';
