@@ -393,3 +393,30 @@ namp localhost
 cronjobs
 ============
 echo "* * * * *  command-that-will-run-every-minute >> /tmp/cronlog" > cronjob
+
+
+
+==============
+System Processes
+=============
+
+# List running processes
+systemctl list-units
+
+# List all running services
+systemctl list-units | grep .service
+
+# Check status of a service
+sudo systemctl status <service_name>
+
+# Start a service
+sudo systemctl start <service_name>
+
+# Check services that failed to start at startup
+ systemctl --failed
+
+ # Check logs that ran at startup
+ journalctl -b
+
+ # Check logs for a specific service
+ journalctl -u <service_name>

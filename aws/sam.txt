@@ -1,0 +1,6 @@
+====================
+Serverless Application Model
+====================
+
+# Create hello-world app
+sam init

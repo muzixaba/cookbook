@@ -92,6 +92,17 @@ df.drop_duplicates(subset ="ref_colName", keep='first', inplace=True)
 # Export df as csv
 df.to_csv(r'Path\To\File_Name.csv', index = False)
 
+#=============
+# Math Functions
+#=============
+
+# Get column totals
+df.loc['Column_Total']= df.sum(numeric_only=True, axis=0)
+# Get row totals
+df.loc[:,'Row_Total'] = df.sum(numeric_only=True, axis=1)
+
+# Create new column with row sums
+df["sum"] = df.sum(axis=1)
 
 #==========================================
 # Combining DataFrames
