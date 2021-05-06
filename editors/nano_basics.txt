@@ -32,6 +32,18 @@ PgDown/PgUp or Mouse Scroll Wheel
 # Go to Previous Line
 ^P
 
+# Next Character or Move Right
+^F
+
+# Previous Character or Move Left
+^B
+
+# Move Forward One Word
+^space
+
+# Move Back One Word
+alt + space
+
 # Paste from Clipboard
 shift + insert
 
