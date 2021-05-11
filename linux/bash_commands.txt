@@ -420,20 +420,79 @@ sudo systemctl start <service_name>
 # Check services that failed to start at startup
  systemctl --failed
 
- # Check logs that ran at startup
- journalctl -b
+# Check logs that ran at startup
+journalctl -b
 
- # Check logs for a specific service
- journalctl -u <service_name>
+# Check logs for a specific service
+journalctl -u <service_name>
 
- # Enable/Disable a service
- sudo systemctl enable/disable <service_name>
+# Enable/Disable a service
+sudo systemctl enable/disable <service_name>
 
- # Watch logs as they're being created
- sudo journalctl -u logTime -f
+# Watch logs as they're being created
+sudo journalctl -u logTime -f
 
- # Reload deamon after modyfing service file
- sudo systemctl deamon-reload
+# Reload deamon after modyfing service file
+sudo systemctl deamon-reload
 
- # Check log between two times
- journalctl --since "2020-12-25 23:15:00" --until "2020-12-31 23:59:59"
+# Check log between two times
+journalctl --since "2020-12-25 23:15:00" --until "2020-12-31 23:59:59"
+
+
+===========
+hardware
+============
+
+# list block devices
+lsblk
+
+# list info about cpu
+lscpu
+
+# View free memory/ram
+free -h
+
+# list mounted file systems
+df -m
+
+# list network interfaces
+ip a
+
+# view kernel version
+uname -r
+
+# special dev folders
+/dev/null -> Discards anything you throw at it
+/dev/random -> Produces random output
+/dev/stdin -> standard input of a process
+/dev/stdout -> standard output of a process
+/dev/stderr -> standard output of errors from processes
+/dev/zero -> returns a file of just zeros
+
+
+# creating a 512 bytes dummy file of zeros
+dd if=/dev/zero of=/tmp/zero count=1
+
+# shredding the contents of a device
+shred /dev/sda
+
+# find mounted drives
+mount | /dev/sd
+
+# Managing partitions
+sudo fdisk /dev/sda
+  d - delete
+  w - write
+  n - new
+
+# format a partition
+sudo mkfs -t ext4 /dev/sda3
+
+# mount a partition
+sudo mkdir /mnt/drive1
+sudo mount /dev/sda3 /mnt/drive1
+
+
+# create a system link or shortcut to directory
+sudo chown $USER:$USER /path/to/directory -> make yourself the owner of the dir
+ls -s /path/to/directory ~/ -> create shortcut in root directory
