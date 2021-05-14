@@ -496,3 +496,14 @@ sudo mount /dev/sda3 /mnt/drive1
 # create a system link or shortcut to directory
 sudo chown $USER:$USER /path/to/directory -> make yourself the owner of the dir
 ls -s /path/to/directory ~/ -> create shortcut in root directory
+
+===========
+bashrc modifications
+====================
+
+# function to create and cd into new directory
+mkcd() { mkdir -p "$1" && cd "$1"; }
+
+
+# funcition to adjust terminal volume
+volume() { amixer sset 'Master' $1%; +}
