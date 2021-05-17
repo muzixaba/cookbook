@@ -214,9 +214,9 @@ alias -> List all aliases
 unalias alias_name -> removes alias
 alias alias_name="command to call"
 
-#========
+#============
 # Zip Folders
-#========
+#============
 # sudo apt-get install zip
 # zip -r zip_dir_name.zip . (creates a zip folder containing all files in current dir. REMEMBER the period)
 # zip -g path/to.zip_dir_name.zip path/to/new_file.txt -> adds new file into zip folder. -g/--grow appends to existing zip directory
@@ -257,9 +257,9 @@ scp -r username@hostname:/path/from/file .
 
 man scp
 
-#=============
+#====================
 # Synchronising Files
-#=============
+#====================
 rsync -r --progress ~/path/to/dir user@server.com:/path/to/dir
 
 
@@ -282,17 +282,6 @@ sudo openvpn --config file_name
 #===================================
 conda activate/activate myenv (if not activated already)
 python -m idlelib -> activates IDLE shell
-
-
-#=========================================
-# Force bash to start command in new lines
-#=========================================
-1: from home directory, open bashrc using nano:
-        $ nano ~/.bashrc
-2: Look for where the PS1 variable is mentioned
-3: Replace the '\$' at the end of the expression with '\n\$'
-4: Save file and restart terminal
-
 
 
 #===========
@@ -388,22 +377,22 @@ sudo reboot -> reboots system
 sudo shutdown -r now -> reboots system right now
 sudo shutdown -r 10 -> reboots after 10 minutes
 
-===========
+===============
 Find Open Ports
-===========
+===============
 # find open ports on localhost
 namp localhost
 
-===========
+========
 cronjobs
-============
+========
 echo "* * * * *  command-that-will-run-every-minute >> /tmp/cronlog" > cronjob
 
 
 
-==============
+================
 System Processes
-=============
+================
 
 # List running processes
 systemctl list-units
@@ -439,7 +428,7 @@ sudo systemctl deamon-reload
 journalctl --since "2020-12-25 23:15:00" --until "2020-12-31 23:59:59"
 
 
-===========
+============
 hardware
 ============
 
@@ -497,7 +486,7 @@ sudo mount /dev/sda3 /mnt/drive1
 sudo chown $USER:$USER /path/to/directory -> make yourself the owner of the dir
 ls -s /path/to/directory ~/ -> create shortcut in root directory
 
-===========
+====================
 bashrc modifications
 ====================
 
@@ -505,5 +494,55 @@ bashrc modifications
 mkcd() { mkdir -p "$1" && cd "$1"; }
 
 
-# funcition to adjust terminal volume
+# function to adjust terminal volume
 volume() { amixer sset 'Master' $1%; +}
+
+==================
+Bash Config Files
+==================
+.bashrc - Contains bash configs. Runs every time a new terminal is launched.
+.bashrc_profile - Similar to .bashrc but runs once when a user first logs in.
+.bash_logout - Runs every time a user logs out.
+
+# Aliases
+alias ll='ls -alF'
+alias dr='python manage.py runserver'
+alias python='python3'
+
+# Functions
+mkcd() { mkdir -p "$1" && cd "$1"; }
+
+
+# Start command in new lines
+1: from home directory, open bashrc using nano:
+        $ nano ~/.bashrc
+2: Look for where the PS1 variable is mentioned
+3: Replace the '\$' at the end of the expression with '\n\$'
+4: Save file and restart terminal
+
+# Import other dot file(s) into .bashrc
+source ~/.bash_aliases
+
+
+
+============
+.inputrc
+============
+# Change shortcuts from default emacs to vim config
+set editing-mode vi
+set keymap vi
+
+# Turn off terminal sound
+set bell-style none
+
+# Make autocomplete to case insensitive
+set completion-ignore-case On
+
+# Tab once for all possible completions
+set show-all-if-unmodified On
+
+# Show all endings
+set show-all-if-ambiguous On
+
+# Colour code terminal results
+set colored-stats On
