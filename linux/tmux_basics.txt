@@ -5,7 +5,7 @@ sudo apt-get install tmux
 
 
 #===========
-# Starting tmux
+# Starting tmux session
 #===========
 tmux
 
@@ -14,14 +14,17 @@ tmux
 #==========
 C-b ?
 
-#======
-# Panes
-#======
-Vertical split: C-b %
-Move btw panes: C-b right/left arrow
-Closing Pane: Type 'exit' or Ctrl-d
-Toggle Full Screen: C-b z
-Resize pane: C-b C-<arrow key>
+===============
+Get number of running jobs
+===================
+jobs
+
+===========
+Tmux Hierarchy
+===========
+Session: Group of windows
+Window: Bash session. Can contain multiple windows
+Pane: Contained within a window. Multiple panes can exist in one window.
 
 
 #=========
@@ -33,7 +36,7 @@ Switch to previous window: C-b p
 Switch to next window: C-b n
 Switch to specific window: C-b <window_number>
 List windows: C-b w
-
+Kill a window: C-b d
 
 #=========
 # Sessions
@@ -44,3 +47,63 @@ Detach from specific session: C-b D
 View running sessions: tmux ls
 Connect to session: tmux attach -t <session-number>
 Rename a session: tmux rename-session -t <session-number> <new-name>
+List running sessions  - tmux ls
+Attach to specific session: tmux a -t <session_number>
+Create new named session: tmux new -s <session_name>
+Rename extising session: tmux rename-session -t <old_name> <new_name>
+Switch between sessions: C-b s
+Kill a session: C-d
+Kill a session without being attached to it: tmux kill-session -t <session_name>
+Kill all sessions: tmux kill-server
+
+
+#======
+# Panes
+#======
+Vertical split: C-b %
+Move btw panes: C-b right/left arrow
+Closing Pane: Type 'exit' or Ctrl-d
+Toggle Full Screen: C-b z
+Resize pane: C-b C-<arrow key>
+View clock: C-b t
+
+===========
+Customise Tmux (.tmux.conf)
+===================
+/etc/tmux.conf - Global config for all users
+.tmux.conf - Config for current user
+
+# Setting configurations
+
+# check enabled colours
+tput colors
+
+# enable 256 colours
+export TERM=xterm-256color
+
+# change status bar color
+set-option -g status-bg <color>
+
+# change status bar font colour
+set-option -g status-fg <color>
+
+# change open window colour
+set-option -g window-status-bg <color>
+set-option -g window-status-fg <color>
+
+# change pane border colours
+set-option -g pane-border-bg <color>
+set-option -g pane-border-fg <color>
+
+# change active pane colours
+set-option -g pane-active-boarder-bg <color>
+set-option -g pane-active-boarder-fg <color>
+
+# change status bar status
+set -g status-right "#H #I",  #H==hostname, #I==Current window index
+
+# increase/decrease status area size
+set -g status-right-length <value>
+
+# remapping commands
+set -g prefix C-a (changes prefix to ^a)
