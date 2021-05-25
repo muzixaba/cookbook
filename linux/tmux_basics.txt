@@ -4,9 +4,9 @@
 sudo apt-get install tmux
 
 
-#===========
+#===============
 # Starting tmux session
-#===========
+#===============
 tmux
 
 #==========
@@ -14,7 +14,7 @@ tmux
 #==========
 C-b ?
 
-===============
+===================
 Get number of running jobs
 ===================
 jobs
@@ -67,7 +67,7 @@ Toggle Full Screen: C-b z
 Resize pane: C-b C-<arrow key>
 View clock: C-b t
 
-===========
+===================
 Customise Tmux (.tmux.conf)
 ===================
 /etc/tmux.conf - Global config for all users

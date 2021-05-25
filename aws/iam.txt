@@ -21,3 +21,8 @@ aws iam list-policies --query "Policies[?contains(PolicyName, 'S3')]"
 
 # Attach a Policy to a user
 aws iam attach-user-policy --policy-arn <iam-policy-arn> --user-name <username>
+
+# Account aliases
+aws iam create-account-alias
+aws iam delete-account-alias
+aws iam list-account-aliases
