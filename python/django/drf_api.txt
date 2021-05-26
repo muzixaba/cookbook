@@ -1,0 +1,23 @@
+# create & cd into source folder
+mkdir project_name && cd project_name
+
+# install packages using pipenv
+pipenv install django djangorestframework django-cors-headers
+
+# activate virtual env
+pipenv shell
+
+# edit settings
+installed apps = [
+    'rest_framework',
+    'corsheaders',
+]
+
+middleware = [
+    'corsheaders.middleware.CorsMiddleware', # above CommonMiddleware
+]
+
+CORS_ORIGIN_WHITELIST = (
+'http://localhost:3000', # react
+'http://localhost:8000', # django
+)
