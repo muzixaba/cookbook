@@ -1,0 +1,23 @@
+# Create kinesis data stream
+ aws kinesis create-stream \
+ --stream-name <stream_name> \
+ --shard 1
+
+# Add tag(s) to stream
+ aws kinesis add-tags-to-stream \
+ --stream-name <stream_name> \
+ --tags tagKey=tagValue
+
+
+ # Describe stream
+ aws kinenis describe-stream \
+ --stream-name <stream_name>
+
+ # Add record into stream
+ aws kinesis put-record \
+ --stream-name <stream_name> \
+ --data "{'data': 'in', 'json': 'format'}" \
+ --partition-key "1" \
+ --cli-binary-format raw-in-base64-out
+
+ 
