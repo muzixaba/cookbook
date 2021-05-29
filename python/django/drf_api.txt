@@ -2,7 +2,7 @@
 mkdir project_name && cd project_name
 
 # install packages using pipenv
-pipenv install django djangorestframework django-cors-headers
+pipenv install django djangorestframework django-cors-headers dj-rest-auth django-allauth
 
 # activate virtual env
 pipenv shell
@@ -21,3 +21,35 @@ CORS_ORIGIN_WHITELIST = (
 'http://localhost:3000', # react
 'http://localhost:8000', # django
 )
+
+
+
+# Permission Levels
+Project Level - set in settings.py
+View Level - set in views.py
+Object Level
+
+
+# Authentication (logging in & out)
+
+BASIC 
+1. Client makes an HTTP request
+2. Server responds with an HTTP response containing a 401 (Unauthorized) status code and
+    WWW-Authenticate HTTP header with details on how to authorize
+3. Client sends credentials back via the Authorization HTTP header
+4. Server checks credentials and responds with either 200 OK or 403 Forbidden status code
+5. Should only be used via HTTPS
+
+SESSION (Stateful)
+The client authenticates with its credentials (username/password) and
+then receives a session ID from the server which is stored as a cookie.
+This session ID is then passed in the header of every future HTTP request.
+This approach is stateful because a record must be kept and maintained on both the server (the
+session object) and the client (the session ID).
+
+TOKEN (Stateless)
+Once a client sends the initial user credentials to the server,
+a unique token is generated and then stored by the client.
+Token is passed via HTTP header of request sent to server.
+
+Default
