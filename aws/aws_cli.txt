@@ -1,0 +1,11 @@
+
+# Documentation URL
+https://docs.aws.amazon.com/index.html
+
+# Check version
+aws --version
+
+# Configuration (Access Key, Region, Output Format)
+aws configure
+
+

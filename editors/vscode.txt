@@ -85,3 +85,5 @@ F5 -> Run app
 ctrl + F5 -> Restart app
 ctrl + space -> Code completion
 ctrl + shift + r -> Convert stateless widget to statefull
+ctrl + w -> Close open file
+ctrl + tab -> Select open file tab
