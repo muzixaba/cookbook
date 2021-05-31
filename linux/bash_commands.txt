@@ -546,3 +546,12 @@ set show-all-if-ambiguous On
 
 # Colour code terminal results
 set colored-stats On
+
+
+================
+Set External Editor for Bash
+======================
+export EDITOR=nano
+
+# open external editor to edit command
+^x ^e
