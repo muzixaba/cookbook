@@ -312,6 +312,7 @@ ufw status -> check firewall status
 sudo passwd user_name -> opens prompt to change user password
 su -l user_name -> Switch to a different user
 ctrl + t -> transpose/switch 2 characters in command
+cat /etc/os-release -> Check linux type & version
 
 #=======================
 # Creating Bash Scripts

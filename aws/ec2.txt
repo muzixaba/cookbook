@@ -135,9 +135,17 @@ NOTE:   Your EC2 security group has to allow for NFS connections
 
 # Launch an instance
 aws ec2 run-instances \
-    --image-id ami-123456789 \
-    --instance-type t2.micro \
-    --key-name <key-pair-name> \
+--image-id ami-123456789 \
+--instance-type t2.micro \
+--key-name <key-pair-name> \
+
+# EDSA AMI Instance
+aws ec2 run-instances \
+--image-id ami-0b23604f872b0abe6 \
+--instance-type t2.micro \
+--security-group-ids sg-072781961696615fb \
+--tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=muzi_testing}]' 'ResourceType=volume,Tags=[{Key=Name,Value=muzi_testing}]'
+
 
 # Start an instance
 aws ec2 start-instances --instance-ids <instance-id>

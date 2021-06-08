@@ -73,3 +73,16 @@ aws s3api put-object \
 --bucket <bucket-name> \
 --key bucket-folder/object_name.jpg \
 --body ~/local/path/to/object_name.jpg
+
+
+#=========
+# boto3
+#==========
+
+
+import boto3
+s3 = boto3.client('s3')
+
+# Upload files
+with open('filename', 'rb') as data:
+    s3.upload_fileobj(data, 'mybucket', 'mykey')

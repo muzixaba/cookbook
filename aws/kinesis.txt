@@ -20,4 +20,11 @@
  --partition-key "1" \
  --cli-binary-format raw-in-base64-out
 
+ # Get shard iterator
+ aws kinesis get-records \
+--shard-iterator <value>
+
+# Get records. Responds with records & shard value to be used in next iteration
+aws kinesis get-records --shard-iterator <shard_iterator_value>
+
  

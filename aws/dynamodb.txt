@@ -6,3 +6,24 @@ Create table:
     Table name
     Primary key (email)
     Sort key (created_at)
+
+
+
+#==============
+# Add records to table
+#==============
+
+    # Connect to dynamodb
+    ddb = boto3.resource('dynamodb')
+    ddb_table = ddb.Table('People')
+    
+    # Write to table
+    response = ddb_table.put_item(
+        Item={
+            'ID': 3,
+            'Name': 'PersonName',
+            'Surname': 'PersonSurname',
+            'Age': 33,
+            'Height': Decimal('1.535')
+        }
+        )
