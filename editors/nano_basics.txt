@@ -89,6 +89,10 @@ alt + 6 - End marker
 ^U - paste original text back to original position
 ^U - paste original text in new position, hence creating a copy
 
+# Copy into Windows Clipboard
+Highlight the text using your  mouse.
+Right click and select copy
+
 
 ==================
 Enable Syntaxt Highlighing
