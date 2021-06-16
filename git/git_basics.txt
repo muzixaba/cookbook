@@ -19,6 +19,9 @@ A git repo contains the following:
 git config --global user.name "Name"
 git config --global user.email "your@email.com"
 
+# Change your default git editor
+git config --global core.editor nano/code
+
 # Setting up p4merge (perforce.com, install p4merge - visual merge tool only)
 - Set as difftool (comparing)
 git config --global diff.tool p4merge

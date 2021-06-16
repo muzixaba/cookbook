@@ -1,11 +1,13 @@
 / -> root directory
-/bin -> binaries
 /root -> root user's home directory
+/bin -> binaries or programs
+/dev -> devices, where HDD's are found
+/etc -> ectetera file. where config files sit
 /tmp -> temp files, deleted on restart
 /home -> houses user directories
 /home/username -> specific users directory
-/etc -> ectetera file. where config files sit
 /etc/fstab -> system config file that contains all available disks, disk partitions and their options
-/dev -> devices, where HDD's are found
 /mnt -> For directories/devices that are mounted manually
 /media -> Drives that are automatically mounted by your system
+/var -> Files that are updated frequently e.g Log files
+/proc -> Files representing running processes

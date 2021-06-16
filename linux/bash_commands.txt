@@ -74,9 +74,12 @@ mkdir -p folder_1/folder_2 -> creates a folder_2 inside folder_1
 # Navigation
 #===========
 cd -> goes to home directory
+cd ~ -> goes to home directory
 cd .. -> moves up one directory
 cd ../.. -> moves up two directories
 cd / -> navigates to root directory
+cd /tmp/file.txt -> uses absolute path to navigate
+cd path/to/file.txt -> uses relative path to navigate
 
 #===========
 # Searching
@@ -144,6 +147,13 @@ ctrl + u -> Cut from cursor position to begging of the line
 ctrl + y -> Paste text
 ctrl + w -> Delete word(s) one at a time
 
+#=============
+# Installing Packages
+#=============
+sudo apt update -> Updates packages registry
+sudo apt install <package_name> -> Installs package
+sudo apt remove <package_name> -> Uninstalls package
+
 #============
 # Directories
 #============
@@ -153,7 +163,7 @@ mkdir /dir_name-> creates creates dir_name inside root directory
 mkdir dir_name -> creates dir_name inside current directory
 mkdir -p dir1/dir2/dir3 -> creates all 2 directories inside dir1 & also ensures dir1 gets created if not exist
 pwd -> print working directory
-rm -r dir_name -> deletes everythin inside dir_name & dir_name
+rm -r dir_name/ -> deletes everythin inside dir_name & dir_name
 cp -r dir1 dir2 -> copies dir1 into dir2
 
 #========

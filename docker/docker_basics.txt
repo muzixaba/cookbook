@@ -1,23 +1,34 @@
-==================
+===========
 What is Docker?
-=================
-Containerisation
+===========
+Containerisation software
+Container - An isolated environment for running applications
+Unlike Virtual Machines, containers share the host OS
 
+# Docker architecture
+Uses Client - Server architecture
 
-=============
+=========
 Requirements
-=============
+=========
 If Windows:
 	Have Windows 10
 	Enable Hyper-V
 	Enable virtualisation
 
 
-===========================
+=================
 Download & Install Docker
-===========================
-download.docker.com
+=================
+https://hub.docker.com/editions/community/docker-ce-desktop-windows/
 Approximately 550mb
+
+# Check version (CLI)
+docker version
+
+# List docker images on local Machine
+docker image ls
+
 
 What's in the box:
 	Docker Engine
@@ -26,27 +37,42 @@ What's in the box:
 	Kitematic
 
 
-===================
+=========
 Using Docker
-==================
+=========
 Create or pull Docker image from registries.
 Popular registries are DockerHub and Quay.io
 
+# Dockerising/Containerising an app
+1. Add Dockerfile to app
+2. Create a docker image
 
-=================
+# Run a docker image
+docker run image <image_name>
+
+# Get a docker image from docker hub
+docker pull <image_name>
+
+# List running containers
+docker ps
+
+# Run image in interactive mode
+docker run -it <image_name>
+
+==========
 Docker Swarms
-=================
+==========
 A group of Docker engines working together.
 They're managed by Docker Manager
 
-=================
+===========
 Docker Compose
-=================
+===========
 Runs multiple apps made up of multiple containers
 
-=====================
+===========
 Docker on Linux
-=====================
+===========
 
 # install
 sudo snap install Docker
