@@ -1,0 +1,12 @@
+# View API key
+heroku auth:token
+
+# Login using CLI
+heroku login
+
+# Create API key
+heroku authorizations:create (prod apps)
+heroku auth:token (dev apps)
+
+# Revoke/Delete API key
+heroku authorizations:revoke
