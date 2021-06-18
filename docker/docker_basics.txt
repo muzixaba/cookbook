@@ -8,6 +8,13 @@ Unlike Virtual Machines, containers share the host OS
 # Docker architecture
 Uses Client - Server architecture
 
+# Docker Keywords
+Image - Package/Template used to create containers.
+Container - Running instance of an image
+Dockerfile - 
+Kernel -
+
+
 =========
 Requirements
 =========
