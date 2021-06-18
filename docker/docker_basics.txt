@@ -25,10 +25,14 @@ If Windows:
 
 
 =================
-Download & Install Docker
+Download & Install Docker (WINDOWS)
 =================
 https://hub.docker.com/editions/community/docker-ce-desktop-windows/
 Approximately 550mb
+
+===========================
+Download & Install (Linux)
+===========================
 
 # Check version (CLI)
 docker version
