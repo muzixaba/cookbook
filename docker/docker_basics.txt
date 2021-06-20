@@ -53,13 +53,19 @@ Using Docker
 =========
 Create or pull Docker image from registries.
 Popular registries are DockerHub and Quay.io
-
+Containers will run as long there's a process running
 # Dockerising/Containerising an app
 1. Add Dockerfile to app
 2. Create a docker image
 
-# Run a docker image
+# Run a docker image (attached)
 docker run image <image_name>
+
+# Run docker container in background (detached)
+docker run -d <container_name>
+
+# Attach to a container running in the background
+docker attach <first_5_letters_of_container_ID>
 
 # Get a docker image from docker hub
 docker pull <image_name>
@@ -67,8 +73,23 @@ docker pull <image_name>
 # List running containers
 docker ps
 
+# List all containers
+docker ps -a
+
+# Stop a container
+docker stop <container_name>
+
+# stop all containers
+docker kill $(docker ps -q)
+
+# stop and remove all containers
+docker rm $(docker ps -a -q)
+
 # Run image in interactive mode
 docker run -it <image_name>
+
+# run command on a running container
+docker exec <container_name> [command]
 
 ==========
 Docker Swarms
@@ -96,8 +117,15 @@ docker version
 sudo groupadd docker (creates docker group)
 sudo usermod -aG docker $USER
 
+# Get docker image from docker hub
+docker pull <image_name>
+
 # list docker images
+docker images
 docker image ls
+
+# remove image
+docker rmi <image_name>
 
 # list docker containers
 docker container ls (--all, -aq)
@@ -105,8 +133,23 @@ docker container ls (--all, -aq)
 # see all running containers
 docker ps -a
 
+# build docker image
+docker build [options] <image_name> <path>
+
+# get image from DockerHub
+docker pull <image_name>
+
 # run a container
 docker run it --name=ContainerName
+
+# run a container, use a PORT
+docker run -p 8080:80 (maps port 8080 from local machine with port 80 inside container)
+
+# Stop a container
+docker stop container_name
+
+# See container logs
+docker logs <container_name>
 
 # remove all stopped containers
 docker rm $(docker ps -a -q)
@@ -131,3 +174,21 @@ bcedit /set hypervisorlaunchtype off
 
 # Enable Hyper-V to use Docker (admin)
 bcedit /set hypervisorlaunchtype auto
+
+
+===================
+DOCKERFILE Anatomy
+====================
+FROM node:12.16.3 (base image)
+
+WORKDIR /code (directory where docker files will be stored)
+
+ENV PORT 80
+
+COPY package.json /docker_dir/package.json (copy  the apps package file into docker)
+
+RUN npm install (install packages found inside package.json)
+
+COPY . /code (copy all file in working dir into docker dir)
+
+CMD [ "node", "srs/server.js"] (default command to run when image is started)
