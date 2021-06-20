@@ -1,0 +1,31 @@
+# What's vagrant?
+Tool for building and managing virtual machine environments is a single workflow.
+Completely CLI based
+
+# check version (CLI)
+vagrant --version
+
+# create Vagrant file
+vagrant init OS/version
+
+# run vagrant file
+vagrant up
+
+# connect to vagrant server
+vagrant ssh
+
+# exit out of vagrant machine
+exit
+
+# create virtual env inside vagrant
+# place it in home folder so it doesn't get synced with /vagrant
+python -m venv ~/env
+
+# activate virtual env inside vagrant
+source ~/env/bin/activate
+
+# deactivate virtual env 
+deactivate
+
+# run django server from inside vagrant
+python manage.py runserver 0.0.0.0:8000

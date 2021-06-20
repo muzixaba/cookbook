@@ -53,3 +53,33 @@ a unique token is generated and then stored by the client.
 Token is passed via HTTP header of request sent to server.
 
 Default
+
+
+#========
+# views
+#=========
+
+# APIView
+The most basic of DRF views
+Define methods for each of the HTTP methods inside your class view
+Gives most control over logic in the view
+
+class MyAPIView(APIView):
+    serializer_class = serializers.MyModelSerializer
+
+    def get(self, request, format=None):
+        pass
+
+    def post(self, request, format=None):
+        pass
+
+    def put(self, request, pk=None):
+        pass
+
+# ViewSets
+Accept functions that map to common api actions
+e.g list, create, retrieve, update, partial_update, destroy
+Great for simple CRUD to a db
+Work with standard db structure
+Take care of common logic
+Need little to no custom logic
