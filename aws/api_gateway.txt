@@ -26,3 +26,9 @@ APIs:
     Deployment stage (dev, prod, test)
     Stage Description
     'Deploy'
+
+#========
+# Key Terms
+#========
+API Depolyment: Snapshot of API, associated with a stage
+API Stage: Reference to lifecycle stage of API
