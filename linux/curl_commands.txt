@@ -2,9 +2,14 @@
 # Visit a basic website, uses GET by default (-v: verbose)
 curl -v google.com
 
-# User signup using api (-H: header, -d: data)
-curl -X "POST" example.com/api/signup -H 'Content-Type: application:json' -d '{"username": "TestName", "password": "Secrete234"}'
-curl -X "POST" http://127.0.0.1:8000/api/signup -H 'Content-Type: application:json' -d '{"username": "Teso2", "password": "Minenhle2"}'
+# Get API resources
+curl -X GET https://jsonplaceholder.typicode.com/users
+
+# User signup using api (-H: header, -d: data, -X when not using GET)
+curl -X POST example.com/api/signup -H 'Content-Type: application:json' -d '{"username": "TestName", "password": "Pword123"}'
+
+# Curl defaults to "Content-Type: application/x-www-form-urlencoded" when doing POST
+curl   -X POST http://127.0.0.1:8000/api/signup -d "username=Teso2&password=Pword123"
 
 # Send a POST request using a file
 curl url.com -d @file_name.json -H 'content-type: application/json"

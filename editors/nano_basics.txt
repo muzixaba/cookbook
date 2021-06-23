@@ -58,9 +58,11 @@ shift + arrow_key
 
 # Undo
 esc + u
+alt + U
 
 # Redo
 esc + e
+alt + E
 
 # Search
 ^W
