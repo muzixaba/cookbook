@@ -166,6 +166,12 @@ pwd -> print working directory
 rm -r dir_name/ -> deletes everythin inside dir_name & dir_name
 cp -r dir1 dir2 -> copies dir1 into dir2
 
+#=================
+# SH Files
+#====================
+./file.sh -> runs executable file
+sudo sh ./file.sh -> runs file as an executable
+
 #========
 # Files
 #========

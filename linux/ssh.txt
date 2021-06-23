@@ -50,3 +50,13 @@ ClientAliveInterval 60
 TCPKeepAlive yes
 ClientAliveCountMax 10000
 
+
+#=========
+# SSH KEYS
+#=========
+
+# Check for existing SSH KEYS
+ls -al ~/.ssh
+
+# Retrieve SSH key (Public)
+cat ~/.ssh/id_rsa.pub
