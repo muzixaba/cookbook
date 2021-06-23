@@ -142,7 +142,7 @@ docker pull <image_name>
 # run a container
 docker run it --name=ContainerName
 
-# run a container, use a PORT
+# run a container, use a PORT (Port Mapping)
 docker run -p 8080:80 (maps port 8080 from local machine with port 80 inside container)
 
 # Stop a container
@@ -150,6 +150,9 @@ docker stop container_name
 
 # See container logs
 docker logs <container_name>
+
+# Inspect a Container (Finds details about a container)
+docker inspect <container_name>
 
 # remove all stopped containers
 docker rm $(docker ps -a -q)
