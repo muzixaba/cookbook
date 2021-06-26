@@ -1,0 +1,57 @@
+========================
+# Automates Systems Management
+========================
+
+==========
+Run Command
+==========
+# Runs tasks on multiple servers
+
+===============
+Maintanance windows
+===============
+# Used to schedule windows of time to run admin & maintanance tasks across instances
+
+# Maintanance Window Creation Steps
+1. Create the Maintanance Window
+2. Assign targets
+3. Assign tasks
+4. Review status after task completion
+
+
+===========
+State Manager
+===========
+# Maintains a consistent config of instances
+
+# Creating a State Manager
+1. Create/Get SSM Document (JSON/YAML)
+2. Associate managed instances with the SSM Doc
+3. Specify schedule for the state i.e How ofter to apply the state
+4. Write the output of the command to S3 (optional)
+
+
+===========
+Parameter Store
+===========
+# Stores secrets so that you don't have to use config files or store inside code
+# Stores passwords, API Keys, Database strings, etc
+# Params can be encrypted using KMS
+
+
+======
+Inventory
+======
+# Collects info about instances & the software installed on them.
+
+
+======
+Instights
+======
+# Shows operational data for each resource
+
+# Can view any of the following for a resource:
+- API calls from CloudTrail
+- Config changes using Config
+- Software Inventory
+- Dashobard(s) from CloudWatch
