@@ -2,10 +2,30 @@
 # Documentation URL
 https://docs.aws.amazon.com/index.html
 
+# Install AWS CLI
+pip3 install awscli --upgrade --user
+
 # Check version
 aws --version
 
 # Configuration (Access Key, Region, Output Format)
 aws configure
 
+# Command format
+aws <service> <operation> <parameters>
+e.g aws ec2 run-instances --instance-id i-11234
 
+# CLI Output
+JSON
+Text
+Table
+
+# General command parameters
+--query: Filter fields displayed in result ('Reservations[0].Instances[0])
+--filter: Applies filtering server side ("Name=platform,Values=windows")
+--dry-run: Checks if authorized without making a request
+
+# CLI help (Different levels)
+aws help
+aws <service> help
+aws <service> <operation> help
