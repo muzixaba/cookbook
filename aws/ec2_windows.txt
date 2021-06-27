@@ -1,0 +1,17 @@
+======
+Key-pair
+======
+# Used to decrypt Admin password
+# Use RDP to log into instance (port 3389)
+
+==========
+Windows AMIs
+==========
+# AWS keeps Windows AMIs for 3 months.
+# Made private after that.
+
+
+=========
+Maintanance
+=========
+# Updates can done automatically

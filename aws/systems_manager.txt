@@ -5,10 +5,30 @@
 ==========
 Run Command
 ==========
-# Runs tasks on multiple servers
+# Runs tasks on multiple instances
+# Works with managed-instances (instances that have been configured for Systems Manager)
+
+
+===========
+Session Manager
+===========
+# Connects to instances without opening inbound ports, using bastion hosts, or maintainign SSH Keys
+# Uses a browser-based shell
+
+
+==========
+Patch Manager
+==========
+# Deploys OS & software patches automatically to instances.
+
+Steps involved
+1. Create patch baseline
+2. Create a maintanance window for patching
+3. Apply patch(es) & reboot instances
+4. Audit results
 
 ===============
-Maintanance windows
+Maintanance Windows
 ===============
 # Used to schedule windows of time to run admin & maintanance tasks across instances
 
@@ -19,9 +39,9 @@ Maintanance windows
 4. Review status after task completion
 
 
-===========
+==========
 State Manager
-===========
+==========
 # Maintains a consistent config of instances
 
 # Creating a State Manager
@@ -34,9 +54,11 @@ State Manager
 ===========
 Parameter Store
 ===========
-# Stores secrets so that you don't have to use config files or store inside code
+# Stores secrets in Key-Value pairs, so that you don't have to use config files or store inside code
 # Stores passwords, API Keys, Database strings, etc
 # Params can be encrypted using KMS
+# Cal be referenced from cloudformation
+# FREE to use, unlike AWS Secrets
 
 
 ======
@@ -55,3 +77,16 @@ Instights
 - Config changes using Config
 - Software Inventory
 - Dashobard(s) from CloudWatch
+
+
+============
+CLI Commands
+============
+
+# Create an automation document
+aws ssm create-document \
+--name "My-Automator-Doc" \
+--content file://file-name.yml \
+--document-type "Command/Automation" \
+--document-format YAML \
+--region af-south-1
