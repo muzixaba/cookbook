@@ -134,7 +134,7 @@ docker container ls (--all, -aq)
 docker ps -a
 
 # build docker image
-docker build [options] <image_name> <path>
+docker build -t <image_name> <path/to/Dockerfile>
 
 # get image from DockerHub
 docker pull <image_name>
@@ -143,7 +143,7 @@ docker pull <image_name>
 docker run it --name=ContainerName
 
 # run a container, use a PORT (Port Mapping)
-docker run -p 8080:80 (maps port 8080 from local machine with port 80 inside container)
+docker run -p 8080:80 <image> (maps port 8080 from local machine with port 80 inside container)
 
 # Stop a container
 docker stop container_name
@@ -163,6 +163,9 @@ docker info
 # run an image
 sudo docker run image_name
 
+# run a container and pass environment variables
+docker run -e ENV_VAR=value <image>
+
 # build a docker image
 sudo docker build --tag=TagName . (remember the dot at the end)
 
@@ -178,6 +181,11 @@ bcedit /set hypervisorlaunchtype off
 # Enable Hyper-V to use Docker (admin)
 bcedit /set hypervisorlaunchtype auto
 
+# Get the base Operating System used by an image
+docker run <image> cat /etc/*release*
+
+# Write the django runserver command inside a Dockerfile
+CMD ["python3", "manage.py", "runserver"]
 
 ===================
 DOCKERFILE Anatomy

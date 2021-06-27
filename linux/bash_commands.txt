@@ -163,7 +163,7 @@ mkdir /dir_name-> creates creates dir_name inside root directory
 mkdir dir_name -> creates dir_name inside current directory
 mkdir -p dir1/dir2/dir3 -> creates all 2 directories inside dir1 & also ensures dir1 gets created if not exist
 pwd -> print working directory
-rm -r dir_name/ -> deletes everythin inside dir_name & dir_name
+rm -r dir_name/ -> deletes everything inside dir_name & dir_name
 cp -r dir1 dir2 -> copies dir1 into dir2
 
 #=================
