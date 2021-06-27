@@ -1,12 +1,12 @@
-#====================================
+#=========================
 # Amazon Elastic Cloud Compute - EC2
-#====================================
+#=========================
 
 # AWS's virtual server
 
 
 # Launching an instance
------------------------
+---------------------------
 Management Console -> Servicecs -> EC2
 Panel -> Instances -> Launch Instance
 
@@ -31,7 +31,7 @@ Step 3: Configure Instance
     Termination Protection (unchecked by defualt)
     Monitoring (CloudWatch monitoring unchecked by default)
     Tenancy (Shared by default)
-    User Data (empty by default)
+    User Data (Empty by default. Is ran by cloud-init)
 
 Step 4: Add Storage
     Root volume supplied by default
@@ -57,14 +57,14 @@ Step 7: Review
 
 
 # Creating a Snapshot
-----------------------
+-------------------------
 Panel -> volumes
 Right Click volume -> Create snapshot
 Enter snapshot description -> Click 'Create Snapshot'
 
 
 # Encrypting a Volume
----------------------
+-------------------------
 Create a snapshot
 Actions -> Copy Snapshot
 Choose 'Destination Region'
@@ -73,7 +73,7 @@ Master Key -> (default)
 
 
 # Creating an Image from a snapshot
-------------------------------------
+-----------------------------------------
 Panel -> Snapshots
 Actions -> Create Image
 Give image name & other instance details
@@ -81,13 +81,13 @@ Give image name & other instance details
 
 
 # Create a Launch Configuration
---------------------------------
+-----------------------------------
 Panel -> Launch Configuration
 Do EC2 launch process
 
 
 # Auto Scaling Group
---------------------
+-----------------------
 NOTE: Need to create/have a Launch Configuration first
 Panel -> Auto Scaling Group
 Select Launch Configuration or Launch Template to use
@@ -96,7 +96,7 @@ Edit Details: Change target groups, Health Check Type (EC2/ELB)
 
 
 # Add a Load Balancer
----------------------
+-------------------------
 Panel -> Load Balancer
 Choose Type (ALB, NLB, CLB)
 If 'Application Load Balancer (ALB)'
@@ -107,7 +107,7 @@ Register targets (Pick instances directly or choose an ASG)
 
 
 # Attach Domain to Load Balancer
---------------------------------
+--------------------------------------
 Panel -> Load Balancers
 Add listener
 Protocol: HTTPS:443
@@ -118,7 +118,7 @@ Note: Ensure that your Security allows HTTPS traffic
 
 
 # Mount EFS Volume to EC2
--------------------------
+-------------------------------
 Services -> EFS
 Create file system
 Choose security group(s) for mount points

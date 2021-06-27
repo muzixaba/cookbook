@@ -180,7 +180,7 @@ sudo sh ./file.sh -> runs file as an executable
 touch file_name.txt -> creates new file
 touch file1 file2 file3 -> creates 3 files
 touch *.txt -> changes all date modified to now
-cat >filename -> creates a new file
+cat >filename.ext -> creates a new file, enter contents in prompt & ^d to save 
 echo "Write/Overwrite to file" > file.ext
 
 
