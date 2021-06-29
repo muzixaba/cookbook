@@ -1,0 +1,18 @@
+============
+AWS Fargate
+==========
+# Provides serveless container management
+
+
+# Steps involved in using Fargate
+------------------------------------
+1. Build your container image
+2. Specify CPU & memory Requirements
+3.  Define IAM & network Policies
+
+
+# When to use Fargate?
+--------------------------
+- When you want to run containers without managing a fleet of EC2 instances.
+- Porting a monolithic app
+- Dealing with highly variable workloads

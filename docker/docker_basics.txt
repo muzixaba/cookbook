@@ -143,14 +143,10 @@ docker pull <image_name>
 docker run it --name=ContainerName
 
 # run a container, use a PORT (Port Mapping)
-<<<<<<< HEAD
 docker run -p 8080:80 <image> (maps port 8080 from local machine with port 80 inside container)
-=======
-docker run -p 8080:80 <image_name> (maps port 8080 from local machine with port 80 inside container)
 
 # add a command onto the 'run' command
 docker run ubuntu cat /etc/*release* -> Checks OS version
->>>>>>> 4da0f8fdbe2950febf85def9eb84ccf6c4b4a3d9
 
 # Stop a container
 docker stop container_name
@@ -172,6 +168,9 @@ sudo docker run image_name
 
 # run a container and pass environment variables
 docker run -e ENV_VAR=value <image>
+
+# run a container and link it to another
+docker run -d --name=frontend -p 5000:80 --link postgres:pg_image_name frontend_image
 
 # build a docker image
 sudo docker build --tag=TagName . (remember the dot at the end)
@@ -243,3 +242,83 @@ ENTRTPOINT FLASK_APP=/opt/app.py flask run --host=0.0.0.0:5000
 # Build Image
 ---------------
 docker build . -t <my_image_tag>
+
+
+# Challenges when working with containers
+-------------------------------------------------
+Bin Packing: Run out of space for apps inside your containers
+Zombie Containers: No longer needed but refuse to stop
+Disappearing Containers: Containers that stop unexpectedly
+
+
+=============
+DOCKER COMPOSE
+=============
+# Use to combine different containers that make up a stack for an app.
+# Runs on a single Docker host
+# Configured using YAML
+
+
+# Example of stack without using Docker Compose (Voting App)
+docker run -d --name=redisdb redis
+docker run -d --name=db postgres:9.4
+docker run -d --name=vote -p 5000:80 --link redis:redisdb voting-app
+doker run -d --name=result -p 5001:80 --link db:db result-app
+docker run -d --name=worker --link db:db --link redis:redis worker
+
+# docker-compose.yml (V1)
+redis:
+	image: redis
+db:
+	image:postgres:9.4
+vote:
+	build: ./vote #image 2b built locally
+	ports:
+		- 5000:80
+	links:
+		- redis
+result:
+	image: result-app
+	ports:
+		- 5001:80
+	links:
+		- db
+worker:
+	image: worker
+
+
+# docker-compose.yml (V2)
+version: 2
+services:
+	redis:
+		image: redis
+	db:
+		image:postgres:9.4
+		networks:
+			- back-end
+	vote:
+		build: ./vote #image 2b built locally
+		ports:
+			- 5000:80
+		depends_on:
+			- redis
+		networks:
+			- front-end
+			- back-end
+	result:
+		image: result-app
+		ports:
+			- 5001:80
+		links:
+			- db
+		networks:
+			- front-end
+			- back-end
+	worker:
+		image: worker
+		networks:
+			- back-end
+
+networks:
+	front-end:
+	back-end:
