@@ -1,6 +1,6 @@
-===========
+==============
 What is Docker?
-===========
+==============
 Containerisation software
 Container - An isolated environment for running applications
 Unlike Virtual Machines, containers share the host OS
@@ -15,18 +15,18 @@ Dockerfile -
 Kernel -
 
 
-=========
+============
 Requirements
-=========
+============
 If Windows:
 	Have Windows 10
 	Enable Hyper-V
 	Enable virtualisation
 
 
-=================
+====================================
 Download & Install Docker (WINDOWS)
-=================
+====================================
 https://hub.docker.com/editions/community/docker-ce-desktop-windows/
 Approximately 550mb
 
@@ -48,9 +48,9 @@ What's in the box:
 	Kitematic
 
 
-=========
+============
 Using Docker
-=========
+============
 Create or pull Docker image from registries.
 Popular registries are DockerHub and Quay.io
 Containers will run as long there's a process running
