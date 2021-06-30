@@ -1,0 +1,16 @@
+=============
+AWS Step Functions
+=============
+
+# What's the service used for?
+---------------------------------
+Allows for the ability to coordinate AWS services into serveless workflows.
+Output from one step is the acts as the input for the next.
+
+
+# How to set Step Functions
+-------------------------------
+1. Define steps in workflow
+2. Configure task to coordinate an AWS service action
+3. Run as needed. Upto 1yr max execution timeout
+4. Swap out tasks or steps

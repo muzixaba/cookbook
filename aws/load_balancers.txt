@@ -1,6 +1,6 @@
-===========================
+================
 Creating a Load Balancer
-===========================
+================
 aws elbv2 create-load-balancer \
 --name <load-balancer-name> \
 --subnets subnets-12345 subnet-234545 \
@@ -33,3 +33,21 @@ aws elbv2 create-listener \
 # Verify health of registered targets
 aws elbv2 describe-target-health \
 --target-group-arn <tgt-grp-arn>
+
+
+# Scaling Policies
+CloudWatch
+Health Checks
+Scheduled
+Manual
+Dynamic (target, step, simple)
+Predictive (predicts using daily & weekly traffic)
+
+# Termination Policies
+Oldest Instance
+NewestInstance
+OldestLaunchConfiguration
+ClosestToNextInstanceHour
+
+# Steady State ASG
+# Min, Desired, Max = 1, 1, 1
