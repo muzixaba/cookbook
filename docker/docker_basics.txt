@@ -143,14 +143,10 @@ docker pull <image_name>
 docker run it --name=ContainerName
 
 # run a container, use a PORT (Port Mapping)
-<<<<<<< HEAD
-docker run -p 8080:80 <image> (maps port 8080 from local machine with port 80 inside container)
-=======
 docker run -p 8080:80 <image_name> (maps port 8080 from local machine with port 80 inside container)
 
 # add a command onto the 'run' command
 docker run ubuntu cat /etc/*release* -> Checks OS version
->>>>>>> 4da0f8fdbe2950febf85def9eb84ccf6c4b4a3d9
 
 # Stop a container
 docker stop container_name
@@ -163,6 +159,9 @@ docker inspect <container_name>
 
 # remove all stopped containers
 docker rm $(docker ps -a -q)
+
+# remove/delete a container
+docker rm <container_name>
 
 # view docker setup
 docker info
@@ -237,9 +236,22 @@ RUN pip3 install flask
 COPY app.py /opt/app.py
 
 # Determine app entrypoint
-ENTRTPOINT FLASK_APP=/opt/app.py flask run --host=0.0.0.0:5000
+ENTRYPOINT FLASK_APP=/opt/app.py flask run --host=0.0.0.0:5000
 
 
 # Build Image
 ---------------
 docker build . -t <my_image_tag>
+
+
+=================
+DOCKERFILE COMMANDS
+====================
+FROM - base image
+WORKDIR - sets the app directory
+ADD - copies files from local/url into the container
+RUN - runs a bash command
+EXPOSE - makes a certain port available for links/publish
+CMD - command that runs when the container launches
+ENTRYPOINT - 
+ENV - 
