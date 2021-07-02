@@ -1,6 +1,6 @@
-#=================================
+#============================
 # Relational Database Service
-#=================================
+#============================
 
 # Create a Database
 -------------------
@@ -113,12 +113,32 @@ Additional Configuration:
 'Create Database'
 
 
-======
+========
 AWS CLI
-======
+========
 
 # Create a RDS instance
 aws rds create-db-instance --db-name ExampleDB --engine MySQL \
 --db-instance-identifier MySQLForLambdaTest --backup-retention-period 3 \
 --db-instance-class db.t2.micro --allocated-storage 5 --no-publicly-accessible \
 --master-username username --master-user-password password
+
+# Create an RDS Snapshot
+aws rds create-db-snapshot \
+--db-instance-identifier <db_name> \
+--db-snapshot-identifier <snapshot_name>
+
+# Restore from a snapshot (add it back to original SG if required)
+aws rds restore-db-instance-from-db-snapshot \
+--db-instance-identifier <new_db_name> \
+--db-snapshot-identifier <snapshot_name>
+
+# Copy an RDS snapshot, along with its tags
+aws rds copy-db-snapshot \
+--source-db-snapshot-identifier <snapshot_name> \
+--target-db-snapshot-identifier <snapshot_copy_name> \
+--copy-tags
+
+# Delete a snapshot
+aws rds delete-db-snapshot \
+--db-snapshot-identifier <snapshot_name>

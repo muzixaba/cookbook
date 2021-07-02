@@ -95,20 +95,20 @@ docker exec <container_name> [command]
 docker run --cpus=0.5 ubuntu
 docker run --memory=100m ubuntu
 
-==========
+=============
 Docker Swarms
-==========
+=============
 A group of Docker engines working together.
 They're managed by Docker Manager
 
-===========
+==============
 Docker Compose
-===========
+==============
 Runs multiple apps made up of multiple containers
 
-===========
+==============
 Docker on Linux
-===========
+==============
 
 # install
 sudo snap install Docker
@@ -210,8 +210,24 @@ docker volume create <volume_name>
 # Mount volume onto container
 docker run -v <volume_name>:/path/to/something <image>
 
+# Mount using 'mount' flag (source=localhost, target=container)
+docker run --mount type=bind, \
+source=/data/mysql, \
+target=/var/lib/mysql \
+mysql
+
 # log into DockerHub
 docker login
+
+
+===================
+DOCKER FILE System
+===================
+/var/lib/docker
+- aufs
+- containers
+- image
+- volumes
 
 
 ==================
@@ -233,9 +249,9 @@ CMD [ "node", "srs/server.js"] (default command to run when image is started)
 
 
 
-================
+===================
 CREATE DOCKER IMAGE
-================
+===================
 
 # Dockerfile
 --------------
@@ -278,7 +294,7 @@ ENV -
 
 
 # Challenges when working with containers
--------------------------------------------------
+------------------------------------------
 Bin Packing: Run out of space for apps inside your containers
 Zombie Containers: No longer needed but refuse to stop
 Disappearing Containers: Containers that stop unexpectedly
