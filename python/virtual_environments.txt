@@ -1,7 +1,7 @@
 # Using venv (part of standard library)
 python -m venv env_name (env_name normally .venv)
 source env_name/bin/activate (activate using linux/mac)
-env/Scripts/activate.bat (activate using Windows)
+env/Scripts/activate.bat (activate using Windows Command Prompt)
 pip3 freeze > requirements.txt (creates a requirements file)
 deactivate (deactivate's env)
 rm -rf env_name (deletes virtual env)
