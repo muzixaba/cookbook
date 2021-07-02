@@ -42,7 +42,7 @@ docker image ls
 
 
 What's in the box:
-	Docker Engine
+	Docker Engine (CLI > API > Deamon)
 	Docker Compose
 	Docker Machine
 	Kitematic
@@ -91,20 +91,24 @@ docker run -it <image_name>
 # run command on a running container
 docker exec <container_name> [command]
 
-==========
+# limit the amount of cpu/ram a container can use (cgroups)
+docker run --cpus=0.5 ubuntu
+docker run --memory=100m ubuntu
+
+=============
 Docker Swarms
-==========
+=============
 A group of Docker engines working together.
 They're managed by Docker Manager
 
-===========
+==============
 Docker Compose
-===========
+==============
 Runs multiple apps made up of multiple containers
 
-===========
+==============
 Docker on Linux
-===========
+==============
 
 # install
 sudo snap install Docker
@@ -175,6 +179,9 @@ docker run -e ENV_VAR=value <image>
 # run a container and link it to another
 docker run -d --name=frontend -p 5000:80 --link postgres:pg_image_name frontend_image
 
+# run a container on a remote host
+docker -H=<remote-host-ip>:<port> run <image>
+
 # build a docker image
 sudo docker build --tag=TagName . (remember the dot at the end)
 
@@ -197,13 +204,35 @@ docker run <image> cat /etc/*release*
 # Write the django runserver command inside a Dockerfile
 CMD ["python3", "manage.py", "runserver"]
 
+# Create a volume
+docker volume create <volume_name>
+
+# Mount volume onto container
+docker run -v <volume_name>:/path/to/something <image>
+
+# Mount using 'mount' flag (source=localhost, target=container)
+docker run --mount type=bind, \
+source=/data/mysql, \
+target=/var/lib/mysql \
+mysql
+
 # log into DockerHub
 docker login
 
 
-===============
+===================
+DOCKER FILE System
+===================
+/var/lib/docker
+- aufs
+- containers
+- image
+- volumes
+
+
+==================
 DOCKERFILE Anatomy
-===============
+==================
 FROM node:12.16.3 (base image, required)
 
 WORKDIR /code (directory where docker files will be stored)
@@ -220,9 +249,9 @@ CMD [ "node", "srs/server.js"] (default command to run when image is started)
 
 
 
-================
+===================
 CREATE DOCKER IMAGE
-================
+===================
 
 # Dockerfile
 --------------
@@ -230,12 +259,15 @@ CREATE DOCKER IMAGE
 FROM ubuntu
 
 # Add all commands you would type on that base image to get the app to run
+# Add linux packages you need
 RUN sudo apt-get update
 RUN sudo apt-get install -y python3
 RUN sudo apt-get install -y python-pip3
+
+# Add app dependencies
 RUN pip3 install flask
 
-# Copy files
+# Copy app files into the container
 COPY app.py /opt/app.py
 
 # Determine app entrypoint
@@ -247,39 +279,44 @@ ENTRYPOINT FLASK_APP=/opt/app.py flask run --host=0.0.0.0:5000
 docker build . -t <my_image_tag>
 
 
-=================
+====================
 DOCKERFILE COMMANDS
 ====================
 FROM - base image
 WORKDIR - sets the app directory
-ADD - copies files from local/url into the container
+ADD - copies/extracts files from local/url into the container (ADD <src> <dest>)
+COPY - copies files from local into the container (COPY <src> <dest>)
 RUN - runs a bash command
 EXPOSE - makes a certain port available for links/publish
 CMD - command that runs when the container launches
 ENTRYPOINT - 
 ENV - 
 
+
 # Challenges when working with containers
--------------------------------------------------
+------------------------------------------
 Bin Packing: Run out of space for apps inside your containers
 Zombie Containers: No longer needed but refuse to stop
 Disappearing Containers: Containers that stop unexpectedly
 
 
-=============
+==============
 DOCKER COMPOSE
-=============
+==============
 # Use to combine different containers that make up a stack for an app.
 # Runs on a single Docker host
 # Configured using YAML
 
+# Run a docker-compose file in detached mode
+docker-compose up -d
 
 # Example of stack without using Docker Compose (Voting App)
 docker run -d --name=redisdb redis
 docker run -d --name=db postgres:9.4
 docker run -d --name=vote -p 5000:80 --link redis:redisdb voting-app
-doker run -d --name=result -p 5001:80 --link db:db result-app
+docker run -d --name=result -p 5001:80 --link db:db result-app
 docker run -d --name=worker --link db:db --link redis:redis worker
+
 
 # docker-compose.yml (V1)
 redis:
