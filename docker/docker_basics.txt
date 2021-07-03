@@ -278,6 +278,39 @@ ENTRYPOINT FLASK_APP=/opt/app.py flask run --host=0.0.0.0:5000
 ---------------
 docker build . -t <my_image_tag>
 
+# List all networks
+docker network ls
+
+# Inspect/check a networks configuration
+docker network inspect bridge
+
+# Create a network using the bridge driver
+docker network create \
+--driver bridge \
+--subnet 182.18.1/24 \
+--gateway 182.18.0.1 \
+<new-network-name>
+
+===================
+PRIVATE REGISTRIES
+===================
+# Login to private registry
+docker login example.io
+
+# Run container from inside a private registry
+docker run example.io/app/internal-app
+
+
+======================
+LOCAL REGISTRY
+======================
+# Create image
+docker image tag <image-name> localhost:5000/<image-name>
+
+# Push/Pull image to/from localhost
+docker push localhost:5000/<image-name>
+
+
 
 ====================
 DOCKERFILE COMMANDS
@@ -374,3 +407,24 @@ services:
 networks:
 	front-end:
 	back-end:
+
+
+
+================
+Docker Networking
+===============
+# Bridge
+Default network containers get connected to.
+It's private
+
+# Creating a Bridge network
+docker network create \
+--driver bridge \
+--subnet id-address/mask \
+<custom-isolated-network-name>
+
+# none
+Containers are linked to any network
+They're all private
+
+# Host
