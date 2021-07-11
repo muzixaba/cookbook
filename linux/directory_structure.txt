@@ -11,3 +11,5 @@
 /media -> Drives that are automatically mounted by your system
 /var -> Files that are updated frequently e.g Log files
 /proc -> Files representing running processes
+/opt -> Various software. Put your own software/apps here :)
+/proc -> Keeps track of all processes in the system

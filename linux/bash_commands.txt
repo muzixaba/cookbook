@@ -171,6 +171,7 @@ cp -r dir1 dir2 -> copies dir1 into dir2
 #====================
 ./file.sh -> runs executable file
 sudo sh ./file.sh -> runs file as an executable
+bash file.sh -> runs executable file
 
 #========
 # Files

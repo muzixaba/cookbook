@@ -428,3 +428,26 @@ Containers are linked to any network
 They're all private
 
 # Host
+
+
+======================
+CONTAINER ORCHESTRATION
+========================
+# Solution(s) that help to host containers in prod environment.
+
+Options
+-------
+1. Docker Swarm
+- Can put multiple docker hosts under one Swarm.
+- One host must be the Swarm Manager, the others are workers.
+# Creating a swarm Manager
+docker swarm init
+# Creating a worker node
+docker swarm join --token <token>
+# Create instances of containers in a swarm (inside swarm manager)
+docker service create --replicas=10 <image>
+
+2. Kubernetes
+Cluster - Set a nodes that are grouped together
+CLI - kubectl
+4. Mesos
