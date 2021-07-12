@@ -228,7 +228,7 @@ aws ec2 create-volume --size # \
 --volume-type gp2 \
 --snapshot-id <snap-id>
 
-# Create Role for Amazon DLM
+# Create Role for Amazon Data Lifecycle Manager (DLM)
 aws dlm create-default-role
 
 # Activate DLM policy

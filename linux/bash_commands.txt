@@ -171,6 +171,7 @@ cp -r dir1 dir2 -> copies dir1 into dir2
 #====================
 ./file.sh -> runs executable file
 sudo sh ./file.sh -> runs file as an executable
+bash file.sh -> runs executable file
 
 #========
 # Files
@@ -214,6 +215,7 @@ cp -R ~/path/from/home/* . -> Copies all files inside a folder into current fold
 sudo chmod -R <permissions> path/to/dir -> Change permissions for all files inside a specific directory (HANDLE WITH CARE)
 echo "String to appended on line" >> file.ext
 chmod +x file.ext -> changes file to executable
+sed 's/old/new/g' old.txt > new.txt -> Edit files without opening them, e.g string replacement (s=substitute, g=global)
 
 # DELETE
 rm file_name -> delete file
