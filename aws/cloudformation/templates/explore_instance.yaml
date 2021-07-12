@@ -1,0 +1,23 @@
+# Use to launch EDSA AMI instance
+AWSTemplateFormatVersion: 2010-09-09
+
+Parameters:
+  InstanceName:
+    Description: "The name to be given to your instance"
+    Type: String
+  SprintName:
+    Description: "Which sprint are you currently doing?"
+    Type: String
+    
+Resources:
+  EC2Instance:
+    Type: "AWS::EC2::Instance"
+    Properties:
+      ImageId:  ami-0b23604f872b0abe6 # explore ami
+      InstanceType: t2.micro
+      SecurityGroupIds: ["sg-8de584dd"]
+      Tags:
+        - Key: Name
+          Value: !Ref InstanceName
+        - Key: Sprint
+          Value: !Ref SprintName

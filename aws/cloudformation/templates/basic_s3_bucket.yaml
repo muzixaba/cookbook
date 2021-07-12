@@ -1,0 +1,7 @@
+# Use to launch EDSA AMI instance
+AWSTemplateFormatVersion: "2010-09-09"
+Resources:
+  Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: "muzis-test-bucket-123"

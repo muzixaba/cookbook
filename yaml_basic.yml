@@ -5,6 +5,8 @@
 # Uses key-value pairs
 # String don't need quotation marks
 name: Muzi
+surname: "Xaba"
+is_male: true #boolean
 
 # 2 spaces for Indentation structure
 contact_details:
