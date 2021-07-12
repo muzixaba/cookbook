@@ -215,6 +215,7 @@ cp -R ~/path/from/home/* . -> Copies all files inside a folder into current fold
 sudo chmod -R <permissions> path/to/dir -> Change permissions for all files inside a specific directory (HANDLE WITH CARE)
 echo "String to appended on line" >> file.ext
 chmod +x file.ext -> changes file to executable
+sed 's/old/new/g' old.txt > new.txt -> Edit files without opening them, e.g string replacement (s=substitute, g=global)
 
 # DELETE
 rm file_name -> delete file
