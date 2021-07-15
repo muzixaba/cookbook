@@ -27,6 +27,7 @@ aws s3 ls s3://bucket_name/
 
 # Create a new bucket
 aws s3 mb --region eu-west-1 s3://bucket_name
+aws s3api create-bucket --bucket my-bucket-name --region eu-west-1
 
 # Enable versioning
 aws s3api put-bucket-versioning \
@@ -35,9 +36,8 @@ aws s3api put-bucket-versioning \
 
 # Copy a file from local to s3
 aws s3 cp my-file.txt s3://bucket_name
-aws s3api create-bucket --bucket my-bucket-name --region eu-west-1
 
-# Copy file(s) from S3 to local
+# Copy file(s) from S3 to local current directory
 aws s3 cp s3://<bucket-name>/ . --recursive
 
 # Turn bucket into Static Website

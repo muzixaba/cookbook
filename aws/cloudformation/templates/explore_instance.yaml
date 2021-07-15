@@ -1,6 +1,8 @@
 # Use to launch EDSA AMI instance
 AWSTemplateFormatVersion: 2010-09-09
 
+Description: "Creates an instance using the EXPLORE AMI"
+
 Parameters:
   InstanceName:
     Description: "The name to be given to your instance"
@@ -11,6 +13,7 @@ Parameters:
     
 Resources:
   EC2Instance:
+    # Type: AWS::ProductIdentifier::ResourceType
     Type: "AWS::EC2::Instance"
     Properties:
       ImageId:  ami-0b23604f872b0abe6 # explore ami

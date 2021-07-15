@@ -16,3 +16,12 @@ NOTE: You'll get a subscription confirmation email
 Panel -> Events
 Step 1 - Create Rule: Event Source & Target(s)
 Step 2 - Configure Rule Details: Name, Description
+
+
+#======
+# CLI
+#======
+
+# List available metrics for a given namespace
+aws cloudwatch list-metrics \
+--namespace AWS/S3
