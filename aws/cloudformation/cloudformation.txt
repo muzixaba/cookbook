@@ -36,3 +36,7 @@ aws cloudformation describe-stack-resources \
 --stack-name myStack \
 --query 'StackResources[*].[ResourceType,ResourceStatus,DriftInformation.StackResourceDriftStatus]' \
 --output table
+
+# Continue rolling back an update, even if rollback failed
+aws cloudformation continue-update-rollback \
+--stack-name MyExistingStack
