@@ -173,7 +173,7 @@ aws ec2 modify-instance-attribute \
 --instance-type "{\"Value\": \"t2.micro\"}"
 
 # Create tag(s) for instance
-aws ec2 create-tage --resources <instance-id> \
+aws ec2 create-tags --resources <instance-id> \
 --tags "Key=<TagKey>, Value=<TagValue>"
 
 # Get instance public dns name
