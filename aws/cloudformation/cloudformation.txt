@@ -1,7 +1,7 @@
 # Create stack
 aws cloudformation create-stack \
         --stack-name file.yml \
-        --template-body file://file.yml \
+        --template-body file://path/to/template.yml \
         --parameters
         ParameterKey=<1st-param>, ParameterValue=<1st-param-value> \
         ParameterKey=<2nd-param>, ParameterValue=<2nd-param-value>
@@ -40,3 +40,41 @@ aws cloudformation describe-stack-resources \
 # Continue rolling back an update, even if rollback failed
 aws cloudformation continue-update-rollback \
 --stack-name MyExistingStack
+
+#===========
+# FUNCTIONS
+#===========
+
+!Ref
+References another value within the template
+
+!GetAtt
+Returns the value of an attribute from a resource in the template
+!GetAtt logicalNameOfResource.attributeName
+!GetAtt: [ logicalNameOfResource, attributeName ]
+
+!Join
+Appends a set of values into a single value
+!Join [ delimiter, [ 'This', 'will be', 'one sentence' ] ]
+
+!Select
+Returns a single object from a list of objects by index
+!Select [ index, listOfObjects ]
+
+!FindInMap
+Returns the value corresponding to keys in a two-level map
+!FindInMap [ MapName, TopLevelKey, SecondLevelKey ]
+
+!Sub
+Substitutes variables in an input string with values that you specify
+!Sub
+  - String
+  - Var1Name: Var1Value
+    Var2Name: Var2Value
+
+!Base64
+Returns the Base64 representation of the input string
+!Base64 valueToEncode
+
+Condition FUNCTIONS
+!If, !And, !Equals, !Not, !Or

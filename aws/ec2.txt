@@ -196,6 +196,11 @@ aws ec2 copy-image \
 --region <new-region-code> \
 --name "AMI name"
 
+# Register image. Final step you must complete before you can launch an instance from the AMI
+aws ec2 register-image \
+--root-device-name '/dev/sda1' \
+--name "MyImage"
+
 # Find region hosting instance
 curl http://169.254.169.254/latest/dynamic/instance-identity/document | grep region
 

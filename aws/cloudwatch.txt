@@ -24,4 +24,6 @@ Step 2 - Configure Rule Details: Name, Description
 
 # List available metrics for a given namespace
 aws cloudwatch list-metrics \
---namespace AWS/S3
+--namespace AWS/EC2 \
+--metric-name CPUUtilization
+
