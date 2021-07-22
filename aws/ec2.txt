@@ -177,7 +177,8 @@ aws ec2 create-tags --resources <instance-id> \
 --tags "Key=<TagKey>, Value=<TagValue>"
 
 # Get instance public dns name
-aws ec2 describe-instances --instance-id <instance-id> --query 'Reservations[0].Instances[0].NetworkInterfaces[0].Association.PublicDnsName'
+aws ec2 describe-instances --instance-id <instance-id> \
+--query 'Reservations[0].Instances[0].NetworkInterfaces[0].Association.PublicDnsName'
 
 # Check instance current state or other attribute
 aws ec2 describe-instances \
