@@ -111,7 +111,7 @@ create .nanorc in user home folder
 
 # Add line numbers
 set linenumbers
-set numbercolors white
+set numbercolor white
 
 # Add text wrap
 set softwrap

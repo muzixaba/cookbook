@@ -1,0 +1,18 @@
+# Installing
+sudo apt-get install cmus
+
+# Launching cmus
+cmus
+
+# Cmus tutorial
+man cmus-tutorial
+
+# Shortcuts
+5 - Add music
+A - Select all, for adding music
+1 - Go to main screen
+2 - Simple library view
+C - pause/unpause
+Enter - play
+:q - quit
+
