@@ -25,8 +25,8 @@ def word_permutations(args):
 def main():
     parser = argparse.ArgumentParser(
                         prog="Word Permutations",
-                        description="Return permuations of a string")
-    parser.add_argument("-str", "--initial_string", type=str, help="Enter string to be used for permutaions")
+                        description="Return permutations of a string")
+    parser.add_argument("-str", "--initial_string", type=str, help="Enter string to be used for permutations")
     args = parser.parse_args()
     print(word_permutations(args))
 

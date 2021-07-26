@@ -16,3 +16,10 @@ C - pause/unpause
 Enter - play
 :q - quit
 
+# Add music from specific folder
+:add ~/path/to/folder
+
+# Change theme
+:colorscheme <theme_name>
+You can also tab through themes
+Favorites include: dracula, solarized dark
