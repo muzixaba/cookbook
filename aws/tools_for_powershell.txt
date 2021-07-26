@@ -1,0 +1,14 @@
+# SCRIPT USING POWERSHELL
+
+# Create an EC2 instance
+New-EC2Instance -ImageId ami-c49c0dac `
+    -MinCount 1 `
+    -MaxCount 1 `
+    -KeyName myPSKeyPair `
+    -SecurityGroups myPSSecurityGroup `
+    -InstanceType t1.micro
+
+# Create a Security Group
+New-EC2SecurityGroup `
+-GroupName myPSSecurityGroup `
+-GroupDescription "EC2-Classic from PowerShell"

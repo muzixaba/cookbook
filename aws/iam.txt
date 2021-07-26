@@ -26,3 +26,9 @@ aws iam attach-user-policy --policy-arn <iam-policy-arn> --user-name <username>
 aws iam create-account-alias
 aws iam delete-account-alias
 aws iam list-account-aliases
+
+# List groups
+aws iam list-groups
+
+# Get group info
+aws iam get-group --group-name "group_name"

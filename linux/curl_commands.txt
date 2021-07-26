@@ -2,8 +2,8 @@
 # Visit a basic website, uses GET by default (-v: verbose)
 curl -v google.com
 
-# Get API resources
-curl -X GET https://jsonplaceholder.typicode.com/users
+# Get API resources (-i=Return response headers, -X=HTTP method)
+curl -i -X GET https://jsonplaceholder.typicode.com/users
 
 # User signup using api (-H: header, -d: data, -X when not using GET)
 curl -X POST example.com/api/signup -H 'Content-Type: application:json' -d '{"username": "TestName", "password": "Pword123"}'

@@ -29,3 +29,15 @@ Table
 aws help
 aws <service> help
 aws <service> <operation> help
+
+# Read/Edit profile(s)
+nano ~/.aws/config
+
+# Run cli command using different profile
+aws s3 ls --profile profile_name
+
+# Change default profile
+export AWS_PROFILE=profile_name
+
+# List profiles
+aws configure list-profiles

@@ -86,7 +86,7 @@ cd path/to/file.txt -> uses relative path to navigate
 #===========
 find . -iname file.ext -> searches from current dir and its sub directories
 find / -iname file.ext -> searches entire computer
-find . -type -iname "*.txt" -> find files using file types
+find . -iname "*.txt" -> find files using file types
 grep text file.txt -> searches for 'text' inside file.txt
 grep -i text file.txt -> searches for 'text' inside file.txt. Ignore case
 grep text * -> searches for 'text' inside all files in current directory
@@ -100,6 +100,7 @@ cat /etc/passwd | grep root -> Searches for 'root' inside passwd file
 ls -> list storage
 ls -a -> show all
 ls -l -> show long details
+ls *.ext1 *.ext2 -> list all files of specific extension(s)
 ls -lt -> sort by last modified
 ls -ltr -> sort by last modified in reverse order
 ls -lah -> show all in list view, human readable
@@ -343,13 +344,11 @@ cat /etc/os-release -> Check linux type & version
 
 
 #=================
-# File permissions
+# File permissions [User - Group - Other]
 #=================
 4 = read (r)
 2 = write (w)
 1 = execute (x)
-
-user | group | other
 
 777 - full rights to everyone
 400 - only user has read rights
@@ -447,9 +446,9 @@ sudo systemctl deamon-reload
 journalctl --since "2020-12-25 23:15:00" --until "2020-12-31 23:59:59"
 
 
-============
-hardware
-============
+=========
+Hardware
+=========
 
 # list block devices
 lsblk

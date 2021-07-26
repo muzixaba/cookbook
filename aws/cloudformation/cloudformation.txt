@@ -41,6 +41,69 @@ aws cloudformation describe-stack-resources \
 aws cloudformation continue-update-rollback \
 --stack-name MyExistingStack
 
+#=============
+# TEMPLATE SECTIONS
+#====================
+
+# Resources [REQUIRED]
+-----------
+- Which resource(s) need to be spun up?
+
+ResourceName:
+  Type: "AWS::EC2::Instance"
+  Properties:
+    ImageId: <ami_id>
+    KeyName: <key_name>
+    InstanceType: t2.micro
+    SecurityGroupIds:
+      - <security_group_id>
+      - <security_group_id>
+
+# Parameters
+-------------
+- Variables to be entered in by user at before stack creation.
+
+StackVPC:
+  Description: "VPC to be used for stack"
+  Type: "AWS::EC2::VPC::Id"
+InstanceTags:
+  Type: String
+  Description: "Name to be given to instance"
+
+# Mappings
+----------
+- Hard coded key-value pairings 2b used for loggic instance template.
+
+Mappings: 
+  RegionMap: 
+    us-east-1: 
+      "HVM64": "ami-0ff8a91507f77f867"
+    us-west-1: 
+      "HVM64": "ami-0bdb828fd58c52235"
+
+Resources: 
+  myEC2Instance: 
+    Type: "AWS::EC2::Instance"
+    Properties: 
+      ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", HVM64]
+      InstanceType: m1.small
+
+
+# Outputs
+---------
+- Values to be used as template output(s)
+- Put at the end of the template, if available
+
+OutputName:
+  Description: "Private IP of new instance"
+  Value: !GetAtt
+    - InstanceName
+    - PrivateIp
+
+
+
+
+
 #===========
 # FUNCTIONS
 #===========
@@ -78,3 +141,9 @@ Returns the Base64 representation of the input string
 
 Condition FUNCTIONS
 !If, !And, !Equals, !Not, !Or
+
+
+!GetAZs
+Intrinsic function.
+Returns a list of AZs for specified region in alphabetical order.
+!GetAZs AWS::Region
