@@ -41,7 +41,7 @@ aws cloudformation describe-stack-resources \
 aws cloudformation continue-update-rollback \
 --stack-name MyExistingStack
 
-#=============
+#====================
 # TEMPLATE SECTIONS
 #====================
 
