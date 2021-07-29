@@ -15,6 +15,7 @@ A - Select all, for adding music
 C - pause/unpause
 Enter - play
 :q - quit
+:clear - clear the lib
 
 # Add music from specific folder
 :add ~/path/to/folder
