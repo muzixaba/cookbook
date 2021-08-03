@@ -1,7 +1,9 @@
 # delete migrations (DEV)
 find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
 find . -path "*/migrations/*.pyc"  -delete
-* delete sqlite db as well
+*Delete sqlite db
+python manage.py makemigrations
+python manage.py migrate
 
 # show migrations
 python manage.py showmigrations

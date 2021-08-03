@@ -18,14 +18,14 @@ Toggle Terminal = ctrl + j
 Open terminal & focus on it = ctrl + `
 =======
 Toggle Terminal Panel = alt+shift+p ???????????????????????????????
-Run python file = alt+ctrl+r
+Run python file = alt + ctrl + x
 toggle indentation = ctrl+[/]
 create new line = ctrl + enter
 select next match = ctrl + d
 add cursor = alt + click
 go to line = ctrl + g 
 search all files in project dir = ctrl + shift + f
-add cursor above/below = ctrl + alt + UpArrow/DownArrow
+add cursor above/below = ctrl + shift + UpArrow/DownArrow
 go to end of line = shift + 0
 go to start of line = shift + 9
 duplicate line = alt + shift + down_arrow

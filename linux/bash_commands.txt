@@ -3,6 +3,20 @@
 #================
 crlt + alt + t
 
+#===================
+# Terminal Shortcuts
+#===================
+ctrl + shift + t -> Open new tab
+ctrl + shift + w -> Close current tab
+ctrl + a -> move cursor to beginning of line
+ctrl + e -> move cursor to end of line
+ctrl + u -> clear entire line
+ctrl + r -> search history of commands by typing
+ctrl + l -> clear terminal Output
+ctrl + f/b -> move forward/backward one character
+alt + f/b -> move forward/backward one word
+
+
 
 #===========
 # YouTube-dl
@@ -61,8 +75,14 @@ ctrl + w -> delete one word at a time
 uname -a -> displays basic info
 sudo lshw -> shows complete breakdown of hardware
 lshw -short -> a summarised version of 'sudo lshw'
-htop -> shows resource usage
+top -> shows running proccesses
+htop -> shows resource usage, derived from 'top'
 lsb_release -a -> show info on current Linux distro
+
+#=================
+# Password Management
+#=====================
+passwd <user> -> changes password for specific user
 
 #============
 # Directories
@@ -148,9 +168,9 @@ ctrl + u -> Cut from cursor position to begging of the line
 ctrl + y -> Paste text
 ctrl + w -> Delete word(s) one at a time
 
-#=============
-# Installing Packages
-#=============
+#===========================
+# Install/Uninstall Packages
+#===========================
 sudo apt update -> Updates packages registry
 sudo apt install <package_name> -> Installs package
 sudo apt remove <package_name> -> Uninstalls package
@@ -166,6 +186,8 @@ mkdir -p dir1/dir2/dir3 -> creates all 2 directories inside dir1 & also ensures 
 pwd -> print working directory
 rm -r dir_name/ -> deletes everything inside dir_name & dir_name
 cp -r dir1 dir2 -> copies dir1 into dir2
+ln -s path/to/source path/to/symbolic_link -> creates symbolic link or shortcut to dir
+ln -s /mnt/my_drive/movies ~/my_movies -> create symbolic link for directories
 
 #=================
 # SH Files
@@ -248,8 +270,10 @@ unzip name.zip (unzipping a zip file)
 tar xvzf dir_name.tar.gz
 
 #==================
-# Check Disk Space
+# Disks
 #==================
+df -> displays info on disk space usage of all mounted filesystems
+du -> displays file size of dirs and subdirs
 sudo du -sh /path/to/dir/* -> returns space used by subdirectories & files
 du -h -> returns file sizes
 df -h -> check free space

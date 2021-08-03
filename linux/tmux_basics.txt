@@ -1,7 +1,7 @@
 #===========
 # Installing tmux
 #===========
-sudo apt-get install tmux
+sudo apt install tmux
 
 
 #===============
