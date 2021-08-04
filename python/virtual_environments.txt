@@ -28,11 +28,13 @@ exit (quits env)
 pipenv lock -r (lists all packages in env)
 pipenv uninstall package_name (uninstall's a package from venv)
 pipenv install package_name --dev (install a dev package)
+pipenv lock -r >requirements.txt -> creates a Pipfile.lock & requirements.txt file
 pipenv install -r ./requirements.txt (install everything in requirements file)
 pipenv check (check packages for security issues)
 pipenv graph (shows dependencies & child dependencies)
 pipenv install --ignore-pipfile (installs packages using Pipfile.lock)
 pipenv install --python=path/to/python4.3 (creates env using specific python version)
+pipenv uninstall <package_name> -> uninstalls a specific package
 pipenv --rm (remove env)
 pipenv check
 
