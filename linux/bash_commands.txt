@@ -16,7 +16,19 @@ ctrl + l -> clear terminal Output
 ctrl + f/b -> move forward/backward one character
 alt + f/b -> move forward/backward one word
 
+#===========
+# User Types
+#===========
+$ - Normal user
+# - Root user
 
+#======================
+# Execution of profile & rc files
+#===================================
+/etc/profile (executed by all shells for all users)
+/etc/bash.bashrc (bash settings for all users)
+~/.profile (executed by all shells for the user)
+~/.bashrc (bash settings for the user)
 
 #===========
 # YouTube-dl
@@ -100,6 +112,7 @@ cd ../.. -> moves up two directories
 cd / -> navigates to root directory
 cd /tmp/file.txt -> uses absolute path to navigate
 cd path/to/file.txt -> uses relative path to navigate
+cd ../Documents -> uses relative path to move up to parent dir and into Documents
 
 #===========
 # Searching
@@ -156,7 +169,6 @@ grep -> selects lines according to what they contain, eith exact or pattern
 sort -> sorts results in ascending order
 uniq -> returns unique values that are adjacent or consecutive to each other
 set -> displays environment variables
-echo $ENVIRON_VAR -> returns the value of ENVIRON_VAR
 \ -> Backslash to start typing command in new line
 explorer . -> Open current directory in file explorer (Windows)
 && -> Chains commands. Only runs the second/next command if the first one worked.
@@ -167,6 +179,13 @@ ctrl + k -> Cut from cursor position to end of line
 ctrl + u -> Cut from cursor position to begging of the line
 ctrl + y -> Paste text
 ctrl + w -> Delete word(s) one at a time
+
+#======
+# echo
+#======
+echo $ENVIRON_VAR -> returns the value of ENVIRON_VAR
+echo -e -> enables the use of escape characters
+echo -n -> ensures that the new line symbol isn't printed
 
 #===========================
 # Install/Uninstall Packages
@@ -189,9 +208,9 @@ cp -r dir1 dir2 -> copies dir1 into dir2
 ln -s path/to/source path/to/symbolic_link -> creates symbolic link or shortcut to dir
 ln -s /mnt/my_drive/movies ~/my_movies -> create symbolic link for directories
 
-#=================
+#=========
 # SH Files
-#====================
+#=========
 ./file.sh -> runs executable file
 sudo sh ./file.sh -> runs file as an executable
 bash file.sh -> runs executable file
@@ -248,6 +267,35 @@ rm *.txt -> Remove all files with specific file extension
 rm -rf dir_name/ -> Permanently deletes a folder with its files
 rmdir dir_name -> Deletes an empty folder
 
+#=======================
+# Variable Substitution
+#=======================
+# Use 'echo -e' to enable the escape characters.
+\\ - Backslash
+\a - alert
+\b - backspace
+\c - suppress trailing new line
+\f - form feed
+\n - new line
+\r - carriage return
+\t - horizontal tab
+\v - vertical tab
+
+#=========================
+# Command Substitution
+#=========================
+# Takes the value returned by a command and assigns it to a variable.
+TODAY=`date`
+echo $TODAY
+
+#========================
+# Variable Substitution
+#========================
+${var} - basic Substitution
+${var:-word_sub} - if var is null/unset, then var
+${var:=word_sub} - if var is null/unset, then word_sub
+${var:?message} - if var is null/unset, then message is printed to std error
+${var:+word_sub} - if var is set, then var
 
 #======================
 # Working with Aliases

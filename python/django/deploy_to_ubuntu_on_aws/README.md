@@ -17,9 +17,11 @@ File must be in root
 Add is to .gitignore
 Following values must come from .env:
 - SECRET_KEY
-- DEBUG (True for dev, False for prod)
 - API Keys
 - DB Creds
+
+## 3: Set DEBUG to True, only for dev
+DEBUG = bool(int(os.environ.get('DEBUG', 1)))
 
 ## 3: Update git url var inside setup.sh
 Change value of PROJECT_GIT_URL into own url

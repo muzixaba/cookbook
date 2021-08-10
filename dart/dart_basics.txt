@@ -41,6 +41,8 @@ void someFunction(){}
 
 var_type var_name = value;
 String name = 'Muzi';
+String multiLine = """This is a
+                    multiLine string""";
 int age = 31;
 double height = 1.75;
 var any_var = value; // dart will figure out the type at runtime
@@ -63,6 +65,9 @@ const   -> Once set, cannot be changed.
 final   -> Similar to const but assigned at runtime
 const > final > var
 dynamic -> Can change types
+
+// Get variable data type at runtime
+varName.runTimeType
 
 // Create empty variables
 List<int> listOfInts = [];

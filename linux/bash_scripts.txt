@@ -7,15 +7,66 @@
 4. Make file executable (chmod +x file.sh)
 5. Execute file (./file.sh)
 
-########################################################
+#======================
+# Variable Names
+#=====================
+# Naming similar to python constants
+e.g VAR_NAME, VARIABLE2,
+
+# Accessing variables
+$VAR_NAME
+${ARRAY_NAME[0]}
+
+# Assigning variables
+Name="Muzi"
+FAV_COLOUR[0]="Blue"
+FAV_COLOUR[1]="Red"
+
+
+# Special variables
+$0 - script's name
+$n - 
+$# - argument count
+$* - $1 $2 if two args were entered
+$@ - $1 $2 if two args were double qouted individually
+$? - exit status of last run command (0=successful, 1=unsuccessful)
+$$ - proccess id of current shell
+$! - proccess id of last background command
+
+#########
 # BASICS
-########################################################
+#########
 
 # Arithmetic Operators
+e.g x=3, y=10
+'expr $x + $y' returns 13
+'expr $x - $y' returns -7
+'expr $x \* $y' returns 30
+'expr $y / $x' returns 3
+'expr $y % $x' returns 1
+'expr a = $x' assigns 3 to a
+[ $y == $x ] returns false
+[ $y != $x ] returns true
+
+# Relational Operators
 Num1 -eq Num2 -> true, if Num1 == Num2
 N1 -ne N2 -> true, if N1 != N2
 n1 -ge n2 -> true, if n1 >= n2
 n1 -gt n2 -> true, if  n1 > n2
+
+# Boolean Operators
+! - Negation i.e !false is true
+-o - OR
+-a - AND
+
+# String Operators
+e.g x="def", y="hij"
+[ $x = $y ] is false
+[ $x != $y ] is true
+[ -z $k ] true, len of string is zero
+[ -z $x ] true, len of string is non-zero
+
+
 
 # Arithmetic expressions should have ((double quotes)) -> ((1 + 2)) or ((3 < 5))
 
@@ -83,6 +134,27 @@ systemctl enable httpd.service
 echo "Hello World from $(hostname -f)" > /var/www/html/index.html
 
 ########################################################
+# CASE STATEMENT
+
+case EXPRESSION in
+
+  PATTERN_1)
+    STATEMENTS
+    ;;
+
+  PATTERN_2)
+    STATEMENTS
+    ;;
+
+  PATTERN_N)
+    STATEMENTS
+    ;;
+
+  *)
+    STATEMENTS
+    ;;
+esac
+
 
 ########################################################
 # FOR-LOOP
@@ -90,6 +162,7 @@ echo "Hello World from $(hostname -f)" > /var/www/html/index.html
 for name in Muzi Nathi Nkosi
 do
   echo "Hello $name"
+  # can add break/continue
 done
 
 ########################################################

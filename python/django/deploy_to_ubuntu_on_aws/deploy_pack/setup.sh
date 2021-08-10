@@ -9,7 +9,7 @@ PROJECT_BASE_PATH='/usr/local/apps/project_name'
 
 echo "Installing dependencies..."
 apt-get update
-apt-get install -y python3-dev python3-venv sqlite python-pip supervisor nginx git
+apt-get install -y python3-dev python3-venv sqlite python3-pip supervisor nginx git
 
 # Create project directory
 mkdir -p $PROJECT_BASE_PATH
@@ -29,13 +29,13 @@ $PROJECT_BASE_PATH/env/bin/python manage.py migrate
 $PROJECT_BASE_PATH/env/bin/python manage.py collectstatic --noinput
 
 # Configure supervisor
-cp $PROJECT_BASE_PATH/deploy/supervisor_project.conf /etc/supervisor/conf.d/project_name.conf
+cp $PROJECT_BASE_PATH/deploy_pack/supervisor_project.conf /etc/supervisor/conf.d/project_name.conf
 supervisorctl reread
 supervisorctl update
 supervisorctl restart project_name
 
 # Configure nginx
-cp $PROJECT_BASE_PATH/deploy/nginx_project.conf /etc/nginx/sites-available/project_name.conf
+cp $PROJECT_BASE_PATH/deploy_pack/nginx_project.conf /etc/nginx/sites-available/project_name.conf
 rm /etc/nginx/sites-enabled/default
 ln -s /etc/nginx/sites-available/project_name.conf /etc/nginx/sites-enabled/project_name.conf
 systemctl restart nginx.service

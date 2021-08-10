@@ -28,7 +28,7 @@ exit (quits env)
 pipenv lock -r (lists all packages in env)
 pipenv uninstall package_name (uninstall's a package from venv)
 pipenv install package_name --dev (install a dev package)
-pipenv lock -r >requirements.txt -> creates a Pipfile.lock & requirements.txt file
+pipenv lock -r > requirements.txt -> creates a Pipfile.lock & requirements.txt file
 pipenv install -r ./requirements.txt (install everything in requirements file)
 pipenv check (check packages for security issues)
 pipenv graph (shows dependencies & child dependencies)
