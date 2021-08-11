@@ -15,9 +15,13 @@ e.g VAR_NAME, VARIABLE2,
 
 # Accessing variables
 $VAR_NAME
+${VAR_NAME}
+"$VAR_NAME"
+'$VAR_NAME' => $VAR_NAME
+
 ${ARRAY_NAME[0]}
 
-# Assigning variables
+# Assigning variables (NO SPACES)
 Name="Muzi"
 FAV_COLOUR[0]="Blue"
 FAV_COLOUR[1]="Red"

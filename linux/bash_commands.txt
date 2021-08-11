@@ -646,3 +646,8 @@ export EDITOR=nano
 
 # open external editor to edit command
 ^x ^e
+
+#===========
+# REFERENCES
+#===========
+https://devhints.io/bash
