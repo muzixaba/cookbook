@@ -639,9 +639,9 @@ set show-all-if-ambiguous On
 set colored-stats On
 
 
-================
+============================
 Set External Editor for Bash
-======================
+============================
 export EDITOR=nano
 
 # open external editor to edit command
