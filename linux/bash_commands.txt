@@ -117,15 +117,42 @@ cd ../Documents -> uses relative path to move up to parent dir and into Document
 #===========
 # Searching
 #===========
+
+# Search using 'find'
+find path search_pattern
 find . -iname file.ext -> searches from current dir and its sub directories
 find / -iname file.ext -> searches entire computer
 find . -iname "*.txt" -> find files using file types
+find . -type f -iname my_file -> finds file(s) with the name my_file
+find . -type f -iname "*.txt" -> finds all file(s) with the 'txt' extension
+find . -type d -iname my_folder -> finds a directory(ies) with the name my_folder
+find . -type f -perm /a=x -> find executable files
+find . -type f -name "*.mp3" -exec rm -f {} \; -> find & remove all mp3 files
+find . -mmin -5 -> find files mofidified less than 5 minutes ambiguous
+find . -size +50M -> all files greater than 50MB
+
+
+# Search using 'grep'
 grep text file.txt -> searches for 'text' inside file.txt
 grep -i text file.txt -> searches for 'text' inside file.txt. Ignore case
 grep text * -> searches for 'text' inside all files in current directory
 grep -r text * -> search for 'text' inside current directory & its subdirectories
 grep -l text * -> lists the names of actual files that contain 'text'
 cat /etc/passwd | grep root -> Searches for 'root' inside passwd file
+
+# Search using 'locate'
+locate search_pattern
+locate file/dir_name
+
+# Search using 'whereis'
+whereis command_name # returns path, binary file, & source code
+
+# Search using 'whatis'
+whatis command_name # returns info from command's man page
+
+
+
+
 
 #================
 # Basic Commands
