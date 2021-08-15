@@ -128,8 +128,11 @@ find . -type f -iname "*.txt" -> finds all file(s) with the 'txt' extension
 find . -type d -iname my_folder -> finds a directory(ies) with the name my_folder
 find . -type f -perm /a=x -> find executable files
 find . -type f -name "*.mp3" -exec rm -f {} \; -> find & remove all mp3 files
-find . -mmin -5 -> find files mofidified less than 5 minutes ambiguous
+find . -mmin -5 -> find files mofidified less than 5 minutes ago
+find . -mtime +2 -> find file modified more than 2 days ago
 find . -size +50M -> all files greater than 50MB
+find . -empty -> all empty files
+find . -perm 777 -> all files with 777 permissions
 
 
 # Search using 'grep'
