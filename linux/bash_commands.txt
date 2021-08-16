@@ -209,6 +209,7 @@ ctrl + k -> Cut from cursor position to end of line
 ctrl + u -> Cut from cursor position to begging of the line
 ctrl + y -> Paste text
 ctrl + w -> Delete word(s) one at a time
+apropos keyword -> finds commands which have the keyword in their man pages.
 
 #======
 # echo
@@ -347,6 +348,22 @@ unzip name.zip (unzipping a zip file)
 
 # Extract using Tar
 tar xvzf dir_name.tar.gz
+
+# gzip
+gzip file.txt -> compresses a single file into file.txt.gz
+ls -l Documents | gzip > downloads.gz
+gzip -d file.txt.gz -> basic decompression
+gzip -c file.txt > file.txt.gz -> compress to a specif archive
+gzip -c -d file.txt.gz > file.txt
+
+gzip -c s1.txt > s1.txt.gz
+gzip -c s2.txt >> s1.txt.gz -> add another file into archive
+
+# gunzip
+gunzip file.txt.gz -> decompress using gunzip
+gunzip -c file.txt.gz -> view contents of an archive
+zcat -c file.txt.gz -> view contents of an archive
+gunzip -c file.txt.gz | less -> view contents of an archive & redirect to less
 
 #==================
 # Disks
