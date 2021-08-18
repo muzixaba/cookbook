@@ -289,6 +289,7 @@ sudo chmod -R <permissions> path/to/dir -> Change permissions for all files insi
 echo "String to appended on line" >> file.ext
 chmod +x file.ext -> changes file to executable
 chmod +x folder/*.sh -> changes any file inside folder into executable
+chwon username:groupname /path/to/fileordir -> change ownership of files or directories
 sed 's/old/new/g' old.txt > new.txt -> Edit files without opening them, e.g string replacement (s=substitute, g=global)
 
 # DELETE
@@ -349,8 +350,37 @@ unzip name.zip (unzipping a zip file)
 # Extract using Tar
 tar xvzf dir_name.tar.gz
 
+#=============
+# Tar Archives
+#=============
+
+# Tar modes
+c - create
+x - extract
+r - append
+t - list entities
+
+# create tar archive
+tar cf folder.tar path/to/dir
+
+# archive multiple files/dirs in current dir
+tar cf my_arch.tar file1 file2 file3
+
+# extracting a tar archive
+tar xf my_arch.tar
+
+# extract tar to another directory
+tar xf my_arch.tar -C path/to/dir
+
+# extract only a certain type of file
+tar xf my_arch.tar --wildcards "*.jpg"
+
+#==================
+# File Compression
+#==================
+
 # gzip
-gzip file.txt -> compresses a single file into file.txt.gz
+gzip file.txt -> substitutes a single file with a file.txt.gz archive
 ls -l Documents | gzip > downloads.gz
 gzip -d file.txt.gz -> basic decompression
 gzip -c file.txt > file.txt.gz -> compress to a specif archive
@@ -364,6 +394,33 @@ gunzip file.txt.gz -> decompress using gunzip
 gunzip -c file.txt.gz -> view contents of an archive
 zcat -c file.txt.gz -> view contents of an archive
 gunzip -c file.txt.gz | less -> view contents of an archive & redirect to less
+
+# bzip2
+bzip2 file.txt -> substitutes the file with a new bzip archive
+bzip2 -d file.txt.bz2 -> decompresses archive
+bzip2 -c file.txt > file_archive.txt.bz2 -> creates a new archive while keeping the original file(s)
+
+# bunzip2
+bunzip2 file.txt.bz2 -> decompresses archive
+bunzip2 -c file.txt.bz2 -> view archive files without decompressing
+
+#================================
+# Compressing Zipped Archives
+#================================
+# .tgz and .tar.gz are gzipped compressed Archives
+# .tbz is a bzipped compressed archive
+
+# creating a gzipped archive (c=create, z=zipped, v=verbose, f=file-name)
+tar czvf my_arch.tgz path/to/dir
+
+# extract compressed zip archive (x=extract, z=zipped, v=verbose, f=file-name)
+tar xzvf my_arch.tgz
+
+# create bzip archive (c=create, j=bzip, v=verbose, f=file-name)
+tar cjvf my_arch.tar.bz2 path/to/dir
+
+# extract compressed bzip archive (x=extract, j=bzipped, v=verbose, f=file-name)
+tar xjvf my_arch.tar.bz2
 
 #==================
 # Disks
