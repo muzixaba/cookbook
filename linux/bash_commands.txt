@@ -22,6 +22,12 @@ alt + f/b -> move forward/backward one word
 $ - Normal user
 # - Root user
 
+# Switch to root user
+sudo su - 
+
+# Switch to other user
+su username
+
 #======================
 # Execution of profile & rc files
 #===================================

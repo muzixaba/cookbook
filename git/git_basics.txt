@@ -105,7 +105,7 @@ git show -> Returns the commits, plus the changes that were made. PRESS q to qui
 After commiting file, they are sent to the remote repo
 
 # Add files to track
-git add file_name -> adds specific file to staging area
+git add file/folder -> adds specific file or folder to staging area
 git add . -> adds all files to the staging area
 
 # Commit changes
@@ -265,9 +265,10 @@ git pull origin master
 git checkout master
 
 # Saving temporal changes using Stashing
-git stash -> Creates saves the current changes & goes back to last commit
+git stash save "message" -> Creates saves the current changes & goes back to last commit
 git stash list -> Lists out all stashes
 git stash pop -> Applies changes on top stash & deletes it
+git stash apply stash@{#} -> applies a certain stash
 
 Time travelling using reset
 git reset [commit ID] flag -> Flags incl "soft", "hard", "mixed"
