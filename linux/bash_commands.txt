@@ -635,6 +635,9 @@ awk '{print $0}' path/to/file.txt
 # search for string inside file
 awk '/string/' path/to/file.txt
 
+# return comma delimeted file
+awk -F "," '{print $0}' file.csv
+
 # get line where the first column is a certain value
 awk '$1 == "text_to_search_for" {print $0}' path/to/file.txt 
 
