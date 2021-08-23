@@ -160,16 +160,6 @@ case EXPRESSION in
 esac
 
 
-########################################################
-# FOR-LOOP
-
-for name in Muzi Nathi Nkosi
-do
-  echo "Hello $name"
-  # can add break/continue
-done
-
-########################################################
 # WHILE-LOOP
 
 i=0
