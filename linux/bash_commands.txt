@@ -224,6 +224,13 @@ echo $ENVIRON_VAR -> returns the value of ENVIRON_VAR
 echo -e -> enables the use of escape characters
 echo -n -> ensures that the new line symbol isn't printed
 
+#================
+# Data Structures
+#================
+my_string="Muzi"
+age=34
+my_array=(1 2 "three")
+
 #===========================
 # Install/Uninstall Packages
 #===========================
@@ -263,6 +270,9 @@ touch *.txt -> changes all date modified to now
 cat >filename.ext -> creates a new file, enter contents in prompt & ^d to save 
 echo "Write/Overwrite to file" > file.ext
 
+# generating files quickly
+for i in $(seq 10); do echo $(seq -s ',' 1 9) >> numbers.csv; done
+for i in $(seq 10); do echo $(seq -s ' ' 1 9) >> numbers.txt; done
 
 # READ
 cat file_name -> reads file and returns contents inside the terminal
@@ -277,7 +287,7 @@ file file_name -> returns file type
 cat fil1 file2 file3 > ./merged_file.txt -> cat can also be used to concatinate files
 wc -c/-w/-l file_name -> word, character, line count
 ls -U | head -4 -> look at the first 4 files
-cut -f 2-5, 8-d, file.csv -> view select columns in file, use ',' as delimeter
+cut -d "," -f 2-5 file.csv -> view select columns in file, use ',' as delimeter
 ls -1 | wc -l -> Number of files in current directory
 cmp file1 file2 -> compares files on a byte-by-byte basis
 colordiff file1 file2 -> Returns differences btw 2 files. color coded
@@ -463,9 +473,9 @@ tar cjvf my_arch.tar.bz2 path/to/dir
 # extract compressed bzip archive (x=extract, j=bzipped, v=verbose, f=file-name)
 tar xjvf my_arch.tar.bz2
 
-#==================
+#=======
 # Disks
-#==================
+#=======
 df -> displays info on disk space usage of all mounted filesystems
 du -> displays file size of dirs and subdirs
 sudo du -sh /path/to/dir/* -> returns space used by subdirectories & files
@@ -709,7 +719,6 @@ uname -r
 /dev/stderr -> standard output of errors from processes
 /dev/zero -> returns a file of just zeros
 
-
 # creating a 512 bytes dummy file of zeros
 dd if=/dev/zero of=/tmp/zero count=1
 
@@ -782,9 +791,7 @@ alias dr='python manage.py runserver'
 alias python='python3'
 
 
-
-
-# Start command in new lines
+# Start command in new lines (Custom PS1)
 1: from home directory, open bashrc using nano:
         $ nano ~/.bashrc
 2: Look for where the PS1 variable is mentioned
