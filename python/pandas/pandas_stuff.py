@@ -29,6 +29,9 @@ df.select_dtypes(exclude=['object','int64','float64','bool','datetime64','timede
 # Finds sum of nans in each column
 df.isna().sum()
 
+# replace nans with empty string
+df = df.fillna('')
+
 # Count non-NA cells for each column or row.
 df.count()
 

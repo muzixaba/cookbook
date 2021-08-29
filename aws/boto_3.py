@@ -2,6 +2,11 @@
 import logging
 import boto3
 
+#===============
+# Changing Profiles
+#===================
+boto3.setup_default_session(profile_name='dev')
+
 #====
 # EC2
 #====

@@ -1,2 +1,8 @@
 # Mount C Drive
  cd /mnt/c
+
+# Navigate to pictures
+/mnt/c/User/Admin/Pictures
+
+# view wsl files from inside Windows
+\\wsl$ in the File Explorer address bar

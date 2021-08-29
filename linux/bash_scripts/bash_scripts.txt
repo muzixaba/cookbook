@@ -178,3 +178,10 @@ echo $i
 # creating files
 touch hello world -> creates 2 files
 touch "hello world" -> creates a single file
+
+##################
+# SCRIPT SETTINGS
+##################
+set -e (exit script if any command fails)
+set -x (print commands that are being executed)
+set +x (disables printing commands that are being executed)
