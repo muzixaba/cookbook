@@ -41,3 +41,48 @@ export AWS_PROFILE=profile_name
 
 # List profiles
 aws configure list-profiles
+
+
+
+#-----------------------
+# Create Lambda Function
+#-----------------------
+aws iam create-role --role-name de-lambda-ex --assume-role-policy-document file://trust-policy.json
+
+aws iam attach-role-policy --role-name de-lambda-ex --policy-arn arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+
+aws lambda create-function --function-name de-logging-function \
+--zip-file fileb://sad_lambda.zip --handler sad_lambda.lambda_handler --runtime python3.8 \
+--role arn:aws:iam::<Your account ID>:role/de-lambda-ex
+
+aws lambda invoke --function-name de-logging-function out --log-type Tail \
+--query 'LogResult' --output text |  base64 -d 
+
+aws lambda delete-function --function-name de-logging-function
+
+
+#---------------------------
+# Create a Data Pipeline
+#-------------------------
+
+aws datapipeline create-pipeline --name pipeline_name --unique-id token
+
+
+# upload pipeline definition
+aws datapipeline put-pipeline-definition \
+--pipeline-id <your-pipeline-id> \
+--pipeline-definition file://pipeline_definition.json
+
+# activate pipeline
+aws datapipeline activate-pipeline \
+--pipeline-id <your-pipeline-id>
+
+# verify pipeline
+aws datapipeline list-pipelines
+
+# verify the pipeline runs
+aws datapipeline list-runs
+
+# delete pipeline
+aws datapipeline delete-pipeline \
+--pipeline-id <pipeline_id>

@@ -5,6 +5,7 @@ import logging
 #------------------
 # Greate for platforms that manage logs for you
 logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
 logger.debug("debbuging message")
 logger.info("info message")
 logger.warning("warning message")
