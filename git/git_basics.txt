@@ -198,6 +198,9 @@ git checkout branch_name
 # Switch to a different branch
 git checkout branch_name
 
+# Switch to previous branch
+git checkout -
+
 # Delete branch
 git branch -d branch_name
 git push origin --delete branch_name (deletes remote branch)
@@ -266,11 +269,15 @@ git checkout master
 
 # Saving temporal changes using Stashing
 git stash save "message" -> Creates saves the current changes & goes back to last commit
+git stash save StashName -> Gives the stash a name
 git stash list -> Lists out all stashes
 git stash pop -> Applies changes on top stash & deletes it
 git stash apply stash@{#} -> applies a certain stash
 git stash clear -> deletes all stashes
 git stash drop <stash_id> -> delete a specific stash
+
+# Squashing commits
+git squash ?????
 
 Time travelling using reset
 git reset [commit ID] flag -> Flags incl "soft", "hard", "mixed"

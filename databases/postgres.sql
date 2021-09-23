@@ -73,6 +73,11 @@ DROP DATABASE <db_name>;
 -- Drop a table
 DROP TABLE <table_name>;
 
+-- create a new schema
+CREATE SCHEMA <schema_name>;
+
+-- switch between schemas
+SET search_path TO <schema_name>;
 
 -- Create a Table (without constrainsts)
 CREATE TABLE person (

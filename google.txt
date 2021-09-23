@@ -1,0 +1,17 @@
+# search the exact term
+"put search phrase in quotes"
+
+# search a specific site
+site:stackoverflow.com "my error"
+
+# exclude a term from results
+search phrase -term_to_exclude
+
+# get results published after/before a specific date
+after:2020 my search phrase
+
+# search for specific file type
+filetype:pdf search phrase
+
+# find related sites
+related:url
