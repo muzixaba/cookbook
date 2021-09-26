@@ -1,3 +1,6 @@
+#-------------------
+# GETTING STARTED
+#-------------------
 
 # Documentation URL
 https://docs.aws.amazon.com/index.html
@@ -43,10 +46,15 @@ export AWS_PROFILE=profile_name
 aws configure list-profiles
 
 
+#------------------------
+# USE NON-DEFAULT PROFILE
+#------------------------
+aws <command> --profile profile_name
 
-#-----------------------
-# Create Lambda Function
-#-----------------------
+
+#--------
+# LAMBDA
+#--------
 aws iam create-role --role-name de-lambda-ex --assume-role-policy-document file://trust-policy.json
 
 aws iam attach-role-policy --role-name de-lambda-ex --policy-arn arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
@@ -61,17 +69,20 @@ aws lambda invoke --function-name de-logging-function out --log-type Tail \
 aws lambda delete-function --function-name de-logging-function
 
 
-#---------------------------
-# Create a Data Pipeline
-#-------------------------
+#---------------
+# DATA PIPELINE
+#---------------
 
+# create pipeline
 aws datapipeline create-pipeline --name pipeline_name --unique-id token
-
 
 # upload pipeline definition
 aws datapipeline put-pipeline-definition \
 --pipeline-id <your-pipeline-id> \
 --pipeline-definition file://pipeline_definition.json
+
+# list data pipelines
+aws datapipeline list-pipelines
 
 # activate pipeline
 aws datapipeline activate-pipeline \
@@ -86,3 +97,71 @@ aws datapipeline list-runs
 # delete pipeline
 aws datapipeline delete-pipeline \
 --pipeline-id <pipeline_id>
+
+
+#----
+# S3 
+#----
+
+# list buckets
+aws s3 ls
+
+# search for specific bucket
+aws s3 ls | grep bucket_name_substring
+
+# create buckets
+aws s3 mb s3://bucket_name
+
+# create folder inside buckets
+aws s3 s3api put-object \
+--bucket bucket_name \
+--key 'folder-name/'
+
+# copy file into s3
+aws s3 cp local/path/to/file.ext s3://bucket-name
+
+# upload file to s3
+aws s3api put-object \
+--bucket bucket_name \
+--key path/to/file.ext \
+--body local/path/to/file.
+
+# list files inside bucket
+aws s3 ls s3://bucket-name
+
+# delete file from s3
+aws s3api delete-object \
+--bucket bucket_name \
+--key path/to/file.ext \
+--profile profile_name
+
+# delete s3 bucket (force remove contents)
+aws s3 rb s3://bucket-name --force
+
+#-----
+# IAM
+#-----
+
+# create a new role
+aws iam create-role \
+--role-name role_name \
+--assume-role-policy-document file://service_trust.json
+
+# create a new IAM policy
+aws aim create-policy \
+--policy-name policy_name \
+--policy-document file://policy_doc.json
+
+# attach policy to role
+aws iam attach-role-policy \
+--role-name role_name \
+--policy-arn policy_arn
+
+# create instance profile
+aws iam create-instance-profile \
+--instance-profile-name profile_name
+
+# connect role to instance profile
+aws iam add-role-to-instance-profile \
+--role-name role_name \
+--instnace-profile-name profile_name
