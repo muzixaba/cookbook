@@ -128,6 +128,62 @@ Next (Reivew) -> Create File System
 NOTE:   Your EC2 security group has to allow for NFS connections
         View 'Amazon EC2 mount instructions (from local VPC)
 
+#-------------------
+# MOUNT AN S3 BUCKET
+#-------------------
+
+# Give instance role to access bucket
+
+# Install s3fs
+sudo apt-get install automake autotools-dev fuse g++ git libcurl4-gnutls-dev libfuse-dev libssl-dev libxml2-dev make pkg-config -y
+git clone https://github.com/s3fs-fuse/s3fs-fuse.git
+cd s3fs-fuse/
+./autogen.sh
+./configure --prefix=/usr --with-openssl
+make
+sudo make install
+which s3fs
+
+cd ~/
+mkdir mount_folder
+
+# Use s3fs to mount bucket (eu-west)
+s3fs -o iam_role="ec2_role_name" \
+-o url="https://s3-eu-west-1.amazonaws.com" \
+-o endpoint=eu-west-1 \
+-o dbglevel=info \
+-o curldbg s3-bucket-name mount_folder
+
+
+# turn s3fs mount command to script
+echo 's3fs -o iam_role="ec2_role_name" \
+-o url="https://s3-eu-west-1.amazonaws.com" \
+-o endpoint=eu-west-1 \
+-o dbglevel=info \
+-o curldbg s3-bucket-name s3_mount_folder' > s3_mount_script.sh
+
+# make script executable
+sudo chmod +x s3_mount_script.sh
+
+# give s3fs the access credentials (if aws cli not configured)
+echo ACCESS_KEY:SECRET_KEY > ~/.passwd-s3fs
+chmod 600 .passwd-s3fs
+cat ~/ .passwd-s3fs ACCESS_KEY:SECRET_KEY
+
+# create cron to mount bucket at restart
+crontab -e
+@reboot ~/s3_mount_script.sh
+
+# give s3fs the creds to mount bucket [Current User only]
+echo ACCESS_KEY:SECRET_KEY > ~/.passwd-s3fs
+sudo chmod 600 ~/.passwd-s3fs
+
+# give s3fs the creds to mount bucket [All Users]
+echo ACCESS_KEY:SECRET_KEY > /etc/passwd-s3fs
+sudo chmod 600 /etc/passwd-s3fs
+
+cat ~/.passwd-s3fs
+
 
 #=====
 # CLI

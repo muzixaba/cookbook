@@ -23,3 +23,6 @@ curl http://127.0.0.1:8000/api/todos -H 'Authorization: Token c1480ce3aabf581fe7
 
 # Authenticate using Username & Password
 curl url.com -u myusername:mypassword
+
+# download a file (-o:output, -L:location_for_redirects)
+curl url/to/file.ext -L -o local/path/to/file_name.ext

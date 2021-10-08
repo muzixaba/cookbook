@@ -160,7 +160,18 @@ whereis command_name # returns path, binary file, & source code
 whatis command_name # returns info from command's man page
 
 
+#=================
+# WORD COUNTS
+#============
 
+# basic operation
+wc [options] filenames
+
+# count number of lines in a file
+wc -l
+
+# count number of words in file
+wc -w
 
 
 #================

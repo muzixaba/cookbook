@@ -116,15 +116,27 @@ aws s3 mb s3://bucket_name
 aws s3 s3api put-object \
 --bucket bucket_name \
 --key 'folder-name/'
+--profile profile_name
 
 # copy file into s3
-aws s3 cp local/path/to/file.ext s3://bucket-name
+aws s3 cp local/path/to/file.ext \
+s3://bucket-name
+
+# copy file into specific folders inside a s3 bucket
+aws s3 cp local/path/to/file.ext \
+s3://bucket-name/folder/
+
+# copy folder & its contents into s3
+aws s3 cp local/path/to/file.ext \
+s3://bucket-name \
+--recursive
 
 # upload file to s3
 aws s3api put-object \
 --bucket bucket_name \
 --key path/to/file.ext \
 --body local/path/to/file.
+
 
 # list files inside bucket
 aws s3 ls s3://bucket-name
