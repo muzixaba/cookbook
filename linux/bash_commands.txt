@@ -399,7 +399,7 @@ unzip -l arch.zip
 
 
 # Extract using Tar
-tar xvzf dir_name.tar.gz
+tar xvzf dir_name.
 
 #=============
 # Tar Archives

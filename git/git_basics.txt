@@ -95,6 +95,8 @@ git status
 # Check git logs
 git log -> Returns the commit times, authors, & SHA values of your previous commits
 git log --oneline --graph -> Displays a simple log with a branch graph
+git log --stat -> shows commit message, files that were changed in log format
+git log --patch -> shows the diff of all commits
 git reflog -> Shows all the actions taken inside a repo
 git show -> Returns the commits, plus the changes that were made. PRESS q to quit
 
