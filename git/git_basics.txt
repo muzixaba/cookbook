@@ -217,6 +217,9 @@ git branch --list
 # Merge branch_name into active branch
 git merge branch_name
 
+# Merge branch_name into active branch (combine all feature_branch commits into 1)
+git merge --squash feature_branch
+
 # Fix merge conflicts
 All code above the ‘=========’ comes from you current branch (master).
 All code below the ‘=========’ is from the incoming branch (second_branch)
