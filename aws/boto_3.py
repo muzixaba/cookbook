@@ -2,10 +2,22 @@
 import logging
 import boto3
 
-#===============
+#===================
 # Changing Profiles
 #===================
+# changing the default session
 boto3.setup_default_session(profile_name='dev')
+
+# using a specific creds
+session = boto3.Session(
+                aws_access_key_id="KEY_ID",
+                aws_secret_access_key="SECRET_KEY",
+                region_name="region")
+s3 = session.client('s3')
+
+# using a specific profile
+session = boto3.Session(profile_name="my_profile")
+s3 = session.client('s3')
 
 #====
 # EC2
