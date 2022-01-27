@@ -1,6 +1,7 @@
 #%%
 from urllib.request import urlopen, Request
 from urllib.parse import urlencode
+from urllib.parse import parse_qs # read url query strings
 import json
 
 # %%
@@ -82,4 +83,12 @@ req = Request(
 with urlopen(req) as response:
     j_response = json.load(response)
 
+# %%
+# read/parse a url query string
+url_values = parse_qs("red=5&blue=0&green=", keep_blank_values=True)
+print(repr(url_values))
+# %%
+# get green value
+grn = url_values.get('green', [''])
+print(grn)
 # %%

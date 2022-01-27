@@ -12,3 +12,6 @@ Magic Methods
 # Run & Time a specific cell multiple times
 # Will run cell 10 times & repeat that whole process 200 times
 %%timeit -n 10 -r 200 
+
+# Enable environments as kernels
+ conda install nb_conda_kernels

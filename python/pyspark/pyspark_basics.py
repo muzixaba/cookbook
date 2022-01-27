@@ -12,11 +12,39 @@ spark = SparkSession \
             .enableHiveSupport() \
             .getOrCreate()
 
+# read data source using DataFrameReader 
+# spark.read.format().option().schema().load()
+df = (spark.read.format("csv")
+    .option("header", "true")
+    .schema(my_schema)
+    .load("/path/to/source"))
+
+# write df data
+# spark.write.format().option().bucketBy().save()/saveAsTable()
+df = (spark.write.format("parquet").save("path"))
+
 # create datafame from csv
 df = spark.read.csv('some_file.csv')
 
 # create datafame from csv with headers & infer data types
 df_2 = spark.read.csv('some_file.csv', header=True, inferSchema=True)
+
+# create dateframe from parquet file
+df = spark.read.format("parquet").load("path/to/source")
+
+# write to parquet file
+df = (spark.write.format("parquet")
+    .mode("overwrite")
+    .option("compression", "snappy")
+    .save("path/to/sink"))
+
+
+# read json into df
+# (spark.read.format("json")
+#   .compression()
+#   .dateFormat()
+#   .multiline()
+#   .allowUnquotedFieldNames())
 
 # show/view dataframe
 # good for debbuging
@@ -67,6 +95,12 @@ df.drop("col1", "col2")
 # drop duplicates using one or more columns
 df.drop_duplicates(['col1', 'col2'])
 
+# NaN Semantics
+# NaN = NaN returns true.
+# In aggregations, all NaN values are grouped together.
+# NaN is treated as a normal value in join keys.
+# NaN values go last when in ascending order, larger than any other numeric value.
+
 # drop rows with null values (if any value is null)
 df.na.drop()
 
@@ -84,6 +118,12 @@ df.na.fill('new_value', 'ColName')
 
 # fill missing values from multiple columns
 df.na.fill('new_value', ['col1', 'col2'])
+
+# change column to date (01-12-2010 8:26)
+df2 = df.withColumn("DateCol", F.to_date(("DateCol"), "dd-MM-yyyy H:mm"))
+
+# get week number from datetime column
+df.withColumn("WeekNumber", F.weekofyear(F.col("DateCol")))
 
 # impute null value using mean
 from pyspark.ml.feature import Imputer
@@ -120,6 +160,13 @@ df.dropna().groupBy(F.year('timestamp'))\
             F.col('sum(volume_currency)').alias('volume_sum'))\
     .orderBy('year(timestamp)').show(10, False)
     
+# apply a window
+running_total = Window.partitionBy("Col1") \
+    .orderBy("Col2") \
+    .rowsBetween(-2, Window.currentRow)
+
+sum_df.withColumn("RunningTotal", F.sum("ColName").over(running_total))
+
 # collect df as list of rows
 df.collect()
 
@@ -137,6 +184,11 @@ schema = StructType([StructField('id', IntegerType()),
                     StructField('name', StringType()),
                     StructField('count', IntegerType())])
 df = spark.createDataFrame(data, schema=schema)
+
+# define schema using a Data Definition Language (DDL) string
+# https://vincent.doba.fr/posts/20211004_spark_data_description_language_for_defining_spark_schema/
+ddl_schema = "author STRING, title STRING, pages INT"
+df = spark.createDataFrame(data, schema=ddl_schema)
 
 # get dataframe schema
 df.printSchema()
@@ -161,6 +213,7 @@ df.drop("colName")
 
 # sort df using a specific column, in descending order
 df.sort(expr("ColName desc"))
+df.sort(F.desc("ColName")).show()
 
 # change column type for spark functions
 from pyspark.sql import functions as F
@@ -188,6 +241,32 @@ df.select("col1", F.expr("F.to_date(concat(YearCol,MonthCol,DayofMonthCol),'yyyy
 
 # save dataframe as parquet (recommended file format)
 df.write.format("parquet").save("path/to/data")
+
+# save as sql table
+df.write.format("parquet").saveAsTable("path/to/data")
+
+# joining dataframes (join expr + join type) and select all columns
+join_expr = left_df.id == right_df.id
+left_df.join(right_df, join_expr, "inner/outer/left/right").select("*")
+# inner - will pull records that match on both sides
+# outer - it's a full outer join that will return all records from both sides
+# left - will return all records from the left but only the matching ones from the right.
+# right - opposite of 'left'
+
+# Limits to Joins
+# Number of executors
+# Number of Shuffle Partitions
+# Number of Unique Keys
+
+# Join Operations
+# Shuffle Join
+# Broadcast Join - Send the smaller df to partitions where the other data sits
+
+# DataFrame Union
+df.union(df2)
+
+# view execution plan through explain()
+df.explain()
 
 # use sql on a spark session
 spark.sql()
@@ -239,6 +318,12 @@ df.groupBy('A', 'B').pivot('C').sum('D')
 # create a temp view/table to use sql on
 df.createOrReplaceTempView('bitcoin_tbl')
 
+# read table into df
+df = spark.table("table_name")
+
+# view table properties
+spark.sql('DESCRIBE FORMATTED db_name.table_name')
+
 # Apply SwitchCase using when() on df
 df4 = df.withColumn("Year", \
         when(col("year") < 21, col("year") + 2000)
@@ -288,9 +373,12 @@ spark.catalog.setCurrentDatabase("DATABASE_NAME")
 # list tables inside spark database
 spark.catalog.listTables("DATABASE_NAME")
 
+# read table
+df = spark.sql("SELECT * FROM table_name")
+
 # PySpark Logging (Log4J)
 # Requirements
-# - Log4J config file (log4j.properties)
+# - Log4J config file (spark.conf/log4j.properties), copy & modify log4j.properties.template
 # - Configure Spark JVM to pickup the Log4J config file
 # - Create python class to get Log4J's instance
 
@@ -354,6 +442,21 @@ df3 = df.withColumn("ColName", expr("udf_name(ColName)"))
 # grab a sample of the data, turn to pandas df, then plot
 df.sample(False, 0.1).toPandas().hist()
 
+# check for duplicates
+
+# Check if all entries in dataset are unique
+df.groupby(df.columns) \
+  .count() \
+  .where('count > 1') \
+  .sort('count', ascending=False) \
+  .show()
+
+# Check for duplicates using compound primary key
+df.groupby(['date', 'station']) \
+  .count() \
+  .where('count > 1') \
+  .sort('count', ascending=False) \
+  .show()
 
 #--------------------
 # Spark vs Pandas
@@ -437,7 +540,13 @@ pyspark --master local[3] --driver-memory 2g
 # Transformations
 # Combining DataFrames
 # Aggregations (simple, grouping, windowing)
-#   Simple - Aggregate the entire df, return a single value(s), per column
+#   Simple - Aggregate the entire df, return a single value(s), per column.
+#   GroupBy - 
+#   Window - Operate on groups of rows, returns a single value for every input row.
+#       Ranking -
+#       Analytic -
+#       Aggregate -
+
 # Applying built-in functions
 # Applying User-Defined-Functions (UDF)
 # Referencing Rows/Columns
@@ -484,3 +593,51 @@ df.write.saveAsTable('table_name')
 CREATE TABLE table_name(col1 type, col2 type, ...) 
   USING PARQUET 
   LOCATION 'path/to/location'
+
+
+#---------------------
+# CONNECT TO DATABASES
+#---------------------
+
+# Read/Write from POSTGRESQL (using load method)
+jdbc_df  = (spark 
+            .format("jdbc")
+            .option("url", "jdbc:postgresql://[DBSERVER]")
+            .option("dbtable", "[SCHEMA].[TABLENAME]")
+            .option("user", "[USERNAME]")
+            .option("password", "[PASSWORD]")
+            .load() # or save()
+            )
+
+# Read from POSTGRESQL (using JDBC method)
+jdbc_df = (spark.read
+            .jdbc("jdbc:postrgesql://[DBSERVER]", "[SCHEMA].[TABLENAME]",
+            properties={"user": "[USERNAME]", "password": "[PASSWORD]"}
+            )
+        )
+
+# Write to POSTGRESQL (using save method)
+(jdbc_df
+    .write
+    .format("jdbc")
+    .option("url", "jdbc:postgresql://[DBSERVER]")
+    .option("dbtable", "[SCHEMA].[TABLENAME]")
+    .option("user", "[USERNAME]")
+    .option("password", "[PASSWORD]")
+    .save())
+
+# Write to POSTGRESQL (using jdbc method)
+(jdbc_df.write.jdbc("jdbc:postgresql:[DBSERVER]", "[SCHEMA].[TABLENAME]",
+                properties={"user": "[USERNAME]", "password": "[PASSWORD]"}))
+
+
+# Read/Write from MYSQL
+jdbc_df = (spark
+        .read # or .write
+        .format("jdbc")
+        .option("url", "jdbc:mysql://[DBSERVER]:3306/[DATABASE]")
+        .option("driver", "com.mysql.jdbc.Driver")
+        .option("dbtable", "[TABLENAME]")
+        .option("user", "[USERNAME]")
+        .option("password", "[PASSWORD]")
+        .load())

@@ -35,6 +35,9 @@ df.isna().sum()
 # replace nans with empty string
 df = df.fillna('')
 
+# return df, ignoring nans from a specific column
+df = df[df['col'].notna()]
+
 # Count non-NA cells for each column or row.
 df.count()
 
@@ -98,9 +101,13 @@ df.drop_duplicates(subset ="ref_colName", keep='first', inplace=True)
 # Export df as csv
 df.to_csv(r'Path\To\File_Name.csv', index = False)
 
-#=============
+# export df as compressed csv
+df.to_csv("path/to/csv.gz", index=False, compression="gzip")
+
+
+#===============
 # Math Functions
-#=============
+#===============
 
 # Get column totals
 df.loc['Column_Total']= df.sum(numeric_only=True, axis=0)
@@ -110,9 +117,10 @@ df.loc[:,'Row_Total'] = df.sum(numeric_only=True, axis=1)
 # Create new column with row sums
 df["sum"] = df.sum(axis=1)
 
-#==========================================
+
+#======================
 # Combining DataFrames
-#=========================================
+#======================
 
 # Merged 2 dfs using different columns
 new_df = pd.merge(left=df1, right=df2, how='inner', left_on='df1_col', right_on='df2_col')
@@ -128,14 +136,14 @@ df_all = pd.concat([df1, df2, df3], ignore_index=True)
 #==========================
 df.sort_values(by='Age', ascending=False)
 
-#================
+#=================
 # Transposing a df
 #=================
 df.T
 
-#===================
+#=========
 # Groupby
-#===================
+#=========
 
 # Group by single column
 df.groupby([by='col_name']).mean()[['cols','to','calculate','means']]
