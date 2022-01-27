@@ -109,10 +109,12 @@ After commiting file, they are sent to the remote repo
 # Add files to track
 git add file/folder -> adds specific file or folder to staging area
 git add . -> adds all files to the staging area
+git add -p file.ext -> add certain changes from inside the file (step through changes [y/n])
 
 # Commit changes
+git commit (opens text editor so you can type commit subject and description)
 git commit -m "message about what what was done"
-git commit -m "Commit title" -m "commit desciption message"
+git commit -m "Commit title" -m "commit description message"
 
 # Add to staging area & commit in one line
 git commit -am "commit message"
@@ -243,7 +245,7 @@ Automatic Merge
 Manual Merge
 - Happens when git is unable to resolve any conflicts
 - An automatic merge is not possible
-- Git enters the Conflict Merge State which means all conlficts must be
+- Git enters the Conflict Merge State which means all conflicts must be
   resolved before trying to merge.
 - Once conflicts are resolved, those changes are saved as a Manual Merge Commit.
 
@@ -258,6 +260,7 @@ HEAD
 
 # Create a Pull Request (Merge Request)
 Alerts a repo's owner that you want to make some changes.
+Based on branches, not individual commits
 Pull request is the same as Merge Request
 STEPS:
 1: Fork the owner's repo in you own account. Basically making a copy
