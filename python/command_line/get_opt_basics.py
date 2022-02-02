@@ -12,6 +12,8 @@ def get_start_and_end_dates():
     try:
         # get args using getopt.getopt()
         # returns list of tuples
+        # colon ":" next to an arg means it's required, no colon if not requried
+        # options, arguments = getopt.getopt(list_of_args, "shortform_args", [longform_args])
         opts, args = getopt.getopt(argv, "s:e:", ['start_date', 'end_date'])
     # catch errors if args weren't passed in correctly
     except getopt.GetoptError as e:
