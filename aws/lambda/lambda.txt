@@ -18,3 +18,32 @@ aws lambda create-function \
 --handler <scriptname.lambda_handler> \
 --region <region> \
 --role <lambda-role-arn>
+
+
+#--------------
+# Lambda Layers
+#--------------
+
+# create a folder for the layers deployment & cd into it
+mkdir layers_deployment && cd layers_deployment
+
+# create a build folder structure for the layers
+mkdir -p build/python/lib/python3.8/site-packages
+
+# install relevant package(s)
+pip3 install package_name -t build/python/lib/python3.8/site-packages
+
+# zip the python folder
+zip ./build/python
+
+
+# SIMPLER WAY
+
+# create a folder for the layers deployment & cd into it
+mkdir layers_deployment && cd layers_deployment
+
+# install relevant package(s) inside the new folder
+pip3 install package_name -t .
+
+# zip everything into a single file
+zip -r python.zip .
