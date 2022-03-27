@@ -151,4 +151,25 @@ for v in volume_iterator:
       print("Deleting snapshot", s[0])
       s[2].delete()
 
-#=================
+
+#--------------------------------
+# Using Boto3 with MFA enabled
+#--------------------------------
+#%%
+client = boto3.client('sts')
+
+response = client.get_session_token(
+    DurationSeconds=900, # 15 mins
+    SerialNumber='arn:aws:iam::account_number:mfa/username',
+    TokenCode='mfa_code'
+)
+
+#%%
+creds = response['Credentials']
+session = boto3.Session(
+    aws_access_key_id=creds["AccessKeyId"],
+    aws_secret_access_key=creds["SecretAccessKey"],
+    aws_session_token=creds["SessionToken"],
+)
+
+ec2 = session.client('ec2')

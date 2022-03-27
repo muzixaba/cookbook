@@ -18,10 +18,10 @@ df[2:8]
 df.loc['row_name', 'col_name'] 
 
 # Change value at specific cell
-df.set_value(index, 'col_name', value)
+df.set_value(index, 'col_name', value) # depricated
 df.loc[condition, 'col_name'] = new_value
 df['col_name'] = np.where(condition, new_value, df['col_name'])
-
+df.at['index', 'col'] = new_value
 
 # Change column data type
 df['col_name'] = df['col_name'].astype('int64')

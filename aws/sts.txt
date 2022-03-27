@@ -1,2 +1,5 @@
 # Decode authorisation message
 aws sts   decode-authorization-message --encoded-message <message>
+
+
+# generating a session token for MFA access
