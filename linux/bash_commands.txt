@@ -853,7 +853,32 @@ export EDITOR=nano
 # open external editor to edit command
 ^x ^e
 
+#==========================
+# UPDATING PYTHON ON LINUX
+#==========================
+
+# Verify installed version
+python3 --version
+
+# Update app repo
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt update
+
+# Check if python version is available
+apt list | grep python3.10
+
+# Install python
+sudo apt install python3.10
+
+
+#======================
+# if VENV isn't Working
+#======================
+sudo apt-get install python3.6-venv
+
 #===========
 # REFERENCES
 #===========
 https://devhints.io/bash
+
+
