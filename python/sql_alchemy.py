@@ -1,6 +1,7 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Table
+from sqlalchemy import Column, Integer, String, ForeignKey, Table, DateTime
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.declarative import declarative_base
+import datetime as dt
 
 Base = declarative_base()
 
@@ -49,7 +50,7 @@ class Book(Base):
 
 
 class Publisher(Base):
-    __tablename__ = "publisher"
+    __tablename__ = "publishers"
     publisher_id = Column(Integer, primary_key=True)
     name = Column(String)
     authors = relationship(
@@ -62,3 +63,23 @@ class Publisher(Base):
                         secondary=book_publisher, 
                         back_populates="publishers"
                     )
+
+
+
+#=========================
+# USERS DATABASE
+#=================
+
+class User(Base):
+    __tablename__ = 'users'
+    id = Column(Integer(), primary_key=True)
+    username = Column(String(25), nullable=False, unique=True)
+    email = Column(String(80), unique=True, nullable=False)
+    date_created = Column(DateTime(), default=dt.datetime.utcnow)
+
+    def __repr__(self):
+        return f"User username={self.username}"
+
+
+new_user = User(id=1, username="MuziX", email="muzi@email.com")
+print(new_user)
