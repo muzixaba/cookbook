@@ -65,21 +65,3 @@ class Publisher(Base):
                     )
 
 
-
-#=========================
-# USERS DATABASE
-#=================
-
-class User(Base):
-    __tablename__ = 'users'
-    id = Column(Integer(), primary_key=True)
-    username = Column(String(25), nullable=False, unique=True)
-    email = Column(String(80), unique=True, nullable=False)
-    date_created = Column(DateTime(), default=dt.datetime.utcnow)
-
-    def __repr__(self):
-        return f"User username={self.username}"
-
-
-new_user = User(id=1, username="MuziX", email="muzi@email.com")
-print(new_user)
