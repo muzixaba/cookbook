@@ -1,25 +1,25 @@
 # import sqlite3
 import sqlite3
 
-#Connection string
+# db connection string
 sqlite:///relative/path.db
 sqlite:////absolute/path/to.db
  
 
 # create a database
 conn = sqlite3.connect('example.db')
-conn_mem = sqlite3.connect(":memory:") --in memory db
+conn_mem = sqlite3.connect(":memory:") #in memory db
 
 # create a cursor
 cur = conn.cursor()
 
 # Data types
-# NULL
-# INTEGER
-# REAL
-# TEXT
+# NULL (None)
+# INTEGER (Int)
+# REAL (Float)
+# TEXT (Str)
 # BLOB
-
+  
 # Create table
 cur.execute('''CREATE TABLE stocks (
             date text, 
@@ -57,6 +57,48 @@ cur.fetchall() # fetches all
 items = cur.fetchall()
 for item in items:
     print(item)
+
+def show_all(table: str):
+    conn = sqlite3.connect('db_name.db')
+    c = conn.cursor()
+    c.execute(f"SELECT rowid, * FROM {table}")
+    items = c.fetchall()
+    for i in items:
+        print(item)
+    conn.commit()
+    conn.close()
+
+def find_one(email: str):
+    conn = sqlite3.connect('db_name.db')
+    c = conn.cursor()
+    c.execute("SELECT rowid, * FROM table_name WHERE email = (?)", (email,))
+    items = c.fetchall()
+    for i in items:
+        print(i)
+    conn.commit()
+    conn.close()
+
+def add_one(name: str, surname: str, email: str):
+    conn = sqlite3.connect('db_name.db')
+    c = conn.cursor()
+    c.execute("INSERT INTO table_name VALUES (?,?,?)", name, surname, email)
+    conn.commit()
+    conn.close()
+
+def add_many(lst):
+    """Takes list of tuples"""
+    conn = sqlite3.connect('db_name.db')
+    c = conn.cursor()
+    c.execute("INSERT INTO table_name VALUES (?,?,?)", (lst))
+    conn.commit()
+    conn.close()
+
+def delete_one(id: str):
+    conn = sqlite3.connect('db_name.db')
+    c = conn.cursor()
+    c.execute("DELETE FROM table_name WHERE rowid=(?)", id)
+    conn.commit()
+    conn.close()
 
 # open sqlite db using cli tool
 sqlite3 db_name.sqlite3

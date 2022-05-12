@@ -1,6 +1,7 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Table
+from sqlalchemy import Column, Integer, String, ForeignKey, Table, DateTime
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.declarative import declarative_base
+import datetime as dt
 
 Base = declarative_base()
 
@@ -49,7 +50,7 @@ class Book(Base):
 
 
 class Publisher(Base):
-    __tablename__ = "publisher"
+    __tablename__ = "publishers"
     publisher_id = Column(Integer, primary_key=True)
     name = Column(String)
     authors = relationship(
@@ -62,3 +63,5 @@ class Publisher(Base):
                         secondary=book_publisher, 
                         back_populates="publishers"
                     )
+
+
