@@ -16,9 +16,9 @@ Resources:
     # Type: AWS::ProductIdentifier::ResourceType
     Type: "AWS::EC2::Instance"
     Properties:
-      ImageId:  ami-0b23604f872b0abe6 # explore ami
+      ImageId:  ami-0b23604f872b0abe6 # explore cource basic
       InstanceType: t2.micro
-      SecurityGroupIds: ["sg-8de584dd"]
+      SecurityGroupIds: ["sg-8de584dd"] #sg-8de584dd
       Tags:
         - Key: Name
           Value: !Ref InstanceName

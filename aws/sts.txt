@@ -3,3 +3,7 @@ aws sts   decode-authorization-message --encoded-message <message>
 
 
 # generating a session token for MFA access
+aws sts get-session-token \
+--duration-seconds <#seconds>
+--serial-number <mfa_serial> \
+--token-code <code> \

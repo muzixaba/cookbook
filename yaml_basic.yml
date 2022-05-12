@@ -7,6 +7,10 @@
 name: Muzi
 surname: "Xaba"
 is_male: true #boolean
+height: 1.2
+
+# comments
+# Same as in python
 
 # 2 spaces for Indentation structure
 contact_details:
@@ -21,6 +25,10 @@ contact_details:
 groceries: [milk, pie, juice]
 
 # Lists of objects using '-'
+weekend:
+  - Saturday
+  - Sunday
+
 cars_in_garage:
   - make: VW
     model: Golf
@@ -31,7 +39,7 @@ cars_in_garage:
     year: 2000
     engine_size: 1.6
 
-# Multiline Strings
+# """Multiline Strings"""
 quote: |
       All of the text
       here will be kept 
