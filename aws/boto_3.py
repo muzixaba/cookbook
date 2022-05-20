@@ -39,9 +39,10 @@ for instance in resp['Instances']:
 # INSTERT item onto dynamodb
 dynamodb = boto3.client('dynamodb')
 item = {
-        "item_id": {"N": "1"},
+        "item_id": {"N": str(1)},
         "name": {"S": "Nkanyezi"},
-        "age": {"N": "3"}
+        "age": {"N": "3"},
+        "height_in_meters": {"N": "1.2"}
         }
 response = dynamodb.put_item(TableName='table_name', Item=item)
 
