@@ -2,14 +2,14 @@ import React from 'react'
 import {useState} from 'react'
 
 
-export const AddTask = (onAdd) => {
+export const AddTask = ({onAdd}) => {
     const [text, setText] = useState('')
     const [day, setDay] = useState('')
     const [reminder, setReminder] = useState(false)
 
-    const onSubmit = (e) => {
+    const onSubmit = (eventObj) => {
         // don't submit just yet
-        e.preventDefault()
+        eventObj.preventDefault()
 
         // validate form
         if(!text){
@@ -17,9 +17,10 @@ export const AddTask = (onAdd) => {
             return
         }
 
+        // call the onAdd function
         onAdd({text, day, reminder})
 
-        //refresh state
+        //refresh state - clear the form
         setText("")
         setDay("")
         setReminder(false)

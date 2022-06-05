@@ -1,5 +1,5 @@
 import React from 'react'
-// get font-awesome iconse from react-icons
+// get font-awesome icons from react-icons
 import {FaTimes} from 'react-icons/fa'
 
 export const Task = ({task, onDelete, onToggle}) => {
