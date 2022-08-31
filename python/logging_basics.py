@@ -18,6 +18,7 @@ logger.error("error message")
 logging.basicConfig(
         level=logging.DEBUG,
         filename='log_file.log',
+        datefmt="%d-%m-%Y %H:%M:%S",
         # format='{"time": "%(asctime)s", "level": "%(levelname)s", "message": "%(message)s"}'
         format='%(asctime)s %(levelname)s %(message)s'
         )

@@ -103,6 +103,7 @@ git log -> Returns the commit times, authors, & SHA values of your previous comm
 git log --oneline --graph -> Displays a simple log with a branch graph
 git log --stat -> shows commit message, files that were changed in log format
 git log --patch -> shows the diff of all commits
+git log --patch -2 -> shows the diff of last 2 commits
 git reflog -> Shows all the actions taken inside a repo
 git show -> Returns the commits, plus the changes that were made. PRESS q to quit
 
@@ -124,6 +125,12 @@ git commit -m "Commit title" -m "commit description message"
 
 # Add to staging area & commit in one line
 git commit -am "commit message"
+
+# Use rebase
+# Used whenever you want to add changes of a base branch back to a branched out branch
+# Moves or combines a sequence of commits to a new base commit.
+git rebase <base>
+
 
 # How to unstage file
 git reset HEAD file_name
@@ -189,6 +196,7 @@ git tag -d tag_name
 
 What is a branch?
 It's a timeline of commits
+Points to a specific commit
 Branch names are labels
 Deletion removes label only
 
@@ -224,6 +232,14 @@ git branch --list
 
 # Merge branch_name into active branch
 git merge branch_name
+
+# See which branches have been merged with main
+git checkout main
+git branch --merged
+
+# See which branches have NOT been merged with main
+git checkout main
+git branch --no-merged
 
 # Merge branch_name into active branch (combine all feature_branch commits into 1)
 git merge --squash feature_branch
@@ -286,9 +302,12 @@ git stash save "message" -> Creates saves the current changes & goes back to las
 git stash save StashName -> Gives the stash a name
 git stash list -> Lists out all stashes
 git stash pop -> Applies changes on top stash & deletes it
-git stash apply stash@{#} -> applies a certain stash
+git stash apply stash@{#} -> applies a certain stash & preserves the stash
+git stash pop stash@{#} -> applies a certain stash and deletes the stash
 git stash clear -> deletes all stashes
 git stash drop <stash_id> -> delete a specific stash
+git stash show -> see changes made in recent stash
+git stash show{1} -> view contents of specific index
 
 # Squashing commits
 git squash ?????
@@ -299,7 +318,7 @@ git reset [commit ID] flag -> Flags incl "soft", "hard", "mixed"
  hard -> Most destructive. Can delete your changes
  mixed-> The default type of reset
 
- #=====================
+ #======================
  # Making changes safely
  #======================
  Pull updates down to your local repo
@@ -336,15 +355,15 @@ git branch --set-upstream-to=upstream/master master ???????????????????
 
 
  # Close Issue using Commit
- #===========================
+ #==========================
  git commit -m "Solved the issue, close #3" -> 3 is the issue number on GitHub
  NOTE: 
  - A 'Contributor' submits pull requests to update the code.
  - A 'Collaborator' has read & write access & updates the code directly
       
-#=========================
+#===================
 # Removing a remote
-#=======================
+#===================
 git remote rm remote_name
 
 
