@@ -372,3 +372,8 @@ git remote rm remote_name
 #=========================
 Go to repo settings, find & change repo name
 git remote set-url origin new_url
+
+#========================
+# Delete a Local Git Repo
+#========================
+rm -fr .git
