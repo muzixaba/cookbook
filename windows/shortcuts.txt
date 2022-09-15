@@ -1,0 +1,4 @@
+# Multiple Desktops
+Create new desktop - Win + D
+Close a desktop - Win + Ctrl + F4
+Navigate to desktop - Win + Ctrl + <-|->

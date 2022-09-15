@@ -1,0 +1,27 @@
+
+AMPLIFY CLI
+-------------
+# Create an Amplify App
+amplify init
+amplify init --app <GitHub-url>
+
+# Create a Backend for you App
+amplify add api
+
+# Add a Lambda function to existing API
+amplify add function
+
+# Add existing S3 or DyanmoDB 
+amplify import storage
+
+# Push local changes up to Amplify
+amplify push
+
+# Visit the app inside the AWS Amplify console
+amplify console
+
+# UI toolkit for react
+npm install aws-amplify @aws-amplify/ui-react
+
+# Connect Amplify App to GitHub
+amplify add hosting
