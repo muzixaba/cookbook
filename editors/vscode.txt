@@ -3,6 +3,8 @@ RC = Right click
 =========================
 Keyboad Shortcuts
 =========================
+single line comment = ctrl + /
+multiline comment = alt + shift + a
 open command pallet = ctrl + shft + p
 Toggle side panel = ctrl + b
 open setting = ctrl + ,

@@ -221,6 +221,7 @@ git push <remote_name> <branch_name>
 # Show all branches
 git branch -a
 git branch --list
+git branch -r (shows all remote branches)
 
 # Merge branch_name into active branch
 git merge branch_name
@@ -315,7 +316,7 @@ git reset [commit ID] flag -> Flags incl "soft", "hard", "mixed"
  #===================
  git fetch -> Fetches your remote repo. Updates your references. Non destructive way to check for differences btw local & remote repos
  git merge branch_name -> Merges branch_name into active branch
- git pull -> Fetches your remote repo & merges with local
+ git pull -> (git fetch && git merge) Fetches your remote repo & merges with local
  git pull --all -> Git pulls all branches
  git pull --rebase -> Rewinds local changes, pulls remote, than commits local
  git pull origin master --allow-unrelated-histories
