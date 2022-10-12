@@ -74,7 +74,7 @@ NOTE: You can now use the SSH link to clone repos
 #==========
 
 # Create repo locally
-git init -> Must done inside your src directory.
+git init -b main -> Must done inside your src directory.
 Create new repo on GitHub. Let's call it NewRepo
 git remote add origin https://github.com/username/newrepo.git
 git push -u origin master -> First push to GitHub. -u (sets Upstream) enables tracking btw repos
@@ -226,7 +226,8 @@ git push origin --delete branch_name (deletes remote branch)
 # Push Branch to remote
 git push <remote_name> <branch_name>
 
-# Show all branches
+# Show branch(es)
+git branch --show-current
 git branch -a
 git branch --list
 git branch -r (shows all remote branches)
