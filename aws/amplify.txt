@@ -25,3 +25,8 @@ npm install aws-amplify @aws-amplify/ui-react
 
 # Connect Amplify App to GitHub
 amplify add hosting
+
+
+AMPLIFY CLI [ERRORS]
+ERROR - You must have virtualenv installed and available on your PATH as "venv". It can be installed by running "pip3 install venv".
+SOLUTION - Uninstall and reinstall virtualenv

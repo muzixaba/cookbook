@@ -107,6 +107,7 @@ passwd <user> -> changes password for specific user
 #============
 mkdir folder_name -> creates folder called folder_name is working directory
 mkdir -p folder_1/folder_2 -> creates a folder_2 inside folder_1
+mkdir -m 777 dirname -> create folder with full permissions
 
 #===========
 # Navigation
