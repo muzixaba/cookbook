@@ -493,6 +493,7 @@ du -> displays file size of dirs and subdirs
 sudo du -sh /path/to/dir/* -> returns space used by subdirectories & files
 du -h -> returns file sizes
 df -h -> check free space
+du -sh /tmp/* | sort -h -> see file sizes in temp or any folder
 ls -1 | wc -l -> Number of files in current directory
 
 
@@ -677,6 +678,7 @@ System Processes
 
 # List running processes
 systemctl list-units
+ps aux | grep -i apt
 
 # List all running services
 systemctl list-units | grep .service
@@ -708,6 +710,11 @@ sudo systemctl deamon-reload
 # Check log between two times
 journalctl --since "2020-12-25 23:15:00" --until "2020-12-31 23:59:59"
 
+# kill a running process
+sudo kill -9 <proccess_id>
+
+# kill all running processes
+sudo killall apt apt-get
 
 =========
 Hardware
