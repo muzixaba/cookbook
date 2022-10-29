@@ -68,6 +68,12 @@ aws lambda invoke --function-name de-logging-function out --log-type Tail \
 
 aws lambda delete-function --function-name de-logging-function
 
+aws lambda add-permission \
+--function-name arn:aws:lambda:af-south-1:263134221295:function:alias_test:DevV1 \
+--source-arn  https://5o9g1mjjx3.execute-api.af-south-1.amazonaws.com/dev/*/GET/hello \
+--principal apigateway.amazonaws.com \
+--statement-id apigateway-access \
+--action lambda:InvokeFunction
 
 #---------------
 # DATA PIPELINE
