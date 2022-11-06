@@ -47,3 +47,20 @@ pip3 install package_name -t .
 
 # zip everything into a single file
 zip -r python.zip .
+
+
+# Using the Amazon Linux 2 AMI
+yum update -y
+mkdir packages && cd packages
+python3 -m venv venv
+source venv/bin/activate
+mkdir python && cd python
+pip3 install <package_name> -t .
+rm -rf *dist-info
+cd ..
+zip -r my-layer-package.zip python
+aws s3 cp my-first-lambda-package.zip s3://your-s3-bucket-name/
+
+
+# Invoke a Lambda function
+aws lambda invoke --function hello-world

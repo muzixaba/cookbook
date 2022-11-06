@@ -107,6 +107,7 @@ create .nanorc in user home folder
 
 ======================
 # NanoRC modifications (.nanorc)
+https://www.nano-editor.org/dist/latest/nanorc.5.html
 ======================
 
 # Add line numbers

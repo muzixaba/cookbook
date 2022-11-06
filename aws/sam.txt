@@ -1,6 +1,18 @@
-====================
+=============================
 Serverless Application Model
-====================
+=============================
 
 # Create hello-world app
 sam init
+
+# Set up app for local deployment
+sam build
+
+# Package CF template and upload it to s3
+sam package
+
+# Deploy CF template
+sam deploy
+
+# Publish SAM app on Serverless App Registery
+sam publish --template <template.yaml> --region <region>
