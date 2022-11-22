@@ -1,0 +1,11 @@
+# check version
+sam --version
+
+# initialise sam app
+sam init
+
+# package template
+aws cloudformation package \
+-s3-bucket <bucket-name> \
+--template-file <template.yaml> \
+--output-template-file <path/to/generated-template.yaml>

@@ -23,7 +23,7 @@ PgDown/PgUp or Mouse Scroll Wheel
 # Jump to End of Line
 ^E
 
-# Jump to Begining of Line
+# Jump to Beginning of Line
 ^A
 
 # Go to Next line
@@ -96,9 +96,9 @@ Highlight the text using your  mouse.
 Right click and select copy
 
 
-==================
-Enable Syntaxt Highlighing
-==================
+==========================
+Enable Syntax Highlighting
+==========================
 curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 
 # if in Windows
@@ -107,6 +107,7 @@ create .nanorc in user home folder
 
 ======================
 # NanoRC modifications (.nanorc)
+https://www.nano-editor.org/dist/latest/nanorc.5.html
 ======================
 
 # Add line numbers

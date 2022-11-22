@@ -1,0 +1,15 @@
+# installing the CDK
+npm install -g aws-cdk
+
+# get help
+cdk --help
+
+# create new empty cdk project
+cdk init app --language python
+
+# create a new cdk app from template
+cdk init sample-app --language python
+
+# compile a CF template from your py file
+cdk synth
+
