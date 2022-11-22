@@ -15,3 +15,9 @@ filetype:pdf search phrase
 
 # find related sites
 related:url
+
+# get results from specific domain
+inurl:domain.com search phrase
+
+# exclude results from specific domain
+-inurl:domain.com search phrase
