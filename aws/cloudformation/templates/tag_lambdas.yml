@@ -1,0 +1,54 @@
+AWSTemplateFormatVersion: 2010-09-09
+Resources:
+  MyFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Code:
+        ZipFile: |
+          import boto3
+          import json
+
+          LAMBDA_CLIENT = boto3.client('lambda')
+
+          def get_caller_identity(event):
+            # Get the caller identity from the event
+            principal_id = event['requestContext']['identity']['principalId']
+
+            # Split the principal ID into the username and IAM group
+            principal_parts = principal_id.split(':')
+            username = principal_parts[1]
+            iam_group = principal_parts[2]
+
+            return username, iam_group
+
+          def handler(event, context):
+            # Get the caller's username and IAM group
+            username, iam_group = get_caller_identity(event)
+
+            # Get the ARN of the Lambda function
+            function_arn = context.invoked_function_arn
+
+            # Add the tags to the Lambda function
+            LAMBDA_CLIENT.tag_resource(
+              Resource=function_arn,
+              Tags={
+                'username': username,
+                'IAM group': iam_group,
+              }
+            )
+
+            return {
+              'statusCode': 200,
+              'body': json.dumps({
+                'message': 'Successfully added tags to Lambda function',
+                'function_arn': function_arn,
+                'tags': {
+                  'username': username,
+                  'IAM group': iam_group,
+                },
+              }),
+            }
+    Handler: index.handler
+    Runtime: python3.9
+    MemorySize: 128
+    Timeout: 30

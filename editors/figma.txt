@@ -1,0 +1,11 @@
+
+# zoom in
+ctrl + +
+
+# zoom out
+ctrl + -
+
+# hand tool
+space
+
+

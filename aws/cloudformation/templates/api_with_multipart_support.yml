@@ -1,0 +1,90 @@
+AWSTemplateFormatVersion: 2010-09-09
+Resources:
+  MyApi:
+    Type: AWS::ApiGatewayV2::Api
+    Properties:
+      Name: MyAPI
+      ProtocolType: HTTP
+
+  MyApiRoute:
+    Type: AWS::ApiGatewayV2::Route
+    Properties:
+      ApiId: !Ref MyApi
+      RouteKey: POST /files
+      Target: !Join ['', ['integrations/', !Ref 'MyApiIntegration']]
+
+  MyApiIntegration:
+    Type: AWS::ApiGatewayV2::Integration
+    Properties:
+      ApiId: !Ref MyApi
+      IntegrationType: AWS_PROXY
+      IntegrationUri: !Join ['', ['arn:aws:apigateway:', !Ref 'AWS::Region', ':lambda:path/2015-03-31/functions/', !GetAtt MyFunction.Arn, '/invocations']]
+      IntegrationMethod: POST
+      PayloadFormatVersion: 2.0
+      RequestParameters:
+        integration.request.header.Content-Type: "'multipart/form-data'"
+
+  MyFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Code:
+        ZipFile: |
+          import uuid
+          import boto3
+
+          S3_BUCKET = 'my-bucket'
+          DYNAMODB_TABLE = 'my-table'
+
+          s3 = boto3.client('s3')
+          dynamodb = boto3.client('dynamodb')
+
+          def handler(event, context):
+            # Parse the multipart data from the request
+            parts = event['body']['parts']
+            files = []
+
+            # Process each part of the multipart data
+            for part in parts:
+              # Check if the part is a file or text data
+              if 'Content-Disposition' in part['headers']:
+                # Get the file name and content type
+                file_name = part['headers']['Content-Disposition']['fileName']
+                content_type = part['headers']['Content-Type']
+
+                # Get the file data
+                file_data = part['data']
+
+                # Save the file to S3
+                s3_key = f'files/{file_name}'
+                s3.put_object(Bucket=S3_BUCKET, Key=s3_key, Body=file_data, ContentType=content_type)
+
+                # Get the S3 object URL
+                s3_url = s3.generate_presigned_url(
+                  ClientMethod='get_object',
+                  Params={'Bucket': S3_BUCKET, 'Key': s3_key},
+                  ExpiresIn=86400
+                )
+
+                # Add the file information to the list of files
+                files.append({
+                  'name': file_name,
+                  'content_type': content_type,
+                  'url': s3_url,
+                })
+              else:
+                # Parse the text data from the part
+                text_data = part['data'].decode('utf-8')
+
+            # Save the file information to DynamoDB
+            dynamodb.put_item(TableName=DYNAMODB_TABLE, Item={
+              'id': {'S': str(uuid.uuid4())},
+              'files': {'L': [{'M': file} for file in files]},
+              'text': text_data
+            })
+
+            return {
+              'statusCode': 200,
+              'body': 'Successfully uploaded files to S3 and saved file information to DynamoDB',
+            }
+
+             

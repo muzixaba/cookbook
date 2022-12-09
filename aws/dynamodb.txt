@@ -27,3 +27,34 @@ Create table:
             'Height': Decimal('1.535')
         }
         )
+
+
+#=============
+# CLI Commands
+#=============
+
+# Scan entire table
+aws dynamodb scan --table-name <table>
+
+# Scan table but only return a single page
+aws dynamodb scan --table-name <table> --page-size 1
+
+# Scan table but only return max number of items
+aws dynamodb scan --table-name <table> --max-items 1
+
+# Scan table but only return max number of items
+# Use token from previous call
+aws dynamodb scan \
+--table-name <table> \
+--max-items 1 \
+--starting-token <token-value>
+
+
+# Projection Expression
+aws dynamodb scan --table-name <table> \
+--projection-expression  "attribute1, attribute2"
+
+# Filter Expression (client-side filtering)
+aws dynamodb scan --table-name <table> \
+--filter-expression "attribute1 = :u" \
+--expression-attribute-values '{":u": {"S": "attribute1-item-value"}}'
