@@ -1,0 +1,15 @@
+#===========================
+# ELASTIC CONTAINER REGISTRY
+#===========================
+
+# Logging into ECR
+aws ecr get-login-password \
+--region <region> | docker login \
+--username AWS \
+--password-stdin <aws_account_id>.dkr.ecr.<region>.amazonaws.com
+
+# Push Docker image to ECR
+docker push <aws_account_id>.dkr.ecr.<region>.amazonaws.com/<repo-name>:<tag>
+
+# Pull Docker image from ECR
+docker pull <aws_account_id>.dkr.ecr.<region>.amazonaws.com/<repo-name>:<tag>

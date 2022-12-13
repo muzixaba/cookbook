@@ -1,0 +1,19 @@
+# Ask the AI to generate new code for you
+code a basic calculator in python
+
+# Ask AI what piece of code does
+Explain what the following code does:
+...
+
+# Ask the AI to write unit tests for you
+Please write unit tests for the following function
+...
+
+# Ask the AI to improve your code or the code that it previously wrote
+How can I improve the following piece of code:
+...
+
+#=======
+# LIMITS
+#=======
+- Can't browse the internet

@@ -123,9 +123,9 @@ response = s3.select_object_content(
 )
 
 
-#================
+#==========================
 # Delete old EBS snapshots
-#================
+#==========================
 
 #!/usr/bin/env python
 import boto3
@@ -174,3 +174,28 @@ session = boto3.Session(
 )
 
 ec2 = session.client('ec2')
+
+
+#===========================
+# Decode Auth Error Messages
+#===========================
+import boto3
+import argparse
+
+# Parse command line arguments
+parser = argparse.ArgumentParser()
+parser.add_argument('-m', '--message', required=True, help='The AWS console authorization error message to decode')
+args = parser.parse_args()
+
+# Create an AWS client object
+client = boto3.client('sts')
+
+# Decode the authorization error message
+response = client.decode_authorization_message(EncodedMessage=args.message)
+
+# Print the decoded message to the console
+print(response['DecodedMessage'])
+
+
+# How to run
+# python decode_auth_error.py -m <error_message>
