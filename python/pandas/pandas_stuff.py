@@ -208,3 +208,19 @@ date_filter = (df["Date"] >= "2019") & (df["Date"] < "2020") # time as strings
 date_filter2 = (df["Date"] >= pd.to_datetime('2019-01-01')) & (pd.to_datetime('2020-01-01')) # time as datetime
 
 df.loc[date_filter]
+
+#===========
+# Iterate DF
+#===========
+
+# use iterrows
+for index, row in df.iterrows():
+    print(row["Name"], row["Age"])
+
+# use iloc
+for i in range(len(df)):
+    print(df.loc[i, "Name"], df.loc[i, "Age"])
+
+# use the index
+for ind in df.index:
+    print(df['Name'][ind], df['Stream'][ind])

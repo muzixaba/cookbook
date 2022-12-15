@@ -184,6 +184,8 @@ sudo chmod 600 /etc/passwd-s3fs
 
 cat ~/.passwd-s3fs
 
+# Unmount
+fusermount -u ~/s3fs_dir
 
 #=====
 # CLI

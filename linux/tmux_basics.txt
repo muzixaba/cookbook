@@ -61,6 +61,7 @@ Kill all sessions: tmux kill-server
 # Panes
 #======
 Vertical split: C-b %
+Horizontal split: C-b "
 Move btw panes: C-b right/left arrow
 Closing Pane: Type 'exit' or Ctrl-d
 Toggle Full Screen: C-b z

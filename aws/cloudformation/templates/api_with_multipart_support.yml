@@ -1,9 +1,24 @@
 AWSTemplateFormatVersion: 2010-09-09
+
+Description: |
+  Template creates a and API and a Lambda function that populates a DynamoDB table & uploads objects to S3
+
+Parameters:
+  S3Bucket:
+    Type: String
+    Description: S3 bucket to upload the file(s) to
+  DynamoDBTable:
+    Type: String
+    Description: Table used to record form data
+  TheAPI:
+    Type: String
+    Description: API used to handled requests
+
 Resources:
   MyApi:
     Type: AWS::ApiGatewayV2::Api
     Properties:
-      Name: MyAPI
+      Name: !TheAPI
       ProtocolType: HTTP
 
   MyApiRoute:
@@ -27,13 +42,14 @@ Resources:
   MyFunction:
     Type: AWS::Lambda::Function
     Properties:
+      # Runtime: python3.9
       Code:
         ZipFile: |
           import uuid
           import boto3
 
-          S3_BUCKET = 'my-bucket'
-          DYNAMODB_TABLE = 'my-table'
+          bucket_name = os.environ['BUCKET_NAME']
+          ddb_table_name = os.environ['DDB_TABLE_NAME']
 
           s3 = boto3.client('s3')
           dynamodb = boto3.client('dynamodb')
@@ -86,5 +102,8 @@ Resources:
               'statusCode': 200,
               'body': 'Successfully uploaded files to S3 and saved file information to DynamoDB',
             }
-
              
+  Environment:
+    Variables:
+      BUCKET_NAME: !Ref S3Bucket
+      DDB_TABLE_NAME: !Ref DynamoDBTable

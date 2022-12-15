@@ -171,6 +171,11 @@ git add -u
 # See differences btw 2 commits
 git diff [commit ID] [commit ID]/HEAD
 
+# See changes in the same file
+git diff file_name.ext
+
+# Reverse local commits
+git restore --staged <path/to/file.ext>
 
 #=============
 # Tags
