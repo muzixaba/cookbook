@@ -6,19 +6,22 @@ Description: |
 Parameters:
   S3Bucket:
     Type: String
+    Default: muzi-test-bucket-personal
     Description: S3 bucket to upload the file(s) to
   DynamoDBTable:
     Type: String
+    Default: pyconza_email_collector_db
     Description: Table used to record form data
   TheAPI:
     Type: String
+    Default: MyAPI
     Description: API used to handled requests
 
 Resources:
   MyApi:
     Type: AWS::ApiGatewayV2::Api
     Properties:
-      Name: !TheAPI
+      Name: !Ref TheAPI
       ProtocolType: HTTP
 
   MyApiRoute:
@@ -26,23 +29,42 @@ Resources:
     Properties:
       ApiId: !Ref MyApi
       RouteKey: POST /files
-      Target: !Join ['', ['integrations/', !Ref 'MyApiIntegration']]
+      Target: !Join ["", ["integrations/", !Ref "MyApiIntegration"]]
 
   MyApiIntegration:
     Type: AWS::ApiGatewayV2::Integration
     Properties:
       ApiId: !Ref MyApi
       IntegrationType: AWS_PROXY
-      IntegrationUri: !Join ['', ['arn:aws:apigateway:', !Ref 'AWS::Region', ':lambda:path/2015-03-31/functions/', !GetAtt MyFunction.Arn, '/invocations']]
+      IntegrationUri:
+        !Join [
+          "",
+          [
+            "arn:aws:apigateway:",
+            !Ref "AWS::Region",
+            ":lambda:path/2015-03-31/functions/",
+            !GetAtt MyFunction.Arn,
+            "/invocations",
+          ]
+        ]
       IntegrationMethod: POST
-      PayloadFormatVersion: 2.0
+      PayloadFormatVersion: "2.0"
       RequestParameters:
         integration.request.header.Content-Type: "'multipart/form-data'"
 
   MyFunction:
     Type: AWS::Lambda::Function
     Properties:
-      # Runtime: python3.9
+      Runtime: python3.9
+      Handler: lambda_function.lambda_handler
+      Timeout: 30
+      Role: !GetAtt MyFunctionRole.Arn
+      Environment:
+        Variables:
+          # BUCKET_NAME: !Ref S3Bucket
+          BUCKET_NAME: muzi-test-bucket-personal
+          # DDB_TABLE_NAME: !Ref DynamoDBTable
+          DDB_TABLE_NAME: pyconza_email_collector_db
       Code:
         ZipFile: |
           import uuid
@@ -102,8 +124,20 @@ Resources:
               'statusCode': 200,
               'body': 'Successfully uploaded files to S3 and saved file information to DynamoDB',
             }
-             
-  Environment:
-    Variables:
-      BUCKET_NAME: !Ref S3Bucket
-      DDB_TABLE_NAME: !Ref DynamoDBTable
+
+  MyFunctionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess
+        - arn:aws:iam::aws:policy/AmazonS3FullAccess
+        - arn:aws:iam::aws:policy/CloudWatchFullAccess
