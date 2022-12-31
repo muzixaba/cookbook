@@ -1,7 +1,7 @@
 #===================
 # Create a new app
 #===================
-flutter create app_name
+flutter create --org com.muzixaba app_name
 
 
 #===================
@@ -38,3 +38,11 @@ ctrl + k
 
 # Push changes
 ctrl + shift + k
+
+
+#==================
+# Flutter in VSCode
+#==================
+
+# Extensions
+Flutter, Dart, AwesomeFlutterSnippets, BetterComments

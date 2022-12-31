@@ -1,0 +1,21 @@
+
+# Generate a Data Key
+aws kms generate-data-key --key-id <key-id> --key-spec <spec>
+
+# Send CiphertextBlob Data Key to a file
+echo <CiphertextBlob> | base64 -di > enc_data_key.bin
+
+# Encrypt data using Data Key
+openssl enc -aes-256-cbc -pbkdf2 \
+-in file_name.ext \
+-out enc_file.ext \
+-pass:<Plaintext-DataKey>
+
+# Decrypt DataKey. Get Plaintext key
+aws kms decrypt --ciphertext-blob fileb://path/to/enc_data_key.bin
+
+# Decrypt a file
+openssl enc -d -aes-256-cbc -pbkdf2 \
+-in enc_file.ext \
+-out deccrypted_file.ext \
+-pass:<Plaintext-DataKey>
