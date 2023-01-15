@@ -16,6 +16,8 @@ npm start // starts dev server
 // install axios for making requests
 npm install axios
 
+// install dotenv for environment variables
+npm install dotenv --save
 
 // React component (Function)
 // Name components like PythonClasses
