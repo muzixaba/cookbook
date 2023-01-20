@@ -183,3 +183,33 @@ aws iam create-instance-profile \
 aws iam add-role-to-instance-profile \
 --role-name role_name \
 --instnace-profile-name profile_name
+
+
+# ------------------------------------------------
+# Bash script to get creds when MFA is enabled
+#-------------------------------------------------
+
+#!/bin/bash
+
+# check if the MFA device ARN and token were passed as arguments
+if [ -z "$1" ] || [ -z "$2" ]
+then
+    echo "Please provide the MFA device ARN and token as arguments"
+    exit 1
+fi
+
+# retrieve temporary security credentials using the AWS STS get-session-token command
+sts_output=$(aws sts get-session-token --serial-number $1 --token-code $2)
+
+# extract the AccessKeyId, SecretAccessKey, and SessionToken from the command output
+access_key=$(echo $sts_output | jq -r '.Credentials.AccessKeyId')
+secret_key=$(echo $sts_output | jq -r '.Credentials.SecretAccessKey')
+session_token=$(echo $sts_output | jq -r '.Credentials.SessionToken')
+
+# Set the variables as environment variables
+export AWS_ACCESS_KEY_ID=$access_key
+export AWS_SECRET_ACCESS_KEY=$secret_key
+export AWS_SESSION_TOKEN=$session_token
+
+# use the temporary security credentials to list all the S3 buckets
+aws s3 ls
