@@ -91,3 +91,19 @@ ctrl + space -> Code completion
 ctrl + shift + r -> Convert stateless widget to statefull
 ctrl + w -> Close open file
 ctrl + tab -> Select open file tab
+
+
+======================
+Setup Black for Python
+======================
+# https://marcobelo.medium.com/setting-up-python-black-on-visual-studio-code-5318eba4cd00#:~:text=Go%20to%20settings%20in%20your,%E2%80%9D%20and%20select%20%E2%80%9Cblack%E2%80%9D.
+
+# install black onto environment
+pip3 install black
+
+# install python extension onto vscode  
+[ ctrl + p ] > ext install ms-python.python
+
+# edit settings [ ctrl + , ]
+[x] Format on save
+Python > Formatting: Provider [ black ] 

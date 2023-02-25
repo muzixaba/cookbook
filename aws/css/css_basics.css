@@ -1,0 +1,13 @@
+/* References */
+https://www.w3schools.com/css/default.asp
+
+
+/* CSS has a selector and declaration block */
+p {color: blue; text-align: center;}
+
+/* Size related to viewport */
+width: 100vw;
+height: 100vh;
+
+/* color using hex */
+background-color:#f0f0f0;

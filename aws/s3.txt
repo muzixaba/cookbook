@@ -86,3 +86,48 @@ s3 = boto3.client('s3')
 # Upload files
 with open('filename', 'rb') as data:
     s3.upload_fileobj(data, 'mybucket', 'mykey')
+
+
+#======================
+# Mount a bucket to ec2
+#======================
+
+# Update OS
+(RHEL/AMAZON Linux 2) yum update -y
+(Debian/Ubuntu) apt update
+
+# Install dependancies for fuse and s3cmd
+(RHEL/AMAZON Linux 2) yum install automake fuse fuse-devel gcc-c++ git libcurl-devel libxml2-devel make openssl-devel -y
+(Debian/Ubuntu) sudo apt-get install automake autotools-dev fuse g++ git libcurl4-gnutls-dev libfuse-dev libssl-dev libxml2-dev make pkg-config -y
+
+# Download s3fs
+git clone https://github.com/s3fs-fuse/s3fs-fuse.git
+
+# Compile and install
+cd  s3fs-fuse
+./autogen.sh 
+./configure — prefix=/usr — with-openssl
+make
+sudo make install
+
+# Check if s3fs installed
+which s3fs
+
+# Setup Access Key or Role (Connect EC2 to Role on console)
+echo AWS_ACCESS_KEY_ID:AWS_SECRET_ACCESS_KEY > ~/.passwd-s3fs
+chmod 755 ~/.passwd-s3fs
+
+# Create Mount script (.sh)
+s3fs -o iam_role="<role-name>" \
+-o url="https://s3-eu-west-1.amazonaws.com" \
+-o endpoint=eu-west-1 \
+-o dbglevel=info \
+-o <bucket-name> <path/to/mount>
+
+# Give script execution rights
+chmod +x <script_name.sh>
+
+
+
+# Add path to server fstab
+crontab -e

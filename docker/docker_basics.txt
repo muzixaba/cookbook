@@ -95,6 +95,10 @@ docker exec <container_name> [command]
 docker run --cpus=0.5 ubuntu
 docker run --memory=100m ubuntu
 
+# Run terminal commands inside of a container
+exec -it <container_name_or_id> /bin/bash
+
+
 =============
 Docker Swarms
 =============
