@@ -13,6 +13,22 @@ Use bucket to host a website (www.domain.com):
 Bucket -> Permissions -> Untick 'Block all public access' -> 'Save'
 Update bucket policy to allow for web access
 
+#=====================
+# Host React App on S3
+#=====================
+- create bucket
+- unlock by removing bucket policy and acl lock
+- Properties > Static Website Hosting > Enable
+- Select index.html as entry point
+- Permissions > Bucket policy (getObject)
+
+On React
+--------
+npm build - builds the project
+Copy contents of build folder on to bucket 
+aws s3 sync path/to/local/build/ s3://bucket_name
+ 
+
 
 #=======
 # S3 CLI
@@ -39,6 +55,9 @@ aws s3 cp my-file.txt s3://bucket_name
 
 # Copy file(s) from S3 to local current directory
 aws s3 cp s3://<bucket-name>/ . --recursive
+
+# Copy large number of files into s3
+aws s3 sync path/to/directory s3//bucket_name
 
 # Turn bucket into Static Website
 aws s3 website s3://example.org --index-document index.html --error-document error.html

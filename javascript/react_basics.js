@@ -9,7 +9,7 @@ command -v nvm
 
 //Create react app
 mkdir project_name && cd project_name
-npx create-react-app app_name
+npx create-react-app app_name // --template typescript
 cd app_name
 npm start // starts dev server
 
