@@ -4,6 +4,7 @@ A script used to create words from given characters
 from itertools import permutations
 import argparse
 
+
 def word_permutations(args):
     """
     Takes in string and returns a list containing
@@ -22,13 +23,20 @@ def word_permutations(args):
 
 # print(word_permutations('abc'))
 
+
 def main():
     parser = argparse.ArgumentParser(
-                        prog="Word Permutations",
-                        description="Return permutations of a string")
-    parser.add_argument("-str", "--initial_string", type=str, help="Enter string to be used for permutations")
+        prog="Word Permutations", description="Return permutations of a string"
+    )
+    parser.add_argument(
+        "-str",
+        "--initial_string",
+        type=str,
+        help="Enter string to be used for permutations",
+    )
     args = parser.parse_args()
     print(word_permutations(args))
+
 
 if __name__ == "__main__":
     main()

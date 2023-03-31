@@ -91,6 +91,9 @@ docker run -it <image_name>
 # run command on a running container
 docker exec <container_name> [command]
 
+# run bash inside of a running container
+docker exec -it <container_id> bash
+
 # limit the amount of cpu/ram a container can use (cgroups)
 docker run --cpus=0.5 ubuntu
 docker run --memory=100m ubuntu
