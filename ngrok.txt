@@ -1,0 +1,5 @@
+# normal usage
+ngrok http 3000
+
+# if issues with headers
+ngrok http 300 --host-header="localhost:3000"

@@ -1,0 +1,38 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Parameters:
+  S3BucketName:
+    Type: String
+    Description: Name of the existing S3 bucket
+
+Resources:
+  CloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Origins:
+        - Id: !Ref S3BucketName
+          DomainName: !Join
+            - '.'
+            - - !Ref S3BucketName
+              - 's3.amazonaws.com'
+          S3OriginConfig: {}
+        DefaultCacheBehavior:
+          TargetOriginId: !Ref S3BucketName
+          ViewerProtocolPolicy: redirect-to-https
+          AllowedMethods:
+            - GET
+            - HEAD
+            - OPTIONS
+            - PUT
+            - POST
+            - PATCH
+            - DELETE
+          Compress: true
+          ForwardedValues:
+            QueryString: false
+            Cookies:
+              Forward: all
+        DefaultRootObject: index.html
+        Enabled: true
+        HttpVersion: http2
+        IPV6Enabled: true

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Upload Image Form</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('#submit-btn').click(function(e) {
+				e.preventDefault();
+				var name = $('#name').val();
+				var image = $('#image')[0].files[0];
+				var formData = new FormData();
+				formData.append('name', name);
+				formData.append('image', image);
+				var json = {};
+				formData.forEach(function(value, key) {
+					json[key] = value;
+				});
+				var jsonData = JSON.stringify(json);
+				$.ajax({
+					type: 'POST',
+					url: 'https://m45acg3y3a.execute-api.af-south-1.amazonaws.com/dev/details',
+					data: jsonData,
+					dataType: 'json',
+					contentType: 'application/json',
+					headers: {
+								'Authorization': 'Bearer token123',
+								'X-Custom-Header': 'Custom Value',
+								"Accept": "*/*"
+							},
+					success: function(response) {
+						console.log(response);
+					},
+					error: function(xhr, status, error) {
+						console.log(error);
+					}
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<h1>Upload Image Form</h1>
+	<form>
+		<label for="name">Name:</label>
+		<input type="text" id="name" name="name"><br><br>
+		<label for="image">Image:</label>
+		<input type="file" id="image" name="image"><br><br>
+		<input type="submit" id="submit-btn" value="Submit">
+	</form>
+</body>
+</html>

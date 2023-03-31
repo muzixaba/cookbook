@@ -1,0 +1,11 @@
+#=====
+# HTTP
+#=====
+
+# What is it?
+A protocol for communicating over the web.
+
+# How does it work?
+It works on request-response system.
+The requesting computer is the 'client'
+The responding computer is the 'server'.

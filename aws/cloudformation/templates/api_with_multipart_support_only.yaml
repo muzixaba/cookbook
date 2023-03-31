@@ -1,0 +1,47 @@
+Parameters:
+  FilesLambdaArn:
+    Type: String
+    Description: The name of the Lambda function to integrate with /files route
+    Default: my-files-lambda
+
+Resources:
+  RestApi:
+    Type: AWS::ApiGatewayV2::Api
+    Properties:
+      Name: my-api
+      ProtocolType: HTTP
+      CorsConfiguration:
+        AllowOrigins:
+          - "*"
+        AllowHeaders:
+          - "*"
+        AllowMethods:
+          - "*"
+      RouteSelectionExpression: "$request.method $request.path"
+
+  FilesResource:
+    Type: AWS::ApiGatewayV2::Route
+    Properties:
+      ApiId: !Ref RestApi
+      RouteKey: "POST /files"
+      AuthorizationType: NONE
+      Target: !Join
+        - "/"
+        - - "integrations"
+          - !Ref FilesIntegration
+      RequestParameters:
+        "method.request.header.Content-Type": true
+        "method.request.header.Accept": true
+      RouteResponseSelectionExpression: "$default"
+
+  FilesIntegration:
+    Type: AWS::ApiGatewayV2::Integration
+    Properties:
+      ApiId: !Ref RestApi
+      IntegrationType: AWS_PROXY
+      PayloadFormatVersion: "2.0"
+      IntegrationMethod: POST
+      IntegrationSubtype: multipart/form-data
+      RequestParameters:
+        "integration.request.header.Content-Type": "'multipart/form-data; boundary=$context.requestId'"
+        "integration.request.header.Accept": "'*/*'"
