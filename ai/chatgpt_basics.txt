@@ -13,7 +13,20 @@ Please write unit tests for the following function
 How can I improve the following piece of code:
 ...
 
+#=====
+# Tips
+#=====
+
+# Priming
+- Before giving a prompt, tell the modal what to behave like e.g. You're a coding instructor helping an intermediate student.
+
+# Get clarity before response
+- You can ask the model to ask clarifying questions before it responds to any of your prompts.
+
+
 #=======
 # LIMITS
 #=======
 - Can't browse the internet
+
+

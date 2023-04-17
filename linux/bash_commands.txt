@@ -28,6 +28,18 @@ sudo su -
 # Switch to other user
 su username
 
+# Create user
+adduser UserName
+
+# Give user SUDO priviledges
+usermod -aG sudo UserName
+
+# Allow users to log in using passwords
+nano /etc/ssh/sshd_config (Set PasswordAuthenticaiton to yes)
+
+# Restart sshd to apply changes
+systemctl restart sshd
+
 #======================
 # Execution of profile & rc files
 #===================================
@@ -649,6 +661,18 @@ Find Open Ports
 namp localhost
 
 
+===================================
+Manage Uncomplicated Firewall (UFW)
+===================================
+# Get firewall status
+sudo ufw status
+
+# Remove allow rule
+sudo ufw delete allow <port_number>
+
+# Allow nginx
+sudo ufw allow "Nginx Full"
+
 ========
 cronjobs
 ========
@@ -671,7 +695,21 @@ awk -F "," '{print $0}' file.csv
 # get line where the first column is a certain value
 awk '$1 == "text_to_search_for" {print $0}' path/to/file.txt 
 
+==================
+Configure Timezone
+==================
+sudo apt update
+sudo apt upgrade
+dpkg-reconfigure tzdata - set Timezone
+date (verify time)
 
+=================================
+Create User for Ser ver Management
+=================================
+adduser <name> (creates user)
+adduser <name> sudo (adds user to sudo group)
+sudo passwd -d root (deletes root user's password)
+sudo passed -l root (locks root users password)
 ================
 System Processes
 ================

@@ -1,0 +1,92 @@
+# Reference
+https://medium.com/techfront/step-by-step-visual-guide-on-deploying-a-flask-application-on-aws-ec2-8e3e8b82c4f7
+
+# create Ubuntu instance
+- t3.micro
+- af-south-1
+- Use key-pair
+
+# Security Group (Inbound Rules)
+- SSH (22): 0.0.0.0
+- HTTP (80): 0.0.0.0
+- HTTPS (443): 0.0.0.0
+- Custom (8080): 0.0.0.0
+
+# Set up Elastic IP for instance
+
+# Create build folder for React (optional)
+- sudo mkdir /var/www/<public-ip-or-domain>
+- sudo chmod 755 -R /var/www/<public-ip-or-domain>
+- sudo chown -R <user>:www-data /var/www/<public-ip-or-domain>
+
+
+# SSH into instance
+- sudo apt-get update
+- sudo apt-get install python3-venv
+- mkdir appdir && cd appdir
+- python3 -m venv venv
+- source venv/bin/active
+- pip3 install Flask
+- CREATE OR COPY APP CODE
+- pip3 install gunicorn
+- gunicorn -b 0.0.0.0:5000 app:app (allows for all IPs)
+
+# Run flask app as a service using gunicorn
+- sudo nano /etc/systemd/system/appname.service
+
+[Unit]
+Description=Gunicorn instance for a simple hello world app
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/flaskapp
+ExecStart=/home/ubuntu/flaskapp/venv/bin/gunicorn --workers=3 -b localhost:5000 app:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+# Start the service
+- sudo systemctl daemon-reload
+- sudo systemctl start appname
+- sudo systemctl enable appname
+
+# Test gunicorn
+- curl localhost:8000
+
+# Install nginx
+- sudo apt-get install nginx
+
+# Set up nginx
+- sudo systemctl start nginx
+- sudo systemctl enable nginx
+
+# Update nginx config
+- sudo nano /etc/nginx/sites-available/default
+
+## below default comments
+
+## serve react from build folder
+location / {
+    root /home/ubuntu/<src-folder>/<app-name>/build;
+    try_files $uri /index.html;
+}
+
+## serve flask
+location /api {
+    proxy_pass http://127.0.0.1:5000;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+}
+
+# Restart nginx
+- sudo systemctl restart nginx
+
+# Test nginx config
+- sudo nginx -t
+
+# Check nginx error logs
+- sudo tail /var/log/nginx/error.log
