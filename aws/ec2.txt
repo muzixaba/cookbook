@@ -134,6 +134,9 @@ NOTE:   Your EC2 security group has to allow for NFS connections
 
 # Give instance role to access bucket
 
+# Update the package index files
+sudo apt-get update
+
 # Install s3fs
 sudo apt-get install automake autotools-dev fuse g++ git libcurl4-gnutls-dev libfuse-dev libssl-dev libxml2-dev make pkg-config -y
 git clone https://github.com/s3fs-fuse/s3fs-fuse.git

@@ -91,6 +91,12 @@ docker run -it <image_name>
 # run command on a running container
 docker exec <container_name> [command]
 
+# run bash on a running container
+docker exec -it <container-id> /bin/bash
+
+# exit bash on a running container
+exit
+
 # run bash inside of a running container
 docker exec -it <container_id> bash
 
