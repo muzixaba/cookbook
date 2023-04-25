@@ -1,0 +1,243 @@
+# Server Core vs Windows Server with Desktop
+Core - No GUI (~4GB)
+Some apps not support on Core
+Mainly use 'sconfig' on Powershell (Menu driven CLI app)
+Apps available on Core:
+- notepad
+- task manager (taskmgr)
+- regedit
+- system info (msinfo32)
+- powershell
+
+
+# Allow for Remote Desktop Access
+Server Manager
+Local Server
+Remote Desktop 
+Allow remote connections
+Select Users
+
+
+# Add Users
+Server Manager
+Tools -> Computer Management
+Local Users and Groups
+Right Click -> New User
+
+
+# Create Static IP
+Server Manager -> Local Server
+Ethernet 5
+Double click on 'Ethernet 5'
+General > Properties
+Internet Protocol v4 (TCP/IPv4)
+Update IP Addresses
+
+
+# Rename Server
+Server Manager -> Local Server
+Computer Name
+
+
+# Disable IPv6
+Server Manager -> Local Server
+Ethernet 5
+Double click on 'Ethernet 5'
+General > Properties
+Internet Protocol v6 (TCP/IPv6)
+
+
+# Manual Activation 
+Requires product key
+
+
+# Automatic Activation Services
+Key Management Services (one-time activation)
+Active Directory-based Activation
+Multiple Activation Key (one-time activation)
+Automatic Virtual Machine Activation
+
+
+# Client Access Licenses (User CALs)
+Given to a user, to access multiple devices
+
+
+# Client Access Licenses (Device CALs)
+Given to a devices to allow users to access it
+
+
+# Software Licensing Manager
+It's a built in script to manage activation
+run
+slmgr.vbs
+
+
+# Check Activation expiry date
+cmd
+slmgr.vbs /xpr
+slmgr.vbs /dli all (view all licensing info)
+slmgr.vbs /dlv all (view all licensing info verbose)
+
+
+# Change Time-Zone
+Server Manager -> Local Server
+Time zone
+
+
+# Important types of Networks  
+- Workgroup (default network)
+- Domain
+
+
+# Workgroup
+Small network
+No centralised authentication & admin
+Max 20 computers
+Low security
+Each computer is configured individually
+
+
+# Domain
+Centralised Auth & Admin
+Unlimited number of computers
+High security
+
+
+# Check or change Workgroup or Domain
+Server Manager -> Local Server
+Workgroup
+
+# Active Directory Domain Services (AD DS) Terms
+Logical Components (design)
+- Domains
+    - A repo of User, Computer and other objects
+    - A replication boundary
+    - An administrative boundary (Admins have full access to all users under domain)
+- Domain Trees
+    - A relationship between domains
+    - example.com the parent of sub1.example.com
+    - sub2.example.com is a sibling to sub1.example.com
+- Forest
+    - A security boundary
+    - One or more domains or domain trees that share a trust relationship
+    - A group of domain trees
+- OUs
+- Containers
+Physical Components (servers)
+- Domain Controllers
+    - Server that has AD DS installed
+- Read-only Domain Controllers
+
+# Set up Active Directory on server
+Server Manager -> Local Server
+Manage -> Add Roles & Features
+Role-based or feature-based installation
+Pick server
+Select "Active Directory Domain Services"
+Promote server to domain controller when done installing
+
+# AD DS objects
+User objects - Access & Auth of user at logon
+Group objects - Simplifies permissions for Users
+Computer objects - Authenticates against the domain controller
+Organisation Units (OUs) - Configure objects by assigning Group Policy Objects (GPOs) to them.
+Containers 
+- Group objects within a domain. 
+- Cannot apply GPOs.
+- Assigned to default objects
+
+# Manage Users in AD DS
+Server Manager -> Local Server
+Tools > Active Directory Users and Computers
+Find domain & open it > Users
+
+Domain Controllers
+- Servers that host the AD DS database (ntds.dit)
+- Also host SYVOL (share folder that stores active directory policies and scripts)
+- Host the Kerberos authentication service
+
+Global Catalog
+- Hosts a partial attribute set for other domains in the Forest
+- Supports queries for objects throughout the Forest
+- In a single domain, all domain controllers should hold a copy of the global catalog
+- If organisation has multiple sites, each should have a global catalog server
+
+Group Policy Objects (GPOs)
+- Used to enforce settings for users and computers
+- Typically used for the following:
+    - Security settings
+    - Desktop app settings
+    - Deploying apps
+    - Folder redirection
+    - Network settings
+- 2 GPOs are created by default
+    - Default domain Policy (Users and Computers)
+    - Default Domain Controllers Policy
+
+# Add GPOs
+Server Manager -> Local server
+Tools > Group Policy Management
+Select domain
+Group Policy Objects
+Right-click > New
+Set name
+
+Group Policy Preference
+- Collection of Group Policy client-side-extensions
+- Delivers preferred settings to domain-joined computers
+- Users can modify them e.g. Choosing a printer that's not a default
+- Can be targeted to specific objects (groups, IPs, etc)
+
+GPO Scope and Inheritance
+# From weakest to strongest. OU GPOs override the others
+1. Local GPOs (gpedit.msc)
+2 Site-level GPO (AD site level)
+3. Domain-level GPOs (Affects users & computers in domain)
+4. Organisational Unit GPOs (Affects users & computers in specific OU)
+
+# Start GPO
+A GPO to be used as a starting point when creating new GPOs
+
+# Altering Group Policy Processing
+- Block Inheritance
+- Enforce
+- Security Filtering
+
+
+#----------------------------
+# ALLOW USERS 4 REMOTE Access
+#----------------------------
+
+1. Install Remote Desktop Services
+- Session based desktops
+- Add Connection Broker, Web Access, & Session Host
+
+2. Allow remote access from Control Panel
+- Control Panel
+- System Config
+- System Properties
+    - Allow remote connections
+
+3. Add Users or Group to Remote Desktop Users group
+- Workgroup or Active Directory Users & Computers
+- Search for Remote Desktop Users
+    - Add members
+    - Search for users or user group
+
+4. Update Remote Desktop Services on Server Manager
+- Server Manager
+- Remote Desktop Services
+- Update Remote Desktop Licensing
+
+
+
+#------------------
+# Server Monitoring
+#------------------
+
+# Task manager
+- Real time performance tracking
+- It's resource intensive itself, so close it when done
+
+# Resource Monitor
+- Similar to Task Manager but with more detail

@@ -1,0 +1,14 @@
+====================
+WINDOWS ADMIN CENTER
+====================
+# Web based tool that consolidates admin tools
+
+# Comes with 4 modules
+- Server Manager
+- Failover clusters
+- Hyper-converged clusters
+- Windows 10 Clients
+
+
+# Get Windows Admin CENTER
+microsoft.com/evalcenter

@@ -1,0 +1,64 @@
+# What's Powershell?
+CLI and scripting language (similar to Bash)
+cmdlets - PowerShell commands
+modules - cmdlets packaged together (like shell script)
+
+# Tools used to manage PowerShell
+PowerShell Console - terminal
+PowerShell ISE - GUI
+
+# PowerShell syntax
+Verb-Noun (test-connection google.com)
+Grandfather commands (ping google.com)
+
+# Clear PowerShell
+cltr + l
+
+# Exiting PowerShell
+exit
+
+# Getting help
+get-help *event* - gives you help with any command that has the word 'event'
+get-help *eventlog* - gets help with any command with 'eventlog'
+get-help command - gives you help for specific command
+get-help command -online - gives you help for specific command on the web
+
+# File extensions
+name.ps1
+
+
+# Command Prompt vs PowerShell
+cmd is only command line
+powershell adds scripting
+
+# Open server configuration
+sconfig
+
+# Enable Remote Desktop Access
+sconfig
+Remote Desktop (7)
+Enable (E)
+Allow Clients (2)
+
+# Create secure string Password
+$Password = Read-Host -AsSecureString
+
+# Add Users onto Server
+New-LocalUser "Username" -Password $Password -FullName "Name Surname" -Description "Description of user"
+
+# Remove User
+Remove-LocalUser -Name "username"
+
+# See all Users
+Get-LocalUsers
+
+
+# Rename Server
+sconfig
+Network Settings (8)
+
+# PowerShell ISE
+GUI that shows you both the scripts and PowerShell console
+
+# Get latest GPO settings
+gpupdate

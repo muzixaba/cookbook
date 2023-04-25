@@ -1,0 +1,122 @@
+
+
+selector {
+    property1: value;
+}
+
+/* Select classes */
+.class-name {
+    property1: value;
+}
+
+/* Select an id */
+#id {
+    property1: value;
+}
+
+/* Selectors */
+element
+class
+id
+
+/* selector combinations */
+
+/* <h1 class="large heading">Title</h1> */
+selector-1.selector-2 {
+    property1: value;
+}
+
+/* <h2 id="big-blue" class="large blue">Title</h2> */
+#big-blue.large.blue {
+    property1: value;
+}
+
+/* select elements that have ancestors */
+
+/* select all <p> elements that are inside a <div> */
+div p {
+    property1: value;
+}
+
+/* select all h1.brown elements that are inside a main-header */
+header.main-header h1.brown {
+    property1: value;
+}
+
+/* combine selectors */
+.big, .large {
+    property1: value;
+}
+
+/* The everything selector */
+* {
+    font-family: Arial;
+}
+
+
+
+/* Loading CSS into webpage */
+
+/* Inline CSS */
+
+/* added directly onto html
+<h1 style="color: red;">Title</h1> */
+
+/* Style Element */
+/* included in the head of the webpage with <style> tags
+Formatted exactly like a CSS file
+<head>
+    <style>
+        selector {
+            property1: value;
+        }
+    </style>
+</head> */
+
+/* External CSS */
+
+/* Styles defined outside the webpage and can be link any page in the project
+<head>
+<link rel="stylesheet" href="path/to/css/file.css">
+<link rel="stylesheet" href="https://url.file.css">
+</head> */
+
+
+/* Selector Hierachy */
+/* ID > Class > Element */
+
+
+/* Defining Colors */
+
+/* Color Names */
+red
+blue
+green
+
+/* Hexadecimal */
+#000000
+#ffffff
+#ff0000
+
+/* RGB */
+rgb(0, 0, 0)
+rgb(255, 255, 255)
+rgb(255, 0, 0)
+
+/* RGB with transparency */
+rgba(0, 0, 0, 0.5)
+rgba(255, 255, 255, 0.5)
+rgba(255, 0, 0, 0.5)
+
+/* HSL */
+hsl(0, 0%, 0%)
+hsl(0, 100%, 100%)
+
+/* HSL with transparency */
+hsla(0, 0%, 0%, 0.5)
+hsla(0, 100%, 100%, 0.5)
+
+/* units of measurement */
+pixels e.g 20px
+percentages e.g 20%
+ems e.g 2em (scales of font size)

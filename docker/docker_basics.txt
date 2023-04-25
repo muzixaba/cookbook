@@ -11,7 +11,7 @@ Uses Client - Server architecture
 # Docker Keywords
 Image - Package/Template used to create containers.
 Container - Running instance of an image
-Dockerfile - 
+Dockerfile - File containing instructions on how to build a container
 Kernel -
 
 
@@ -42,7 +42,7 @@ docker image ls
 
 
 What's in the box:
-	Docker Engine (CLI > API > Deamon)
+	Docker Engine (CLI > API > Daemon)
 	Docker Compose
 	Docker Machine
 	Kitematic
@@ -69,6 +69,9 @@ docker attach <first_5_letters_of_container_ID>
 
 # Get a docker image from docker hub
 docker pull <image_name>
+
+# Get specific version of image
+docker pull <image>:<version>
 
 # List running containers
 docker ps
@@ -105,7 +108,7 @@ docker run --cpus=0.5 ubuntu
 docker run --memory=100m ubuntu
 
 # Run terminal commands inside of a container
-exec -it <container_name_or_id> /bin/bash
+docker exec -it <container_name_or_id> /bin/bash
 
 
 =============
