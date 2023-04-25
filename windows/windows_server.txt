@@ -195,8 +195,49 @@ GPO Scope and Inheritance
 3. Domain-level GPOs (Affects users & computers in domain)
 4. Organisational Unit GPOs (Affects users & computers in specific OU)
 
+# Start GPO
+A GPO to be used as a starting point when creating new GPOs
 
 # Altering Group Policy Processing
 - Block Inheritance
 - Enforce
 - Security Filtering
+
+
+#----------------------------
+# ALLOW USERS 4 REMOTE Access
+#----------------------------
+
+1. Install Remote Desktop Services
+- Session based desktops
+- Add Connection Broker, Web Access, & Session Host
+
+2. Allow remote access from Control Panel
+- Control Panel
+- System Config
+- System Properties
+    - Allow remote connections
+
+3. Add Users or Group to Remote Desktop Users group
+- Workgroup or Active Directory Users & Computers
+- Search for Remote Desktop Users
+    - Add members
+    - Search for users or user group
+
+4. Update Remote Desktop Services on Server Manager
+- Server Manager
+- Remote Desktop Services
+- Update Remote Desktop Licensing
+
+
+
+#------------------
+# Server Monitoring
+#------------------
+
+# Task manager
+- Real time performance tracking
+- It's resource intensive itself, so close it when done
+
+# Resource Monitor
+- Similar to Task Manager but with more detail
