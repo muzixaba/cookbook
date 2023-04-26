@@ -241,3 +241,13 @@ A GPO to be used as a starting point when creating new GPOs
 
 # Resource Monitor
 - Similar to Task Manager but with more detail
+
+# Performance Monitor
+- Shows current performance statistics
+- Server Manager > Tools > Performance Monitor
+ 
+# Reliability Monitor
+- Monitors both hardware and software issues over selected time interval.
+
+# Event Viewer
+- Shows logs of individual apps
