@@ -251,3 +251,31 @@ A GPO to be used as a starting point when creating new GPOs
 
 # Event Viewer
 - Shows logs of individual apps
+
+
+#---------------
+# Server Backups
+#---------------
+Backups can be done for the following:
+- Full server Backups
+- Individual files & folders
+- system state
+- Individual virtual machines on a Hyper-V host
+
+
+# Local Backups
+- Server Manager > Manage > Add Roles & Features
+- Features > Windows Server Backup
+- Local Backup > Backup Schedule
+- Full server > Pick time > Pick Destination
+
+# Azure Backup
+- Go to Backup & Site Recovery service
+    - Create Vault
+    - Pick region
+    - Getting Started > Backup
+        - Pick are where VM is running (Azure)
+        - What's the back up for? (VM)
+        - Configure Backup policy
+- Go to VM dashboard
+- Operations > Backup
