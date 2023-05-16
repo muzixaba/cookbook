@@ -1,0 +1,120 @@
+#------------------------
+# React Native (RN)Basics
+#------------------------
+- Collection of React components
+- Compiles components to native UI elements
+- Runs the JS in a thread, hosted by RN in the app (not compiled)
+- https://reactnative.dev (official site)
+
+
+#-----------
+# Components
+#-----------
+- All components need to be imported before used
+
+<View>
+- Similar to <div> in html
+- Used to create layout structures
+- Provides structure for other components
+- Uses Flexbox by default
+
+<Text>
+- General text component
+- 
+
+<Touchable>
+- Touchable components are the ones users can interact with
+
+<ActivityIndicator>
+- Used to show spinner of loading indicators
+
+<Flatlist>
+- Similar to map() but for large lists that require smooth scrolling
+- Use map() for smaller lists
+
+ <FlatList
+    data={DATA}
+    renderItem={({item}) => <Text>{item.name}</Text>}
+    keyExtractor={item => item.id}
+    />
+
+<ScrollView>
+- Can hold multiple components and allow user to scroll
+- Renders all items which becomes a problem for long lists
+- Use with map()
+
+<ScrollView>
+        {goals.map((goal) => (
+          <View style={styles.goalItem} key={goal}>
+          <Text style={styles.goalText}>{goal}</Text>
+          </View>
+        ))} 
+</ScrollView>
+
+<SafeAreaView>
+- Allows you to display app components in the safe area of the screen
+
+#--------
+# Styles
+#--------
+- No CSS
+- Styling applied as an inline prop using JS stylesheet objects
+- Sytling language is insired by CSS, with some differences
+- Styles don't cascade
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff'
+    },
+    heading: {
+        color: 'blue'
+    }
+});
+
+#--------
+# Flexbox
+#--------
+- Used by default for layout
+- It's a collection of CCS properties for layout
+- Example properties:
+    flex: 1 -> Fills entire viewport
+    flexDirection: 'column' -> spreads elements vertically (default)
+    justifyContent: 'space-between' -> spreads elements uniformly
+    width: '80%' -> takes % size of parent object
+    height: 300, -> takes 300 pixels in height
+    alignItems: 'flex-start' -> aligns using the cross axis (row in instance )
+
+
+
+#-----
+# EXPO
+#-----
+
+# Basics
+- 3rd party tool to help create a RN app
+- FREE
+- Can switch between Expo & RN CLI
+
+# Create app in current folder
+npx create-expo-app@latest --example with-router .
+
+# Add new folder & files
+- app
+    - _layout.js
+    - index.js
+
+# Add additional packages
+- npm install expo-font axios react-native-dotenv
+
+# View app on mobile
+- Download Expo Go app
+
+# Get the Expo CLI
+- npm install -g expo-cli
+
+# Start app using the expo cli
+- expo-cli start --tunnel
+
+# Publish app using Expo
+- expo publish
