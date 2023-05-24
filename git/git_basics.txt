@@ -309,6 +309,7 @@ git checkout master
 # Saving temporal changes using Stashing
 git stash save "message" -> Creates saves the current changes & goes back to last commit
 git stash save StashName -> Gives the stash a name
+git stash push -m "message" path/to/file.ext -> Stash changes made to specific file
 git stash list -> Lists out all stashes
 git stash pop -> Applies changes on top stash & deletes it
 git stash apply stash@{#} -> applies a certain stash & preserves the stash
@@ -317,6 +318,7 @@ git stash clear -> deletes all stashes
 git stash drop <stash_id> -> delete a specific stash
 git stash show -> see changes made in recent stash
 git stash show{1} -> view contents of specific index
+git stash show -p stash@{0} -> show stash changes in diff format
 
 # Squashing commits
 git squash ?????

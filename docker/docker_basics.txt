@@ -121,6 +121,41 @@ They're managed by Docker Manager
 Docker Compose
 ==============
 Runs multiple apps made up of multiple containers
+docker-compose.yml
+# specify version
+version: "3.8"
+
+# manage the different images as services
+services:
+  frontend:
+	# build frontend image from Dockerfile
+    build: ./frontend
+	ports:
+	  - 3000:3000
+  backend:
+	# build backend image from Dockerfile
+	build: ./backend
+	ports:
+	  - 3001:3001
+	environment:
+	  DB_URL: mongodb://db/db-name
+  db:
+    # Get db image from DockerHub
+	image: mongo:4.0-xenial
+	ports:
+	  - 27017:27017
+	volumes:
+	  - src:/data/db
+volumes:
+  src:
+
+
+
+# start app using docker-compose
+docker-compose up
+
+# stop containers created by docker-compose
+docker-compose down
 
 ==============
 Docker on Linux

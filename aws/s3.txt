@@ -125,7 +125,7 @@ git clone https://github.com/s3fs-fuse/s3fs-fuse.git
 # Compile and install
 cd  s3fs-fuse
 ./autogen.sh 
-./configure — prefix=/usr — with-openssl
+./configure
 make
 sudo make install
 

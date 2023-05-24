@@ -279,3 +279,51 @@ Backups can be done for the following:
         - Configure Backup policy
 - Go to VM dashboard
 - Operations > Backup
+
+#---------------------------------
+# Windows Software Update Services 
+#---------------------------------
+- A WSUS server manages the deployment of updates in your environment
+- Provides infrastructure for managing updates
+- Allows you to choose, test, and track updates
+- Can choose which devices receive updates.
+- Hierarchy can be set up like the following:
+    - Autonomous: Other WSUS server decides which updates to take
+    - Replica: Other WSUS server replicates the settings of the main server
+
+
+#-------------
+# Windows VPN
+#-------------
+
+# Avaialbe tunneling protocols
+- PPTP: Used in Windows 2000
+- L2TP/IPsec: Used in XP (Ports[500, 4500, 1701])
+- SSTP: Used in Vista. Similar to SSL. Port 443
+- IKEv2: Can automatically reconnect. UDP Port 500
+
+# VPN Authantication Options
+- PAP: Basic plaintext auth. Vendor neutral
+- CHAP: Hashes password. Vendor neutral
+- MS-CHAPv2: 2 way, encrypted authentication
+- EAP: Uses auth with MFA
+
+# Creating VPN Access
+- Server Manager > Add Roles and Features
+- Add 'Network Policy & Access Services'
+- Add 'Remote Access' > 'DirectAccess & VPN', "Routing"
+- Install
+- Tools > Routing & Remote Access
+    - Configuration > Custom config
+    - Select VPN & LAN
+
+
+#-----------------------
+# Remove password expiry
+#-----------------------
+- Server Manager
+- Users & Computers
+- Find user
+    - Properties
+        - Account
+         - Password never expires

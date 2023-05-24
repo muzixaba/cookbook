@@ -1,0 +1,2 @@
+# list running Services
+systemctl list-units --type=service --state=running
