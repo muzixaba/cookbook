@@ -24,3 +24,7 @@ Invalidations:
     Refresh the cache for a specific item or group
 Error Pages:
     Create a custom 404 page using CloudFront
+
+
+# Invalidating a file
+aws cloudfront create-invalidation --distribution-id <your_distribution_id> --paths "/index.html"
