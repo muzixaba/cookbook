@@ -115,10 +115,13 @@ git show -> Returns the commits, plus the changes that were made. PRESS q to qui
 3. Repository (.git folder) -> All commited changes
 After commiting file, they are sent to the remote repo
 
-# Add files to track
+# Add files to track (stage files)
 git add file/folder -> adds specific file or folder to staging area
 git add . -> adds all files to the staging area
 git add -p file.ext -> add certain changes from inside the file (step through changes [y/n])
+
+# Unstage file(s)
+git restore --staged path/to/file.ext
 
 # Commit changes
 git commit (opens text editor so you can type commit subject and description)
