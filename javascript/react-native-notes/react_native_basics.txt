@@ -116,5 +116,16 @@ npx create-expo-app@latest --example with-router .
 # Start app using the expo cli
 - expo-cli start --tunnel
 
-# Publish app using Expo
-- expo publish
+# Publish app to the Expo App store
+- eas update --platform=android
+
+# Create Android APK
+- install eas-cli (npm install -g eas-cli)
+- login to Expo (expo.io)
+- Configure eas build (eas build:configure)
+- update eas.json (preview: {"android": {"buildType": "apk"}})
+- development build APK (eas build -p android --profile preview)
+- download apk from given link
+
+# Start with clean cache
+expo start --clear

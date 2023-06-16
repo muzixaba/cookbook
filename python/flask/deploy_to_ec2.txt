@@ -53,6 +53,9 @@ WantedBy=multi-user.target
 - sudo systemctl start appname
 - sudo systemctl enable appname
 
+# Restarting the service 
+- sudo systemctl restart appname
+
 # Test gunicorn
 - curl localhost:8000
 
