@@ -1,0 +1,4 @@
+
+# Search tabs
+ctrl + shift + a
+

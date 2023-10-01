@@ -1,0 +1,22 @@
+
+
+# Send params using URL params
+<Link href="/profile?name=Muzi&surname=Xaba" />Open Profile </Link>
+
+# Send info using params object
+<Link href={{
+    pathname: "/profile",
+    params: {name: "Muzi", username: "muzi123"}
+    }} />
+    Open Profile 
+</Link>
+
+
+# Implementing dynamic routes
+app
+- [username].js (username param will be used as route e.g x.com/username)
+- home.js
+
+
+# View sitemap on web
+localhost:19000/_sitemap

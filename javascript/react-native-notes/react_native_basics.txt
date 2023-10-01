@@ -111,13 +111,13 @@ npx create-expo-app@latest --example with-router .
 - Download Expo Go app
 
 # Get the Expo CLI
-- npm install -g expo-cli
+npm install -g expo-cli
 
 # Start app using the expo cli
-- expo-cli start --tunnel
+expo-cli start --tunnel
 
 # Publish app to the Expo App store
-- eas update --platform=android
+eas update --platform=android
 
 # Create Android APK
 - install eas-cli (npm install -g eas-cli)
@@ -128,4 +128,53 @@ npx create-expo-app@latest --example with-router .
 - download apk from given link
 
 # Start with clean cache
-expo start --clear
+npx expo start --clear
+
+# Publish on Expo
+expo publish
+
+# Publish on App Store(s)
+expo submit
+
+# Check if you're logged into Expo
+eas whoami
+
+# Upgrade expo sdk (Do it increamentally e.g from v41 to v42 and test)
+expo upgrade
+
+
+#--------------------------
+# Publishing to Google Play
+#--------------------------
+
+# Log into Google play console
+console.cloud.google.com
+
+# Create service account
+Setup > API Access > Choose project to link > Create new project > Create new service account
+
+# Update Service Account Details
+Service Accounts
+Create name
+Choose Role - Service Account User
+
+# Create Key for service account, if none exists
+In service account screen, click menu dots (Manage Keys)
+Add key > JSON
+
+# Grant access to service account
+Navigate back to console dashboard
+On the list service accounts, select the one you want, grant access.
+Invite user
+
+# Configure the Expo project
+eas build:configure
+
+# Build the expo app (Generate keystore if none exist)
+eas build --platform android
+
+# Download build from Expo
+
+
+# Go to Google console
+Click 'create app'

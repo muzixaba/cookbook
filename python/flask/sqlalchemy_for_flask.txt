@@ -1,0 +1,15 @@
+#===========
+# TERMINAL
+#==========
+
+# Start the flask shell
+flask shell
+
+# Import from from app
+form appname import db
+
+# Import models
+from models import ModelName1, ModelName2
+
+# Get the first record for a specific models
+first_obj = ModelName.query.get(1)
