@@ -124,7 +124,8 @@ eas update --platform=android
 - login to Expo (expo.io)
 - Configure eas build (eas build:configure)
 - update eas.json (preview: {"android": {"buildType": "apk"}})
-- development build APK (eas build -p android --profile preview)
+- development build APK 
+    eas build -p android --profile preview
 - download apk from given link
 
 # Start with clean cache
@@ -141,6 +142,9 @@ eas whoami
 
 # Upgrade expo sdk (Do it increamentally e.g from v41 to v42 and test)
 expo upgrade
+
+# Clear Expo cache
+expo start --clear
 
 
 #--------------------------

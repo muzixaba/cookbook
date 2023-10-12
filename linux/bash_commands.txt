@@ -283,6 +283,22 @@ ln -s /mnt/my_drive/movies ~/my_movies -> create symbolic link for directories
 sudo sh ./file.sh -> runs file as an executable
 bash file.sh -> runs executable file
 
+#======================
+# Environment variables
+#======================
+
+# Create an env var
+export KEY=value
+
+# Delete an env var
+unset KEY
+
+# View env var
+echo $KEY_NAME
+
+# View all env variables
+printenv
+
 #========
 # Files
 #========

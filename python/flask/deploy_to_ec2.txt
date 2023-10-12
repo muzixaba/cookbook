@@ -44,7 +44,6 @@ Group=www-data
 WorkingDirectory=/home/ubuntu/flaskapp
 ExecStart=/home/ubuntu/flaskapp/venv/bin/gunicorn --workers=3 -b localhost:5000 app:app
 Restart=always
-Environment="FLASK_CONFIG=prod"
 
 [Install]
 WantedBy=multi-user.target
@@ -56,6 +55,9 @@ WantedBy=multi-user.target
 
 # Restarting the service 
 - sudo systemctl restart appname
+
+# Stop gunicorn service
+sudo systemctl stop name.service
 
 # Test gunicorn
 - curl localhost:8000
@@ -97,3 +99,9 @@ sudo nginx -t
 
 # Check nginx error logs
 - sudo tail /var/log/nginx/error.log
+
+# Copy sqlite db from remote to local
+scp -i key-pair.pem ubuntu@<public-ip>:/path/to/database.db .
+
+# Find running processes
+ps xf
