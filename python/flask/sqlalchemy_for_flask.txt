@@ -1,6 +1,6 @@
-#===========
+#=========
 # TERMINAL
-#==========
+#=========
 
 # Start the flask shell
 flask shell

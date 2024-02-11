@@ -543,6 +543,9 @@ scp user@123.123.133:/home/username/folder/"*.csv" /path/to/current/instance/fol
 # copy files from current Remote directory to local
 scp -r username@hostname:/path/from/file .
 
+# Copy sqlite db from remote to local
+scp -i key-pair.pem ubuntu@<public-ip>:/path/to/database.db .
+
 man scp
 
 #====================

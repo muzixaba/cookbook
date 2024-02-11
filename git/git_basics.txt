@@ -182,6 +182,13 @@ git diff file_name.ext
 # Reverse local commits
 git restore --staged <path/to/file.ext>
 
+# Reverse last change that was pushed to main (Reverts by adding a new commit the reverses the changes made by the old one) - Good for sahred   branches
+git revert HEAD > Edit revert commit title > commit & push
+
+# Deleting a pushed commint (Good for private branches)
+git reset HEAD~1
+git push --force origin main
+
 #=============
 # Tags
 #=============

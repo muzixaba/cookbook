@@ -7,8 +7,8 @@ from flask_sqlalchemy import SQLAlchemy
 
 # create instance of flask app & set configs
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3' # rel import
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite3"  # rel import
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 # instanciate the db
 db = SQLAlchemy(app)

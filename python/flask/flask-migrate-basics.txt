@@ -1,0 +1,14 @@
+# install
+pip install Flask-Migrate
+
+# initialise migrations
+flask db init
+
+# create migrations
+flask db migrate -m "message"
+
+# apply migrations
+flask db upgrade
+
+# update the db migrations metadata
+flask db stamp head
