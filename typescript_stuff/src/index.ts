@@ -1,13 +1,14 @@
 console.log("helllo");
 
-let age: number = 10;
-if (age < 50) {
-    age += 10;
-}
+// let age: number = 10;
+// if (age < 50) {
+//     age += 10;
+// }
 
 let sales: number = 10_000_000;
 let course: string = "TypeScript";
-let level; // any
+let is_published: boolean = true;
+let level; // any (Avoid as much as possible)
 
 
 // Javascript types
@@ -38,6 +39,8 @@ let arr3: [number, string] = [1, '2'];
 
 // TS enum
 // enum is a set of named constants
+// Use PascalCase naming
+enum RobotColor { Green, Red, Amber }
 enum Color { Red, Green, Blue }
 
 // TS Function
@@ -59,12 +62,14 @@ function add2(a: number | string, b: number | string): number | string {
 
 
 // TS objects
+// Using a type alias
 type Person = {
   name: string;
   age: number;
   hobbies: string[];
   role: [number, string];
   email: (name: string) => string;
+  fax?: number; //optional attribute
 } 
 
 let max: Person ={
@@ -72,11 +77,11 @@ let max: Person ={
   age: 30,
   hobbies: ['Sports', 'Cooking'],
   role: [2, 'author'],
-  email: ('Max') => {`name` + '@gmail.com'}
+  email: (name: string) => `${name}@gmail.com`
 };
 
-
-// TS Union type
+ 
+// TS Intersection Types
 type Draggable = {
   drag: () => void;
 }
@@ -92,9 +97,19 @@ let textBox: UIWidget = {
   resize: () => {}
 }
 
+// Union Types
+// Gives a variable or function param multiple types
+// Function param Union types
+function kgToLbs(weight: number | string): number {
+  // narrowing
+  if (typeof weight === 'number') {
+    return weight * 2.2;
+  }
+  return parseInt(weight) * 2.2
+}
 // TS Literal Types
 // Literal types are types that are a subset of a string, number, or boolean literal type.
-type Quantity = 50 | 100 | 150 | 200;
+type Quantity = 50 | 100 | 150 | 200; // type alias 
 let quantity: Quantity = 50;
 
 // TS Nullable Types

@@ -95,7 +95,7 @@ git clone https://github.com/...
 git clone https://github.com/... folder_name
 
 # Check which files are being tracked
-git ls-files
+git ls-files 
 
 # Check for modifications
 git status
@@ -122,6 +122,8 @@ git add -p file.ext -> add certain changes from inside the file (step through ch
 
 # Unstage file(s)
 git restore --staged path/to/file.ext
+git restore --staged . (Unstages all files)
+
 
 # Commit changes
 git commit (opens text editor so you can type commit subject and description)
@@ -170,7 +172,7 @@ git add -A
 # Delete file using git 
 git rm file_name.ext
 
-# If deletion happed outside of git
+# If deletion happened outside of git
 git add -u
 
 # See differences btw 2 commits
@@ -182,12 +184,16 @@ git diff file_name.ext
 # Reverse local commits
 git restore --staged <path/to/file.ext>
 
-# Reverse last change that was pushed to main (Reverts by adding a new commit the reverses the changes made by the old one) - Good for sahred   branches
+# Reverse last change that was pushed to main (Reverts by adding a new commit the reverses the changes made by the old one) - Good for shared branches
 git revert HEAD > Edit revert commit title > commit & push
 
-# Deleting a pushed commint (Good for private branches)
+# Deleting a pushed commit (Good for private branches)
 git reset HEAD~1
 git push --force origin main
+
+# Reverting a Pull Request
+Go to the PR on GitHub
+Click on 'Revert' -> GitHub will create a new branch that undoes the old commit
 
 #=============
 # Tags
@@ -333,10 +339,10 @@ git stash show -p stash@{0} -> show stash changes in diff format
 # Squashing commits
 git squash ?????
 
-Time travelling using reset
+Time traveling using reset
 git reset [commit ID] flag -> Flags incl "soft", "hard", "mixed"
  soft -> Changes the commit ID that head point to
- hard -> Most destructive. Can delete your changes
+ hard -> Most destructive. Deletes your changes
  mixed-> The default type of reset
 
  #======================

@@ -1,42 +1,19 @@
-"""
-A script used to create words from given characters
-"""
-from itertools import permutations
-import argparse
+import geopandas as gpd
+import matplotlib.pyplot as plt
 
+# Load the shapefile
+gdf = gpd.read_file("F:\CEMETERY_SHAPE\ITIS50V_CULT_PUBLIC_CEMETERY_polygon.shp")
 
-def word_permutations(args):
-    """
-    Takes in string and returns a list containing
-    various combinations of that string
+# Display basic information about the shapefile
+print(gdf.info())
 
-    Example:
-    create_word('abc') == ['abc','bac', 'cab']
-    """
-    words = []
-    combos = permutations(args.initial_string)
-    for word in combos:
-        words.append(word)
+# Display the first few rows of the data to get an idea of its structure
+print(gdf.head())
 
-    return [" ".join(w) for w in words]
+# Display the number of polygons in the shapefile
+print(f"Number of polygons: {len(gdf)}")
 
-
-# print(word_permutations('abc'))
-
-
-def main():
-    parser = argparse.ArgumentParser(
-        prog="Word Permutations", description="Return permutations of a string"
-    )
-    parser.add_argument(
-        "-str",
-        "--initial_string",
-        type=str,
-        help="Enter string to be used for permutations",
-    )
-    args = parser.parse_args()
-    print(word_permutations(args))
-
-
-if __name__ == "__main__":
-    main()
+# Plot the shapefile to visualize the polygons
+gdf.plot()
+plt.title("Cemetery Polygons")
+plt.show()

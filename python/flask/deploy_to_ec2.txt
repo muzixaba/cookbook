@@ -100,8 +100,20 @@ sudo nginx -t
 # Check nginx error logs
 - sudo tail /var/log/nginx/error.log
 
+# Change nginx config file permissions to be able to edit on vscode
+sudo chmod 666 /etc/nginx/sites-available/default (allows edit on vscode through ssh)
+sudo chmod 644 /etc/nginx/sites-available/default (returns permissions to normal)
+
+
 # Copy sqlite db from remote to local
 scp -i key-pair.pem ubuntu@<public-ip>:/path/to/database.db .
 
 # Find running processes
 ps xf
+
+
+# After making updates to GitHub Repo
+- Pull in the changes into the server
+  git pull
+- Restarting the service 
+  sudo systemctl restart appname

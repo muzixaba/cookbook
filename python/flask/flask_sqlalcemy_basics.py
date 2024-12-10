@@ -20,3 +20,11 @@ class User(db.Model):
     name = db.Column(db.String(50))
     email = db.Column(db.String(100), unique=True)
     date_joined = db.Column(db.Date, default=datetime.utcnow)
+
+
+# Flask-Migrate
+# Add migrations
+flask db migrate -m "message"
+flask db upgrate (applies migrations)
+flask db history (log of applied migrations)
+flask db current (shows the last migration that was applied)

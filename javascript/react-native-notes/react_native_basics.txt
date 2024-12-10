@@ -140,7 +140,7 @@ expo submit
 # Check if you're logged into Expo
 eas whoami
 
-# Upgrade expo sdk (Do it increamentally e.g from v41 to v42 and test)
+# Upgrade expo sdk (Do it incrementally e.g from v41 to v42 and test)
 expo upgrade
 
 # Clear Expo cache
@@ -181,4 +181,5 @@ eas build --platform android
 
 
 # Go to Google console
+https://play.google.com/console/developers/?pli=1
 Click 'create app'
