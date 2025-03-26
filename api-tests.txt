@@ -1,0 +1,155 @@
+### Login
+POST  http://127.0.0.1:8000/api/auth/login/
+content-type: application/json
+
+{"username": "muzix", "password": "Pass1234"}
+
+
+### Plots
+
+### Create plot
+POST http://127.0.0.1:8000/api/tenants/1/cemeteries/1/plots/
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0MTU2MTM3LCJpYXQiOjE3MzQxNDg5MzcsImp0aSI6ImE5YTIyZmE0NmMyMTQwODc4MTYyNWJlMzlmMmQ3N2M1IiwidXNlcl9pZCI6MX0.LNVKIeyGCkmbf6PLQAPCi7f5BJHRZ_2f-ClaQOJv7c8
+
+{
+    "plot_number": "D224",
+    "section": "D",
+    "coordinates": "-29.680895039661764, 31.033747472211573",
+    "rotation_to_mag_north": 34.0,
+    "status": "available"
+}
+
+### Get Plots
+GET  http://127.0.0.1:8000/api/tenants/1/cemeteries/1/plots/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0Mjk3MTA1LCJpYXQiOjE3MzQyMzIzMDUsImp0aSI6IjA3NjczYTQxNWNkZTQ0ZWZiNjRjYzA2ZDY1MTkyMjc4IiwidXNlcl9pZCI6MX0.i5DSbGwvZg6Jd1LEJQac0wY8vKskOAqElAmmC15Szpw
+
+
+### Get plot detail
+GET  http://127.0.0.1:8000/api/tenants/1/cemeteries/1/plots/2/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0MTUzMjI4LCJpYXQiOjE3MzQxNDYwMjgsImp0aSI6ImM0NTUyODJlMzU3YjRlMjE5ZmI0OTBlOTNhZGJkNzJjIiwidXNlcl9pZCI6MX0.Ui22Ve1DJU6T1mjTN92UX_zwTTBtLAAPrJ4ldUNAcaQ
+
+
+### Update plot detail
+PATCH http://127.0.0.1:8000/api/tenants/1/cemeteries/1/plots/4/
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0Mjk3MTA1LCJpYXQiOjE3MzQyMzIzMDUsImp0aSI6IjA3NjczYTQxNWNkZTQ0ZWZiNjRjYzA2ZDY1MTkyMjc4IiwidXNlcl9pZCI6MX0.i5DSbGwvZg6Jd1LEJQac0wY8vKskOAqElAmmC15Szpw
+
+{
+    "section": "D",
+    "lease_exp_date": "31-12-2025"
+}
+
+
+### Delete plot
+DELETE http://127.0.0.1:8000/api/tenants/1/cemeteries/1/plots/2/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0Mjk3MTA1LCJpYXQiOjE3MzQyMzIzMDUsImp0aSI6IjA3NjczYTQxNWNkZTQ0ZWZiNjRjYzA2ZDY1MTkyMjc4IiwidXNlcl9pZCI6MX0.i5DSbGwvZg6Jd1LEJQac0wY8vKskOAqElAmmC15Szpw
+
+### burials
+
+### Post new burial
+POST http://127.0.0.1:8000/api/tenants/1/cemeteries/1/burials/
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0MTU2MTM3LCJpYXQiOjE3MzQxNDg5MzcsImp0aSI6ImE5YTIyZmE0NmMyMTQwODc4MTYyNWJlMzlmMmQ3N2M1IiwidXNlcl9pZCI6MX0.LNVKIeyGCkmbf6PLQAPCi7f5BJHRZ_2f-ClaQOJv7c8
+
+{
+    "plot_number": "A001",
+    "first_name": "Teds",
+    "last_name": "Demm",
+    "date_of_birth": "2024-12-14",
+    "date_of_death": "2024-12-14",
+    "date_of_burial": "2024-12-14",
+    "sequence": 1,
+    "service_provider": "FSB",
+    "burial_type": "full_body",
+    "burial_type_display": "Full Body",
+    "gender": "other",
+    "gender_display": "Other",
+    "death_certificate": null,
+    "notes": null
+  }
+
+### Get burials
+GET http://127.0.0.1:8000/api/tenants/1/cemeteries/1/burials/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0MTU2MTM3LCJpYXQiOjE3MzQxNDg5MzcsImp0aSI6ImE5YTIyZmE0NmMyMTQwODc4MTYyNWJlMzlmMmQ3N2M1IiwidXNlcl9pZCI6MX0.LNVKIeyGCkmbf6PLQAPCi7f5BJHRZ_2f-ClaQOJv7c8
+
+
+### Get burial detail
+GET http://127.0.0.1:8000/api/tenants/1/cemeteries/1/burials/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0MTU2MTM3LCJpYXQiOjE3MzQxNDg5MzcsImp0aSI6ImE5YTIyZmE0NmMyMTQwODc4MTYyNWJlMzlmMmQ3N2M1IiwidXNlcl9pZCI6MX0.LNVKIeyGCkmbf6PLQAPCi7f5BJHRZ_2f-ClaQOJv7c8
+
+
+### Update burial detail
+PATCH http://127.0.0.1:8000/api/tenants/1/cemeteries/1/burials/2/
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0MTU2MTM3LCJpYXQiOjE3MzQxNDg5MzcsImp0aSI6ImE5YTIyZmE0NmMyMTQwODc4MTYyNWJlMzlmMmQ3N2M1IiwidXNlcl9pZCI6MX0.LNVKIeyGCkmbf6PLQAPCi7f5BJHRZ_2f-ClaQOJv7c8
+
+{
+  "service_provider": "Eternal Memories Ltd.",
+  "notes": "Updated orientation details"
+}
+
+### Delete burial
+DELETE http://127.0.0.1:8000/api/tenants/1/cemeteries/1/burials/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0MjIyMTUxLCJpYXQiOjE3MzQxNTczNTEsImp0aSI6ImQ0M2NlOTUzZGFmODQxYjA4NzhlYjgzNWZmMjQ0NjA1IiwidXNlcl9pZCI6MX0.aK8CwCWzysUSZMJ0cTaHg6ttX3b3QdwMfPS9hHhdlyY
+
+
+### Cemeteries
+
+### Create cemeteries
+To be done on the backend
+
+
+### Get cemeteries
+GET http://127.0.0.1:8000/api/tenants/2/cemeteries/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0MjIyMTUxLCJpYXQiOjE3MzQxNTczNTEsImp0aSI6ImQ0M2NlOTUzZGFmODQxYjA4NzhlYjgzNWZmMjQ0NjA1IiwidXNlcl9pZCI6MX0.aK8CwCWzysUSZMJ0cTaHg6ttX3b3QdwMfPS9hHhdlyY
+
+### Get cemetery detail
+GET http://127.0.0.1:8000/api/tenants/1/cemeteries/2/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0Mjk3MTA1LCJpYXQiOjE3MzQyMzIzMDUsImp0aSI6IjA3NjczYTQxNWNkZTQ0ZWZiNjRjYzA2ZDY1MTkyMjc4IiwidXNlcl9pZCI6MX0.i5DSbGwvZg6Jd1LEJQac0wY8vKskOAqElAmmC15Szpw
+
+### Update cemetery 
+PATCH http://127.0.0.1:8000/api/tenants/1/cemeteries/2/
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0Mjk3MTA1LCJpYXQiOjE3MzQyMzIzMDUsImp0aSI6IjA3NjczYTQxNWNkZTQ0ZWZiNjRjYzA2ZDY1MTkyMjc4IiwidXNlcl9pZCI6MX0.i5DSbGwvZg6Jd1LEJQac0wY8vKskOAqElAmmC15Szpw
+
+{
+    "contact_details": {
+    "phone": "27319085632"
+  }
+}
+
+### Delete cemetery
+To be done on backend
+
+
+### SETTINGS
+
+### Create tenant settings
+POST /api/tenants/
+
+### List tenants
+GET http://127.0.0.1:8000/api/tenants/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0Mjk3MTA1LCJpYXQiOjE3MzQyMzIzMDUsImp0aSI6IjA3NjczYTQxNWNkZTQ0ZWZiNjRjYzA2ZDY1MTkyMjc4IiwidXNlcl9pZCI6MX0.i5DSbGwvZg6Jd1LEJQac0wY8vKskOAqElAmmC15Szpw
+
+### Get tenant settings
+GET http://127.0.0.1:8000/api/tenants/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0Mjk3MTA1LCJpYXQiOjE3MzQyMzIzMDUsImp0aSI6IjA3NjczYTQxNWNkZTQ0ZWZiNjRjYzA2ZDY1MTkyMjc4IiwidXNlcl9pZCI6MX0.i5DSbGwvZg6Jd1LEJQac0wY8vKskOAqElAmmC15Szpw
+
+### Update tenant settings
+PATCH http://127.0.0.1:8000/api/tenants/1/
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0Mjk3MTA1LCJpYXQiOjE3MzQyMzIzMDUsImp0aSI6IjA3NjczYTQxNWNkZTQ0ZWZiNjRjYzA2ZDY1MTkyMjc4IiwidXNlcl9pZCI6MX0.i5DSbGwvZg6Jd1LEJQac0wY8vKskOAqElAmmC15Szpw
+
+{
+    "pay_options": {
+    "cash": true,
+    "eft": true,
+    "online": false,
+    "complementary": false
+  }
+}
+
+### Delete tenant settings
+DELETE /api/tenants/{id}/
+To done in backend

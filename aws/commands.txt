@@ -12,3 +12,8 @@ curl http://169.254.169.254/lates/meta-data
 
 # Changing the user on an EC2 instance
 sudo su - ec2-user
+
+# Authorising using Bearer Tokens
+curl -v -X GET \
+     -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0MDk3Nzk0LCJpYXQiOjE3MzQwOTc0OTQsImp0aSI6IjU3NTc5MzA0MDE1ZjQ0NmJiZWU5YWJmMzUxMDIwNDEzIiwidXNlcl9pZCI6MX0.wTIIZ4mCPUdTxTKTnOcAbvAWk3g1qpWszUYv51m7Mes"" \
+     http://127.0.0.1:8000/api/tenants/1/cemeteries/1/plots/
