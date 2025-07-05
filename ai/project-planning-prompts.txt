@@ -1,0 +1,91 @@
+<goal>
+You're a Senior Software Engineer with extensive experience designing large-scale web and mobile applications. Help me think throug the structure of my new project by considering the following:
+- **What** am I building?
+- **Who** are the target users?
+- **Why** does this project matter?
+- **How** is it different form existing solutions?
+- **Which** technologies are going to be used to build this project?
+- **Where** is the project going to be hosted?
+</goal>
+
+<format>
+Return **only** this Markdown structure. No extra preamble or sign-off.
+
+## MVP Flow
+A clear step-by-step description of the core minimum-viable process.
+1. Step 1
+2. Step 2
+3. ...
+
+---
+
+## Launch Features (MVP)
+### Feature Name
+_2-3 sentence summary of what the feature does_
+
+- Core requirement 1
+- Core requirement 2
+- ...
+
+#### Tech Involved
+- Tech or service 1
+- Tech or service 2
+
+#### Main Requirements
+- Requirement 1
+- Requirement 2
+
+---
+
+## Future Features (Post-MVP)
+### Feature Name
+- Core requirement 1
+- Core requirement 2
+- ...
+
+### Tech Involved
+- Tech or service 1
+- Tech or service 2
+- ...
+
+### Main Requirements
+- Requirement 1
+- Requirement 2
+- ...
+
+---
+
+## System Diagram
+A basic, color-coded SCG architecture diagram showing all MVP compnents and their relationships.
+
+---
+
+## Questions & Clarifications
+- Question 1
+- Question 2
+- ...
+
+---
+
+## Architecture Consideration Questions
+- Consideration 1
+- Consideration 2
+- ...
+
+</format>
+
+<warnings-or-guidance>
+- Focus on **functional** feature goals.
+- If anything is ambiguous, ask for clarification
+- Recommend trade-offs adn scaling considerations (infrastructure, 3rd-party API's, etc)
+</warnings-or-guidance>
+
+<context>
+- [fill in here]
+- Project overview and goals (what, who, how, where, how, etc)
+- Any existing tech choices or constraints
+- Anything else the architect shoudl know before starting?
+</context>
+
+
+

@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>claude-code-tutorial.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<p><a href="https://docs.anthropic.com/">Anthropic home page<img src="https://mintlify.s3.us-west-1.amazonaws.com/anthropic/logo/light.svg" alt="light logo"><img src="https://mintlify.s3.us-west-1.amazonaws.com/anthropic/logo/dark.svg" alt="dark logo"></a></p>
+<p>English</p>
+<p>Search...</p>
+<p>Ctrl K</p>
+<p>Search...</p>
+<p>Navigation</p>
+<p>Claude Code</p>
+<p>Tutorials</p>
+<p><a href="https://docs.anthropic.com/en/home">Welcome</a> <a href="https://docs.anthropic.com/en/docs/welcome">Developer Guide</a> <a href="https://docs.anthropic.com/en/api/overview">API Guide</a> <a href="https://docs.anthropic.com/en/docs/claude-code/overview">Claude Code</a> <a href="https://docs.anthropic.com/en/resources/overview">Resources</a> <a href="https://docs.anthropic.com/en/release-notes/overview">Release Notes</a></p>
+<p>This guide provides step-by-step tutorials for common workflows with Claude Code. Each tutorial includes clear instructions, example commands, and best practices to help you get the most from Claude Code.</p>
+<h2 id="%E2%80%8B-table-of-contents"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#table-of-contents">​</a>  Table of contents</h2>
+<ul>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#resume-previous-conversations">Resume previous conversations</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#understand-new-codebases">Understand new codebases</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#fix-bugs-efficiently">Fix bugs efficiently</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#refactor-code">Refactor code</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#work-with-tests">Work with tests</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#create-pull-requests">Create pull requests</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#handle-documentation">Handle documentation</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#work-with-images">Work with images</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#use-extended-thinking">Use extended thinking</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#set-up-project-memory">Set up project memory</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#set-up-model-context-protocol-mcp">Set up Model Context Protocol (MCP)</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#use-claude-as-a-unix-style-utility">Use Claude as a unix-style utility</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#create-custom-slash-commands">Create custom slash commands</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#run-parallel-claude-code-sessions-with-git-worktrees">Run parallel Claude Code sessions with Git worktrees</a></li>
+</ul>
+<h2 id="%E2%80%8B-resume-previous-conversations"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#resume-previous-conversations">​</a>  Resume previous conversations</h2>
+<h3 id="%E2%80%8B-continue-your-work-seamlessly"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#continue-your-work-seamlessly">​</a>  Continue your work seamlessly</h3>
+<p><strong>When to use:</strong> You've been working on a task with Claude Code and need to continue where you left off in a later session.</p>
+<p>Claude Code provides two options for resuming previous conversations:</p>
+<ul>
+<li><code>--continue</code> to automatically continue the most recent conversation</li>
+<li><code>--resume</code> to display a conversation picker</li>
+</ul>
+<p>1</p>
+<p>Continue the most recent conversation</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>claude --<span class="hljs-built_in">continue</span>
+
+</div></code></pre>
+<p>This immediately resumes your most recent conversation without any prompts.</p>
+<p>2</p>
+<p>Continue in non-interactive mode</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>claude --<span class="hljs-built_in">continue</span> --<span class="hljs-built_in">print</span> <span class="hljs-string">"Continue with my task"</span>
+
+</div></code></pre>
+<p>Use <code>--print</code> with <code>--continue</code> to resume the most recent conversation in non-interactive mode, perfect for scripts or automation.</p>
+<p>3</p>
+<p>Show conversation picker</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>claude --resume
+
+</div></code></pre>
+<p>This displays an interactive conversation selector showing:</p>
+<ul>
+<li>Conversation start time</li>
+<li>Initial prompt or conversation summary</li>
+<li>Message count</li>
+</ul>
+<p>Use arrow keys to navigate and press Enter to select a conversation.</p>
+<p><strong>How it works:</strong></p>
+<ol>
+<li><strong>Conversation Storage</strong>: All conversations are automatically saved locally with their full message history</li>
+<li><strong>Message Deserialization</strong>: When resuming, the entire message history is restored to maintain context</li>
+<li><strong>Tool State</strong>: Tool usage and results from the previous conversation are preserved</li>
+<li><strong>Context Restoration</strong>: The conversation resumes with all previous context intact</li>
+</ol>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>Conversation history is stored locally on your machine</li>
+<li>Use <code>--continue</code> for quick access to your most recent conversation</li>
+<li>Use <code>--resume</code> when you need to select a specific past conversation</li>
+<li>When resuming, you'll see the entire conversation history before continuing</li>
+<li>The resumed conversation starts with the same model and configuration as the original</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<p>Copy</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Continue most recent conversation</span>
+claude --<span class="hljs-built_in">continue</span>
+
+<span class="hljs-comment"># Continue most recent conversation with a specific prompt</span>
+claude --<span class="hljs-built_in">continue</span> --<span class="hljs-built_in">print</span> <span class="hljs-string">"Show me our progress"</span>
+
+<span class="hljs-comment"># Show conversation picker</span>
+claude --resume
+
+<span class="hljs-comment"># Continue most recent conversation in non-interactive mode</span>
+claude --<span class="hljs-built_in">continue</span> --<span class="hljs-built_in">print</span> <span class="hljs-string">"Run the tests again"</span>
+
+</div></code></pre>
+<h2 id="%E2%80%8B-understand-new-codebases"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#understand-new-codebases">​</a>  Understand new codebases</h2>
+<h3 id="%E2%80%8B-get-a-quick-codebase-overview"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#get-a-quick-codebase-overview">​</a>  Get a quick codebase overview</h3>
+<p><strong>When to use:</strong> You've just joined a new project and need to understand its structure quickly.</p>
+<p>1</p>
+<p>Navigate to the project root directory</p>
+<p>Copy</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> /path/to/project
+
+</div></code></pre>
+<p>2</p>
+<p>Start Claude Code</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>claude
+
+</div></code></pre>
+<p>3</p>
+<p>Ask for a high-level overview</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; give me an overview of this codebase
+
+</div></code></pre>
+<p>4</p>
+<p>Dive deeper into specific components</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; explain the main architecture patterns used here
+
+</div></code></pre>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; what are the key data models?
+
+</div></code></pre>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; how is authentication handled?
+
+</div></code></pre>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>Start with broad questions, then narrow down to specific areas</li>
+<li>Ask about coding conventions and patterns used in the project</li>
+<li>Request a glossary of project-specific terms</li>
+</ul>
+<h3 id="%E2%80%8B-find-relevant-code"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#find-relevant-code">​</a>  Find relevant code</h3>
+<p><strong>When to use:</strong> You need to locate code related to a specific feature or functionality.</p>
+<p>1</p>
+<p>Ask Claude to find relevant files</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; find the files that handle user authentication
+
+</div></code></pre>
+<p>2</p>
+<p>Get context on how components interact</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; how do these authentication files work together?
+
+</div></code></pre>
+<p>3</p>
+<p>Understand the execution flow</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; trace the login process from front-end to database
+
+</div></code></pre>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>Be specific about what you're looking for</li>
+<li>Use domain language from the project</li>
+</ul>
+<hr>
+<h2 id="%E2%80%8B-fix-bugs-efficiently"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#fix-bugs-efficiently">​</a>  Fix bugs efficiently</h2>
+<h3 id="%E2%80%8B-diagnose-error-messages"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#diagnose-error-messages">​</a>  Diagnose error messages</h3>
+<p><strong>When to use:</strong> You've encountered an error message and need to find and fix its source.</p>
+<p>1</p>
+<p>Share the error with Claude</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; I'm seeing an error when I run npm test
+
+</div></code></pre>
+<p>2</p>
+<p>Ask for fix recommendations</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; suggest a few ways to fix the @ts-ignore in user.ts
+
+</div></code></pre>
+<p>3</p>
+<p>Apply the fix</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; update user.ts to add the null check you suggested
+
+</div></code></pre>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>Tell Claude the command to reproduce the issue and get a stack trace</li>
+<li>Mention any steps to reproduce the error</li>
+<li>Let Claude know if the error is intermittent or consistent</li>
+</ul>
+<hr>
+<h2 id="%E2%80%8B-refactor-code"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#refactor-code">​</a>  Refactor code</h2>
+<h3 id="%E2%80%8B-modernize-legacy-code"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#modernize-legacy-code">​</a>  Modernize legacy code</h3>
+<p><strong>When to use:</strong> You need to update old code to use modern patterns and practices.</p>
+<p>1</p>
+<p>Identify legacy code for refactoring</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; find deprecated API usage in our codebase
+
+</div></code></pre>
+<p>2</p>
+<p>Get refactoring recommendations</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; suggest how to refactor utils.js to use modern JavaScript features
+
+</div></code></pre>
+<p>3</p>
+<p>Apply the changes safely</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; refactor utils.js to use ES2024 features while maintaining the same behavior
+
+</div></code></pre>
+<p>4</p>
+<p>Verify the refactoring</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; run tests for the refactored code
+
+</div></code></pre>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>Ask Claude to explain the benefits of the modern approach</li>
+<li>Request that changes maintain backward compatibility when needed</li>
+<li>Do refactoring in small, testable increments</li>
+</ul>
+<hr>
+<h2 id="%E2%80%8B-work-with-tests"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#work-with-tests">​</a>  Work with tests</h2>
+<h3 id="%E2%80%8B-add-test-coverage"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#add-test-coverage">​</a>  Add test coverage</h3>
+<p><strong>When to use:</strong> You need to add tests for uncovered code.</p>
+<p>1</p>
+<p>Identify untested code</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; find functions in NotificationsService.swift that are not covered by tests
+
+</div></code></pre>
+<p>2</p>
+<p>Generate test scaffolding</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; add tests for the notification service
+
+</div></code></pre>
+<p>3</p>
+<p>Add meaningful test cases</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; add test cases for edge conditions in the notification service
+
+</div></code></pre>
+<p>4</p>
+<p>Run and verify tests</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; run the new tests and fix any failures
+
+</div></code></pre>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>Ask for tests that cover edge cases and error conditions</li>
+<li>Request both unit and integration tests when appropriate</li>
+<li>Have Claude explain the testing strategy</li>
+</ul>
+<hr>
+<h2 id="%E2%80%8B-create-pull-requests"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#create-pull-requests">​</a>  Create pull requests</h2>
+<h3 id="%E2%80%8B-generate-comprehensive-prs"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#generate-comprehensive-prs">​</a>  Generate comprehensive PRs</h3>
+<p><strong>When to use:</strong> You need to create a well-documented pull request for your changes.</p>
+<p>1</p>
+<p>Summarize your changes</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; summarize the changes I've made to the authentication module
+
+</div></code></pre>
+<p>2</p>
+<p>Generate a PR with Claude</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; create a pr
+
+</div></code></pre>
+<p>3</p>
+<p>Review and refine</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; enhance the PR description with more context about the security improvements
+
+</div></code></pre>
+<p>4</p>
+<p>Add testing details</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; add information about how these changes were tested
+
+</div></code></pre>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>Ask Claude directly to make a PR for you</li>
+<li>Review Claude's generated PR before submitting</li>
+<li>Ask Claude to highlight potential risks or considerations</li>
+</ul>
+<h2 id="%E2%80%8B-handle-documentation"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#handle-documentation">​</a>  Handle documentation</h2>
+<h3 id="%E2%80%8B-generate-code-documentation"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#generate-code-documentation">​</a>  Generate code documentation</h3>
+<p><strong>When to use:</strong> You need to add or update documentation for your code.</p>
+<p>1</p>
+<p>Identify undocumented code</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; find functions without proper JSDoc comments in the auth module
+
+</div></code></pre>
+<p>2</p>
+<p>Generate documentation</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; add JSDoc comments to the undocumented functions in auth.js
+
+</div></code></pre>
+<p>3</p>
+<p>Review and enhance</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; improve the generated documentation with more context and examples
+
+</div></code></pre>
+<p>4</p>
+<p>Verify documentation</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; check if the documentation follows our project standards
+
+</div></code></pre>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>Specify the documentation style you want (JSDoc, docstrings, etc.)</li>
+<li>Ask for examples in the documentation</li>
+<li>Request documentation for public APIs, interfaces, and complex logic</li>
+</ul>
+<h2 id="%E2%80%8B-work-with-images"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#work-with-images">​</a>  Work with images</h2>
+<h3 id="%E2%80%8B-analyze-images-and-screenshots"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#analyze-images-and-screenshots">​</a>  Analyze images and screenshots</h3>
+<p><strong>When to use:</strong> You need to work with images in your codebase or get Claude's help analyzing image content.</p>
+<p>1</p>
+<p>Add an image to the conversation</p>
+<p>You can use any of these methods:</p>
+<ol>
+<li>Drag and drop an image into the Claude Code window</li>
+<li>Copy an image and paste it into the CLI with cmd+v (on Mac)</li>
+<li>Provide an image path claude &quot;Analyze this image: /path/to/your/image.png&quot;</li>
+</ol>
+<p>2</p>
+<p>Ask Claude to analyze the image</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; What does this image show?
+&gt; Describe the UI elements in this screenshot
+&gt; Are there any problematic elements in this diagram?
+
+</div></code></pre>
+<p>3</p>
+<p>Use images for context</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; Here's a screenshot of the error. What's causing it?
+&gt; This is our current database schema. How should we modify it for the new feature?
+
+</div></code></pre>
+<p>4</p>
+<p>Get code suggestions from visual content</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; Generate CSS to match this design mockup
+&gt; What HTML structure would recreate this component?
+
+</div></code></pre>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>Use images when text descriptions would be unclear or cumbersome</li>
+<li>Include screenshots of errors, UI designs, or diagrams for better context</li>
+<li>You can work with multiple images in a conversation</li>
+<li>Image analysis works with diagrams, screenshots, mockups, and more</li>
+</ul>
+<hr>
+<h2 id="%E2%80%8B-use-extended-thinking"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#use-extended-thinking">​</a>  Use extended thinking</h2>
+<h3 id="%E2%80%8B-leverage-claudes-extended-thinking-for-complex-tasks"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#leverage-claude%E2%80%99s-extended-thinking-for-complex-tasks">​</a>  Leverage Claude's extended thinking for complex tasks</h3>
+<p><strong>When to use:</strong> When working on complex architectural decisions, challenging bugs, or planning multi-step implementations that require deep reasoning.</p>
+<p>1</p>
+<p>Provide context and ask Claude to think</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; I need to implement a new authentication system using OAuth2 for our API. Think deeply about the best approach for implementing this in our codebase.
+
+</div></code></pre>
+<p>Claude will gather relevant information from your codebase and
+use extended thinking, which will be visible in the interface.</p>
+<p>2</p>
+<p>Refine the thinking with follow-up prompts</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; think about potential security vulnerabilities in this approach
+&gt; think harder about edge cases we should handle
+
+</div></code></pre>
+<p><strong>Tips to get the most value out of extended thinking:</strong></p>
+<p>Extended thinking is most valuable for complex tasks such as:</p>
+<ul>
+<li>Planning complex architectural changes</li>
+<li>Debugging intricate issues</li>
+<li>Creating implementation plans for new features</li>
+<li>Understanding complex codebases</li>
+<li>Evaluating tradeoffs between different approaches</li>
+</ul>
+<p>The way you prompt for thinking results in varying levels of thinking depth:</p>
+<ul>
+<li>&quot;think&quot; triggers basic extended thinking</li>
+<li>intensifying phrases such as &quot;think more&quot;, &quot;think a lot&quot;, &quot;think harder&quot;, or &quot;think longer&quot; triggers deeper thinking</li>
+</ul>
+<p>For more extended thinking prompting tips, see <a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/extended-thinking-tips">Extended thinking tips</a>.</p>
+<p>Claude will display its thinking process as italic gray text above the
+response.</p>
+<hr>
+<h2 id="%E2%80%8B-set-up-project-memory"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#set-up-project-memory">​</a>  Set up project memory</h2>
+<h3 id="%E2%80%8B-create-an-effective-claudemd-file"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#create-an-effective-claude-md-file">​</a>  Create an effective CLAUDE.md file</h3>
+<p><strong>When to use:</strong> You want to set up a CLAUDE.md file to store important project information, conventions, and frequently used commands.</p>
+<p>1</p>
+<p>Bootstrap a CLAUDE.md for your codebase</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>&gt; /init
+
+</div></code></pre>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>Include frequently used commands (build, test, lint) to avoid repeated searches</li>
+<li>Document code style preferences and naming conventions</li>
+<li>Add important architectural patterns specific to your project</li>
+<li>CLAUDE.md memories can be used for both instructions shared with your team and for your individual preferences.</li>
+</ul>
+<hr>
+<h2 id="%E2%80%8B-set-up-model-context-protocol-mcp"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#set-up-model-context-protocol-mcp">​</a>  Set up Model Context Protocol (MCP)</h2>
+<p>Model Context Protocol (MCP) is an open protocol that enables LLMs to access external tools and data sources. For more details, see the <a href="https://modelcontextprotocol.io/introduction">MCP documentation</a>.</p>
+<p>Use third party MCP servers at your own risk. Make sure you trust the MCP
+servers, and be especially careful when using MCP servers that talk to the
+internet, as these can expose you to prompt injection risk.</p>
+<h3 id="%E2%80%8B-configure-mcp-servers"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#configure-mcp-servers">​</a>  Configure MCP servers</h3>
+<p><strong>When to use:</strong> You want to enhance Claude's capabilities by connecting it to specialized tools and external servers using the Model Context Protocol.</p>
+<p>1</p>
+<p>Add an MCP Stdio Server</p>
+<p>Copy</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Basic syntax</span>
+claude mcp add &lt;name&gt; &lt;<span class="hljs-built_in">command</span>&gt; [args...]
+
+<span class="hljs-comment"># Example: Adding a local server</span>
+claude mcp add my-server -e API_KEY=123 -- /path/to/server arg1 arg2
+
+</div></code></pre>
+<p>2</p>
+<p>Add an MCP SSE Server</p>
+<p>Copy</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Basic syntax</span>
+claude mcp add --transport sse &lt;name&gt; &lt;url&gt;
+
+<span class="hljs-comment"># Example: Adding an SSE server</span>
+claude mcp add --transport sse sse-server https://example.com/sse-endpoint
+
+</div></code></pre>
+<p>3</p>
+<p>Manage your MCP servers</p>
+<p>Copy</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># List all configured servers</span>
+claude mcp list
+
+<span class="hljs-comment"># Get details for a specific server</span>
+claude mcp get my-server
+
+<span class="hljs-comment"># Remove a server</span>
+claude mcp remove my-server
+
+</div></code></pre>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>
+<p>Use the <code>-s</code> or <code>--scope</code> flag to specify where the configuration is stored:</p>
+<ul>
+<li><code>local</code> (default): Available only to you in the current project (was called <code>project</code> in older versions)</li>
+<li><code>project</code>: Shared with everyone in the project via <code>.mcp.json</code> file</li>
+<li><code>user</code>: Available to you across all projects (was called <code>global</code> in older versions)</li>
+</ul>
+</li>
+<li>
+<p>Set environment variables with <code>-e</code> or <code>--env</code> flags (e.g., <code>-e KEY=value</code>)</p>
+</li>
+<li>
+<p>Configure MCP server startup timeout using the MCP_TIMEOUT environment variable (e.g., <code>MCP_TIMEOUT=10000 claude</code> sets a 10-second timeout)</p>
+</li>
+<li>
+<p>Check MCP server status any time using the <code>/mcp</code> command within Claude Code</p>
+</li>
+<li>
+<p>MCP follows a client-server architecture where Claude Code (the client) can connect to multiple specialized servers</p>
+</li>
+</ul>
+<h3 id="%E2%80%8B-understanding-mcp-server-scopes"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#understanding-mcp-server-scopes">​</a>  Understanding MCP server scopes</h3>
+<p><strong>When to use:</strong> You want to understand how different MCP scopes work and how to share servers with your team.</p>
+<p>1</p>
+<p>Local-scoped MCP servers</p>
+<p>The default scope ( <code>local</code>) stores MCP server configurations in your project-specific user settings. These servers are only available to you while working in the current project.</p>
+<p>Copy</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Add a local-scoped server (default)</span>
+claude mcp add my-private-server /path/to/server
+
+<span class="hljs-comment"># Explicitly specify local scope</span>
+claude mcp add my-private-server -s <span class="hljs-built_in">local</span> /path/to/server
+
+</div></code></pre>
+<p>2</p>
+<p>Project-scoped MCP servers (.mcp.json)</p>
+<p>Project-scoped servers are stored in a <code>.mcp.json</code> file at the root of your project. This file should be checked into version control to share servers with your team.</p>
+<p>Copy</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Add a project-scoped server</span>
+claude mcp add shared-server -s project /path/to/server
+
+</div></code></pre>
+<p>This creates or updates a <code>.mcp.json</code> file with the following structure:</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"mcpServers"</span>: {
+    <span class="hljs-attr">"shared-server"</span>: {
+      <span class="hljs-attr">"command"</span>: <span class="hljs-string">"/path/to/server"</span>,
+      <span class="hljs-attr">"args"</span>: [],
+      <span class="hljs-attr">"env"</span>: {}
+    }
+  }
+}
+
+</div></code></pre>
+<p>3</p>
+<p>User-scoped MCP servers</p>
+<p>User-scoped servers are available to you across all projects on your machine, and are private to you.</p>
+<p>Copy</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Add a user server</span>
+claude mcp add my-user-server -s user /path/to/server
+
+</div></code></pre>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>Local-scoped servers take precedence over project-scoped and user-scoped servers with the same name</li>
+<li>Project-scoped servers (in <code>.mcp.json</code>) take precedence over user-scoped servers with the same name</li>
+<li>Before using project-scoped servers from <code>.mcp.json</code>, Claude Code will prompt you to approve them for security</li>
+<li>The <code>.mcp.json</code> file is intended to be checked into version control to share MCP servers with your team</li>
+<li>Project-scoped servers make it easy to ensure everyone on your team has access to the same MCP tools</li>
+<li>If you need to reset your choices for which project-scoped servers are enabled or disabled, use the <code>claude mcp reset-project-choices</code> command</li>
+</ul>
+<h3 id="%E2%80%8B-connect-to-a-postgres-mcp-server"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#connect-to-a-postgres-mcp-server">​</a>  Connect to a Postgres MCP server</h3>
+<p><strong>When to use:</strong> You want to give Claude read-only access to a PostgreSQL database for querying and schema inspection.</p>
+<p>1</p>
+<p>Add the Postgres MCP server</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>claude mcp add postgres-server /path/to/postgres-mcp-server --connection-string <span class="hljs-string">"postgresql://user:pass@localhost:5432/mydb"</span>
+
+</div></code></pre>
+<p>2</p>
+<p>Query your database with Claude</p>
+<p>Copy</p>
+<pre class="hljs"><code><div># In your Claude session, you can ask about your database
+
+&gt; describe the schema of our users table
+&gt; what are the most recent orders in the system?
+&gt; show me the relationship between customers and invoices
+
+</div></code></pre>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>The Postgres MCP server provides read-only access for safety</li>
+<li>Claude can help you explore database structure and run analytical queries</li>
+<li>You can use this to quickly understand database schemas in unfamiliar projects</li>
+<li>Make sure your connection string uses appropriate credentials with minimum required permissions</li>
+</ul>
+<h3 id="%E2%80%8B-add-mcp-servers-from-json-configuration"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#add-mcp-servers-from-json-configuration">​</a>  Add MCP servers from JSON configuration</h3>
+<p><strong>When to use:</strong> You have a JSON configuration for a single MCP server that you want to add to Claude Code.</p>
+<p>1</p>
+<p>Add an MCP server from JSON</p>
+<p>Copy</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Basic syntax</span>
+claude mcp add-json &lt;name&gt; <span class="hljs-string">'&lt;json&gt;'</span>
+
+<span class="hljs-comment"># Example: Adding a stdio server with JSON configuration</span>
+claude mcp add-json weather-api <span class="hljs-string">'{"type":"stdio","command":"/path/to/weather-cli","args":["--api-key","abc123"],"env":{"CACHE_DIR":"/tmp"}}'</span>
+
+</div></code></pre>
+<p>2</p>
+<p>Verify the server was added</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>claude mcp get weather-api
+
+</div></code></pre>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>Make sure the JSON is properly escaped in your shell</li>
+<li>The JSON must conform to the MCP server configuration schema</li>
+<li>You can use <code>-s global</code> to add the server to your global configuration instead of the project-specific one</li>
+</ul>
+<h3 id="%E2%80%8B-import-mcp-servers-from-claude-desktop"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#import-mcp-servers-from-claude-desktop">​</a>  Import MCP servers from Claude Desktop</h3>
+<p><strong>When to use:</strong> You have already configured MCP servers in Claude Desktop and want to use the same servers in Claude Code without manually reconfiguring them.</p>
+<p>1</p>
+<p>Import servers from Claude Desktop</p>
+<p>Copy</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Basic syntax</span>
+claude mcp add-from-claude-desktop
+
+</div></code></pre>
+<p>2</p>
+<p>Select which servers to import</p>
+<p>After running the command, you'll see an interactive dialog that allows you to select which servers you want to import.</p>
+<p>3</p>
+<p>Verify the servers were imported</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>claude mcp list
+
+</div></code></pre>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>This feature only works on macOS and Windows Subsystem for Linux (WSL)</li>
+<li>It reads the Claude Desktop configuration file from its standard location on those platforms</li>
+<li>Use the <code>-s global</code> flag to add servers to your global configuration</li>
+<li>Imported servers will have the same names as in Claude Desktop</li>
+<li>If servers with the same names already exist, they will get a numerical suffix (e.g., <code>server_1</code>)</li>
+</ul>
+<h3 id="%E2%80%8B-use-claude-code-as-an-mcp-server"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#use-claude-code-as-an-mcp-server">​</a>  Use Claude Code as an MCP server</h3>
+<p><strong>When to use:</strong> You want to use Claude Code itself as an MCP server that other applications can connect to, providing them with Claude's tools and capabilities.</p>
+<p>1</p>
+<p>Start Claude as an MCP server</p>
+<p>Copy</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Basic syntax</span>
+claude mcp serve
+
+</div></code></pre>
+<p>2</p>
+<p>Connect from another application</p>
+<p>You can connect to Claude Code MCP server from any MCP client, such as Claude Desktop. If you're using Claude Desktop, you can add the Claude Code MCP server using this configuration:</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"command"</span>: <span class="hljs-string">"claude"</span>,
+  <span class="hljs-attr">"args"</span>: [<span class="hljs-string">"mcp"</span>, <span class="hljs-string">"serve"</span>],
+  <span class="hljs-attr">"env"</span>: {}
+}
+
+</div></code></pre>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>The server provides access to Claude's tools like View, Edit, LS, etc.</li>
+<li>In Claude Desktop, try asking Claude to read files in a directory, make edits, and more.</li>
+<li>Note that this MCP server is simply exposing Claude Code's tools to your MCP client, so your own client is responsible for implementing user confirmation for individual tool calls.</li>
+</ul>
+<hr>
+<h2 id="%E2%80%8B-use-claude-as-a-unix-style-utility"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#use-claude-as-a-unix-style-utility">​</a>  Use Claude as a unix-style utility</h2>
+<h3 id="%E2%80%8B-add-claude-to-your-verification-process"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#add-claude-to-your-verification-process">​</a>  Add Claude to your verification process</h3>
+<p><strong>When to use:</strong> You want to use Claude Code as a linter or code reviewer.</p>
+<p><strong>Steps:</strong></p>
+<p>1</p>
+<p>Add Claude to your build script</p>
+<p>Copy</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// package.json</span>
+{
+    ...
+    <span class="hljs-attr">"scripts"</span>: {
+        ...
+        <span class="hljs-attr">"lint:claude"</span>: <span class="hljs-string">"claude -p 'you are a linter. please look at the changes vs. main and report any issues related to typos. report the filename and line number on one line, and a description of the issue on the second line. do not return any other text.'"</span>
+    }
+}
+
+</div></code></pre>
+<h3 id="%E2%80%8B-pipe-in-pipe-out"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#pipe-in%2C-pipe-out">​</a>  Pipe in, pipe out</h3>
+<p><strong>When to use:</strong> You want to pipe data into Claude, and get back data in a structured format.</p>
+<p>1</p>
+<p>Pipe data through Claude</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>cat build-error.txt | claude -p <span class="hljs-string">'concisely explain the root cause of this build error'</span> &gt; output.txt
+
+</div></code></pre>
+<h3 id="%E2%80%8B-control-output-format"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#control-output-format">​</a>  Control output format</h3>
+<p><strong>When to use:</strong> You need Claude's output in a specific format, especially when integrating Claude Code into scripts or other tools.</p>
+<p>1</p>
+<p>Use text format (default)</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>cat data.txt | claude -p <span class="hljs-string">'summarize this data'</span> --output-format text &gt; summary.txt
+
+</div></code></pre>
+<p>This outputs just Claude's plain text response (default behavior).</p>
+<p>2</p>
+<p>Use JSON format</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>cat code.py | claude -p <span class="hljs-string">'analyze this code for bugs'</span> --output-format json &gt; analysis.json
+
+</div></code></pre>
+<p>This outputs a JSON array of messages with metadata including cost and duration.</p>
+<p>3</p>
+<p>Use streaming JSON format</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>cat log.txt | claude -p <span class="hljs-string">'parse this log file for errors'</span> --output-format stream-json
+
+</div></code></pre>
+<p>This outputs a series of JSON objects in real-time as Claude processes the request. Each message is a valid JSON object, but the entire output is not valid JSON if concatenated.</p>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>Use <code>--output-format text</code> for simple integrations where you just need Claude's response</li>
+<li>Use <code>--output-format json</code> when you need the full conversation log</li>
+<li>Use <code>--output-format stream-json</code> for real-time output of each conversation turn</li>
+</ul>
+<hr>
+<h2 id="%E2%80%8B-create-custom-slash-commands"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#create-custom-slash-commands">​</a>  Create custom slash commands</h2>
+<p>Claude Code supports custom slash commands that you can create to quickly execute specific prompts or tasks.</p>
+<h3 id="%E2%80%8B-create-project-specific-commands"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#create-project-specific-commands">​</a>  Create project-specific commands</h3>
+<p><strong>When to use:</strong> You want to create reusable slash commands for your project that all team members can use.</p>
+<p>1</p>
+<p>Create a commands directory in your project</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>mkdir -p .claude/commands
+
+</div></code></pre>
+<p>2</p>
+<p>Create a Markdown file for each command</p>
+<p>Copy</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">echo</span> <span class="hljs-string">"Analyze the performance of this code and suggest three specific optimizations:"</span> &gt; .claude/commands/optimize.md
+
+</div></code></pre>
+<p>3</p>
+<p>Use your custom command in Claude Code</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>claude &gt; /project:optimize
+
+</div></code></pre>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>Command names are derived from the filename (e.g., <code>optimize.md</code> becomes <code>/project:optimize</code>)</li>
+<li>You can organize commands in subdirectories (e.g., <code>.claude/commands/frontend/component.md</code> becomes <code>/project:frontend:component</code>)</li>
+<li>Project commands are available to everyone who clones the repository</li>
+<li>The Markdown file content becomes the prompt sent to Claude when the command is invoked</li>
+</ul>
+<h3 id="%E2%80%8B-add-command-arguments-with-arguments"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#add-command-arguments-with-%24arguments">​</a>  Add command arguments with $ARGUMENTS</h3>
+<p><strong>When to use:</strong> You want to create flexible slash commands that can accept additional input from users.</p>
+<p>1</p>
+<p>Create a command file with the $ARGUMENTS placeholder</p>
+<p>Copy</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">echo</span> <span class="hljs-string">"Find and fix issue #<span class="hljs-variable">$ARGUMENTS</span>. Follow these steps: 1.
+Understand the issue described in the ticket 2. Locate the relevant code in
+our codebase 3. Implement a solution that addresses the root cause 4. Add
+appropriate tests 5. Prepare a concise PR description"</span> &gt;
+.claude/commands/fix-issue.md
+
+</div></code></pre>
+<p>2</p>
+<p>Use the command with an issue number</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>claude &gt; /project:fix-issue 123
+
+</div></code></pre>
+<p>This will replace $ARGUMENTS with &quot;123&quot; in the prompt.</p>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>The $ARGUMENTS placeholder is replaced with any text that follows the command</li>
+<li>You can position $ARGUMENTS anywhere in your command template</li>
+<li>Other useful applications: generating test cases for specific functions, creating documentation for components, reviewing code in particular files, or translating content to specified languages</li>
+</ul>
+<h3 id="%E2%80%8B-create-personal-slash-commands"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#create-personal-slash-commands">​</a>  Create personal slash commands</h3>
+<p><strong>When to use:</strong> You want to create personal slash commands that work across all your projects.</p>
+<p>1</p>
+<p>Create a commands directory in your home folder</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>mkdir -p ~/.claude/commands
+
+</div></code></pre>
+<p>2</p>
+<p>Create a Markdown file for each command</p>
+<p>Copy</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">echo</span> <span class="hljs-string">"Review this code for security vulnerabilities, focusing on:"</span> &gt;
+~/.claude/commands/security-review.md
+
+</div></code></pre>
+<p>3</p>
+<p>Use your personal custom command</p>
+<p>Copy</p>
+<pre class="hljs"><code><div>claude &gt; /user:security-review
+
+</div></code></pre>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>Personal commands are prefixed with <code>/user:</code> instead of <code>/project:</code></li>
+<li>Personal commands are only available to you and not shared with your team</li>
+<li>Personal commands work across all your projects</li>
+<li>You can use these for consistent workflows across different codebases</li>
+</ul>
+<hr>
+<h2 id="%E2%80%8B-run-parallel-claude-code-sessions-with-git-worktrees"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#run-parallel-claude-code-sessions-with-git-worktrees">​</a>  Run parallel Claude Code sessions with Git worktrees</h2>
+<h3 id="%E2%80%8B-use-worktrees-for-isolated-coding-environments"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#use-worktrees-for-isolated-coding-environments">​</a>  Use worktrees for isolated coding environments</h3>
+<p><strong>When to use:</strong> You need to work on multiple tasks simultaneously with complete code isolation between Claude Code instances.</p>
+<p>1</p>
+<p>Understand Git worktrees</p>
+<p>Git worktrees allow you to check out multiple branches from the same
+repository into separate directories. Each worktree has its own working
+directory with isolated files, while sharing the same Git history. Learn
+more in the <a href="https://git-scm.com/docs/git-worktree">official Git worktree\
+documentation</a>.</p>
+<p>2</p>
+<p>Create a new worktree</p>
+<p>Copy</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Create a new worktree with a new branch</span>
+git worktree add ../project-feature<span class="hljs-_">-a</span> -b feature<span class="hljs-_">-a</span>
+
+<span class="hljs-comment"># Or create a worktree with an existing branch</span>
+git worktree add ../project-bugfix bugfix-123
+
+</div></code></pre>
+<p>This creates a new directory with a separate working copy of your repository.</p>
+<p>3</p>
+<p>Run Claude Code in each worktree</p>
+<p>Copy</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Navigate to your worktree</span>
+<span class="hljs-built_in">cd</span> ../project-feature<span class="hljs-_">-a</span>
+
+<span class="hljs-comment"># Run Claude Code in this isolated environment</span>
+claude
+
+</div></code></pre>
+<p>4</p>
+<p>In another terminal:</p>
+<p>Copy</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> ../project-bugfix
+claude
+
+</div></code></pre>
+<p>5</p>
+<p>Manage your worktrees</p>
+<p>Copy</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># List all worktrees</span>
+git worktree list
+
+<span class="hljs-comment"># Remove a worktree when done</span>
+git worktree remove ../project-feature<span class="hljs-_">-a</span>
+
+</div></code></pre>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>Each worktree has its own independent file state, making it perfect for parallel Claude Code sessions</li>
+<li>Changes made in one worktree won't affect others, preventing Claude instances from interfering with each other</li>
+<li>All worktrees share the same Git history and remote connections</li>
+<li>For long-running tasks, you can have Claude working in one worktree while you continue development in another</li>
+<li>Use descriptive directory names to easily identify which task each worktree is for</li>
+<li>Remember to initialize your development environment in each new worktree according to your project's setup. Depending on your stack, this might include:
+<ul>
+<li>JavaScript projects: Running dependency installation ( <code>npm install</code>, <code>yarn</code>)</li>
+<li>Python projects: Setting up virtual environments or installing with package managers</li>
+<li>Other languages: Following your project's standard setup process</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="%E2%80%8B-next-steps"><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#next-steps">​</a>  Next steps</h2>
+<p><a href="https://github.com/anthropics/claude-code/tree/main/.devcontainer"><strong>Claude Code reference implementation</strong> \
+\
+Clone our development container reference implementation.</a></p>
+<p>Was this page helpful?</p>
+<p>YesNo</p>
+<p><a href="https://docs.anthropic.com/en/docs/claude-code/sdk">SDK</a> <a href="https://docs.anthropic.com/en/docs/claude-code/troubleshooting">Troubleshooting</a></p>
+<p>On this page</p>
+<ul>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#table-of-contents">Table of contents</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#resume-previous-conversations">Resume previous conversations</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#continue-your-work-seamlessly">Continue your work seamlessly</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#understand-new-codebases">Understand new codebases</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#get-a-quick-codebase-overview">Get a quick codebase overview</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#find-relevant-code">Find relevant code</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#fix-bugs-efficiently">Fix bugs efficiently</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#diagnose-error-messages">Diagnose error messages</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#refactor-code">Refactor code</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#modernize-legacy-code">Modernize legacy code</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#work-with-tests">Work with tests</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#add-test-coverage">Add test coverage</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#create-pull-requests">Create pull requests</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#generate-comprehensive-prs">Generate comprehensive PRs</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#handle-documentation">Handle documentation</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#generate-code-documentation">Generate code documentation</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#work-with-images">Work with images</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#analyze-images-and-screenshots">Analyze images and screenshots</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#use-extended-thinking">Use extended thinking</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#leverage-claude%E2%80%99s-extended-thinking-for-complex-tasks">Leverage Claude's extended thinking for complex tasks</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#set-up-project-memory">Set up project memory</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#create-an-effective-claude-md-file">Create an effective CLAUDE.md file</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#set-up-model-context-protocol-mcp">Set up Model Context Protocol (MCP)</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#configure-mcp-servers">Configure MCP servers</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#understanding-mcp-server-scopes">Understanding MCP server scopes</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#connect-to-a-postgres-mcp-server">Connect to a Postgres MCP server</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#add-mcp-servers-from-json-configuration">Add MCP servers from JSON configuration</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#import-mcp-servers-from-claude-desktop">Import MCP servers from Claude Desktop</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#use-claude-code-as-an-mcp-server">Use Claude Code as an MCP server</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#use-claude-as-a-unix-style-utility">Use Claude as a unix-style utility</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#add-claude-to-your-verification-process">Add Claude to your verification process</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#pipe-in%2C-pipe-out">Pipe in, pipe out</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#control-output-format">Control output format</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#create-custom-slash-commands">Create custom slash commands</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#create-project-specific-commands">Create project-specific commands</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#add-command-arguments-with-%24arguments">Add command arguments with $ARGUMENTS</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#create-personal-slash-commands">Create personal slash commands</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#run-parallel-claude-code-sessions-with-git-worktrees">Run parallel Claude Code sessions with Git worktrees</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#use-worktrees-for-isolated-coding-environments">Use worktrees for isolated coding environments</a></li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code/tutorials#next-steps">Next steps</a></li>
+</ul>
+
+</body>
+</html>

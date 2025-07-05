@@ -67,6 +67,52 @@ ssh -T git@github.com
 Will be prompted to enter passphrase
 NOTE: You can now use the SSH link to clone repos
 
+#====================
+# GitHub Deploy Keys
+#====================
+1. Generate SSH Key Pair
+
+ssh-keygen -t rsa -b 4096 -C "your-email@example.com" -f ~/.ssh/deploy_key
+- Creates private key: deploy_key
+- Creates public key: deploy_key.pub
+
+2. Add Public Key to GitHub Repository
+
+  1. Go to your GitHub repository
+  2. Click Settings → Deploy keys
+  3. Click Add deploy key
+  4. Paste contents of deploy_key.pub
+  5. Give it a descriptive title
+  6. Check Allow write access if needed
+  7. Click Add key
+
+3. Store Private Key Securely in AWS SSM Parameter Store
+
+aws ssm put-parameter \
+  --name "/project-name/github-deploy-key" \
+  --value "$(cat ~/.ssh/deploy_key)" \
+  --type "SecureString"
+
+
+4. Configure SSH Client
+
+Create SSH config to use the deploy key:
+# ~/.ssh/config
+Host github.com
+    HostName github.com
+    User git
+    IdentityFile /path/to/deploy_key
+    StrictHostKeyChecking no
+
+5. Set Proper Permissions
+
+chmod 600 /path/to/deploy_key
+chown user:user /path/to/deploy_key
+
+6. Test Connection
+
+ssh -T git@github.com
+
 
 #==========
 # Using Git
@@ -330,6 +376,7 @@ git stash list -> Lists out all stashes
 git stash pop -> Applies changes on top stash & deletes it
 git stash apply stash@{#} -> applies a certain stash & preserves the stash
 git stash pop stash@{#} -> applies a certain stash and deletes the stash
+git stash branch <branch-name> <stash-index> -> Creates a new branch and adds the stashed changes to it.
 git stash clear -> deletes all stashes
 git stash drop <stash_id> -> delete a specific stash
 git stash show -> see changes made in recent stash

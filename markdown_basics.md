@@ -7,6 +7,7 @@ Normal Paragraph text
 **Bold Text**
 *Italics*
 ~~strike through some text~~  
+_another way to make italics_ 
 
 
 ### Making Bullet Points  
@@ -28,16 +29,17 @@ Normal Paragraph text
 
 
 ### Creating Tables  
-| Col 1 | Col 2 |
-|:---:|---:|
-|centered | right aligned |
-| row 2 | row 2 |
+| Col 1 | Col 2 | Col 3 |
+|:---:|---:|---|
+|centered | right aligned | left aligned |
+| row 2, col 1 | row 2, col 2 | row 3, col 3 |
 
 
 ### Working with links  
 [Link Text](https://google.com)  
 [Markdown Tutorial](https://www.markdownguide.org/basic-syntax/)
 
+// images are links with a "!" in the beginning
 ![Image](https://url.com)  
 
 

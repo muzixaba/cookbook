@@ -1,0 +1,24 @@
+# Use the following to prompt in general
+
+## Prompt Structure
+A prompt should have the following:
+
+### A Persona/Role
+Give the LLM a role to play or let it know what role you're in.
+e.g. You're a sales development rep for a software company that sells cemetery software in a KZN area in South Africa
+
+### Context
+Give the LLM an idea of the situation
+e.g. The company targets municipalities, private memorial parks, and churches for its software
+Context can be expanded by doing the following:
+- Giving an example of what you want
+- Listing out important things to consider in the response
+- referring to a file, url, image, or sound.
+
+### Task
+This is the only required part of the prompt.
+e.g. Give me a list of potential clients located under the eThekwini municipality.
+
+### Format
+How do you want the results to be returned?
+e.g. List the results a table format with the organisation's name, location, contact number, alt number, email, and contact person. Leave blank spaces where you don't have the info.

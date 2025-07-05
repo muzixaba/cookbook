@@ -1,0 +1,30 @@
+### Install uv
+pip install uv
+
+### List available python versions
+uv python --list
+
+### Install python using uv
+uv python install 3.12
+
+### Run python using default python version
+uv run main.py
+
+### Run py script using specific python version
+uv run --python 3.9.21 main.py
+
+### Run script with depandency(ies) & specific py version
+uv run --with rich --with requests --python 3.9 main.py
+
+### Setup script to use uv
+uv init --script main.py --pyhton 3.9.21
+
+### Add a dependency onto a script
+uv add --script main.py "requests"
+
+### Use uv with projects
+Run `uv init` on the root of the project
+
+### Remove a dependancy
+uv remove requests
+

@@ -6,11 +6,19 @@
 -------------
 For editing your file
 Press 'i' when in navigation mode
+Press 'o' to insert line below and enter insert mode
+Press 'O' to insert line above and enter insert mode
 
 # Navigation Mode
 -----------------
 For navigating the file
 Press 'esc' while in insert mode
+j,k,h,l - Down, Up, Left, Right
+
+# Undo and Redo
+---------------
+u - undo
+<C-R> - redo
 
 # Exiting Vim
 -------------
@@ -20,10 +28,13 @@ Press 'esc' while in insert mode
 :q - just quit
 :w - saves file without exiting editor
 
-# Jump to end/begining
+# Navigating a document
 ----------------------
 gg - Go to beggining of doc
 G - Go to end of doc
+:{number} - go to line
+{number}j - go down {number} of lines
+{number}k - go up {number} of lines
 
 # Navigate through words
 ------------------------
