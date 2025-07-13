@@ -72,6 +72,8 @@ This file pulls context into Claude when starting a conversation
 `/vim` Enter vim mode
 `/memory` Edit CLUADE.md memory files
 
+## Adding a model
+`/model claude-3-5-haiku-20241022`
 
 ## 1: Codebase Q & A (First Steps)
 Asking CC questions about the codebase like the following:
