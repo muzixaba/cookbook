@@ -27,14 +27,21 @@ u - undo
 :q! - quit without saving changes
 :q - just quit
 :w - saves file without exiting editor
+:x - save and exit file
 
 # Navigating a document
 ----------------------
 gg - Go to beggining of doc
 G - Go to end of doc
-:{number} - go to line
-{number}j - go down {number} of lines
-{number}k - go up {number} of lines
+:{n} - go to line
+{n}j - go down {n} of lines
+{n}k - go up {n} of lines
+ctr + d - scroll down
+ctr + u - scroll up
+{n}gg - jump to line number
+{n}j - move down n lines
+{n}k - move up n line
+zz - scroll selected line to center of screen
 
 # Navigate through words
 ------------------------
@@ -43,6 +50,20 @@ b - move to beginning of word
 e - move to end of word
 0 - jump to beginning of line
 $ - jump to end of line
+f{char} - jump to specific character on line (";" or "," next/prev occurance)
+
+# Searching
+-----------
+In normal mode, type /search-term
+Press Enter
+n - next occurance
+N - previous occurance
+
+# Browse files using Netrw
+vim . - opens file tree from inside Vim
+i - change list view
+:Ex - jump out of file and back into Netrw
+:q - close netrw
 
 # Skip block(s) of code
 -----------------------
@@ -69,4 +90,10 @@ p - paster below
 # Do last command
 -----------------
 .
+
+# Cut and Paste Lines
+Be in edit mode
+:<start-line-number>, <end-line-number>d
+p
+
 

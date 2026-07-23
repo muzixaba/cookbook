@@ -22,3 +22,7 @@ e.g. Give me a list of potential clients located under the eThekwini municipalit
 ### Format
 How do you want the results to be returned?
 e.g. List the results a table format with the organisation's name, location, contact number, alt number, email, and contact person. Leave blank spaces where you don't have the info.
+
+### File Type
+- Save as a .md file
+- Use strings with XML tags used to divide sections

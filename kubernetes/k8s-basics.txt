@@ -1,0 +1,165 @@
+# What's Kubernetes (k8s)?
+It's a container orchestration system
+Has 2 types of ways you can work with it:
+- Declaritive (recommended):
+    - Give k8s an idea of the desired state using config files and k8s manages the clusters for you
+- Imparitive:
+    - You go into each cluster and manage the containers/objects manually
+
+
+# How does K8s manage the contatiners?
+- Containers are managed from inside of pods
+- Pods are placed inside of Nodes (VMs)
+- Clusters are a group of Nodes
+
+# Nodes
+- A VM or computers that runs some k8s objects
+
+# The different types of Nodes
+- Controller/Master Node
+    - The control tower
+    - Doesn't have pods inside of it
+    - Consists of the following:
+        - API Server
+        - Etcd: Distributed key-value store. Keeps track of state
+        - Scheduler: Decided which pods are placed where
+        - Controller-Manager: Makes sure all pods stay in line via namespaces
+
+- Worker Nodes
+    - Run the containers apps sit on
+    - Have Kubelet for container management
+
+# Kubelet
+- Focuses on running containers inside all pods
+- Also present in the controller node
+- Has an HTTP server for read-only access
+
+# Kube Proxy
+- Available on every node
+- Has access to the IP table of all nodes in the cluster
+
+# Kubectl and its functions
+- Kubectl is a CLI app used to interact with K8s
+- All Kubectl commands send requests to a controller nodes api server
+- Kubectl commands:
+    - kubectl get <objects>: returns list of given objects
+    - kubectl apply -f <file>: changes a clusters configuration using the given file
+
+
+# How a pod is created
+- Kubectl sends a request ask for a pod(s)
+- The API server gets the request and sends it to Etcd
+- The response from etcd is then sent to the Scheduler
+- The sceduler's resposne is sent to the kubelet(s) by the API that will create the pod(s)
+- Containerd creates the container(s) inside the pod
+
+# Kubernetes Manifest
+A YAML doc that specifies the resources that need to be created
+Always get the manifest from source
+
+# Kubernetes Resource/Object types
+- StatefulSet
+- ReplicaController
+- Pod: 
+    - Runs 1 or more closely related containers
+- Deployement:
+    - Runs one or more identical pods
+    - Uses pod templates to create & manage pods
+- Service: 
+    - Sets up networking in a k8s cluster
+    - 4 types (LINC):
+        - LoadBalancer
+        - Ingress
+        - NodePort:
+            - Exposes a contiainer to outside world (dev)
+        - ClusterIP
+
+# Sample Manifest for Pod
+```YAML
+apiVersion: v1
+kind: Pod
+metadata: 
+    name: nginx
+    namespace: custom-namespace # optional, otherwise default is used
+spec:
+    containers:
+    - name: nginx
+      image: nginx:1.14.2
+      ports:
+      - containerPort: 80
+      - resources:
+            requests:
+                cpu: 250m
+                memory: "65M"
+      - livenessProbe:
+        initialDelaySeconds: 2 # how soon after creation can probing start
+        periodSeconds: 5 # how often to probe after initial initialDelaySeconds
+        timeoutSeconds: 1 # how long we give the container to respond
+        failureThreshold: 3 # how many consecutive failuers b4 killing container
+        httpGet: # method of probing?
+            path: /health
+            port: 9876
+```
+# Additional manifest configs
+- Requests: Minimun required size/qty for resource (scoped @ container level)
+- Limits: Max cap for what resources can consume ( scoped @ container level)
+
+# Kubectl commands
+kubectl get pods - Returns a list of objects being ask for e.g Pods
+kubectl get pods --output wide
+kubectl get pods -n <namespace-name> - Get resource from specific namespace
+kubeclt apply -f manifest.yml - Creates the resources in manifest if not existing
+kubectl describe <resource> <resource-name> - Describes a resource
+kubectl delete -f manifest.yml - Deletes resources created by manifest
+kubectl delete <resouce> <resouce-name> - Deletes a specific resource
+kubctl create ns <name> - Creates a namespace
+kubctl top <resource> - Shows resource usage for resources
+kubectl exec -it <pod-name> --sh - Executes bash from inside a container
+kubectl create configmap <configmap-name> --from-file=file.txt
+kubectl expose deploy <deployment-name>
+kubectl get service
+
+# Probes (Scoped @ container level)
+Manage individual pods & containers to enforce certain behiours
+2 types:
+ - Liveness Probe: Kills a non-responsive container after probing 
+ - Readiness Probe: Waits for a container to be ready before access
+
+# ConfigMap
+- Volume mounted to both the pod & container and carries config info
+
+# Secrets
+- Similar to configMaps but for Secrets
+- Aren't encrypted by default
+
+# Logs
+Can be generated at the container level
+
+# Labels
+Key-value pairs used to label/tag resources
+
+# Deployments
+Create pods by defining the number upfront
+Uses replicaSets to create pods
+
+# Storage Class
+Used to tell K8s how to store things in the cloud
+Configured in the following way:
+- Cloud storage chunk is created
+- The storage chunk is linked to a Persistant Volume (PV represents storage)
+- The Persistant Volume is linked to a Persistent Volume Claim (PVC represents access)
+- Persistant Volume has a 1-to-1 relationship with the Persistan Volume Claim
+- The PVC is mounted to the pod & is attached to a volume inside a container(s)
+
+# Service
+Tracks the IP addresses of pods by pointing to them
+Come in 3 types:
+    - Cluster IP
+    - Node Point
+    - Load Balance
+
+# Minikube
+- Used to manage a VM that runs a k8s cluster locally
+- Commands:
+    - minikube status
+    - minikube ip: get app IP address (avoid localhost)

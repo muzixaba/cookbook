@@ -41,6 +41,9 @@ This file pulls context into Claude when starting a conversation
 - Your home folder `~/.claude/CLAUDE.md`
 - Create a local version `CLAUDE.local.md` that will be gitignored 
 
+### Adding instructions to CLAUDE.md
+Instert a "#" as the beginning of your prompt and CC will ask you where you want to add it e.g Project or User memory.
+
 ### Adding/Modifying content in CLAUDE.md
 - Can add manually
 - Use `#` to give Claude an instruction that will update CLAUDE.md
@@ -71,6 +74,8 @@ This file pulls context into Claude when starting a conversation
 `/theme` Enable light/dark theme
 `/vim` Enter vim mode
 `/memory` Edit CLUADE.md memory files
+`/add-dir` Adds a new directory for Claude to read through
+`/agents` For use with sub-agents
 
 ## Adding a model
 `/model claude-3-5-haiku-20241022`
@@ -99,3 +104,38 @@ CC has the following tools to edit code
 - Manually edit `.claude/settings.json` or `~/.claude.json`
 - Use the `--allowedTools` CLI flag for session-specific permissions
 
+## Images
+- Drag an image whilst holding Shift for Claude Code to find it.
+
+## Subagents
+- Claude Code can use subagents that have custom instructions to run your prompts.
+- They are created under the `.claude/agents/` directory.
+- Saved as `.md` files
+- Can be used as the following:
+    - Code reviewers
+    - Design reviewers
+    - SEO specialists
+    - Copywriting specialists
+    - Security reviewer
+- How to create a subagent:
+    Run `/agents` inside Claude Code
+- Subagent configs can leave in 2 places:
+    - User subagents are found in `~/.claude/agents/`
+    - Projects subagents can be found in `.claude/agents`
+    - Project subagents get higher priority over User subagents 
+
+- The subagent file format looks like the following:
+```
+---
+name: sub-agent-name
+description: Description of when this subagent should be invoked
+tools: tool1, tool2, tool3 # Optional - inherits all tools if omitted
+---
+
+Subagent's system prompt goes here. This can be multiple paragraphs
+and should clearly define the subagent's role, capabilities, and approach
+to solving problems.
+
+Include specific instructions, best practices, and any constraints
+the subagents should follow.
+```

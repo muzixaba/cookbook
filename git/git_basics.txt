@@ -170,6 +170,11 @@ git add -p file.ext -> add certain changes from inside the file (step through ch
 git restore --staged path/to/file.ext
 git restore --staged . (Unstages all files)
 
+# Revert all changes that are unstaged
+git restore .
+
+# Remove all untracked files
+git clean -fd
 
 # Commit changes
 git commit (opens text editor so you can type commit subject and description)
@@ -321,6 +326,42 @@ All code below the ‘=========’ is from the incoming branch (second_branch)
 Only the line(s) that has conflicting code/info will be highlighted.
 You now have to decide whether to pick the code from current or incoming branch or a some combination.
 Add & Commit changes once conflict has been fixed
+
+=============
+Git Worktrees
+=============
+Worktrees help to create a copy of the entire repo
+Files in .gitignore are left behind.
+
+# Get git worktree help
+git worktree -h
+
+# List git worktrees
+git worktree list
+
+# Add a worktree
+git worktree add -b [<branch>] <path>
+e.g. git workree add -b new-feature ../repo-name 
+NOTE: Open a new editor for each new worktree
+
+# Remove a worktree
+git remove <path> 
+rm -fr <git-worktree-folder>
+
+# Pruning worktrees
+git worktree prune
+
+# Create symlinks for files in .gitignore (use bash script)
+ls -s ../repo-name/.env .env
+
+# Create .worktreeinclude file as alternative to symlinks
+file similar to .gitignore
+used for things that need to be included into worktrees
+
+# Create the database for the worktree
+echo "DATABASE=repo-name_dev_feature" > .env.test.local
+echo "TEST_DATABASE=repo-nam_test_feature" > .env.test.local
+
 
 Types of Merges
 ---------------

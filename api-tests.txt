@@ -2,7 +2,7 @@
 POST  http://127.0.0.1:8000/api/auth/login/
 content-type: application/json
 
-{"username": "muzix", "password": "Pass1234"}
+{"username": "Muzi", "password": "Pass1234"}
 
 
 ### Plots
@@ -45,7 +45,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiY
 DELETE http://127.0.0.1:8000/api/tenants/1/cemeteries/1/plots/2/
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0Mjk3MTA1LCJpYXQiOjE3MzQyMzIzMDUsImp0aSI6IjA3NjczYTQxNWNkZTQ0ZWZiNjRjYzA2ZDY1MTkyMjc4IiwidXNlcl9pZCI6MX0.i5DSbGwvZg6Jd1LEJQac0wY8vKskOAqElAmmC15Szpw
 
-### burials
+### burial
 
 ### Post new burial
 POST http://127.0.0.1:8000/api/tenants/1/cemeteries/1/burials/

@@ -1,5 +1,5 @@
 <goal>
-You're a Senior Software Engineer with extensive experience designing large-scale web and mobile applications. Help me think throug the structure of my new project by considering the following:
+You're a Senior Software Engineer with extensive experience designing large-scale web and mobile applications. Help me think through the structure of my new project by considering the following:
 - **What** am I building?
 - **Who** are the target users?
 - **Why** does this project matter?

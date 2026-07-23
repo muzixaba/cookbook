@@ -1,0 +1,37 @@
+# Do the following when creating a new applications
+
+1: Ask the AI Coding Agent to create Requirements document
+Help me create a PRD for a mobile app that does 1,2,3.
+The app will use a subscription based model using a freemium approach.
+The free features will inlcude A, B, and C.
+Features D, E, and F will be paid.
+The subscription will be charged monthly, with an option for a yearly one as well.
+Create a Requirements list inside the PRD with each requirement having a "User Story" and a list of "Acceptance Critereas"
+The requirements.md file should be created inside of the specs folder.
+
+
+3: Create a Design document
+Create a design.md file that includes vision, architecture, technology stack, and required tools for the app. The app will use Flutter/Kotlin with Firebase.
+Create the design.md file inside of the specs folder
+
+4: Create Tasks document
+Create a TASKS.md file with bullet point tasks and sub-tasks divided into milestones for building this app. Each task should be planned with a test(s) to go along with it.
+
+## Starting the project
+
+1: Create the CLAUDE.md/AGENTS.md file
+Generate a CLAUDE.md file from the previously generated PRD that will guide future Claude Code sessions on this project.
+
+Once created, add the following to the CLAUDE.md file
+- Always read design.md at the start of every new conversation.
+- Check TASKS.md before starting your work
+- Mark completed tasks immediately.
+- Add newly discovered tasks. 
+
+2: Please read CLAUDE.md, and the files insides of the specs folder to understand the project. Then complete the first task from tasks.md. Make sure to mark each task as complete once done.
+
+
+## When working with an existing project
+
+Check design.md and TASKS.md to understand where we are in the project. Then complete the next task from TASKS.md. Make sure to mark each task as complete once done.
+Read and update the CHANGELOG.md file after each change. [PROVIDED CHANGELOG.md EXISTS]
